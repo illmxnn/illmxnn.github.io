@@ -5,3 +5,8 @@ Desktop.ini
 *.log
 .env
 node_modules/
+
+# local generators/screenshots (not for Pages)
+generate_cv.py
+3d/screenshot-*.png
+screenshot-*.png
