@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Illia Druzhenko — AI Automation Engineer | Python Backend Developer</title>
-  <meta name="description" content="Illia Druzhenko — AI Automation Engineer, Python Backend. Автоматизирую рутину: 170 авто и 4844 фото > CRM за один запуск. Python, FastAPI, Telegram, Docker. Киев, Remote, DUICT 3-й курс, B2 English." />
+  <meta name="description" content="Illia Druzhenko — AI Automation Engineer, Python Backend. Автоматизирую рутину: 170 авто и 4844 фото → CRM за один запуск. Python, FastAPI, Telegram, Docker. Киев, Remote, DUICT 3-й курс, B2 English." />
   <meta name="color-scheme" content="light" />
   <meta property="og:title" content="Illia Druzhenko — AI Automation Engineer | Python Backend" />
-  <meta property="og:description" content="Автоматизирую рутину: 170 авто > CRM за один запуск. Брони с OCR без ручной сверки. Показываю код." />
+  <meta property="og:description" content="Автоматизирую рутину: 170 авто → CRM за один запуск. Брони с OCR без ручной сверки. Показываю код." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>?</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>⚡</text></svg>">
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержимому</a>
@@ -22,11 +22,15 @@
     <div class="nav__inner">
       <a class="nav__brand" href="#">Illia Druzhenko</a>
       <div class="nav__links" role="list">
-        <a class="nav__link" href="#projects">Проекты</a>
-        <a class="nav__link" href="#skills">Навыки</a>
-        <a class="nav__link" href="#contacts">Контакты</a>
+        <a class="nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
+        <a class="nav__link" href="#gallery" data-i18n="navGallery">Примеры</a>
+        <a class="nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
+        <a class="nav__link" href="#contacts" data-i18n="navContacts">Контакты</a>
       </div>
-      <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать ></a>
+      <div class="nav__actions">
+        <button id="langToggle" class="nav__lang" type="button" aria-label="Switch to English">EN</button>
+        <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать →</a>
+      </div>
     </div>
   </nav>
 
@@ -35,33 +39,33 @@
     <section class="hero-wrap" aria-labelledby="hero-title">
       <div class="container hero">
         <div class="hero__content">
-          <p class="eyebrow reveal">AI Automation Engineer &nbsp;·&nbsp; Python Backend Developer &nbsp;·&nbsp; Киев · Remote</p>
-          <h1 id="hero-title" class="hero__h1 reveal" data-delay="1">Автоматизирую рутину: <span class="accent-underline">170 авто > CRM</span> за один запуск.</h1>
-          <p class="hero__sub reveal" data-delay="2">
-            Каталог 170 авто и 4&nbsp;844 фото > детерминированный XLSX/XML без ручной сверки. Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.
+          <p class="eyebrow reveal" data-i18n="heroEyebrow">AI Automation Engineer &nbsp;·&nbsp; Python Backend Developer &nbsp;·&nbsp; Киев · Remote</p>
+          <h1 id="hero-title" class="hero__h1 reveal" data-delay="1" data-i18n="heroTitle">Автоматизирую рутину: <span class="accent-underline">170 авто → CRM</span> за один запуск.</h1>
+          <p class="hero__sub reveal" data-delay="2" data-i18n="heroSub">
+            Каталог 170 авто и 4&nbsp;844 фото → детерминированный XLSX/XML без ручной сверки. Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.
           </p>
           <div class="hero__ctas reveal" data-delay="2">
-            <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener">Посмотреть GitHub ></a>
-            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать в Telegram — отвечу сегодня</a>
+            <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="heroCta1">Посмотреть GitHub →</a>
+            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="heroCta2">Написать в Telegram — отвечу сегодня</a>
           </div>
-          <p class="hero__note reveal">DUICT, 3-й курс · B2 English · Доступен для Remote Ukraine / Worldwide</p>
+          <p class="hero__note reveal" data-i18n="heroNote">DUICT, 3-й курс · B2 English · Доступен для Remote Ukraine / Worldwide</p>
 
           <div class="evidence reveal" aria-label="Подтверждённые метрики">
             <div class="evidence__item">
               <div class="evidence__num">170 / 4 844</div>
-              <div class="evidence__label">Авто / изображений — один экспорт</div>
+              <div class="evidence__label" data-i18n="ev1">Авто / изображений — один экспорт</div>
             </div>
             <div class="evidence__item">
               <div class="evidence__num">12</div>
-              <div class="evidence__label">Тестов RAG-демо</div>
+              <div class="evidence__label" data-i18n="ev2">Тестов RAG-демо</div>
             </div>
             <div class="evidence__item">
               <div class="evidence__num">656+</div>
-              <div class="evidence__label">Тестов CRM (пик)</div>
+              <div class="evidence__label" data-i18n="ev3">Тестов CRM (пик)</div>
             </div>
             <div class="evidence__item">
               <div class="evidence__num">Qdrant + FTS</div>
-              <div class="evidence__label">Hybrid поиск с цитатами</div>
+              <div class="evidence__label" data-i18n="ev4">Hybrid поиск с цитатами</div>
             </div>
           </div>
         </div>
@@ -88,7 +92,7 @@
               <span class="proof-card__foot-accent">без ручной сверки</span>
             </div>
           </div>
-          <p class="hero__visual-caption">Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.</p>
+          <p class="hero__visual-caption" data-i18n="heroCaption">Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.</p>
         </div>
       </div>
       <div class="rail" aria-hidden="true"></div>
@@ -98,33 +102,41 @@
     <section id="projects" class="section">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Проекты — только подтверждённое</p>
-          <h2 class="section__title">Четыре кейса с цифрами. Пятый — по запросу, NDA-safe.</h2>
-          <p class="section__sub">Каждый кейс: проблема > моё решение > стек > измеренный результат. Без «Advanced», «Lead», «выручка» — только то, что прошло тесты и экспорт.</p>
+          <p class="eyebrow" data-i18n="projEyebrow">Проекты — только подтверждённое</p>
+          <h2 class="section__title" data-i18n="projTitle">Четыре кейса с цифрами. Пятый — по запросу, NDA-safe.</h2>
+          <p class="section__sub" data-i18n="projSub">Каждый кейс: проблема → моё решение → стек → измеренный результат. Без «Advanced», «Lead», «выручка» — только то, что прошло тесты и экспорт.</p>
         </div>
 
         <div class="projects">
           <!-- DocumentAnalyzer -->
           <article class="card reveal">
+            <div class="card__media">
+              <img src="https://picsum.photos/seed/illia-docs/640/360" alt="DocumentAnalyzer — поиск по документам" loading="lazy" width="640" height="360" />
+              <span class="card__media-badge">Desktop · offline</span>
+            </div>
             <div class="card__eyebrow">DocumentAnalyzer · Desktop</div>
-            <h3 class="card__title">Поиск по PDF, DOCX, HTML, TXT, RAR — локально</h3>
-            <p class="card__desc"><strong>Проблема:</strong> документы разбросаны по форматам, поиск вручную — долго и без релевантности.<br><strong>Решение:</strong> инкрементальная индексация, SQLite FTS, OCR-fallback (Tesseract/Poppler), много-поточный батч.</p>
+            <h3 class="card__title" data-i18n="card1Title">Поиск по PDF, DOCX, HTML, TXT, RAR — локально</h3>
+            <p class="card__desc" data-i18n="card1Desc"><strong>Проблема:</strong> документы разбросаны по форматам, поиск вручную — долго и без релевантности.<br><strong>Решение:</strong> инкрементальная индексация, SQLite FTS, OCR-fallback (Tesseract/Poppler), много-поточный батч.</p>
             <div class="card__stack" aria-label="Стек">
               <span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">SQLite FTS</span><span class="tag">Tesseract</span><span class="tag">Poppler</span><span class="tag">PyInstaller</span>
             </div>
             <div class="card__meta">
-              <span class="card__result">Результат: полнотекстовый поиск по смешанным форматам, локально, без облака</span>
+              <span class="card__result" data-i18n="card1Result">Результат: полнотекстовый поиск по смешанным форматам, локально, без облака</span>
             </div>
             <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn/PDF-HTML-TXT-WORD-Document-Analyzer" target="_blank" rel="noopener">Репозиторий ></a>
+              <a class="link" href="https://github.com/illmxnn/PDF-HTML-TXT-WORD-Document-Analyzer" target="_blank" rel="noopener" data-i18n="card1Link">Репозиторий →</a>
             </div>
           </article>
 
           <!-- RAG Demo -->
           <article class="card reveal" data-delay="1">
+            <div class="card__media">
+              <img src="https://picsum.photos/seed/illia-rag/640/360" alt="RAG Demo — hybrid retrieval" loading="lazy" width="640" height="360" />
+              <span class="card__media-badge">Qdrant · 12 tests</span>
+            </div>
             <div class="card__eyebrow">RAG Demo · Live репо</div>
-            <h3 class="card__title">Hybrid RAG с цитатами и оцениваемостью</h3>
-            <p class="card__desc"><strong>Проблема:</strong> ответы LLM без источника — не проверить.<br><strong>Решение:</strong> чанкинг, lexical / semantic / hybrid поиск, Qdrant, цитаты, оцениваемость. FastAPI + Docker, воспроизводимый запуск.</p>
+            <h3 class="card__title" data-i18n="card2Title">Hybrid RAG с цитатами и оцениваемостью</h3>
+            <p class="card__desc" data-i18n="card2Desc"><strong>Проблема:</strong> ответы LLM без источника — не проверить.<br><strong>Решение:</strong> чанкинг, lexical / semantic / hybrid поиск, Qdrant, цитаты, оцениваемость. FastAPI + Docker, воспроизводимый запуск.</p>
             <div class="card__stack">
               <span class="tag">FastAPI</span><span class="tag">Qdrant</span><span class="tag">Hybrid retrieval</span><span class="tag">Docker</span><span class="tag">Python</span>
             </div>
@@ -132,39 +144,47 @@
               <span class="card__result">Результат: 12 тестов, репо на GitHub — illmxnn/rag-demo</span>
             </div>
             <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener">Открыть rag-demo ></a>
+              <a class="link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener" data-i18n="card2Link">Открыть rag-demo →</a>
             </div>
           </article>
 
           <!-- Ingul -->
           <article class="card reveal">
+            <div class="card__media">
+              <img src="https://picsum.photos/seed/illia-ingul/640/360" alt="Ingul — каталог упаковки" loading="lazy" width="640" height="360" />
+              <span class="card__media-badge">Static · Pages</span>
+            </div>
             <div class="card__eyebrow">Ingul · Static catalog</div>
-            <h3 class="card__title">Каталог упаковки с галереями — быстро и адаптивно</h3>
-            <p class="card__desc"><strong>Проблема:</strong> показать продукцию клиенту на телефоне — без удобных галерей и адаптива тяжело.<br><strong>Решение:</strong> статичный каталог, responsive ленты, лайтбокс, деплой на GitHub Pages.</p>
+            <h3 class="card__title" data-i18n="card3Title">Каталог упаковки с галереями — быстро и адаптивно</h3>
+            <p class="card__desc" data-i18n="card3Desc"><strong>Проблема:</strong> показать продукцию клиенту на телефоне — без удобных галерей и адаптива тяжело.<br><strong>Решение:</strong> статичный каталог, responsive ленты, лайтбокс, деплой на GitHub Pages.</p>
             <div class="card__stack">
               <span class="tag">HTML/CSS/JS</span><span class="tag">Responsive</span><span class="tag">GitHub Pages</span>
             </div>
             <div class="card__meta">
-              <span class="card__result">Результат: галереи 12 / 14 / 18 фото, демо по запросу</span>
+              <span class="card__result" data-i18n="card3Result">Результат: галереи 12 / 14 / 18 фото, демо по запросу</span>
             </div>
             <div class="card__actions">
-              <span class="card__hint">Демо по запросу — покажу скринкаст/ссылку</span>
+              <span class="card__hint" data-i18n="card3Hint">Демо по запросу — покажу скринкаст/ссылку</span>
             </div>
           </article>
 
           <!-- JustCars Exporter -->
           <article class="card card--accent reveal" data-delay="1">
+            <div class="card__media">
+              <img src="https://picsum.photos/seed/illia-cars/640/360" alt="JustCars — экспорт авто" loading="lazy" width="640" height="360" />
+              <span class="card__media-badge">170 / 4 844 · deterministic</span>
+            </div>
             <div class="card__eyebrow">JustCars Exporter · Telegram + FastAPI</div>
-            <h3 class="card__title">Детерминированный экспорт 170 авто / 4 844 фото</h3>
-            <p class="card__desc"><strong>Проблема:</strong> перенос каталога в CRM вручную — ошибки цен, потерянные фото.<br><strong>Решение:</strong> экспорт-only, точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр. Обезличенно, без деталей MorCars CRM.</p>
+            <h3 class="card__title" data-i18n="card4Title">Детерминированный экспорт 170 авто / 4 844 фото</h3>
+            <p class="card__desc" data-i18n="card4Desc"><strong>Проблема:</strong> перенос каталога в CRM вручную — ошибки цен, потерянные фото.<br><strong>Решение:</strong> экспорт-only, точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр. Обезличенно, без деталей MorCars CRM.</p>
             <div class="card__stack">
               <span class="tag">Python 3.11</span><span class="tag">python-telegram-bot</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Docker</span>
             </div>
             <div class="card__meta">
-              <span class="card__result">Результат: 170 vehicles / 4 844 images за один прогон</span>
+              <span class="card__result" data-i18n="card4Result">Результат: 170 vehicles / 4 844 images за один прогон</span>
             </div>
             <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener">Спросить про пайплайн ></a>
+              <a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="card4Link">Спросить про пайплайн →</a>
             </div>
           </article>
         </div>
@@ -172,24 +192,70 @@
         <!-- On request -->
         <div class="onrequest reveal" id="onrequest">
           <div class="onrequest__head">
-            <p class="eyebrow">По запросу для вакансии — NDA-safe</p>
-            <h3 class="onrequest__title">Доступно описание и скринкаст, без раскрытия деталей</h3>
+            <p class="eyebrow" data-i18n="onReqEyebrow">По запросу для вакансии — NDA-safe</p>
+            <h3 class="onrequest__title" data-i18n="onReqTitle">Доступно описание и скринкаст, без раскрытия деталей</h3>
           </div>
           <div class="onrequest__grid">
             <div class="onrequest__item">
-              <h4>AgendHub — AI agent control plane</h4>
-              <p>Форк OpenCode: gateway, провайдеры/модели, tenant-границы, виртуальные ключи, allowlists, USD/time бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.</p>
+              <h4 data-i18n="onReq1Title">AgendHub — AI agent control plane</h4>
+              <p data-i18n="onReq1Desc">Форк OpenCode: gateway, провайдеры/модели, tenant-границы, виртуальные ключи, allowlists, USD/time бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.</p>
             </div>
             <div class="onrequest__item">
-              <h4>MorCars CRM — брони, тарифы, OCR</h4>
-              <p>Бэкенд/фронт для бронирований, расчёты тарифов/депозитов, OCR документов, XLSX-импорт флота, тесты и деплой. Без клиентских деталей — только подход и скринкаст по запросу.</p>
+              <h4 data-i18n="onReq2Title">MorCars CRM — брони, тарифы, OCR</h4>
+              <p data-i18n="onReq2Desc">Бэкенд/фронт для бронирований, расчёты тарифов/депозитов, OCR документов, XLSX-импорт флота, тесты и деплой. Без клиентских деталей — только подход и скринкаст по запросу.</p>
             </div>
           </div>
-          <p class="onrequest__note">Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.</p>
+          <p class="onrequest__note" data-i18n="onReqNote">Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.</p>
           <div class="onrequest__ctas">
-            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener">Запросить материалы в Telegram ></a>
+            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="onReqCta">Запросить материалы в Telegram →</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Gallery — примеры работ с красивыми прокрутами -->
+    <section id="gallery" class="section section--gallery">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="galEyebrow">Примеры — как это выглядит</p>
+          <h2 class="section__title" data-i18n="galTitle">Модерн, информативно, без лишнего шума.</h2>
+          <p class="section__sub" data-i18n="galSub">Плавные прокруты, параллакс фоток, один стиль: тёплая бумага, почти чёрный, красный сигнал. Фото анимируются при скролле — лёгкий zoom + fade, уважает reduced-motion.</p>
+        </div>
+        <div class="gallery reveal" role="list" aria-label="Галерея примеров">
+          <figure class="gallery__item" role="listitem">
+            <div class="gallery__media">
+              <img src="https://picsum.photos/seed/illia-docs-wide/800/500" alt="DocumentAnalyzer интерфейс" loading="lazy" width="800" height="500" />
+            </div>
+            <figcaption>
+              <strong data-i18n="gal1Title">DocumentAnalyzer</strong> <span data-i18n="gal1Desc">— локальный поиск, FTS + OCR, PySide6</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery__item" role="listitem">
+            <div class="gallery__media">
+              <img src="https://picsum.photos/seed/illia-rag-wide/800/500" alt="RAG Demo hybrid" loading="lazy" width="800" height="500" />
+            </div>
+            <figcaption>
+              <strong data-i18n="gal2Title">RAG Demo</strong> <span data-i18n="gal2Desc">— hybrid, Qdrant, цитаты, Docker</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery__item" role="listitem">
+            <div class="gallery__media">
+              <img src="https://picsum.photos/seed/illia-ingul-wide/800/500" alt="Ingul каталог" loading="lazy" width="800" height="500" />
+            </div>
+            <figcaption>
+              <strong data-i18n="gal3Title">Ingul</strong> <span data-i18n="gal3Desc">— responsive каталог, 12/14/18 фото</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery__item" role="listitem">
+            <div class="gallery__media">
+              <img src="https://picsum.photos/seed/illia-cars-wide/800/500" alt="JustCars экспорт" loading="lazy" width="800" height="500" />
+            </div>
+            <figcaption>
+              <strong data-i18n="gal4Title">JustCars Exporter</strong> <span data-i18n="gal4Desc">— 170 авто, детерминированно</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="gallery__hint reveal" data-i18n="galHint">Горизонтальная лента — скролль или свайп. На телефоне — свайп, на десктопе — колёсико с Shift. Все фото — placeholder, заменю на реальные скринкасты по твоим материалам.</p>
       </div>
     </section>
 
@@ -197,9 +263,9 @@
     <section id="skills" class="section section--alt">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Навыки — лента</p>
-          <h2 class="section__title">Держу фокус на автоматизации, API и воспроизводимости.</h2>
-          <p class="section__sub">Платформенный опыт с LLM/AI-агентами — углубляю RAG и eval. Ниже — подтверждённый стек из проектов.</p>
+          <p class="eyebrow" data-i18n="skillsEyebrow">Навыки — лента</p>
+          <h2 class="section__title" data-i18n="skillsTitle">Держу фокус на автоматизации, API и воспроизводимости.</h2>
+          <p class="section__sub" data-i18n="skillsSub">Платформенный опыт с LLM/AI-агентами — углубляю RAG и eval. Ниже — подтверждённый стек из проектов.</p>
         </div>
         <div class="skills reveal" aria-label="Навыки">
           <span class="skill-pill">Python</span>
@@ -217,9 +283,9 @@
           <span class="skill-pill">Docker</span>
           <span class="skill-pill">OCR / Doc processing</span>
           <span class="skill-pill">LLM apps / AI agents</span>
-          <span class="skill-pill skill-pill--muted">платформенный опыт, углубляю RAG/eval</span>
+          <span class="skill-pill skill-pill--muted" data-i18n="skillsMuted">платформенный опыт, углубляю RAG/eval</span>
         </div>
-        <p class="skills__note reveal">Не указываю «Advanced/Lead» — уровни подтверждаются кодом и ревью.</p>
+        <p class="skills__note reveal" data-i18n="skillsNote">Не указываю «Advanced/Lead» — уровни подтверждаются кодом и ревью.</p>
       </div>
     </section>
 
@@ -228,13 +294,13 @@
       <div class="container">
         <div class="contact-grid reveal">
           <div>
-            <p class="eyebrow">Контакты — отвечаю сегодня</p>
-            <h2 class="section__title">Обсудим ваш процесс за 15 минут.</h2>
-            <p class="section__sub">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал.</p>
+            <p class="eyebrow" data-i18n="contEyebrow">Контакты — отвечаю сегодня</p>
+            <h2 class="section__title" data-i18n="contTitle">Обсудим ваш процесс за 15 минут.</h2>
+            <p class="section__sub" data-i18n="contSub">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал.</p>
             <div class="contact__ctas">
-              <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener">Посмотреть GitHub ></a>
-              <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать в Telegram</a>
-              <button class="btn btn--ghost" type="button" disabled aria-label="CV PDF скоро">Скачать CV PDF (скоро)</button>
+              <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="contCta1">Посмотреть GitHub →</a>
+              <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="contCta2">Написать в Telegram</a>
+              <button class="btn btn--ghost" type="button" disabled aria-label="CV PDF скоро" data-i18n="contCta3">Скачать CV PDF (скоро)</button>
             </div>
           </div>
           <div class="contact-card">
@@ -252,9 +318,9 @@
             </div>
             <div class="contact-card__row">
               <span class="contact-card__label">Локация</span>
-              <span class="contact-card__value">Kyiv · Remote · B2 English</span>
+              <span class="contact-card__value" data-i18n="contLoc">Kyiv · Remote · B2 English</span>
             </div>
-            <p class="contact-card__hint">Отвечу в течение дня. Для вакансии — пришлю описание AgendHub/MorCars и скринкаст.</p>
+            <p class="contact-card__hint" data-i18n="contHint">Отвечу в течение дня. Для вакансии — пришлю описание AgendHub/MorCars и скринкаст.</p>
           </div>
         </div>
       </div>
@@ -263,28 +329,150 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span>Kyiv · Remote · B2 English</span>
+      <span data-i18n="foot1">Kyiv · Remote · B2 English</span>
       <span>© 2026 Illia Druzhenko</span>
     </div>
   </footer>
 
   <script>
     (function(){
+      // Reveal + stagger — Apple L1, respects reduced-motion
       var els = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
+      var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (rm || !("IntersectionObserver" in window)) {
         els.forEach(function(e){ e.classList.add("is-visible"); });
-        return;
+      } else {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+        els.forEach(function(el){ io.observe(el); });
       }
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
+
+      // Parallax — subtle, rAF, respects reduced-motion & prefers-reduced-transparency
+      if (!rm) {
+        var heroVisual = document.querySelector(".hero__visual");
+        var cardMedias = document.querySelectorAll(".card__media img, .gallery__media img");
+        var ticking = false;
+        function onScroll(){
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function(){
+            var y = window.scrollY || 0;
+            if (heroVisual) {
+              var hv = Math.min(y * 0.06, 18);
+              heroVisual.style.transform = "translateY(" + hv + "px)";
+            }
+            cardMedias.forEach(function(img){
+              var rect = img.getBoundingClientRect();
+              var vh = window.innerHeight;
+              if (rect.top < vh && rect.bottom > 0) {
+                var progress = (vh - rect.top) / (vh + rect.height);
+                var offset = (progress - 0.5) * 10;
+                img.style.transform = "scale(1.03) translateY(" + offset + "px)";
+              }
+            });
+            ticking = false;
+          });
+        }
+        window.addEventListener("scroll", onScroll, {passive:true});
+        onScroll();
+      }
+
+      // i18n toggle — RU ↔ EN, sales-copy checked
+      var dict = {
+        ru: {
+          navProjects:"Проекты", navGallery:"Примеры", navSkills:"Навыки", navContacts:"Контакты",
+          heroEyebrow:"AI Automation Engineer · Python Backend Developer · Киев · Remote",
+          heroTitle:'Автоматизирую рутину: <span class="accent-underline">170 авто → CRM</span> за один запуск.',
+          heroSub:"Каталог 170 авто и 4 844 фото → детерминированный XLSX/XML без ручной сверки. Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.",
+          heroCta1:"Посмотреть GitHub →", heroCta2:"Написать в Telegram — отвечу сегодня",
+          heroNote:"DUICT, 3-й курс · B2 English · Доступен для Remote Ukraine / Worldwide",
+          heroCaption:"Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.",
+          ev1:"Авто / изображений — один экспорт", ev2:"Тестов RAG-демо", ev3:"Тестов CRM (пик)", ev4:"Hybrid поиск с цитатами",
+          projEyebrow:"Проекты — только подтверждённое", projTitle:"Четыре кейса с цифрами. Пятый — по запросу, NDA-safe.", projSub:"Каждый кейс: проблема → моё решение → стек → измеренный результат. Без «Advanced», «Lead», «выручка» — только то, что прошло тесты и экспорт.",
+          card1Title:"Поиск по PDF, DOCX, HTML, TXT, RAR — локально", card1Desc:"<strong>Проблема:</strong> документы разбросаны по форматам, поиск вручную — долго и без релевантности.<br><strong>Решение:</strong> инкрементальная индексация, SQLite FTS, OCR-fallback (Tesseract/Poppler), много-поточный батч.",
+          card1Result:"Результат: полнотекстовый поиск по смешанным форматам, локально, без облака", card1Link:"Репозиторий →",
+          card2Title:"Hybrid RAG с цитатами и оцениваемостью", card2Desc:"<strong>Проблема:</strong> ответы LLM без источника — не проверить.<br><strong>Решение:</strong> чанкинг, lexical / semantic / hybrid поиск, Qdrant, цитаты, оцениваемость. FastAPI + Docker, воспроизводимый запуск.",
+          card2Link:"Открыть rag-demo →",
+          card3Title:"Каталог упаковки с галереями — быстро и адаптивно", card3Desc:"<strong>Проблема:</strong> показать продукцию клиенту на телефоне — без удобных галерей и адаптива тяжело.<br><strong>Решение:</strong> статичный каталог, responsive ленты, лайтбокс, деплой на GitHub Pages.",
+          card3Result:"Результат: галереи 12 / 14 / 18 фото, демо по запросу", card3Hint:"Демо по запросу — покажу скринкаст/ссылку",
+          card4Title:"Детерминированный экспорт 170 авто / 4 844 фото", card4Desc:"<strong>Проблема:</strong> перенос каталога в CRM вручную — ошибки цен, потерянные фото.<br><strong>Решение:</strong> экспорт-only, точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр. Обезличенно, без деталей MorCars CRM.",
+          card4Result:"Результат: 170 vehicles / 4 844 images за один прогон", card4Link:"Спросить про пайплайн →",
+          onReqEyebrow:"По запросу для вакансии — NDA-safe", onReqTitle:"Доступно описание и скринкаст, без раскрытия деталей",
+          onReq1Title:"AgendHub — AI agent control plane", onReq1Desc:"Форк OpenCode: gateway, провайдеры/модели, tenant-границы, виртуальные ключи, allowlists, USD/time бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.",
+          onReq2Title:"MorCars CRM — брони, тарифы, OCR", onReq2Desc:"Бэкенд/фронт для бронирований, расчёты тарифов/депозитов, OCR документов, XLSX-импорт флота, тесты и деплой. Без клиентских деталей — только подход и скринкаст по запросу.",
+          onReqNote:"Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.", onReqCta:"Запросить материалы в Telegram →",
+          galEyebrow:"Примеры — как это выглядит", galTitle:"Модерн, информативно, без лишнего шума.", galSub:"Плавные прокруты, параллакс фоток, один стиль: тёплая бумага, почти чёрный, красный сигнал. Фото анимируются при скролле — лёгкий zoom + fade, уважает reduced-motion.",
+          gal1Title:"DocumentAnalyzer", gal1Desc:"— локальный поиск, FTS + OCR, PySide6", gal2Title:"RAG Demo", gal2Desc:"— hybrid, Qdrant, цитаты, Docker", gal3Title:"Ingul", gal3Desc:"— responsive каталог, 12/14/18 фото", gal4Title:"JustCars Exporter", gal4Desc:"— 170 авто, детерминированно",
+          galHint:"Горизонтальная лента — скролль или свайп. На телефоне — свайп, на десктопе — колёсико с Shift. Все фото — placeholder, заменю на реальные скринкасты по твоим материалам.",
+          skillsEyebrow:"Навыки — лента", skillsTitle:"Держу фокус на автоматизации, API и воспроизводимости.", skillsSub:"Платформенный опыт с LLM/AI-агентами — углубляю RAG и eval. Ниже — подтверждённый стек из проектов.",
+          skillsMuted:"платформенный опыт, углубляю RAG/eval", skillsNote:"Не указываю «Advanced/Lead» — уровни подтверждаются кодом и ревью.",
+          contEyebrow:"Контакты — отвечаю сегодня", contTitle:"Обсудим ваш процесс за 15 минут.", contSub:"Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал.",
+          contCta1:"Посмотреть GitHub →", contCta2:"Написать в Telegram", contCta3:"Скачать CV PDF (скоро)",
+          contLoc:"Kyiv · Remote · B2 English", contHint:"Отвечу в течение дня. Для вакансии — пришлю описание AgendHub/MorCars и скринкаст.",
+          foot1:"Kyiv · Remote · B2 English"
+        },
+        en: {
+          navProjects:"Projects", navGallery:"Gallery", navSkills:"Skills", navContacts:"Contact",
+          heroEyebrow:"AI Automation Engineer · Python Backend Developer · Kyiv · Remote",
+          heroTitle:'Automating routine: <span class="accent-underline">170 cars → CRM</span> in one run.',
+          heroSub:"Catalog of 170 cars and 4,844 photos → deterministic XLSX/XML without manual checks. Bookings with OCR and tariffs — no import errors. Python, FastAPI, Telegram, Docker. I show code, not slogans.",
+          heroCta1:"View GitHub →", heroCta2:"Message on Telegram — reply today",
+          heroNote:"DUICT, 3rd year · B2 English · Available for Remote Ukraine / Worldwide",
+          heroCaption:"One pipeline — from catalog to CRM, reproducible and tested.",
+          ev1:"Cars / images — one export", ev2:"RAG demo tests", ev3:"CRM tests (peak)", ev4:"Hybrid search with citations",
+          projEyebrow:"Projects — evidence only", projTitle:"Four cases with numbers. Fifth — on request, NDA-safe.", projSub:"Each case: problem → my solution → stack → measured result. No «Advanced», «Lead», revenue claims — only what passed tests and export.",
+          card1Title:"Search across PDF, DOCX, HTML, TXT, RAR — locally", card1Desc:"<strong>Problem:</strong> documents scattered across formats, manual search is slow and irrelevant.<br><strong>Solution:</strong> incremental indexing, SQLite FTS, OCR fallback (Tesseract/Poppler), multi-threaded batch.",
+          card1Result:"Result: full-text search across mixed formats, locally, no cloud", card1Link:"Repository →",
+          card2Title:"Hybrid RAG with citations and eval", card2Desc:"<strong>Problem:</strong> LLM answers without source cannot be verified.<br><strong>Solution:</strong> chunking, lexical / semantic / hybrid search, Qdrant, citations, eval. FastAPI + Docker, reproducible.",
+          card2Link:"Open rag-demo →",
+          card3Title:"Packaging catalog with galleries — fast and adaptive", card3Desc:"<strong>Problem:</strong> showing products on mobile without galleries is painful.<br><strong>Solution:</strong> static catalog, responsive strips, lightbox, GitHub Pages deploy.",
+          card3Result:"Result: galleries 12 / 14 / 18 photos, demo on request", card3Hint:"Demo on request — will show screencast / link",
+          card4Title:"Deterministic export 170 cars / 4,844 photos", card4Desc:"<strong>Problem:</strong> manual catalog → CRM transfer causes price errors and lost photos.<br><strong>Solution:</strong> export-only, exact headers, numeric normalization, deterministic images, validator. Anonymized, no MorCars CRM details.",
+          card4Result:"Result: 170 vehicles / 4,844 images in one run", card4Link:"Ask about pipeline →",
+          onReqEyebrow:"On request for vacancy — NDA-safe", onReqTitle:"Description and screencast available on request",
+          onReq1Title:"AgendHub — AI agent control plane", onReq1Desc:"OpenCode fork: gateway, providers/models, tenant boundaries, virtual keys, allowlists, USD/time budgets, reserve/settle/refund, idempotency, Postgres. I will show architecture and session blueprint.",
+          onReq2Title:"MorCars CRM — bookings, tariffs, OCR", onReq2Desc:"Backend/frontend for bookings, tariff/deposit calculations, document OCR, fleet XLSX import, tests and deploy. No client details — approach and screencast on request.",
+          onReqNote:"Wording is NDA-aligned: I show only what is safe for a specific vacancy after your request.", onReqCta:"Request materials on Telegram →",
+          galEyebrow:"Gallery — how it looks", galTitle:"Modern, informative, no noise.", galSub:"Smooth scroll, photo parallax, one style: warm paper, near-black, signal red. Photos animate on scroll — subtle zoom + fade, respects reduced-motion.",
+          gal1Title:"DocumentAnalyzer", gal1Desc:"— local search, FTS + OCR, PySide6", gal2Title:"RAG Demo", gal2Desc:"— hybrid, Qdrant, citations, Docker", gal3Title:"Ingul", gal3Desc:"— responsive, 12/14/18 photos", gal4Title:"JustCars Exporter", gal4Desc:"— 170 cars, deterministic",
+          galHint:"Horizontal strip — scroll or swipe. On mobile swipe, on desktop Shift+wheel. All photos are placeholders, will replace with real screencasts from your materials.",
+          skillsEyebrow:"Skills", skillsTitle:"Focused on automation, APIs and reproducibility.", skillsSub:"Platform experience with LLM/AI agents — deepening RAG and eval. Below — proven stack from projects.",
+          skillsMuted:"platform experience, deepening RAG/eval", skillsNote:"No «Advanced/Lead» — levels proven by code and review.",
+          contEyebrow:"Contact — reply today", contTitle:"Let’s discuss your process in 15 minutes.", contSub:"Kyiv · Remote Ukraine / Worldwide · DUICT, 3rd year · B2 English. Fastest via Telegram.",
+          contCta1:"View GitHub →", contCta2:"Message on Telegram", contCta3:"Download CV PDF (soon)",
+          contLoc:"Kyiv · Remote · B2 English", contHint:"Reply within a day. For vacancy — will send AgendHub/MorCars details and screencast.",
+          foot1:"Kyiv · Remote · B2 English"
+        }
+      };
+      var lang = "ru";
+      var btn = document.getElementById("langToggle");
+      function applyLang(l){
+        lang = l;
+        document.documentElement.lang = l;
+        document.querySelectorAll("[data-i18n]").forEach(function(el){
+          var k = el.getAttribute("data-i18n");
+          var v = dict[l][k];
+          if (v !== undefined) {
+            if (k.indexOf("Title") !== -1 || k.indexOf("Desc") !== -1 || k === "heroTitle") el.innerHTML = v;
+            else el.textContent = v;
           }
         });
-      }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
-      els.forEach(function(el){ io.observe(el); });
+        btn.textContent = l === "ru" ? "EN" : "RU";
+        btn.setAttribute("aria-label", l === "ru" ? "Switch to English" : "Switch to Russian");
+        try{ localStorage.setItem("lang", l); }catch(e){}
+      }
+      btn.addEventListener("click", function(){ applyLang(lang === "ru" ? "en" : "ru"); });
+      try{
+        var saved = localStorage.getItem("lang");
+        if (saved === "en" || saved === "ru") applyLang(saved);
+      }catch(e){}
     })();
   </script>
 </body>
-</html>
+</html>
