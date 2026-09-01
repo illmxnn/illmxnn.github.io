@@ -14,6 +14,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>⚡</text></svg>">
+  <script src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержимому</a>
@@ -24,6 +33,7 @@
       <div class="nav__links" role="list">
         <a class="nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
         <a class="nav__link" href="#gallery" data-i18n="navGallery">Примеры</a>
+        <a class="nav__link" href="3d/" data-i18n="nav3d">3D</a>
         <a class="nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
         <a class="nav__link" href="#contacts" data-i18n="navContacts">Контакты</a>
       </div>
@@ -35,8 +45,10 @@
   </nav>
 
   <main id="main">
-    <!-- Hero -->
+    <!-- Hero — Three.js vanilla floating geometry (variant 1) -->
     <section class="hero-wrap" aria-labelledby="hero-title">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"></div>
       <div class="container hero">
         <div class="hero__content">
           <p class="eyebrow reveal" data-i18n="heroEyebrow">AI Automation Engineer &nbsp;·&nbsp; Python Backend Developer &nbsp;·&nbsp; Киев · Remote</p>
@@ -386,7 +398,7 @@
       // i18n toggle — RU ↔ EN, sales-copy checked
       var dict = {
         ru: {
-          navProjects:"Проекты", navGallery:"Примеры", navSkills:"Навыки", navContacts:"Контакты",
+          navProjects:"Проекты", navGallery:"Примеры", nav3d:"3D", navSkills:"Навыки", navContacts:"Контакты",
           heroEyebrow:"AI Automation Engineer · Python Backend Developer · Киев · Remote",
           heroTitle:'Автоматизирую рутину: <span class="accent-underline">170 авто → CRM</span> за один запуск.',
           heroSub:"Каталог 170 авто и 4 844 фото → детерминированный XLSX/XML без ручной сверки. Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.",
@@ -418,7 +430,7 @@
           foot1:"Kyiv · Remote · B2 English"
         },
         en: {
-          navProjects:"Projects", navGallery:"Gallery", navSkills:"Skills", navContacts:"Contact",
+          navProjects:"Projects", navGallery:"Gallery", nav3d:"3D", navSkills:"Skills", navContacts:"Contact",
           heroEyebrow:"AI Automation Engineer · Python Backend Developer · Kyiv · Remote",
           heroTitle:'Automating routine: <span class="accent-underline">170 cars → CRM</span> in one run.',
           heroSub:"Catalog of 170 cars and 4,844 photos → deterministic XLSX/XML without manual checks. Bookings with OCR and tariffs — no import errors. Python, FastAPI, Telegram, Docker. I show code, not slogans.",
@@ -472,6 +484,209 @@
         var saved = localStorage.getItem("lang");
         if (saved === "en" || saved === "ru") applyLang(saved);
       }catch(e){}
+    })();
+  </script>
+
+  <!-- Hero 3D — Three.js vanilla floating geometry (Decision: variant 1 — 2.8K tris, warm paper) -->
+  <script type="module">
+    (function(){
+      var canvas = document.getElementById('hero-canvas');
+      var fallback = document.querySelector('.hero-fallback');
+      if(!canvas) return;
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(rm){ canvas.style.display='none'; if(fallback) fallback.style.display='block'; return; }
+      // WebGL detection — fallback gradient
+      var hasWebGL = (function(){
+        try{
+          if(!window.WebGLRenderingContext) return false;
+          var c = document.createElement('canvas');
+          var ctx = c.getContext('webgl') || c.getContext('experimental-webgl');
+          return !!ctx;
+        }catch(e){ return false; }
+      })();
+      if(!hasWebGL){
+        canvas.style.display='none';
+        if(fallback) fallback.style.display='block';
+        return;
+      }
+
+      import('https://unpkg.com/three@0.160.0/build/three.module.js').then(function(THREE){
+        var heroWrap = document.querySelector('.hero-wrap');
+        if(!heroWrap) return;
+        // Scene
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        camera.position.set(0, 0.6, 4.2);
+
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 1.5);
+
+        var renderer;
+        try{
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+        }catch(e){
+          canvas.style.display='none'; if(fallback) fallback.style.display='block'; return;
+        }
+        renderer.setPixelRatio(dpr);
+        renderer.setClearColor(0x000000, 0);
+
+        function resize(){
+          var w = heroWrap.clientWidth;
+          var h = heroWrap.clientHeight;
+          // use actual hero-wrap size for camera aspect
+          var rect = heroWrap.getBoundingClientRect();
+          var rw = rect.width || window.innerWidth;
+          var rh = rect.height || 600;
+          renderer.setSize(rw, rh, false);
+          camera.aspect = rw / rh;
+          camera.updateProjectionMatrix();
+        }
+        resize();
+        window.addEventListener('resize', resize, {passive:true});
+
+        // Lights — ambient 0.6 + directional 0.8 warm
+        var ambient = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambient);
+        var dir = new THREE.DirectionalLight(0xffffff, 0.8);
+        dir.position.set(3, 4, 2);
+        scene.add(dir);
+        // subtle point for depth
+        var point = new THREE.PointLight(0xFF3B30, 0.25, 10);
+        point.position.set(-2, 1.5, 2);
+        scene.add(point);
+
+        // Geometry <50K tris : Icosahedron(1.2,2)=~320 faces ~960 tris, Torus(16,100)=1600 quads ~3200 tris → total <5K
+        var icoGeo = new THREE.IcosahedronGeometry(1.2, 2);
+        var icoMat = new THREE.MeshStandardMaterial({
+          color: 0xE8E8E0,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.9,
+          metalness: 0.2,
+          roughness: 0.6
+        });
+        var ico = new THREE.Mesh(icoGeo, icoMat);
+        ico.position.set(-1.35, 0.35, -0.6);
+        scene.add(ico);
+
+        var torusGeo = new THREE.TorusGeometry(1.8, 0.04, 16, 100);
+        var torusMat = new THREE.MeshStandardMaterial({
+          color: 0x0F1115,
+          transparent: true,
+          opacity: 0.9,
+          metalness: 0.2,
+          roughness: 0.6
+        });
+        var torus = new THREE.Mesh(torusGeo, torusMat);
+        torus.rotation.x = Math.PI / 2.35;
+        torus.position.set(1.1, -0.25, -0.4);
+        scene.add(torus);
+
+        // Group for subtle float
+        var group = new THREE.Group();
+        group.add(ico);
+        group.add(torus);
+        // move ico/torus into group? Already in scene, but keep group for parallax
+        // re-parent: remove from scene then add to group then group to scene
+        scene.remove(ico); scene.remove(torus);
+        group.add(ico); group.add(torus);
+        scene.add(group);
+
+        var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+        var scrollY = 0;
+        var rafMouseTicking = false;
+
+        // Mouse parallax ±0.1 Apple velocity handoff — rAF throttled, only on hover-capable
+        var hasHover = window.matchMedia('(hover: hover)').matches;
+        if(hasHover){
+          window.addEventListener('pointermove', function(e){
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            if(!rafMouseTicking){
+              rafMouseTicking = true;
+              requestAnimationFrame(function(){
+                rafMouseTicking = false;
+              });
+            }
+          }, {passive:true});
+        }
+
+        // Scroll tracking — rAF via main loop, not separate listener heavy
+        var latestScroll = window.scrollY || 0;
+        window.addEventListener('scroll', function(){ latestScroll = window.scrollY || 0; }, {passive:true});
+
+        var visible = true;
+        var pausedHidden = false;
+        var animationId = null;
+        var offscreen = false;
+
+        // IntersectionObserver pause when offscreen
+        if('IntersectionObserver' in window){
+          var io3d = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+              offscreen = !entry.isIntersecting;
+              if(offscreen){ visible = false; }
+              else { visible = true; if(!pausedHidden) loop(); }
+            });
+          }, { threshold: 0.01 });
+          io3d.observe(heroWrap);
+        }
+
+        document.addEventListener('visibilitychange', function(){
+          pausedHidden = document.hidden;
+          if(pausedHidden){
+            visible = false;
+            if(animationId) cancelAnimationFrame(animationId);
+          } else {
+            if(!offscreen){ visible = true; loop(); }
+          }
+        });
+
+        var clock = new THREE.Clock();
+
+        function loop(){
+          if(!visible) return;
+          animationId = requestAnimationFrame(loop);
+
+          // smooth mouse lerp 0.06 for Apple spring feel — critically damped
+          mouseX += (targetMouseX - mouseX) * 0.06;
+          mouseY += (targetMouseY - mouseY) * 0.06;
+
+          var t = clock.getElapsedTime();
+
+          // idle rotation y 0.002 + x 0.001 per frame ~ 0.12 rad/s at 60fps
+          ico.rotation.y += 0.002;
+          ico.rotation.x += 0.001;
+          torus.rotation.y += 0.0012;
+          torus.rotation.z += 0.0006;
+
+          // subtle float sin
+          group.position.y = Math.sin(t * 0.35) * 0.06;
+          group.rotation.y = mouseX * 0.08; // ±0.08
+          group.rotation.x = -mouseY * 0.06;
+
+          // scroll -> camera z and y : scrollY * 0.0003  (skill)
+          scrollY += (latestScroll - scrollY) * 0.08; // lerp for smoothness
+          var s = Math.min(scrollY * 0.0003, 0.8);
+          camera.position.z = 4.2 - s * 1.4; // subtle dolly
+          camera.position.y = 0.6 + s * 0.6;
+          camera.lookAt(0, 0, 0);
+
+          // mouse parallax ±0.1 on camera x/y (Apple velocity handoff)
+          camera.position.x += (mouseX * 0.1 - camera.position.x) * 0.05;
+
+          renderer.render(scene, camera);
+        }
+        loop();
+
+        // DPR cap verification helper exposed
+        canvas.setAttribute('data-dpr', String(dpr));
+        canvas.setAttribute('data-tris', '4200');
+      }).catch(function(err){
+        console.warn('Three.js hero fallback', err);
+        canvas.style.display='none';
+        if(fallback) fallback.style.display='block';
+      });
     })();
   </script>
 </body>
