@@ -1,0 +1,463 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Illia Druzhenko — Immersive 3D · AI Automation</title>
+  <meta name="description" content="Illia Druzhenko — AI Automation Engineer. Погружение в пайплайн: 170 авто и 4 844 фото → CRM за один запуск, RAG hybrid с цитатами, Docker-репродуцируемость." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Illia Druzhenko — Immersive 3D" />
+  <meta property="og:description" content="Погружение в автоматизацию: 170 авто → CRM за один запуск. 3D мир пайплайнов и детерминированных экспортов." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2780%27>◉</text></svg>">
+  <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+      "gsap": "https://esm.sh/gsap@3.12.5",
+      "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="loader" aria-live="polite" aria-label="Загрузка 3D">
+    <div class="loader__ring" aria-hidden="true"></div>
+    <div class="loader__pct" id="loaderPct">0%</div>
+    <div class="loader__hint">Загружаем космос · <span style="color:var(--text)">170 → CRM</span> уже детерминирован</div>
+  </div>
+  <div class="fallback" id="fallback" role="status" aria-live="polite">
+    <div class="fallback__card">
+      <img src="https://picsum.photos/seed/illia-fallback-dark/640/360" alt="Превью портфолио" loading="lazy" width="640" height="360" />
+      <h2 style="margin:0 0 8px; font:700 18px/1.3 var(--font-sans); color:var(--text)">Ваш браузер не поддерживает WebGL</h2>
+      <p>Космос недоступен, но пайплайн открыт — смотрите портфолио <a href="../">на главной</a>. Или скачайте <a href="../Illia_Druzhenko_CV.pdf">CV PDF</a>.</p>
+      <p style="margin-top:16px"><a class="btn btn--primary" href="../">Выйти в портфолио →</a></p>
+    </div>
+  </div>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Навигация 3D">
+    <div class="nav__inner">
+      <a class="nav__brand" href="../"><span class="nav__brand-dot" aria-hidden="true"></span> Illia Druzhenko <span class="hide-m" style="color:var(--text-ter); font-weight:400">— Immersive 3D</span></a>
+      <div class="nav__links" role="list">
+        <a class="nav__link" href="#s1">Погружение</a>
+        <a class="nav__link" href="#s2">DocumentAnalyzer</a>
+        <a class="nav__link" href="#s3">RAG Demo</a>
+        <a class="nav__link" href="#s4">Exports</a>
+        <a class="nav__link" href="#s5">Контакт</a>
+      </div>
+      <div class="nav__actions"><a class="nav__ghost" href="../Illia_Druzhenko_CV.pdf" download>CV</a><a class="nav__cta" href="../">Портфолио →</a></div>
+    </div>
+  </nav>
+  <main>
+    <section class="section" id="s1" aria-labelledby="h1">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Immersive · 3D World — scroll to fly</p>
+          <h1 id="h1" class="h1">Погружение.<br>От идеи — к <span style="color:var(--signal)">CRM за один запуск.</span></h1>
+          <p class="sub">Один детерминированный пайплайн вместо недель ручной сверки. Каталог <strong style="color:var(--text)">170 авто и 4 844 фото</strong> → XLSX/XML без ошибок импорта. Брони с OCR и тарифами — без ручного переноса. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.</p>
+          <div class="hero__ctas"><a class="btn btn--primary" href="../">Выйти в портфолио →</a><a class="btn btn--ghost" href="../Illia_Druzhenko_CV.pdf" download>Скачать CV</a><a class="btn btn--ghost" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать в Telegram</a></div>
+          <div class="evidence" aria-label="Метрики"><div class="evidence__item"><div class="evidence__num">170 / 4 844</div><div class="evidence__label">Авто / фото — один прогон</div></div><div class="evidence__item"><div class="evidence__num">12 / 656+</div><div class="evidence__label">Тестов RAG / CRM пика</div></div><div class="evidence__item"><div class="evidence__num">Qdrant + FTS</div><div class="evidence__label">Hybrid поиск с цитатами</div></div></div>
+          <p class="terrain-hint">scroll · камера летит z 5 → 2 · explore with drag</p>
+        </div>
+        <div class="hero-card reveal" data-delay="1" aria-hidden="true">
+          <div class="hero-card__head"><div class="hero-card__dots"><span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span></div><span class="hero-card__title">exporter — deterministic run</span><span class="hero-card__badge">PASS</span></div>
+          <div class="hero-card__rows"><div class="hero-card__row"><span>validate headers</span><b class="ok">24 / 24 OK</b></div><div class="hero-card__row"><span>normalize prices</span><b>170 rows</b></div><div class="hero-card__row"><span>images</span><b class="ok">4 844 deterministic</b></div><div class="hero-card__row"><span>write XLSX / XML</span><b>done in 1.8s</b></div><div class="hero-card__row"><span>import check</span><b class="ok">no diff · reproducible</b></div></div>
+          <div class="hero-card__foot"><span>Python · FastAPI · Docker</span><span style="color:var(--text)">без ручной сверки</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="s2" aria-labelledby="h2">
+      <div class="container grid-2">
+        <div class="reveal">
+          <p class="eyebrow">02 — Wireframe Cosmos · Points as Stars</p>
+          <h2 id="h2" class="h2">Документы разбросаны?<br>Собираю их в один поиск.</h2>
+          <p class="p"><strong>Проблема:</strong> PDF, DOCX, HTML, TXT, RAR — ручной поиск тонет в форматах. <br><strong>Решение:</strong> инкрементальная индексация, SQLite FTS, OCR-fallback (Tesseract/Poppler), многопоток. Локально, без облака.</p>
+          <div class="steps" aria-label="Шаги">
+            <div class="step"><span class="step__num">1</span><span class="step__text"><b>Индексирую всё</b> — чанки, FTS, детекция языка, дедупликация</span></div>
+            <div class="step"><span class="step__num">2</span><span class="step__text"><b>OCR когда нужно</b> — Tesseract + Poppler вытаскивают текст из сканов</span></div>
+            <div class="step"><span class="step__num">3</span><span class="step__text"><b>Ищу мгновенно</b> — релевантность, подсветка, оффлайн</span></div>
+          </div>
+          <p class="terrain-hint">wireframe icosahedron · scroll → rotate · 1.2K tris</p>
+        </div>
+        <div class="glass reveal" data-delay="1">
+          <div class="glass__eyebrow">DocumentAnalyzer · Desktop · offline</div>
+          <h3 class="glass__title">Поиск по смешанным форматам — локально</h3>
+          <p class="glass__desc">PySide6 + SQLite FTS. Много-поточный батч, инкрементальный реиндекс. Без выгрузки в облако — данные остаются у вас.</p>
+          <div class="glass__meta"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">SQLite FTS</span><span class="tag">Tesseract</span><span class="tag">Poppler</span><span class="tag">PyInstaller</span></div>
+          <div class="glass__result">Результат: полнотекстовый поиск, офлайн, со скоростью FTS</div>
+          <div class="glass__actions"><a class="link" href="https://github.com/illmxnn/PDF-HTML-TXT-WORD-Document-Analyzer" target="_blank" rel="noopener">Репозиторий →</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="s3" aria-labelledby="h3">
+      <div class="container grid-2">
+        <div class="glass reveal">
+          <div class="glass__eyebrow">RAG Demo · Live репо · 12 tests</div>
+          <h3 class="glass__title">Hybrid RAG с цитатами и оцениваемостью</h3>
+          <p class="glass__desc"><strong>Проблема:</strong> ответы LLM без источников — не проверить. <br><strong>Решение:</strong> чанкинг, lexical / semantic / hybrid поиск, Qdrant, цитаты, eval. FastAPI + Docker, воспроизводимый запуск.</p>
+          <div class="glass__meta"><span class="tag">FastAPI</span><span class="tag">Qdrant</span><span class="tag">Hybrid Retrieval</span><span class="tag">Docker</span><span class="tag">Python 3.11</span></div>
+          <div class="glass__result">12 / 12 tests pass · illmxnn/rag-demo</div>
+          <div class="glass__actions"><a class="link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener">Открыть rag-demo →</a></div>
+        </div>
+        <div class="reveal" data-delay="1">
+          <p class="eyebrow">03 — Neural Network · BufferGeometry lines</p>
+          <h2 id="h3" class="h2">Каждый ответ —<br>с адресом источника.</h2>
+          <p class="p">Сеть из узлов и связей пульсирует <code style="font-family:var(--font-mono); background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:6px; font-size:12px">sin(time)</code> — как гибридный поиск: lexical подсвечивает точные слова, semantic — смысл, hybrid сводит в цитату.</p>
+          <div class="steps">
+            <div class="step"><span class="step__num">lex</span><span class="step__text"><b>Lexical FTS</b> — точные совпадения, скорость, контроль</span></div>
+            <div class="step"><span class="step__num">sem</span><span class="step__text"><b>Semantic Qdrant</b> — вектора, смысл, перефразы</span></div>
+            <div class="step"><span class="step__num">hyb</span><span class="step__text"><b>Hybrid + цитаты</b> — сводим и оцениваем, не верим на слово</span></div>
+          </div>
+          <p class="terrain-hint">neural lines · BufferGeometry · pulse sin(time)</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="s4" aria-labelledby="h4">
+      <div class="container grid-2">
+        <div class="reveal">
+          <p class="eyebrow">04 — Wave Terrain · PlaneGeometry noise · dolly z 5→2</p>
+          <h2 id="h4" class="h2">Каталог на экране,<br>экспорт — за кулисами.</h2>
+          <p class="p">Два мира одной точности. <strong>Ingul:</strong> статичный каталог упаковки — responsive, лайтбокс, 12/14/18 фото, Pages. <strong>JustCars Exporter:</strong> 170 авто / 4 844 фото за один прогон, точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр.</p>
+          <div class="steps">
+            <div class="step"><span class="step__num">A</span><span class="step__text"><b>Ingul — витрина</b> — быстро, адаптивно, без CMS, готово к демо</span></div>
+            <div class="step"><span class="step__num">B</span><span class="step__text"><b>JustCars — пайплайн</b> — export-only, 24 заголовка, без потерь</span></div>
+          </div>
+          <p class="terrain-hint">plane wave · vertex noise · scroll → camera dolly</p>
+        </div>
+        <div style="display:grid; gap:16px" class="reveal" data-delay="1">
+          <div class="glass">
+            <div class="glass__eyebrow">Ingul · Static catalog</div>
+            <h3 class="glass__title">Витрина упаковки — быстро и на телефоне</h3>
+            <p class="glass__desc">Ленты, свайп, лайтбокс, Pages. Клиент листает каталог на телефоне — без лагов, без CMS.</p>
+            <div class="glass__meta"><span class="tag">HTML/CSS/JS</span><span class="tag">Responsive</span><span class="tag">GitHub Pages</span></div>
+            <div class="glass__result">12 / 14 / 18 фото на страницу</div>
+          </div>
+          <div class="glass" style="border-color: rgba(255,255,255,0.16)">
+            <div class="glass__eyebrow" style="color:var(--text)">JustCars Exporter · Telegram + FastAPI</div>
+            <h3 class="glass__title">Детерминированный экспорт 170 / 4 844</h3>
+            <p class="glass__desc">Перенос вручную — ошибки цен и потерянные фото. Здесь — один пайплайн, воспроизводимо, покрыто тестами. Обезличенно, без деталей MorCars CRM.</p>
+            <div class="glass__meta"><span class="tag">Python 3.11</span><span class="tag">FastAPI</span><span class="tag">Telegram Bot</span><span class="tag">MySQL</span><span class="tag">Docker</span></div>
+            <div class="glass__result">170 vehicles / 4 844 images за один прогон</div>
+            <div class="glass__actions"><a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener">Спросить про пайплайн →</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="s5" aria-labelledby="h5">
+      <div class="container grid-2">
+        <div class="glass reveal">
+          <div class="glass__eyebrow">05 — Wave Contact · Terrain finale</div>
+          <h3 class="glass__title">Обсудим ваш процесс за 15 минут</h3>
+          <p class="glass__desc">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал. Для вакансии — пришлю NDA-safe описание AgendHub / MorCars + скринкаст.</p>
+          <div style="display:grid; gap:10px; margin-top:16px">
+            <div style="display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08)"><span style="font:500 11px/1 var(--font-mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--text-ter)">Telegram</span><a class="link" href="https://t.me/illia_dev" target="_blank" rel="noopener">@illia_dev</a></div>
+            <div style="display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08)"><span style="font:500 11px/1 var(--font-mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--text-ter)">GitHub</span><a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener">github.com/illmxnn</a></div>
+            <div style="display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08)"><span style="font:500 11px/1 var(--font-mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--text-ter)">Email</span><a class="link" href="mailto:druzya771907@gmail.com">druzya771907@gmail.com</a></div>
+            <div style="display:flex; justify-content:space-between; gap:12px; padding:10px 0"><span style="font:500 11px/1 var(--font-mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--text-ter)">Локация</span><span style="font:500 13px/1 var(--font-sans); color:var(--text)">Kyiv · Remote · B2 English</span></div>
+          </div>
+          <div class="glass__actions" style="display:flex; flex-wrap:wrap; gap:10px"><a class="btn btn--primary" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать в Telegram →</a><a class="btn btn--ghost" href="https://github.com/illmxnn" target="_blank" rel="noopener">GitHub</a><a class="btn btn--ghost" href="../Illia_Druzhenko_CV.pdf" download>Скачать CV PDF</a></div>
+          <p style="margin-top:12px; font:400 12px/1.6 var(--font-sans); color:var(--text-ter)">Отвечу в течение дня. Возврат: <a class="link" href="../">← Выйти в портфолио</a> · CV: <a class="link" href="../Illia_Druzhenko_CV.pdf">PDF</a></p>
+        </div>
+        <div class="reveal" data-delay="1">
+          <p class="eyebrow">Финал — WaveTerrain</p>
+          <h2 id="h5" class="h2">Один пайплайн.<br>Без ручной сверки.</h2>
+          <p class="p">Волновая поверхность внизу — как данные: шум на входе, гладкий детерминированный экспорт на выходе. Камера долетела: <code style="font-family:var(--font-mono); background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:6px; font-size:12px">z 5 → 2</code>, свет — <code style="font-family:var(--font-mono); background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:6px; font-size:12px">ambient 0.7 + directional 0.8 + point 0.5</code>, tris &lt; 15K.</p>
+          <div class="evidence" style="grid-template-columns:repeat(2,1fr)"><div class="evidence__item"><div class="evidence__num">За 1 запуск</div><div class="evidence__label">Вместо недель сверки</div></div><div class="evidence__item"><div class="evidence__num">Детерминированно</div><div class="evidence__label">Headers 24/24 · no diff</div></div></div>
+          <p class="terrain-hint">OrbitControls · enableZoom false · enablePan false · enableDamping</p>
+          <p style="margin-top:18px; font:400 12px/1.6 var(--font-mono); color:var(--muted)">dpr capped isMobile?1:Math.min(2,devicePixelRatio) · performance:{min:0.5} · prefers-reduced-motion → pause</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__inner"><span>Illia Druzhenko — AI Automation · 3D Immersive · <a class="link" href="../" style="font:inherit">← Портфолио</a></span><span>Kyiv · Remote · B2 English · © 2026 · <a class="link" href="../Illia_Druzhenko_CV.pdf" style="font:inherit">CV PDF</a></span></div>
+  </footer>
+  <script type="module">
+  const loader = document.getElementById('loader');
+  const loaderPct = document.getElementById('loaderPct');
+  const fallbackEl = document.getElementById('fallback');
+  const canvas = document.getElementById('bg');
+  const progress = document.getElementById('progress');
+  let loaderProgress = 0;
+  const loaderTimer = setInterval(()=> {
+    loaderProgress = Math.min(96, loaderProgress + (Math.random()*12));
+    if(loaderPct) loaderPct.textContent = Math.round(loaderProgress) + '%';
+  }, 120);
+  function detectWebGL(){
+    try{
+      if(!window.WebGLRenderingContext) return false;
+      const c = document.createElement('canvas');
+      const ctx = c.getContext('webgl') || c.getContext('experimental-webgl');
+      return !!ctx;
+    } catch(e){ return false; }
+  }
+  const hasWebGL = detectWebGL();
+  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+  if(rm || !('IntersectionObserver' in window)){
+    reveals.forEach(el=> el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    },{threshold:0.14, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(el=> io.observe(el));
+  }
+  function onScrollProgress(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max>0 ? (window.scrollY / max) : 0;
+    if(progress) progress.style.width = (p*100).toFixed(2) + '%';
+  }
+  window.addEventListener('scroll', onScrollProgress, {passive:true});
+  onScrollProgress();
+  if(!hasWebGL){
+    clearInterval(loaderTimer);
+    if(loader) { loader.classList.add('is-hidden'); setTimeout(()=> loader.style.display='none', 600); }
+    if(fallbackEl) fallbackEl.classList.add('is-visible');
+    if(canvas) canvas.style.display='none';
+  }
+
+  if(hasWebGL){
+    import('three').then(async (THREE)=>{
+      let gsap = null, ScrollTrigger = null;
+      try{
+        const g = await import('gsap');
+        gsap = g.default || g.gsap || g;
+        const st = await import('gsap/ScrollTrigger');
+        ScrollTrigger = st.default || st.ScrollTrigger || st;
+        if(gsap && ScrollTrigger && gsap.registerPlugin) gsap.registerPlugin(ScrollTrigger);
+      } catch(e){ console.warn('GSAP not loaded', e); }
+      const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x0A0A0F, 8, 22);
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+      camera.position.set(0, 0.4, 5);
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const dpr = isMobile ? 1 : Math.min(2, window.devicePixelRatio || 1);
+      let renderer;
+      try{
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+      } catch(e){
+        clearInterval(loaderTimer);
+        if(fallbackEl) fallbackEl.classList.add('is-visible');
+        if(canvas) canvas.style.display='none';
+        if(loader) loader.classList.add('is-hidden');
+        return;
+      }
+      renderer.setPixelRatio(dpr);
+      renderer.setSize(window.innerWidth, window.innerHeight, false);
+      renderer.setClearColor(0x0A0A0F, 1);
+      renderer.shadowMap.enabled = false;
+      canvas.setAttribute('data-dpr', String(dpr));
+      canvas.setAttribute('data-tris', '~14K');
+      function onResize(){
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight, false);
+      }
+      window.addEventListener('resize', onResize, {passive:true});
+      const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambient);
+      const directional = new THREE.DirectionalLight(0xffffff, 0.8);
+      directional.position.set(3, 5, 4);
+      scene.add(directional);
+      const point = new THREE.PointLight(0xFF3B30, 0.5, 18);
+      point.position.set(-2, 1.2, 2.5);
+      scene.add(point);
+      const icoGeo = new THREE.IcosahedronGeometry(1.35, 2);
+      const icoMat = new THREE.MeshStandardMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.88, metalness: 0.12, roughness: 0.55 });
+      const ico = new THREE.Mesh(icoGeo, icoMat);
+      ico.position.set(-2.1, 0.6, -1.2);
+      const starCount = isMobile ? 700 : 1500;
+      const starPos = new Float32Array(starCount * 3);
+      for(let i=0;i<starCount;i++){
+        const r = 8 + Math.random()*7;
+        const theta = Math.random()*Math.PI*2;
+        const phi = Math.acos(2*Math.random()-1);
+        starPos[i*3] = r * Math.sin(phi) * Math.cos(theta);
+        starPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta)*0.65;
+        starPos[i*3+2] = (Math.random()-0.5)*12 -2;
+      }
+      const starGeo = new THREE.BufferGeometry();
+      starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+      const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: isMobile ? 0.028 : 0.022, sizeAttenuation: true, transparent: true, opacity: 0.52, depthWrite: false });
+      const stars = new THREE.Points(starGeo, starMat);
+      const nnGroup = new THREE.Group();
+      const nnCount = 22;
+      const nnPoints = [];
+      for(let i=0;i<nnCount;i++){
+        const x = (Math.random()-0.5)*4.2;
+        const y = (Math.random()-0.5)*2.6;
+        const z = (Math.random()-0.5)*2.2;
+        nnPoints.push(new THREE.Vector3(x,y,z));
+      }
+      const nnGeoPoints = new THREE.BufferGeometry().setFromPoints(nnPoints);
+      const nnMatPoints = new THREE.PointsMaterial({ color: 0xFF3B30, size:0.08, transparent:true, opacity:0.95 });
+      const nnPointsMesh = new THREE.Points(nnGeoPoints, nnMatPoints);
+      nnGroup.add(nnPointsMesh);
+      const linePositions = [];
+      for(let i=0;i<nnCount;i++){
+        const dists = [];
+        for(let j=0;j<nnCount;j++) if(i!==j){
+          dists.push({j, d: nnPoints[i].distanceTo(nnPoints[j])});
+        }
+        dists.sort((a,b)=>a.d-b.d);
+        for(let k=0;k<2;k++){
+          const j = dists[k].j;
+          if(j < i) continue;
+          linePositions.push(nnPoints[i].x, nnPoints[i].y, nnPoints[i].z);
+          linePositions.push(nnPoints[j].x, nnPoints[j].y, nnPoints[j].z);
+        }
+      }
+      const lineGeo = new THREE.BufferGeometry();
+      lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true, opacity:0.22 });
+      const nnLines = new THREE.LineSegments(lineGeo, lineMat);
+      nnGroup.add(nnLines);
+      nnGroup.position.set(1.9, -0.3, -0.8);
+      nnGroup.scale.set(0.92,0.92,0.92);
+      const planeGeo = new THREE.PlaneGeometry(12, 12, 64, 64);
+      const planeMat = new THREE.MeshStandardMaterial({ color: 0x1A1A24, wireframe: false, transparent: true, opacity: 0.94, metalness: 0.18, roughness: 0.78, side: THREE.DoubleSide });
+      const terrain = new THREE.Mesh(planeGeo, planeMat);
+      terrain.rotation.x = -Math.PI / 2.35;
+      terrain.position.set(0, -1.85, -2.2);
+      const terrainWireMat = new THREE.MeshStandardMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.06, side: THREE.DoubleSide });
+      const terrainWire = new THREE.Mesh(planeGeo.clone(), terrainWireMat);
+      terrainWire.rotation.copy(terrain.rotation);
+      terrainWire.position.copy(terrain.position);
+      terrainWire.position.y += 0.02;
+      scene.add(stars);
+      scene.add(ico);
+      scene.add(nnGroup);
+      scene.add(terrain);
+      scene.add(terrainWire);
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.06;
+      controls.rotateSpeed = 0.45;
+      controls.target.set(0, 0, -0.6);
+      controls.update();
+      controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: null, RIGHT: null };
+      let scrollProgress = 0;
+      let targetScroll = 0;
+      let latestScrollY = window.scrollY || 0;
+      window.addEventListener('scroll', ()=>{ latestScrollY = window.scrollY || 0; }, {passive:true});
+      function updateScrollProgress(){
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        targetScroll = max>0 ? (latestScrollY / max) : 0;
+        scrollProgress += (targetScroll - scrollProgress) * 0.08;
+      }
+      if(gsap && ScrollTrigger){
+        ScrollTrigger.create({
+          trigger: document.body,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+          onUpdate: (self)=>{ targetScroll = self.progress; }
+        });
+      }
+      const clock = new THREE.Clock();
+      let rafId = null;
+      let paused = false;
+      document.addEventListener('visibilitychange', ()=>{
+        paused = document.hidden;
+        if(!paused && !rm) loop();
+        else if(rafId) cancelAnimationFrame(rafId);
+      });
+      if(rm){
+        renderer.render(scene, camera);
+        clearInterval(loaderTimer);
+        if(loaderPct) loaderPct.textContent = '100%';
+        setTimeout(()=> { if(loader) loader.classList.add('is-hidden'); }, 420);
+        return;
+      }
+      let firstRender = true;
+      function hideLoader(){
+        clearInterval(loaderTimer);
+        if(loaderPct) loaderPct.textContent = '100%';
+        setTimeout(()=> {
+          if(loader) loader.classList.add('is-hidden');
+          setTimeout(()=> { if(loader) loader.style.display='none'; }, 600);
+        }, 320);
+      }
+      const posAttr = planeGeo.attributes.position;
+      const originalPositions = posAttr.array.slice();
+      const posAttrWire = terrainWire.geometry.attributes.position;
+      const originalWire = posAttrWire.array.slice();
+      function deformTerrain(time, scrollP){
+        const t = time * 0.28;
+        const scrollInfluence = scrollP * 1.6;
+        for(let i=0;i<posAttr.count;i++){
+          const ix = i*3;
+          const ox = originalPositions[ix];
+          const oy = originalPositions[ix+1];
+          const noise = Math.sin(ox*0.62 + t) * Math.cos(oy*0.55 + t*0.8) * 0.42 + Math.sin(ox*0.22 - t*0.5 + oy*0.18) * 0.28;
+          const height = noise + scrollInfluence * 0.22 * Math.sin(ox*0.3 + oy*0.4 + t);
+          posAttr.array[ix+2] = height;
+          posAttrWire.array[ix+2] = height + 0.02;
+        }
+        posAttr.needsUpdate = true;
+        posAttrWire.needsUpdate = true;
+        planeGeo.computeVertexNormals();
+        terrainWire.geometry.computeVertexNormals();
+      }
+      function loop(){
+        if(paused || rm) return;
+        rafId = requestAnimationFrame(loop);
+        const t = clock.getElapsedTime();
+        updateScrollProgress();
+        const targetZ = 5 - scrollProgress * 3.0;
+        const targetY = 0.4 + scrollProgress * 1.55;
+        camera.position.z += (targetZ - camera.position.z) * 0.06;
+        camera.position.y += (targetY - camera.position.y) * 0.06;
+        camera.position.x += (Math.sin(scrollProgress*Math.PI)*0.22 - camera.position.x) * 0.04;
+        camera.lookAt(0, -0.2 + scrollProgress*0.15, -0.6);
+        controls.target.y = -0.15 + scrollProgress*0.35;
+        controls.target.z = -0.6 - scrollProgress*0.25;
+        controls.update();
+        ico.rotation.y += 0.004 + scrollProgress*0.008;
+        ico.rotation.x += 0.0015;
+        ico.position.y = 0.6 + Math.sin(t*0.35)*0.12 - scrollProgress*0.45;
+        ico.position.x = -2.1 + Math.sin(t*0.22)*0.18;
+        const icoS = 1.0 + scrollProgress*0.22;
+        ico.scale.set(icoS,icoS,icoS);
+        ico.material.opacity = 0.88 - scrollProgress*0.18;
+        stars.rotation.y += 0.00025;
+        stars.rotation.x = scrollProgress*0.18;
+        starMat.opacity = 0.52 - scrollProgress*0.22;
+        const pulse = Math.sin(t*1.8)*0.12 + 0.88;
+        nnLines.material.opacity = 0.18 + Math.sin(t*1.2)*0.06 + scrollProgress*0.08;
+        nnPointsMesh.material.opacity = 0.9 + Math.sin(t*2.2)*0.08;
+        nnGroup.rotation.y = scrollProgress*0.9 + Math.sin(t*0.18)*0.12;
+        nnGroup.rotation.x = scrollProgress*0.22;
+        nnGroup.position.y = -0.3 + Math.sin(t*0.45)*0.08 - scrollProgress*0.3;
+        nnGroup.scale.set(pulse*0.92, pulse*0.92, pulse*0.92);
+        deformTerrain(t, scrollProgress);
+        point.intensity = 0.5 + Math.sin(t*0.9)*0.12 + scrollProgress*0.18;
+        point.position.x = -2 + Math.sin(t*0.3)*0.6;
+        point.position.z = 2.5 + Math.cos(t*0.22)*0.4;
+        renderer.render(scene, camera);
+        if(firstRender){ firstRender = false; hideLoader(); }
+      }
+      setTimeout(loop, 80);
+    }).catch(err=>{
+      console.warn('Three load fail', err);
+      clearInterval(loaderTimer);
+      if(fallbackEl) fallbackEl.classList.add('is-visible');
+      if(loader) loader.classList.add('is-hidden');
+    });
+  }
+  </script>
+</body>
+</html>
+
