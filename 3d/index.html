@@ -65,7 +65,7 @@
           <div class="evidence" aria-label="Метрики"><div class="evidence__item"><div class="evidence__num">170 / 4 844</div><div class="evidence__label">Авто / фото — один прогон</div></div><div class="evidence__item"><div class="evidence__num">12 / 656+</div><div class="evidence__label">Тестов RAG / CRM пика</div></div><div class="evidence__item"><div class="evidence__num">Qdrant + FTS</div><div class="evidence__label">Hybrid поиск с цитатами</div></div></div>
         </div>
         <div class="hero-card reveal" data-delay="1" aria-hidden="true">
-          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Assets@main/Models/Box/glTF-Binary/Box.glb" data-fallback="box" width="140" height="140"></canvas><span class="card__3d-label">170 · no diff</span></div>
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="" data-fallback="box" width="140" height="140"></canvas><span class="card__3d-label">170 · no diff</span></div>
           <div class="hero-card__head"><div class="hero-card__dots"><span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span></div><span class="hero-card__title">exporter — deterministic run</span><span class="hero-card__badge">PASS</span></div>
           <div class="hero-card__rows"><div class="hero-card__row"><span>validate headers</span><b class="ok">24 / 24 OK</b></div><div class="hero-card__row"><span>normalize prices</span><b>170 rows</b></div><div class="hero-card__row"><span>images</span><b class="ok">4 844 deterministic</b></div><div class="hero-card__row"><span>write XLSX / XML</span><b>done in 1.8s</b></div><div class="hero-card__row"><span>import check</span><b class="ok">no diff · reproducible</b></div></div>
           <div class="hero-card__foot"><span>Python · FastAPI · Docker</span><span style="color:var(--text)">без ручной сверки</span></div>
@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="glass reveal" data-delay="1">
-          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Assets@main/Models/BoxTextured/glTF-Binary/BoxTextured.glb" data-fallback="doc" width="140" height="140"></canvas><span class="card__3d-label">FTS · offline</span></div>
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="" data-fallback="doc" width="140" height="140"></canvas><span class="card__3d-label">FTS · offline</span></div>
           <div class="glass__eyebrow">DocumentAnalyzer · Desktop · offline</div>
           <h3 class="glass__title">Поиск по смешанным форматам — локально</h3>
           <p class="glass__desc">PySide6 + SQLite FTS. Много-поточный батч, инкрементальный реиндекс. Без выгрузки в облако — данные остаются у вас.</p>
@@ -136,7 +136,7 @@
         </div>
         <div style="display:grid; gap:16px" class="reveal" data-delay="1">
           <div class="glass">
-            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Assets@main/Models/Box/glTF-Binary/Box.glb" data-fallback="box" width="140" height="140"></canvas><span class="card__3d-label">12 / 14 / 18 фото</span></div>
+            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="" data-fallback="box" width="140" height="140"></canvas><span class="card__3d-label">12 / 14 / 18 фото</span></div>
             <div class="glass__eyebrow">Ingul · Static catalog</div>
             <h3 class="glass__title">Витрина упаковки — быстро и на телефоне</h3>
             <p class="glass__desc">Ленты, свайп, лайтбокс, Pages. Клиент листает каталог на телефоне — без лагов, без CMS.</p>
@@ -144,7 +144,7 @@
             <div class="glass__result">12 / 14 / 18 фото на страницу</div>
           </div>
           <div class="glass" style="border-color: var(--border)">
-            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://www.get3dmodels.com/download/Car_by_get3dmodels.glb" data-fallback="car" width="140" height="140"></canvas><span class="card__3d-label">170 / 4 844 · 1.8s</span></div>
+            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="" data-fallback="car" width="140" height="140"></canvas><span class="card__3d-label">170 / 4 844 · 1.8s</span></div>
             <div class="glass__eyebrow" style="color:var(--text-ter)">JustCars Exporter · Telegram + FastAPI</div>
             <h3 class="glass__title">Детерминированный экспорт 170 / 4 844</h3>
             <p class="glass__desc">Перенос вручную — ошибки цен и потерянные фото. Здесь — один пайплайн, воспроизводимо, покрыто тестами. Обезличенно, без деталей MorCars CRM.</p>
@@ -656,10 +656,8 @@
       const miniCanvases = document.querySelectorAll(".card__3d");
       const miniScenes = [];
       let miniLoader = null;
-      try{
-        const { GLTFLoader } = await import("three/addons/loaders/GLTFLoader.js");
-        miniLoader = new GLTFLoader();
-      }catch(e){ console.warn("GLTFLoader mini fail", e); }
+      // без GLTF — дефолтные примитивы без моделей
+      miniLoader = null;
       // section mapping for assembleProgress (6 canvases -> 5 sections, s4 has 2 cards)
       const s1El = document.getElementById("s1");
       const s2El = document.getElementById("s2");
@@ -1096,33 +1094,11 @@
             holder.add(labelMesh);
           }catch(e){ console.warn("label texture fail", e); }
         }
-        // GLB attempt remains for CORS <1MB verification; if fails fallback already visible
+        // no GLB — default procedural only (без моделей, дефолтные примитивы)
         // if GLB succeeds, keep assembleGroup as assemble demo (spec: clone meshes or fallback Group)
         // still load to verify CORS, but not replacing procedural to keep assemble visible
-        if(miniLoader && url){
-          // fire-and-forget fetch for CORS verification; not blocking assemble visual
-          miniLoader.load(url, (gltf)=>{
-            const root=gltf.scene;
-            root.traverse((n)=>{
-              if(n.isMesh){
-                // pastel recolor #E8DDD0 roughness 0.7 per spec (glTF Sample Assets small, CORS)
-                const pastel = 0xE8DDD0;
-                n.material = new THREE.MeshStandardMaterial({ color: pastel, roughness:0.7, metalness:0.05, transparent:true, opacity:0 });
-                n.castShadow=false; n.receiveShadow=false;
-              }
-            });
-            fitObjectToView(root, 1.1);
-            root.rotation.y = 0.35;
-            root.visible=false; // keep hidden, assembleGroup is the demo; GLB fetch proves CORS
-            holder.add(root);
-            holder.userData.glbRoot=root;
-            // mark GLB as verified for debugging
-            canvasEl.dataset.glb="ok";
-          }, undefined, (err)=>{
-            console.warn("GLB load fail fallback", url, err);
-            canvasEl.dataset.glb="fallback";
-          });
-        }
+        // без моделей — только дефолтные примитивы, без GLB fetch
+        canvasEl.dataset.glb="default-procedural";
         // per-canvas assemble progress state
         const entry={ scene:mScene, camera:mCamera, renderer:mRenderer, holder, canvas:canvasEl, assembleGroup, sectionEl: sectionMap[idx] || s1El, assembleCurrent: rm?1:0, isVisibleRef:()=> isVisible };
         // attach lines ref if any
