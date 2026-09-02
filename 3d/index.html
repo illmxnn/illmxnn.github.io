@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2780%27>◉</text></svg>">
-  <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   <script type="importmap">
   {
     "imports": {
@@ -194,6 +194,8 @@
     loaderProgress = Math.min(96, loaderProgress + (Math.random()*12));
     if(loaderPct) loaderPct.textContent = Math.round(loaderProgress) + "%";
   }, 120);
+  // fallback: hide after 3s even if three fails (was stuck at 96%)
+  setTimeout(()=>{ if(loader && !loader.classList.contains("is-hidden")){ try{hideLoader();}catch(e){ clearInterval(loaderTimer); if(loaderPct) loaderPct.textContent="100%"; if(loader){loader.classList.add("is-hidden"); setTimeout(()=>loader.style.display="none",600);} } } }, 3000);
   function detectWebGL(){
     try{
       if(!window.WebGLRenderingContext) return false;
