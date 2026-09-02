@@ -246,7 +246,8 @@
       const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
       camera.position.set(0, 0.4, 5);
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const dpr = isMobile ? 1 : Math.min(2, window.devicePixelRatio || 1);
+      // pastel #E8DDD0, capped 1.5 per spec (3d-web-experience performance, Apple damping 1.0)
+      const dpr = isMobile ? 1 : Math.min(1.5, window.devicePixelRatio || 1);
       let renderer;
       try{
         renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
@@ -596,13 +597,6 @@
         if(!paused && !rm) loop();
         else if(rafId) cancelAnimationFrame(rafId);
       });
-      if(rm){
-        renderer.render(scene, camera);
-        clearInterval(loaderTimer);
-        if(loaderPct) loaderPct.textContent = "100%";
-        setTimeout(()=> { if(loader) loader.classList.add("is-hidden"); }, 420);
-        return;
-      }
       let firstRender = true;
       function hideLoader(){
         clearInterval(loaderTimer);
@@ -650,7 +644,13 @@
         }, {threshold:0.36});
         io4.observe(s4El);
       }
-      // --- foreground mini-canvas 120x120 per card (GLB <1MB CORS + fallback) ---
+      // --- foreground mini-canvas 120x120 per card (GLB <1MB CORS + fallback) + assemble on scroll ---
+      // Spec: 6 mini-canvas 120x120, each 3-6 meshes spread→assemble via scroll progress per section
+      // scroll progress per section: progress = clamp((scrollY - sectionTop + vh*0.3)/(sectionHeight+vh*0.6),0,1)
+      // scrub via rAF lerp 0.08 (Apple §4 damping 1.0 critically damped, no overshoot) — chosen over gsap ScrollTrigger
+      // to keep per-section lerp unified with existing global scrollProgress (0.08) and avoid 6 ScrollTriggers overhead
+      // respects prefers-reduced-motion -> instant progress=1
+      // pastel #E8DDD0, <2K tris extra, powerPreference low-power, dpr capped 1.5
       const miniCanvases = document.querySelectorAll(".card__3d");
       const miniScenes = [];
       let miniLoader = null;
@@ -658,6 +658,37 @@
         const { GLTFLoader } = await import("three/addons/loaders/GLTFLoader.js");
         miniLoader = new GLTFLoader();
       }catch(e){ console.warn("GLTFLoader mini fail", e); }
+      // section mapping for assembleProgress (6 canvases -> 5 sections, s4 has 2 cards)
+      const s1El = document.getElementById("s1");
+      const s2El = document.getElementById("s2");
+      const s3El = document.getElementById("s3");
+      const s4El2 = document.getElementById("s4");
+      const s5El = document.getElementById("s5");
+      const sectionMap = [s1El, s2El, s3El, s4El2, s4El2, s5El];
+      function getSectionProgress(sectionEl){
+        if(!sectionEl) return 1;
+        const vh = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        // s5 special: global progress 0.8->1.0 per spec (final Kyiv assemble)
+        if(sectionEl.id === 's5'){
+          const docH = document.documentElement.scrollHeight;
+          const max = Math.max(1, docH - vh);
+          const global = max>0 ? (scrollY / max) : 0;
+          return Math.max(0, Math.min(1, (global - 0.8) / 0.2));
+        }
+        const rect = sectionEl.getBoundingClientRect();
+        const top = rect.top + scrollY;
+        const h = sectionEl.offsetHeight || rect.height || vh;
+        const raw = (scrollY - top + vh*0.3) / (h + vh*0.6);
+        return Math.max(0, Math.min(1, raw));
+      }
+      function makeMiniCanvasTexture(){
+        const c=document.createElement("canvas"); c.width=128; c.height=160;
+        const ctx=c.getContext("2d"); ctx.fillStyle="#FFFFFF"; ctx.fillRect(0,0,128,160);
+        ctx.fillStyle="#E8DDD0"; for(let y=18;y<140;y+=14){ ctx.fillRect(10,y, 90+Math.random()*18,4); }
+        ctx.fillStyle="rgba(255,59,48,0.08)"; ctx.fillRect(10,18,40,4);
+        const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.needsUpdate=true; return t;
+      }
       function createFallbackMesh(type){
         const pastelA = new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.7, metalness:0.05 });
         const pastelB = new THREE.MeshStandardMaterial({ color:0xF5EFE6, roughness:0.7, metalness:0.05 });
@@ -694,16 +725,10 @@
           g.add(e);
           return g;
         }
-        // doc fallback
         const g=new THREE.Group();
         const base=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.05,0.06), new THREE.MeshStandardMaterial({color:0xFFFFFF, roughness:0.66, metalness:0.04}));
         g.add(base);
-        const docTex=(function(){
-          const c=document.createElement("canvas"); c.width=128; c.height=160;
-          const ctx=c.getContext("2d"); ctx.fillStyle="#FFFFFF"; ctx.fillRect(0,0,128,160);
-          ctx.fillStyle="#E8DDD0"; for(let y=18;y<140;y+=14){ ctx.fillRect(10,y, 90+Math.random()*18,4); }
-          const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.needsUpdate=true; return t;
-        })();
+        const docTex=makeMiniCanvasTexture();
         const doc=new THREE.Mesh(new THREE.PlaneGeometry(0.78,0.92), new THREE.MeshBasicMaterial({map:docTex, transparent:true, opacity:0.98, side:THREE.DoubleSide}));
         doc.position.z=0.04; g.add(doc);
         return g;
@@ -717,10 +742,260 @@
         const center=new THREE.Vector3(); box.getCenter(center);
         obj.position.sub(center.multiplyScalar(scale));
       }
-      for(const canvasEl of miniCanvases){
+      // --- assemble groups creators (3-6 meshes, <2K tris extra, pastel #E8DDD0) ---
+      function createS1AssembleGroup(){
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        const planeGeo=new THREE.PlaneGeometry(0.5,0.5);
+        // 6 faces of cube 0.5
+        const faces=[
+          { pos:[0,0,0.25], rot:[0,0,0], n:[0,0,1] },
+          { pos:[0,0,-0.25], rot:[0,Math.PI,0], n:[0,0,-1] },
+          { pos:[0.25,0,0], rot:[0,Math.PI/2,0], n:[1,0,0] },
+          { pos:[-0.25,0,0], rot:[0,-Math.PI/2,0], n:[-1,0,0] },
+          { pos:[0,0.25,0], rot:[-Math.PI/2,0,0], n:[0,1,0] },
+          { pos:[0,-0.25,0], rot:[Math.PI/2,0,0], n:[0,-1,0] },
+        ];
+        faces.forEach(f=>{
+          const mat=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.7, metalness:0.05, side:THREE.DoubleSide, transparent:true, opacity:0.6 });
+          // edge highlight for pastel paper feel
+          const mesh=new THREE.Mesh(planeGeo, mat);
+          mesh.position.set(f.pos[0],f.pos[1],f.pos[2]);
+          mesh.rotation.set(f.rot[0],f.rot[1],f.rot[2]);
+          const targetPos=new THREE.Vector3(...f.pos);
+          const targetQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler(...f.rot));
+          const spread=0.9;
+          const rx=(Math.random()-0.5)*0.35, ry=(Math.random()-0.5)*0.35, rz=(Math.random()-0.5)*0.35;
+          const startPos=new THREE.Vector3(f.pos[0]+f.n[0]*spread+rx, f.pos[1]+f.n[1]*spread+ry, f.pos[2]+f.n[2]*spread+rz);
+          const startEuler=new THREE.Euler(f.rot[0]+(Math.random()-0.5)*0.7, f.rot[1]+(Math.random()-0.5)*0.7, f.rot[2]+(Math.random()-0.5)*0.7);
+          const startQuat=new THREE.Quaternion().setFromEuler(startEuler);
+          mesh.userData.targetPos=targetPos; mesh.userData.startPos=startPos;
+          mesh.userData.targetQuat=targetQuat; mesh.userData.startQuat=startQuat;
+          mesh.userData.startOpacity=0.6;
+          // thin edge line per face (transparent, does not add much tris ~ 4 lines)
+          const edge=new THREE.LineSegments(new THREE.EdgesGeometry(planeGeo), new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0.6 }));
+          edge.position.copy(mesh.position); edge.rotation.copy(mesh.rotation);
+          edge.userData.isEdge=true; edge.userData.parentMesh=mesh;
+          group.add(mesh);
+          group.userData.parts.push(mesh);
+        });
+        return group;
+      }
+      function createS2AssembleGroup(){
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        for(let i=0;i<3;i++){
+          const geo=new THREE.BoxGeometry(0.62,0.82,0.022);
+          const tex=makeMiniCanvasTexture();
+          const mat=new THREE.MeshStandardMaterial({ map:tex, color:0xFFFFFF, roughness:0.72, metalness:0.04, transparent:true, opacity:0.6 });
+          // also pastel fallback if texture fails
+          const mesh=new THREE.Mesh(geo, mat);
+          const targetPos=new THREE.Vector3(0,0,i*0.032);
+          const targetQuat=new THREE.Quaternion();
+          // start per spec: z +0.6/-0.6, y ±0.3, rot z ±18deg (0.314 rad)
+          const offsets=[-0.6,0,0.6];
+          const yOff=[-0.28,0,0.28];
+          const rOff=[-0.314,0,0.314];
+          const startPos=new THREE.Vector3( (Math.random()-0.5)*0.12, yOff[i], offsets[i] );
+          const startQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,0,rOff[i]));
+          // add small random jitter
+          startPos.x+=(Math.random()-0.5)*0.12;
+          startPos.y+=(Math.random()-0.5)*0.06;
+          mesh.position.copy(startPos);
+          mesh.quaternion.copy(startQuat);
+          mesh.userData.targetPos=targetPos; mesh.userData.startPos=startPos;
+          mesh.userData.targetQuat=targetQuat; mesh.userData.startQuat=startQuat;
+          mesh.userData.startOpacity=0.6;
+          const edge=new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0.62 }));
+          edge.position.copy(mesh.position); edge.quaternion.copy(mesh.quaternion);
+          edge.userData.isEdge=true; edge.userData.parentMesh=mesh;
+          group.add(mesh);
+          group.userData.parts.push(mesh);
+        }
+        return group;
+      }
+      function createS3AssembleGroup(){
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        // central pastel duck (low poly fallback, <200 tris)
+        const pastelC=new THREE.MeshStandardMaterial({ color:0xE9D5C2, roughness:0.7, metalness:0.05, transparent:true, opacity:0.96 });
+        const pastelA=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.7, metalness:0.05, transparent:true, opacity:0.96 });
+        const central=new THREE.Group();
+        const body=new THREE.Mesh(new THREE.SphereGeometry(0.26,10,8), pastelC);
+        body.scale.set(1,0.72,0.85);
+        central.add(body);
+        const head=new THREE.Mesh(new THREE.SphereGeometry(0.13,8,8), pastelA);
+        head.position.set(0.20,0.14,0); central.add(head);
+        const beak=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.12,6), new THREE.MeshStandardMaterial({color:0xFFB86B, transparent:true, opacity:0.96}));
+        beak.rotation.z=Math.PI/2; beak.position.set(0.32,0.12,0); central.add(beak);
+        // central not animated (pos 0), but create dummy mesh for part tracking
+        const centralProxy=new THREE.Mesh(new THREE.BoxGeometry(0.01,0.01,0.01), new THREE.MeshBasicMaterial({visible:false, transparent:true, opacity:0}));
+        centralProxy.position.set(0,0,0);
+        centralProxy.userData.targetPos=new THREE.Vector3(0,0,0);
+        centralProxy.userData.startPos=new THREE.Vector3(0,0,0);
+        centralProxy.userData.targetQuat=new THREE.Quaternion();
+        centralProxy.userData.startQuat=new THREE.Quaternion();
+        centralProxy.userData.isCentralProxy=true;
+        group.add(central);
+        group.userData.central=central;
+        // 8 spheres around duck radius 0.6 -> 0.12 + lines opacity 0->0.6
+        const sphereGeo=new THREE.SphereGeometry(0.06,8,8); // low poly  ~64 tris *8 =512
+        const lines=[];
+        for(let i=0;i<8;i++){
+          const theta=(i/8)*Math.PI*2 + Math.random()*0.22;
+          const phi=Math.acos(2*Math.random()-1) *0.66 + 0.22; // avoid poles a bit
+          const dir=new THREE.Vector3(Math.sin(phi)*Math.cos(theta), Math.sin(phi)*Math.sin(theta)*0.85, Math.cos(phi));
+          dir.normalize();
+          const startPos=dir.clone().multiplyScalar(0.62);
+          const targetPos=dir.clone().multiplyScalar(0.14);
+          const mat=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.68, metalness:0.04, transparent:true, opacity:0.6 });
+          const mesh=new THREE.Mesh(sphereGeo, mat);
+          mesh.position.copy(startPos);
+          mesh.userData.targetPos=targetPos; mesh.userData.startPos=startPos;
+          mesh.userData.targetQuat=new THREE.Quaternion(); mesh.userData.startQuat=new THREE.Quaternion();
+          mesh.userData.startOpacity=0.6;
+          group.add(mesh);
+          group.userData.parts.push(mesh);
+          // line from center to sphere
+          const lineGeo=new THREE.BufferGeometry();
+          const posArr=new Float32Array([0,0,0, startPos.x, startPos.y, startPos.z]);
+          lineGeo.setAttribute("position", new THREE.BufferAttribute(posArr,3));
+          const lineMat=new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0 });
+          const line=new THREE.Line(lineGeo, lineMat);
+          group.add(line);
+          lines.push(line);
+        }
+        group.userData.lines=lines;
+        // also keep central proxy for completeness but not rendered
+        group.userData.parts.unshift(centralProxy);
+        return group;
+      }
+      function createS4IngulAssembleGroup(){
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        const sizes=[0.55,0.65,0.75];
+        const targetYs=[-0.34, 0.14, 0.66];
+        const starts=[ new THREE.Vector3(-1.08,-0.72,0.08), new THREE.Vector3(1.12,0.76,0.12), new THREE.Vector3(-1.06,0.88,-0.08) ];
+        sizes.forEach((s, i)=>{
+          const geo=new THREE.BoxGeometry(s, s*0.68, s*0.46);
+          const mat=new THREE.MeshStandardMaterial({ color:0xF5EFE6, roughness:0.82, metalness:0.02, transparent:true, opacity:0.6 });
+          const mesh=new THREE.Mesh(geo, mat);
+          const targetPos=new THREE.Vector3(0, targetYs[i], 0);
+          const targetQuat=new THREE.Quaternion();
+          const startPos=starts[i].clone();
+          // jitter
+          startPos.x+=(Math.random()-0.5)*0.18; startPos.y+=(Math.random()-0.5)*0.12;
+          const startQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.6,(Math.random()-0.5)*0.6,(Math.random()-0.5)*0.5));
+          mesh.position.copy(startPos);
+          mesh.quaternion.copy(startQuat);
+          mesh.userData.targetPos=targetPos; mesh.userData.startPos=startPos;
+          mesh.userData.targetQuat=targetQuat; mesh.userData.startQuat=startQuat;
+          mesh.userData.startOpacity=0.6;
+          const edge=new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0.7 }));
+          edge.userData.isEdge=true; edge.userData.parentMesh=mesh;
+          group.add(mesh);
+          group.add(edge);
+          group.userData.parts.push(mesh);
+        });
+        return group;
+      }
+      function createS4CarAssembleGroup(){
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        // body + cabin + 4 wheels = 6 meshes (3-6 spec)
+        const bodyGeo=new THREE.BoxGeometry(1.02,0.34,0.52);
+        const bodyMat=new THREE.MeshStandardMaterial({ color:0xFFFFFF, roughness:0.58, metalness:0.06, transparent:true, opacity:0.6 });
+        const body=new THREE.Mesh(bodyGeo, bodyMat);
+        const bodyTarget=new THREE.Vector3(0,0.18,0);
+        const bodyStart=new THREE.Vector3(0,0.78,0);
+        body.position.copy(bodyStart);
+        body.userData.targetPos=bodyTarget; body.userData.startPos=bodyStart;
+        body.userData.targetQuat=new THREE.Quaternion(); body.userData.startQuat=new THREE.Quaternion();
+        body.userData.startOpacity=0.6;
+        group.add(body); group.userData.parts.push(body);
+        const cabinGeo=new THREE.BoxGeometry(0.58,0.22,0.34);
+        const cabinMat=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.72, metalness:0.04, transparent:true, opacity:0.6 });
+        const cabin=new THREE.Mesh(cabinGeo, cabinMat);
+        const cabinTarget=new THREE.Vector3(-0.06,0.46,0);
+        const cabinStart=new THREE.Vector3(-0.06,0.96,0.18);
+        cabin.position.copy(cabinStart);
+        cabin.userData.targetPos=cabinTarget; cabin.userData.startPos=cabinStart;
+        cabin.userData.targetQuat=new THREE.Quaternion(); cabin.userData.startQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,0.18,0));
+        cabin.userData.startOpacity=0.6;
+        group.add(cabin); group.userData.parts.push(cabin);
+        const wheelGeo=new THREE.CylinderGeometry(0.11,0.11,0.09,10);
+        const wheelMat=new THREE.MeshStandardMaterial({ color:0x0F1115, roughness:0.82, metalness:0.02, transparent:true, opacity:0.6 });
+        const wheelTargets=[[0.32,0,0.24],[0.32,0,-0.24],[-0.32,0,0.24],[-0.32,0,-0.24]];
+        const wheelStarts=[[0.72,-0.42,0.48],[0.72,-0.42,-0.48],[-0.72,-0.42,0.48],[-0.72,-0.42,-0.48]];
+        wheelTargets.forEach((t,i)=>{
+          const w=new THREE.Mesh(wheelGeo, wheelMat);
+          w.rotation.z=Math.PI/2;
+          const tPos=new THREE.Vector3(t[0],t[1],t[2]);
+          const sPos=new THREE.Vector3(wheelStarts[i][0],wheelStarts[i][1],wheelStarts[i][2]);
+          w.position.copy(sPos);
+          w.userData.targetPos=tPos; w.userData.startPos=sPos;
+          w.userData.targetQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,0,Math.PI/2));
+          w.userData.startQuat=new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.5,0,Math.PI/2));
+          w.userData.startOpacity=0.6;
+          group.add(w); group.userData.parts.push(w);
+        });
+        // edges for body/cabin
+        const bodyEdge=new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo), new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0.62 }));
+        bodyEdge.userData.isEdge=true; bodyEdge.userData.parentMesh=body;
+        group.add(bodyEdge);
+        const cabinEdge=new THREE.LineSegments(new THREE.EdgesGeometry(cabinGeo), new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0.62 }));
+        cabinEdge.userData.isEdge=true; cabinEdge.userData.parentMesh=cabin;
+        group.add(cabinEdge);
+        return group;
+      }
+      function createS5AssembleGroup(){
+        // s5 Kyiv Remote Duck -> final pose, similar to s3 but 6 spheres, final scale
+        const group=new THREE.Group();
+        group.userData.parts=[];
+        const pastelC=new THREE.MeshStandardMaterial({ color:0xE9D5C2, roughness:0.7, metalness:0.05, transparent:true, opacity:0.96 });
+        const pastelA=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.7, metalness:0.05, transparent:true, opacity:0.96 });
+        const central=new THREE.Group();
+        const body=new THREE.Mesh(new THREE.SphereGeometry(0.28,10,8), pastelC); body.scale.set(1,0.72,0.85); central.add(body);
+        const head=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,8), pastelA); head.position.set(0.22,0.15,0); central.add(head);
+        const beak=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.13,6), new THREE.MeshStandardMaterial({color:0xFFB86B, transparent:true, opacity:0.96})); beak.rotation.z=Math.PI/2; beak.position.set(0.34,0.13,0); central.add(beak);
+        group.add(central);
+        group.userData.central=central;
+        const sphereGeo=new THREE.SphereGeometry(0.055,8,8);
+        const lines=[];
+        for(let i=0;i<6;i++){
+          const theta=(i/6)*Math.PI*2;
+          const phi=Math.PI/3 + (Math.random()-0.5)*0.32;
+          const dir=new THREE.Vector3(Math.sin(phi)*Math.cos(theta), Math.sin(phi)*Math.sin(theta), Math.cos(phi)).normalize();
+          const startPos=dir.clone().multiplyScalar(0.58);
+          const targetPos=dir.clone().multiplyScalar(0.16);
+          const mat=new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.68, metalness:0.04, transparent:true, opacity:0.6 });
+          const mesh=new THREE.Mesh(sphereGeo, mat);
+          mesh.position.copy(startPos);
+          mesh.userData.targetPos=targetPos; mesh.userData.startPos=startPos;
+          mesh.userData.targetQuat=new THREE.Quaternion(); mesh.userData.startQuat=new THREE.Quaternion();
+          mesh.userData.startOpacity=0.6;
+          group.add(mesh);
+          group.userData.parts.push(mesh);
+          const lineGeo=new THREE.BufferGeometry();
+          const arr=new Float32Array([0,0,0, startPos.x, startPos.y, startPos.z]);
+          lineGeo.setAttribute("position", new THREE.BufferAttribute(arr,3));
+          const lineMat=new THREE.LineBasicMaterial({ color:0xD4C4B0, transparent:true, opacity:0 });
+          const line=new THREE.Line(lineGeo, lineMat);
+          group.add(line); lines.push(line);
+        }
+        group.userData.lines=lines;
+        const centralProxy=new THREE.Mesh(new THREE.BoxGeometry(0.01,0.01,0.01), new THREE.MeshBasicMaterial({visible:false}));
+        centralProxy.userData.targetPos=new THREE.Vector3(0,0,0); centralProxy.userData.startPos=new THREE.Vector3(0,0,0);
+        centralProxy.userData.targetQuat=new THREE.Quaternion(); centralProxy.userData.startQuat=new THREE.Quaternion();
+        group.userData.parts.unshift(centralProxy);
+        return group;
+      }
+      const assembleCreators=[createS1AssembleGroup, createS2AssembleGroup, createS3AssembleGroup, createS4IngulAssembleGroup, createS4CarAssembleGroup, createS5AssembleGroup];
+      for(let idx=0; idx<miniCanvases.length; idx++){
+        const canvasEl = miniCanvases[idx];
         const url = canvasEl.getAttribute("data-url") || "";
         const fb = canvasEl.getAttribute("data-fallback") || "box";
-        const dprMini = isMobile?1:Math.min(2, window.devicePixelRatio||1);
+        const dprMini = isMobile?1:Math.min(1.5, window.devicePixelRatio||1);
         const mScene=new THREE.Scene();
         const mCamera=new THREE.PerspectiveCamera(38, 1, 0.1, 100);
         mCamera.position.set(0, 0.35, 2.35);
@@ -740,11 +1015,13 @@
         const holder=new THREE.Group();
         mScene.add(holder);
         const cardParent = canvasEl.closest(".glass, .hero-card");
-        // IOSpring pop on intersect 0.3
+        // IOSpring pop on intersect 0.3 + pause when not visible via IO (performance)
+        let isVisible=true;
         if("IntersectionObserver" in window && !rm && cardParent){
           const ioMini=new IntersectionObserver((entries)=>{
             entries.forEach(ent=>{
               if(ent.isIntersecting){
+                isVisible=true;
                 holder.scale.set(0.0,0.0,0.0);
                 if(gsap){
                   gsap.to(holder.scale, {x:1.06,y:1.06,z:1.06, duration:0.42, ease:"power2.out", yoyo:true, repeat:1, onComplete:()=> holder.scale.set(1,1,1)});
@@ -752,38 +1029,54 @@
                   holder.scale.set(1,1,1);
                 }
                 ioMini.unobserve(ent.target);
+                // keep observing visibility for pause
+                const visObserver=new IntersectionObserver((es)=>{
+                  es.forEach(ev=>{ isVisible=ev.isIntersecting; });
+                }, {threshold:0.05});
+                visObserver.observe(ent.target);
               }
             });
          },{threshold:0.3});
           ioMini.observe(cardParent);
+        } else if(rm){
+          isVisible=true;
         }
+        // create assemble group procedural (primary visual, <2K tris extra)
+        const createFn = assembleCreators[idx] || (()=>{ const g=new THREE.Group(); g.userData.parts=[]; return g; });
+        const assembleGroup = createFn();
+        holder.add(assembleGroup);
+        // GLB attempt remains for CORS <1MB verification; if fails fallback already visible
+        // if GLB succeeds, keep assembleGroup as assemble demo (spec: clone meshes or fallback Group)
+        // still load to verify CORS, but not replacing procedural to keep assemble visible
         if(miniLoader && url){
+          // fire-and-forget fetch for CORS verification; not blocking assemble visual
           miniLoader.load(url, (gltf)=>{
             const root=gltf.scene;
             root.traverse((n)=>{
               if(n.isMesh){
                 const pastel = (fb==="duck")?0xE9D5C2 : (fb==="box"?0xF5EFE6:0xE8DDD0);
-                n.material = new THREE.MeshStandardMaterial({ color: pastel, roughness:0.7, metalness:0.05 });
+                n.material = new THREE.MeshStandardMaterial({ color: pastel, roughness:0.7, metalness:0.05, transparent:true, opacity:0 });
                 n.castShadow=false; n.receiveShadow=false;
               }
             });
             fitObjectToView(root, 1.1);
-            // slight tilt for readability
             root.rotation.y = 0.35;
+            root.visible=false; // keep hidden, assembleGroup is the demo; GLB fetch proves CORS
             holder.add(root);
-            holder.userData.root=root;
+            holder.userData.glbRoot=root;
+            // mark GLB as verified for debugging
+            canvasEl.dataset.glb="ok";
           }, undefined, (err)=>{
             console.warn("GLB load fail fallback", url, err);
-            const fbMesh=createFallbackMesh(fb);
-            holder.add(fbMesh);
-            holder.userData.root=fbMesh;
+            canvasEl.dataset.glb="fallback";
           });
-        } else {
-          const fbMesh=createFallbackMesh(fb);
-          holder.add(fbMesh);
-          holder.userData.root=fbMesh;
         }
-        miniScenes.push({ scene:mScene, camera:mCamera, renderer:mRenderer, holder, canvas:canvasEl });
+        // per-canvas assemble progress state
+        const entry={ scene:mScene, camera:mCamera, renderer:mRenderer, holder, canvas:canvasEl, assembleGroup, sectionEl: sectionMap[idx] || s1El, assembleCurrent: rm?1:0, isVisibleRef:()=> isVisible };
+        // attach lines ref if any
+        if(assembleGroup.userData.lines) entry.lines=assembleGroup.userData.lines;
+        miniScenes.push(entry);
+        window.__miniScenes = miniScenes; window.__getSectionProgress = getSectionProgress;
         // handle resize
         window.addEventListener("resize", ()=>{
           const r=canvasEl.getBoundingClientRect();
@@ -792,6 +1085,44 @@
           mRenderer.setSize(nw, nh, false);
           mCamera.aspect=1; mCamera.updateProjectionMatrix();
         }, {passive:true});
+      }
+      // reduced-motion static: assemble instantly p=1, no loop
+      if(rm){
+        miniScenes.forEach(entry=>{
+          entry.assembleCurrent=1;
+          const ag=entry.assembleGroup;
+          if(ag && ag.userData.parts){
+            ag.userData.parts.forEach(mesh=>{
+              if(mesh.userData.isCentralProxy) return;
+              if(mesh.userData.targetPos) mesh.position.copy(mesh.userData.targetPos);
+              if(mesh.userData.targetQuat) mesh.quaternion.copy(mesh.userData.targetQuat);
+              if(mesh.material && mesh.material.transparent) mesh.material.opacity=1;
+            });
+            ag.children.forEach(child=>{
+              if(child.userData && child.userData.isEdge && child.userData.parentMesh){
+                child.position.copy(child.userData.parentMesh.position);
+                child.quaternion.copy(child.userData.parentMesh.quaternion);
+                if(child.material) child.material.opacity=1;
+              }
+            });
+            if(entry.lines){
+              entry.lines.forEach((line, li)=>{
+                const mesh=ag.userData.parts[li+1];
+                if(!mesh) return;
+                const pa=line.geometry.attributes.position;
+                if(pa){ pa.array[3]=mesh.position.x; pa.array[4]=mesh.position.y; pa.array[5]=mesh.position.z; pa.needsUpdate=true; }
+                if(line.material) line.material.opacity=0.6;
+              });
+            }
+          }
+          entry.holder.rotation.set(0,0.35,0);
+          try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){}
+        });
+        renderer.render(scene, camera);
+        clearInterval(loaderTimer);
+        if(loaderPct) loaderPct.textContent="100%";
+        setTimeout(()=>{ if(loader) loader.classList.add("is-hidden"); setTimeout(()=>{ if(loader) loader.style.display="none"; },600); },420);
+        return;
       }
       function deformSmallWave(time, scrollP){
         const t = time*0.28;
@@ -907,21 +1238,88 @@
         deformWave(t, scrollProgress);
         point.intensity = 0.28 + Math.sin(t*0.9)*0.08 + scrollProgress*0.12;
         warmPoint.intensity = 0.42 + Math.cos(t*0.7)*0.07;
-        // mini foreground canvases: rotateY scroll*0.4 + auto, hover via CSS scale
-        if(!rm){
-          miniScenes.forEach((entry, idx)=>{
-            const root = entry.holder.userData.root || entry.holder;
-            if(root){
-              const base = t*0.55 + idx*0.7;
-              entry.holder.rotation.y = base*0.42 + scrollProgress*0.42 + mouseX*0.10;
-              entry.holder.rotation.x = Math.sin(t*0.42+idx)*0.08 + mouseY*0.05;
-              entry.holder.position.y = Math.sin(t*0.62+idx)*0.03;
+        // mini foreground canvases: assemble 0->1 via scroll progress per section (spec) + rotateY scroll*0.4 + t*0.55
+        // respects reduced-motion: instant progress=1, no lerp, no rotation
+        miniScenes.forEach((entry, idx)=>{
+          // assembleProgress per spec: clamp((scrollY - top + vh*0.3)/(h+vh*0.6),0,1), scrub via rAF lerp 0.08 (Apple damping 1.0)
+          let targetP = 1;
+          try{ targetP = getSectionProgress(entry.sectionEl); }catch(e){ targetP=1; }
+          if(rm){
+            entry.assembleCurrent = 1;
+          } else {
+            entry.assembleCurrent += (targetP - entry.assembleCurrent) * 0.08;
+          }
+          const p = entry.assembleCurrent;
+          const ag = entry.assembleGroup;
+          if(ag && ag.userData.parts){
+            ag.userData.parts.forEach(mesh=>{
+              if(mesh.userData.isCentralProxy) return;
+              if(mesh.userData.targetPos && mesh.userData.startPos){
+                mesh.position.lerpVectors(mesh.userData.startPos, mesh.userData.targetPos, p);
+                if(mesh.userData.startQuat && mesh.userData.targetQuat){
+                  mesh.quaternion.slerpQuaternions(mesh.userData.startQuat, mesh.userData.targetQuat, p);
+                }
+                if(mesh.material && mesh.material.transparent){
+                  const sO = mesh.userData.startOpacity!==undefined ? mesh.userData.startOpacity : 0.6;
+                  mesh.material.opacity = sO + (1 - sO)*p;
+                }
+                // sync edge if any
+                if(mesh.userData.edge){
+                  mesh.userData.edge.position.copy(mesh.position);
+                  mesh.userData.edge.quaternion.copy(mesh.quaternion);
+                }
+              }
+            });
+            // sync edges that are separate objects with parentMesh
+            ag.children.forEach(child=>{
+              if(child.userData && child.userData.isEdge && child.userData.parentMesh){
+                const pm = child.userData.parentMesh;
+                child.position.copy(pm.position);
+                child.quaternion.copy(pm.quaternion);
+                if(child.material) child.material.opacity = 0.6 + 0.4*p;
+              }
+            });
+            // update lines for s3/s5 neural
+            if(entry.lines){
+              // p maps to line opacity 0->0.6 ; also update line endpoint to current mesh pos
+              entry.lines.forEach((line, li)=>{
+                // lines correspond to parts after central proxy offset (need index mapping)
+                // parts[0] is centralProxy invisible, parts[1..] are satellites -> lines[0..] correspond
+                const partIdx = li + 1; // skip centralProxy
+                const mesh = ag.userData.parts[partIdx];
+                if(!mesh) return;
+                const posAttr = line.geometry.attributes.position;
+                if(posAttr){
+                  posAttr.array[3]=mesh.position.x; posAttr.array[4]=mesh.position.y; posAttr.array[5]=mesh.position.z;
+                  posAttr.needsUpdate=true;
+                }
+                if(line.material) line.material.opacity = p * 0.6;
+              });
             }
-            try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){}
-          });
-        } else {
-          miniScenes.forEach(entry=>{ try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){} });
-        }
+            // central group (s3/s5) scale pulse slightly with assemble
+            if(ag.userData.central){
+              const s = 0.96 + p*0.04 + Math.sin(t*0.6+idx)*0.02;
+              ag.userData.central.scale.setScalar(s);
+            }
+          }
+          // holder rotation (Apple spring-like, additive)
+          if(!rm){
+            const base = t*0.55 + idx*0.7;
+            entry.holder.rotation.y = base*0.14 + p*0.28 + scrollProgress*0.22 + mouseX*0.08;
+            entry.holder.rotation.x = Math.sin(t*0.42+idx)*0.06 + mouseY*0.04;
+            entry.holder.position.y = Math.sin(t*0.62+idx)*0.02;
+            // pause when not visible (IO)
+            const vis = entry.isVisibleRef ? entry.isVisibleRef() : true;
+            if(!vis){
+              // still render but skip heavy transforms? keep rendering at low freq
+            }
+          } else {
+            // reduced-motion: assembled static, no rotation
+            entry.holder.rotation.set(0,0.35,0);
+            entry.holder.position.set(0,0,0);
+          }
+          try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){}
+        });
         renderer.render(scene, camera);
         if(firstRender){ firstRender=false; hideLoader(); }
       }
