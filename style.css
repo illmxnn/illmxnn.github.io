@@ -199,8 +199,8 @@ a { color: inherit; }
 
 /* Cards — with media + hover lift + CSS 3D perspective 1200 */
 .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: stretch; transform-style: flat; content-visibility: auto; contain-intrinsic-size: auto 900px; }
-.card { background: var(--surface); border: 1.5px solid var(--border); box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255,255,255,0.8); /* premium paper inner highlight — 1.5px + inset */
-  background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255,255,255,0.8); transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.2,0.8,0.2,1); min-width: 0; overflow: hidden; contain: layout paint; }
+.card { background: var(--surface); border: 1.2px solid var(--border); box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255,255,255,0.8); /* premium paper inner highlight */
+  background: var(--surface); border: 1.2px solid var(--border); border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255,255,255,0.8); transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.2,0.8,0.2,1); min-width: 0; overflow: hidden; contain: layout paint; }
 .card__media {
   margin: -22px -22px 0; height: 190px; overflow: hidden; background: var(--surface-alt);
   border-bottom: 1px solid var(--border); position: relative;
@@ -331,11 +331,10 @@ a { color: inherit; }
 .onrequest__note { margin: 0; font: 400 12px/1.6 var(--font-sans); color: var(--text-tertiary); }
 .onrequest__ctas { display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* Gallery — proximity + premium 1.5px + gap 24 + progress bar + counter — Wall & Fifth premium */
+/* Gallery — proximity + premium 1.5px + gap 24 + progress bar + counter */
 .section--gallery { background: var(--surface-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); content-visibility: auto; contain-intrinsic-size: auto 520px; }
 .gallery-wrap { position: relative; }
-.gallery__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 12px; }
-.gallery__counter { display: inline-flex; align-items: center; gap: 8px; font: 600 11px/1 var(--font-mono); letter-spacing: 0.08em; color: var(--text-tertiary); background: #FFFFFF; border: 1px solid #E8DDD0; border-radius: 999px; padding: 6px 10px; z-index: 1; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.gallery__counter { position: sticky; left: 0; display: inline-flex; align-items: center; gap: 8px; font: 600 11px/1 var(--font-mono); letter-spacing: 0.08em; color: var(--text-tertiary); background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; margin-bottom: 12px; z-index: 1; }
 .gallery__counter strong { color: var(--text); font-weight: 700; letter-spacing: 0.06em; }
 .gallery {
   display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x proximity;
@@ -361,8 +360,8 @@ a { color: inherit; }
 .gallery__item:hover .gallery__media img { transform: scale(1.04); will-change: transform; }
 .gallery__item figcaption { padding: 12px 14px; font: 400 13px/1.5 var(--font-sans); color: var(--text-secondary); user-select: text; }
 .gallery__item figcaption strong { color: var(--text); font-weight: 600; }
-.gallery__progress { height: 2px; background: #E8E8E0; border-radius: 999px; overflow: hidden; margin-top: 12px; }
-.gallery__progress-bar { height: 100%; width: 0; background: #FF3B30; border-radius: 999px; transition: width 180ms cubic-bezier(0.2,0.8,0.2,1); }
+.gallery__progress { height: 2px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 12px; }
+.gallery__progress-bar { height: 100%; width: 0; background: var(--signal); border-radius: 999px; transition: width 120ms linear; }
 .gallery__hint { margin: 12px 0 0; font: 400 12px/1.6 var(--font-sans); color: var(--text-tertiary); }
 
 /* Skills */
