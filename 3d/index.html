@@ -63,9 +63,9 @@
           <p class="sub">Один детерминированный пайплайн вместо недель ручной сверки. Каталог <strong style="color:var(--text)">170 авто и 4 844 фото</strong> → XLSX/XML без ошибок импорта. Брони с OCR и тарифами — без ручного переноса. Python, FastAPI, Telegram, Docker. <em style="font-style:normal; border-bottom:1px solid var(--border-hover)">Показываю код, а не лозунги.</em></p>
           <div class="hero__ctas"><a class="btn btn--primary" href="../">Выйти в портфолио →</a><a class="btn btn--ghost" href="../Illia_Druzhenko_CV.pdf" download>Скачать CV</a><a class="btn btn--ghost" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать в Telegram</a></div>
           <div class="evidence" aria-label="Метрики"><div class="evidence__item"><div class="evidence__num">170 / 4 844</div><div class="evidence__label">Авто / фото — один прогон</div></div><div class="evidence__item"><div class="evidence__num">12 / 656+</div><div class="evidence__label">Тестов RAG / CRM пика</div></div><div class="evidence__item"><div class="evidence__num">Qdrant + FTS</div><div class="evidence__label">Hybrid поиск с цитатами</div></div></div>
-          <p class="terrain-hint">стопка листов + лупа · parralax y sin(t) · mousemove ±5° · lookAt 0→0.2</p>
         </div>
         <div class="hero-card reveal" data-delay="1" aria-hidden="true">
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Box/glTF-Binary/Box.glb" data-fallback="box" width="120" height="120"></canvas><span class="card__3d-label">170 · no diff</span></div>
           <div class="hero-card__head"><div class="hero-card__dots"><span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span></div><span class="hero-card__title">exporter — deterministic run</span><span class="hero-card__badge">PASS</span></div>
           <div class="hero-card__rows"><div class="hero-card__row"><span>validate headers</span><b class="ok">24 / 24 OK</b></div><div class="hero-card__row"><span>normalize prices</span><b>170 rows</b></div><div class="hero-card__row"><span>images</span><b class="ok">4 844 deterministic</b></div><div class="hero-card__row"><span>write XLSX / XML</span><b>done in 1.8s</b></div><div class="hero-card__row"><span>import check</span><b class="ok">no diff · reproducible</b></div></div>
           <div class="hero-card__foot"><span>Python · FastAPI · Docker</span><span style="color:var(--text)">без ручной сверки</span></div>
@@ -75,7 +75,7 @@
     <section class="section" id="s2" aria-labelledby="h2">
       <div class="container grid-2">
         <div class="reveal">
-          <p class="eyebrow">02 — Папки · CanvasTexture поиск</p>
+          <p class="eyebrow">02 — Папки</p>
           <h2 id="h2" class="h2">Документы разбросаны?<br>Собираю их в один поиск.</h2>
           <p class="p"><strong>Проблема:</strong> PDF, DOCX, HTML, TXT, RAR — ручной поиск тонет в форматах. <br><strong>Решение:</strong> инкрементальная индексация, SQLite FTS, OCR-fallback (Tesseract/Poppler), многопоток. Локально, без облака.</p>
           <div class="steps" aria-label="Шаги">
@@ -83,9 +83,9 @@
             <div class="step"><span class="step__num">2</span><span class="step__text"><b>OCR когда нужно</b> — Tesseract + Poppler вытаскивают текст из сканов</span></div>
             <div class="step"><span class="step__num">3</span><span class="step__text"><b>Ищу мгновенно</b> — релевантность, подсветка, оффлайн</span></div>
           </div>
-          <p class="terrain-hint">папки Box + CanvasTexture · explode 0.2→0.4 · rotateY scroll*0.6 · 200 dust points</p>
         </div>
         <div class="glass reveal" data-delay="1">
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/BoxTextured/glTF-Binary/BoxTextured.glb" data-fallback="doc" width="120" height="120"></canvas><span class="card__3d-label">FTS · offline</span></div>
           <div class="glass__eyebrow">DocumentAnalyzer · Desktop · offline</div>
           <h3 class="glass__title">Поиск по смешанным форматам — локально</h3>
           <p class="glass__desc">PySide6 + SQLite FTS. Много-поточный батч, инкрементальный реиндекс. Без выгрузки в облако — данные остаются у вас.</p>
@@ -98,6 +98,7 @@
     <section class="section" id="s3" aria-labelledby="h3">
       <div class="container grid-2">
         <div class="glass reveal">
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Duck/glTF-Binary/Duck.glb" data-fallback="duck" width="120" height="120"></canvas><span class="card__3d-label">12 · hybrid</span></div>
           <div class="glass__eyebrow">RAG Demo · Live репо · 12 tests</div>
           <h3 class="glass__title">Hybrid RAG с цитатами и оцениваемостью</h3>
           <p class="glass__desc"><strong>Проблема:</strong> ответы LLM без источников — не проверить. <br><strong>Решение:</strong> чанкинг, lexical / semantic / hybrid поиск, Qdrant, цитаты, eval. FastAPI + Docker, воспроизводимый запуск.</p>
@@ -111,32 +112,31 @@
           <div class="glass__actions"><a class="link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener">Открыть rag-demo →</a></div>
         </div>
         <div class="reveal" data-delay="1">
-          <p class="eyebrow">03 — Neural пастель · Sphere + Line</p>
+          <p class="eyebrow">03 — Neural</p>
           <h2 id="h3" class="h2">Каждый ответ —<br>с адресом источника.</h2>
-          <p class="p">Сеть из узлов <code style="font-family:var(--font-mono); background:rgba(232,221,208,0.5); padding:2px 6px; border-radius:6px; font-size:12px; border:1px solid var(--border)">#E8DDD0</code> и связей <code style="font-family:var(--font-mono); background:rgba(232,221,208,0.5); padding:2px 6px; border-radius:6px; font-size:12px; border:1px solid var(--border)">#D4C4B0</code> пульсирует <code style="font-family:var(--font-mono); background:rgba(232,221,208,0.5); padding:2px 6px; border-radius:6px; font-size:12px; border:1px solid var(--border)">sin(time*2) opacity 0.5→1</code> — как гибридный поиск: lexical подсвечивает точные слова, semantic — смысл, hybrid сводит в цитату. Наведи на пилюлю.</p>
+          <p class="p">Сеть из узлов пастели и связей — как гибридный поиск: lexical подсвечивает точные слова, semantic — смысл, hybrid сводит в цитату. Наведи на пилюлю.</p>
           <div class="steps">
             <div class="step"><span class="step__num step__num--ghost">lex</span><span class="step__text"><b>Lexical FTS</b> — точные совпадения, скорость, контроль</span></div>
             <div class="step"><span class="step__num step__num--ghost">sem</span><span class="step__text"><b>Semantic Qdrant</b> — вектора, смысл, перефразы</span></div>
             <div class="step"><span class="step__num">hyb</span><span class="step__text"><b>Hybrid + цитаты</b> — сводим и оцениваем, не верим на слово</span></div>
           </div>
-          <p class="terrain-hint">pastel neural · Sphere 0.04 #E8DDD0 · Line #D4C4B0 · pulse + hover highlight</p>
         </div>
       </div>
     </section>
     <section class="section" id="s4" aria-labelledby="h4">
       <div class="container grid-2">
         <div class="reveal">
-          <p class="eyebrow">04 — Коробки + low-poly авто · Boxes + Cylinders</p>
+          <p class="eyebrow">04 — Коробки + авто</p>
           <h2 id="h4" class="h2">Каталог на экране,<br>экспорт — за кулисами.</h2>
           <p class="p">Два мира одной точности. <strong>Ingul:</strong> статичный каталог упаковки — responsive, лайтбокс, 12/14/18 фото, Pages. <strong>JustCars Exporter:</strong> 170 авто / 4 844 фото за один прогон, точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр.</p>
           <div class="steps">
             <div class="step"><span class="step__num">A</span><span class="step__text"><b>Ingul — витрина</b> — быстро, адаптивно, без CMS, готово к демо</span></div>
             <div class="step"><span class="step__num">B</span><span class="step__text"><b>JustCars — пайплайн</b> — export-only, 24 заголовка, без потерь</span></div>
           </div>
-          <p class="terrain-hint">boxes #F5EFE6 Edges · low-poly car Box+Cylinder · scale pulse IO · wave под ними</p>
         </div>
         <div style="display:grid; gap:16px" class="reveal" data-delay="1">
           <div class="glass">
+            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Box/glTF-Binary/Box.glb" data-fallback="box" width="120" height="120"></canvas><span class="card__3d-label">12 / 14 / 18 фото</span></div>
             <div class="glass__eyebrow">Ingul · Static catalog</div>
             <h3 class="glass__title">Витрина упаковки — быстро и на телефоне</h3>
             <p class="glass__desc">Ленты, свайп, лайтбокс, Pages. Клиент листает каталог на телефоне — без лагов, без CMS.</p>
@@ -144,6 +144,7 @@
             <div class="glass__result">12 / 14 / 18 фото на страницу</div>
           </div>
           <div class="glass" style="border-color: var(--border)">
+            <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/CesiumMilkTruck/glTF-Binary/CesiumMilkTruck.glb" data-fallback="car" width="120" height="120"></canvas><span class="card__3d-label">170 / 4 844 · 1.8s</span></div>
             <div class="glass__eyebrow" style="color:var(--text-ter)">JustCars Exporter · Telegram + FastAPI</div>
             <h3 class="glass__title">Детерминированный экспорт 170 / 4 844</h3>
             <p class="glass__desc">Перенос вручную — ошибки цен и потерянные фото. Здесь — один пайплайн, воспроизводимо, покрыто тестами. Обезличенно, без деталей MorCars CRM.</p>
@@ -157,6 +158,7 @@
     <section class="section" id="s5" aria-labelledby="h5">
       <div class="container grid-2">
         <div class="glass reveal">
+          <div class="card__3d-wrap" aria-hidden="true"><canvas class="card__3d" data-url="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Duck/glTF-Binary/Duck.glb" data-fallback="duck" width="120" height="120"></canvas><span class="card__3d-label">Kyiv · Remote</span></div>
           <div class="glass__eyebrow">05 — Paper Wave · Контакт</div>
           <h3 class="glass__title">Обсудим ваш процесс за 15 минут</h3>
           <p class="glass__desc">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал. Для вакансии — пришлю NDA-safe описание AgendHub / MorCars + скринкаст.</p>
@@ -170,12 +172,10 @@
           <p style="margin-top:12px; font:400 12px/1.6 var(--font-sans); color:var(--text-ter)">Отвечу в течение дня. Возврат: <a class="link" href="../">← Выйти в портфолио</a> · CV: <a class="link" href="../Illia_Druzhenko_CV.pdf">PDF</a></p>
         </div>
         <div class="reveal" data-delay="1">
-          <p class="eyebrow">Финал — Paper Wave 14×14 40×40</p>
+          <p class="eyebrow">Финал — Paper Wave</p>
           <h2 id="h5" class="h2">Один пайплайн.<br>Без ручной сверки.</h2>
-          <p class="p">Бумажная волна внизу — как данные: шум на входе, гладкий детерминированный экспорт на выходе. <code style="font-family:var(--font-mono); background:rgba(232,221,208,0.5); padding:2px 6px; border-radius:6px; font-size:12px; border:1px solid var(--border)">Plane 14×14 40×40 #EFE6DB roughness 0.8</code> вершина <code style="font-family:var(--font-mono); background:rgba(232,221,208,0.5); padding:2px 6px; border-radius:6px; font-size:12px; border:1px solid var(--border)">sin*0.5+cos*0.4</code> — лист на столе, финальный покой. Курсор деформирует волну.</p>
+          <p class="p">Бумажная волна внизу — как данные: шум на входе, гладкий детерминированный экспорт на выходе. Лист на столе, финальный покой. Курсор мягко деформирует волну.</p>
           <div class="evidence" style="grid-template-columns:repeat(2,1fr)"><div class="evidence__item"><div class="evidence__num">За 1 запуск</div><div class="evidence__label">Вместо недель сверки</div></div><div class="evidence__item"><div class="evidence__num">Детерминированно</div><div class="evidence__label">Headers 24/24 · no diff</div></div></div>
-          <p class="terrain-hint">PlaneGeometry paper wave · auto + raycast pointer · OrbitControls damping</p>
-          <p style="margin-top:18px; font:400 12px/1.6 var(--font-mono); color:var(--muted)">dpr capped isMobile?1:Math.min(2,devicePixelRatio) · &lt;30K tris · prefers-reduced-motion → static</p>
         </div>
       </div>
     </section>
@@ -650,6 +650,149 @@
         }, {threshold:0.36});
         io4.observe(s4El);
       }
+      // --- foreground mini-canvas 120x120 per card (GLB <1MB CORS + fallback) ---
+      const miniCanvases = document.querySelectorAll(".card__3d");
+      const miniScenes = [];
+      let miniLoader = null;
+      try{
+        const { GLTFLoader } = await import("three/addons/loaders/GLTFLoader.js");
+        miniLoader = new GLTFLoader();
+      }catch(e){ console.warn("GLTFLoader mini fail", e); }
+      function createFallbackMesh(type){
+        const pastelA = new THREE.MeshStandardMaterial({ color:0xE8DDD0, roughness:0.7, metalness:0.05 });
+        const pastelB = new THREE.MeshStandardMaterial({ color:0xF5EFE6, roughness:0.7, metalness:0.05 });
+        const pastelC = new THREE.MeshStandardMaterial({ color:0xE9D5C2, roughness:0.7, metalness:0.05 });
+        if(type==="car"){
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(new THREE.BoxGeometry(1.0,0.34,0.52), new THREE.MeshStandardMaterial({ color:0xFFFFFF, roughness:0.58, metalness:0.06 }));
+          body.position.y=0.18; g.add(body);
+          const cabin = new THREE.Mesh(new THREE.BoxGeometry(0.56,0.22,0.34), pastelA); cabin.position.set(-0.06,0.46,0); g.add(cabin);
+          const wheelMat = new THREE.MeshStandardMaterial({ color:0x0F1115, roughness:0.82, metalness:0.02 });
+          const wheelGeo = new THREE.CylinderGeometry(0.11,0.11,0.09,10);
+          [[0.32,0,0.24],[0.32,0,-0.24],[-0.32,0,0.24],[-0.32,0,-0.24]].forEach(p=>{
+            const w=new THREE.Mesh(wheelGeo, wheelMat); w.rotation.z=Math.PI/2; w.position.set(p[0],p[1],p[2]); g.add(w);
+          });
+          g.scale.set(0.85,0.85,0.85);
+          return g;
+        }
+        if(type==="duck"){
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(new THREE.SphereGeometry(0.36, 16, 14), pastelC);
+          body.scale.set(1,0.72,0.85); g.add(body);
+          const head = new THREE.Mesh(new THREE.SphereGeometry(0.18,14,12), pastelA);
+          head.position.set(0.28,0.18,0); g.add(head);
+          const beak = new THREE.Mesh(new THREE.ConeGeometry(0.09,0.18,10), new THREE.MeshStandardMaterial({color:0xFFB86B, roughness:0.7, metalness:0.04}));
+          beak.rotation.z=Math.PI/2; beak.position.set(0.45,0.15,0); g.add(beak);
+          g.scale.set(1.0,1.0,1.0);
+          return g;
+        }
+        if(type==="box"){
+          const g=new THREE.Group();
+          const m=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.7,0.18), pastelB);
+          g.add(m);
+          const e=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(0.9,0.7,0.18)), new THREE.LineBasicMaterial({color:0xD4C4B0}));
+          g.add(e);
+          return g;
+        }
+        // doc fallback
+        const g=new THREE.Group();
+        const base=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.05,0.06), new THREE.MeshStandardMaterial({color:0xFFFFFF, roughness:0.66, metalness:0.04}));
+        g.add(base);
+        const docTex=(function(){
+          const c=document.createElement("canvas"); c.width=128; c.height=160;
+          const ctx=c.getContext("2d"); ctx.fillStyle="#FFFFFF"; ctx.fillRect(0,0,128,160);
+          ctx.fillStyle="#E8DDD0"; for(let y=18;y<140;y+=14){ ctx.fillRect(10,y, 90+Math.random()*18,4); }
+          const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.needsUpdate=true; return t;
+        })();
+        const doc=new THREE.Mesh(new THREE.PlaneGeometry(0.78,0.92), new THREE.MeshBasicMaterial({map:docTex, transparent:true, opacity:0.98, side:THREE.DoubleSide}));
+        doc.position.z=0.04; g.add(doc);
+        return g;
+      }
+      function fitObjectToView(obj, target=1.05){
+        const box=new THREE.Box3().setFromObject(obj);
+        const size=new THREE.Vector3(); box.getSize(size);
+        const maxDim=Math.max(size.x,size.y,size.z) || 1;
+        const scale= target / maxDim;
+        obj.scale.setScalar(scale);
+        const center=new THREE.Vector3(); box.getCenter(center);
+        obj.position.sub(center.multiplyScalar(scale));
+      }
+      for(const canvasEl of miniCanvases){
+        const url = canvasEl.getAttribute("data-url") || "";
+        const fb = canvasEl.getAttribute("data-fallback") || "box";
+        const dprMini = isMobile?1:Math.min(2, window.devicePixelRatio||1);
+        const mScene=new THREE.Scene();
+        const mCamera=new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+        mCamera.position.set(0, 0.35, 2.35);
+        mCamera.lookAt(0,0,0);
+        let mRenderer;
+        try{ mRenderer=new THREE.WebGLRenderer({ canvas: canvasEl, alpha:true, antialias:true, powerPreference:"low-power" }); }catch(e){ continue; }
+        mRenderer.setPixelRatio(dprMini);
+        const rect=canvasEl.getBoundingClientRect();
+        const w = canvasEl.width || rect.width || 120;
+        const h = canvasEl.height || rect.height || 120;
+        mRenderer.setSize(w, h, false);
+        mRenderer.setClearColor(0x000000, 0);
+        const mAmb=new THREE.AmbientLight(0xffffff, 0.96);
+        const mDir=new THREE.DirectionalLight(0xffffff, 0.72); mDir.position.set(2,3,2);
+        const mWarm=new THREE.PointLight(0xFFE8CC, 0.42, 8); mWarm.position.set(1.5,1,1);
+        mScene.add(mAmb); mScene.add(mDir); mScene.add(mWarm);
+        const holder=new THREE.Group();
+        mScene.add(holder);
+        const cardParent = canvasEl.closest(".glass, .hero-card");
+        // IOSpring pop on intersect 0.3
+        if("IntersectionObserver" in window && !rm && cardParent){
+          const ioMini=new IntersectionObserver((entries)=>{
+            entries.forEach(ent=>{
+              if(ent.isIntersecting){
+                holder.scale.set(0.0,0.0,0.0);
+                if(gsap){
+                  gsap.to(holder.scale, {x:1.06,y:1.06,z:1.06, duration:0.42, ease:"power2.out", yoyo:true, repeat:1, onComplete:()=> holder.scale.set(1,1,1)});
+                } else {
+                  holder.scale.set(1,1,1);
+                }
+                ioMini.unobserve(ent.target);
+              }
+            });
+         },{threshold:0.3});
+          ioMini.observe(cardParent);
+        }
+        if(miniLoader && url){
+          miniLoader.load(url, (gltf)=>{
+            const root=gltf.scene;
+            root.traverse((n)=>{
+              if(n.isMesh){
+                const pastel = (fb==="duck")?0xE9D5C2 : (fb==="box"?0xF5EFE6:0xE8DDD0);
+                n.material = new THREE.MeshStandardMaterial({ color: pastel, roughness:0.7, metalness:0.05 });
+                n.castShadow=false; n.receiveShadow=false;
+              }
+            });
+            fitObjectToView(root, 1.1);
+            // slight tilt for readability
+            root.rotation.y = 0.35;
+            holder.add(root);
+            holder.userData.root=root;
+          }, undefined, (err)=>{
+            console.warn("GLB load fail fallback", url, err);
+            const fbMesh=createFallbackMesh(fb);
+            holder.add(fbMesh);
+            holder.userData.root=fbMesh;
+          });
+        } else {
+          const fbMesh=createFallbackMesh(fb);
+          holder.add(fbMesh);
+          holder.userData.root=fbMesh;
+        }
+        miniScenes.push({ scene:mScene, camera:mCamera, renderer:mRenderer, holder, canvas:canvasEl });
+        // handle resize
+        window.addEventListener("resize", ()=>{
+          const r=canvasEl.getBoundingClientRect();
+          const nw = canvasEl.width || r.width || 120;
+          const nh = canvasEl.height || r.height || 120;
+          mRenderer.setSize(nw, nh, false);
+          mCamera.aspect=1; mCamera.updateProjectionMatrix();
+        }, {passive:true});
+      }
       function deformSmallWave(time, scrollP){
         const t = time*0.28;
         const sInf = scrollP*0.9;
@@ -741,9 +884,11 @@
         foldersGroup.position.x = 1.95 + Math.sin(t*0.18)*0.10;
         dustPoints.rotation.y = scrollProgress*0.42;
         dustMat.opacity = 0.42 - scrollProgress*0.14;
-        searchLineMat.opacity = explode*0.72;
-        queryDotMat.opacity = explode*0.96;
+        searchLineMat.opacity = 0;
+        queryDotMat.opacity = 0;
         searchLine.position.z = explode*0.08;
+        searchLine.visible = false;
+        queryDot.visible = false;
         const pulse = Math.sin(t*2.0)*0.12 + 0.88;
         nnGroup.rotation.y = scrollProgress*0.82 + Math.sin(t*0.16)*0.10 + mouseX*0.08;
         nnGroup.rotation.x = scrollProgress*0.18 + mouseY*0.04;
@@ -762,6 +907,21 @@
         deformWave(t, scrollProgress);
         point.intensity = 0.28 + Math.sin(t*0.9)*0.08 + scrollProgress*0.12;
         warmPoint.intensity = 0.42 + Math.cos(t*0.7)*0.07;
+        // mini foreground canvases: rotateY scroll*0.4 + auto, hover via CSS scale
+        if(!rm){
+          miniScenes.forEach((entry, idx)=>{
+            const root = entry.holder.userData.root || entry.holder;
+            if(root){
+              const base = t*0.55 + idx*0.7;
+              entry.holder.rotation.y = base*0.42 + scrollProgress*0.42 + mouseX*0.10;
+              entry.holder.rotation.x = Math.sin(t*0.42+idx)*0.08 + mouseY*0.05;
+              entry.holder.position.y = Math.sin(t*0.62+idx)*0.03;
+            }
+            try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){}
+          });
+        } else {
+          miniScenes.forEach(entry=>{ try{ entry.renderer.render(entry.scene, entry.camera); }catch(e){} });
+        }
         renderer.render(scene, camera);
         if(firstRender){ firstRender=false; hideLoader(); }
       }
