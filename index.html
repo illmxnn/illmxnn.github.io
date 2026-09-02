@@ -581,20 +581,20 @@
         });
       })();
 
-      // ---------- GALLERY auto-scroll 1px/20ms + drag pointer capture ----------
+      // ---------- GALLERY auto-scroll 1px/20ms + drag pointer capture (fix: direct :hover check, Apple §11) ----------
       (function(){
         if (rm) return;
         var gallery = document.querySelector(".gallery");
         if(!gallery) return;
         var autoTimer=null;
-        var isHover=false;
         var isDragging=false;
         var startX=0, scrollStart=0;
 
         function startAuto(){
           if(autoTimer) clearInterval(autoTimer);
           autoTimer=setInterval(function(){
-            if(isHover || isDragging || document.hidden) return;
+            if(isDragging || document.hidden) return;
+            if(gallery.matches(":hover")) return;
             // bounce at ends: reverse not needed, just loop smoothly with scroll
             if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1){
               gallery.scrollTo({left:0, behavior:"smooth"});
@@ -605,10 +605,10 @@
         }
         function stopAuto(){ if(autoTimer) clearInterval(autoTimer); autoTimer=null; }
 
-        gallery.addEventListener("mouseenter", function(){ isHover=true; });
-        gallery.addEventListener("mouseleave", function(){ isHover=false; isDragging=false; gallery.classList.remove("is-dragging"); });
-        gallery.addEventListener("focusin", function(){ isHover=true; });
-        gallery.addEventListener("focusout", function(){ isHover=false; });
+        gallery.addEventListener("mouseenter", function(){});
+        gallery.addEventListener("mouseleave", function(){ isDragging=false; gallery.classList.remove("is-dragging"); });
+        gallery.addEventListener("focusin", function(){});
+        gallery.addEventListener("focusout", function(){});
 
         // pointer drag
         gallery.addEventListener("pointerdown", function(e){

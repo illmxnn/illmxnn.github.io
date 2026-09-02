@@ -116,7 +116,7 @@ a { color: inherit; }
 .nav__actions { display: flex; align-items: center; gap: 10px; }
 .nav__lang {
   display: inline-flex; align-items: center; justify-content: center;
-  min-height: 32px; min-width: 44px; padding: 0 10px;
+  min-height: 44px; min-width: 44px; padding: 0 10px;
   border-radius: var(--radius-pill); border: 1px solid var(--border);
   background: var(--surface); color: var(--text-secondary);
   font: 600 12px/1 var(--font-mono); letter-spacing: 0.06em;
@@ -175,7 +175,7 @@ a { color: inherit; }
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 44px; padding: 0 18px; border-radius: var(--radius-pill);
+  height: 44px; min-height: 44px; padding: 0 18px; border-radius: var(--radius-pill);
   font: 500 14px/1 var(--font-sans); letter-spacing: -0.01em;
   text-decoration: none; cursor: pointer; white-space: nowrap;
   transition: transform 200ms cubic-bezier(0.2,0.8,0.2,1), background 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
@@ -248,7 +248,7 @@ a { color: inherit; }
 }
 .carousel__dot::after {
   content: ""; width: 8px; height: 8px; border-radius: 50%;
-  background: var(--border-hover); transition: background 180ms ease, width 180ms ease, border-radius 180ms ease;
+  background: #8A8A85; transition: background 180ms ease, width 180ms ease, border-radius 180ms ease;
   display: block;
 }
 .carousel__dot[aria-current="true"]::after { background: var(--text); width: 18px; border-radius: 999px; }
