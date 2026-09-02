@@ -168,3 +168,5 @@ main{position:relative; z-index:1}
   .nav{background: #FDF8F0; border-bottom-color: var(--text)}
   #bg{opacity:0.35}
 }
+
+.card__3d--static{will-change:auto; transition:transform 220ms ease} .card__3d-wrap:hover .card__3d--static{transform:scale(1.04)}
