@@ -29,7 +29,7 @@
   <div id="loader" aria-live="polite" aria-label="Загрузка 3D">
     <div class="loader__ring" aria-hidden="true"></div>
     <div class="loader__pct" id="loaderPct">0%</div>
-    <div class="loader__hint">Загружаем workspace · <span style="color:var(--text)">сборка по скроллу</span> — 170 → CRM</div>
+    <div class="loader__hint">Заглушка workspace · <span style="color:var(--text)">сборка по скроллу</span> — placeholder, без модели</div>
   </div>
   <div class="fallback" id="fallback" role="status" aria-live="polite">
     <div class="fallback__card">
@@ -354,100 +354,93 @@
       let workspaceLoaded = false;
       // expose for debugging
       window.workspaceGroup = workspaceGroup;
-      // FBX loader with scroll assembly
-      (async () => {
-        try {
-          const { FBXLoader } = await import('three/addons/loaders/FBXLoader.js');
-          const loader = new FBXLoader();
-          // optional: set path for textures
-          loader.setPath('assets/workspace/');
-          const fbxUrl = 'Meshy_AI_Alex_s_AI_Workspace_0903102937_texture.fbx';
-          // track progress for loader UI
-          loader.load(fbxUrl, (object) => {
-            // center and scale
-            const box = new THREE.Box3().setFromObject(object);
-            const size = new THREE.Vector3(); box.getSize(size);
-            const center = new THREE.Vector3(); box.getCenter(center);
-            object.position.sub(center);
-            const maxDim = Math.max(size.x, size.y, size.z) || 1;
-            const targetScale = 4.6 / maxDim;
-            object.scale.setScalar(targetScale);
-            // collect meshes
-            const meshes = [];
-            object.traverse((child) => {
-              if (child.isMesh) {
-                // ensure material is standard and keep textures
-                if (child.material) {
-                  // fix for dark background: ensure metalness/roughness sensible
-                  if (Array.isArray(child.material)) {
-                    child.material.forEach(m => { m.needsUpdate = true; });
-                  } else {
-                    child.material.needsUpdate = true;
-                  }
-                }
-                // store original
-                const targetPos = child.position.clone();
-                const targetQuat = child.quaternion.clone();
-                const targetScaleV = child.scale.clone();
-                // compute explode direction: from center outward + random
-                const dir = targetPos.clone().normalize();
-                if (dir.length() < 0.1) {
-                  dir.set((Math.random()-0.5)*2, (Math.random()-0.5)*2, (Math.random()-0.5)*2).normalize();
-                }
-                // For FBX scaled 0.014, world spread needs large local offset (~120 = world ~1.5)
-                const spread = 88 + Math.random()*28;
-                const startPos = targetPos.clone().add(dir.multiplyScalar(spread)).add(new THREE.Vector3((Math.random()-0.5)*12, (Math.random()-0.5)*12, (Math.random()-0.5)*12));
-                const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.9, (Math.random()-0.5)*0.9, (Math.random()-0.5)*0.7));
-                // combine with targetQuat
-                const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
-                child.userData.targetPos = targetPos;
-                child.userData.startPos = startPos;
-                child.userData.targetQuat = targetQuat;
-                child.userData.startQuat = finalStartQuat;
-                child.userData.targetScale = targetScaleV;
-                // start exploded
-                child.position.copy(startPos);
-                child.quaternion.copy(finalStartQuat);
-                if (child.material) {
-                  const mats = Array.isArray(child.material) ? child.material : [child.material];
-                  mats.forEach(m => {
-                    if (m.transparent === undefined) m.transparent = true;
-                    m.transparent = true;
-                    m.opacity = 0.18;
-                    m.needsUpdate = true;
-                  });
-                  child.userData.startOpacity = 0.18;
-                }
-                // keep original scale (no scale animation for FBX with large base scale)
-                meshes.push(child);
-              }
-            });
-            // single mesh workspace: keep as one piece (Meshy atlas) — dramatic single fly-in
-            workspaceMeshes = meshes;
-            workspaceGroup.add(object);
-            workspaceLoaded = true;
-            window.workspaceMeshes = meshes;
-            console.log('workspace loaded', meshes.length, 'meshes, size', size, 'scale', targetScale);
-            // hide loader faster if already at 96%
-            if (loaderProgress < 96) {
-              loaderProgress = 96;
-              if (loaderPct) loaderPct.textContent = '96%';
-            }
-          }, (xhr) => {
-            if (xhr.lengthComputable) {
-              const pct = Math.round((xhr.loaded / xhr.total) * 100);
-              // map fbx load 0-100 to loader 0-96
-              const mapped = Math.min(96, Math.round(pct * 0.6 + loaderProgress*0.4));
-              if (loaderPct) loaderPct.textContent = mapped + '%';
-            }
-          }, (err) => {
-            console.warn('workspace FBX load fail', err);
-            // fallback: keep ico/stars visible
-          });
-        } catch (e) {
-          console.warn('FBXLoader import fail', e);
+      // --- Placeholder workspace (заглушка) — сборка по скроллу, без внешних моделей ---
+      // Создаем простой процедурный стол + монитор + растения из примитивов, чтобы показать сборку
+      {
+        const placeholderMatDesk = new THREE.MeshStandardMaterial({ color: 0x2A2A32, roughness: 0.72, metalness: 0.08 });
+        const placeholderMatDark = new THREE.MeshStandardMaterial({ color: 0x1A1A22, roughness: 0.82, metalness: 0.06 });
+        const placeholderMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.55, metalness: 0.12, emissive: 0x330800, emissiveIntensity: 0.18 });
+        const placeholderMatLight = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.68, metalness: 0.04 });
+        // helper to make texture with text for monitor
+        function makeTextTexture(text, w=512, h=256) {
+          const c = document.createElement('canvas'); c.width=w; c.height=h;
+          const ctx=c.getContext('2d');
+          ctx.fillStyle='#0A0A0F'; ctx.fillRect(0,0,w,h);
+          ctx.strokeStyle='#FF3B30'; ctx.lineWidth=4; ctx.strokeRect(8,8,w-16,h-16);
+          ctx.fillStyle='#FFFFFF'; ctx.font='bold 32px Inter, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+          // split text into lines
+          const lines = text.split('\\n');
+          lines.forEach((line,i)=> ctx.fillText(line, w/2, h/2 - (lines.length-1)*18 + i*36));
+          ctx.fillStyle='rgba(255,59,48,0.9)'; ctx.font='12px JetBrains Mono, monospace';
+          ctx.fillText('placeholder · no external FBX', w/2, h-28);
+          const tex=new THREE.CanvasTexture(c); tex.colorSpace=THREE.SRGBColorSpace; tex.needsUpdate=true; return tex;
         }
-      })();
+        const texMonitor = makeTextTexture('Alex\\nWorkspace\\nPlaceholder');
+        const matMonitorScreen = new THREE.MeshStandardMaterial({ map: texMonitor, roughness: 0.45, metalness: 0.08, emissive: 0x111111, emissiveIntensity: 0.12 });
+        // Desk top
+        const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.08, 1.1), placeholderMatDesk);
+        deskTop.position.set(0, 0.42, 0);
+        // legs
+        const legGeo = new THREE.BoxGeometry(0.08, 0.7, 0.08);
+        const legPos = [[-1.1, -0.02, 0.48], [-1.1, -0.02, -0.48], [1.1, -0.02, 0.48], [1.1, -0.02, -0.48]];
+        const legs = legPos.map(p=> {
+          const m=new THREE.Mesh(legGeo, placeholderMatDark); m.position.set(p[0],p[1],p[2]); return m;
+        });
+        // Monitor
+        const monitorStand = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.35, 0.12), placeholderMatDark);
+        monitorStand.position.set(0.15, 0.68, -0.15);
+        const monitorFrame = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.52, 0.04), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness:0.45, metalness:0.22 }));
+        monitorFrame.position.set(0.15, 0.92, -0.15);
+        const monitorScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.86, 0.46), matMonitorScreen);
+        monitorScreen.position.set(0.15, 0.92, -0.12);
+        // Keyboard
+        const keyboard = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.04, 0.22), placeholderMatLight);
+        keyboard.position.set(0.15, 0.48, 0.22);
+        // Plant (simple)
+        const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 0.18, 12), new THREE.MeshStandardMaterial({ color: 0x3A2E2A, roughness:0.85 }));
+        pot.position.set(-0.85, 0.52, -0.22);
+        const leaves = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 8), new THREE.MeshStandardMaterial({ color: 0x3A5A3A, roughness:0.85 }));
+        leaves.position.set(-0.85, 0.72, -0.22); leaves.scale.set(1,0.65,1);
+        // Small red accent cube
+        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.12,0.12,0.12), placeholderMatAccent);
+        accent.position.set(0.95, 0.52, 0.38);
+        const parts = [deskTop, ...legs, monitorStand, monitorFrame, monitorScreen, keyboard, pot, leaves, accent];
+        // center placeholder
+        const box = new THREE.Box3().setFromObject(new THREE.Group().add(...parts.map(p=>p.clone())));
+        // Actually compute center from parts
+        const tmpGroup = new THREE.Group(); parts.forEach(p=> tmpGroup.add(p.clone()));
+        const box2 = new THREE.Box3().setFromObject(tmpGroup);
+        const center = new THREE.Vector3(); box2.getCenter(center);
+        parts.forEach(p=> p.position.sub(center));
+        // add to workspaceGroup and setup explode
+        parts.forEach((mesh, idx)=>{
+          const targetPos = mesh.position.clone();
+          const targetQuat = mesh.quaternion.clone();
+          const dir = targetPos.clone().normalize();
+          if (dir.length() < 0.1) dir.set((Math.random()-0.5)*2, (Math.random()-0.5)*2+0.3, (Math.random()-0.5)*2).normalize();
+          const spread = 1.8 + Math.random()*1.2;
+          const startPos = targetPos.clone().add(dir.multiplyScalar(spread)).add(new THREE.Vector3((Math.random()-0.5)*0.3, (Math.random()-0.5)*0.3, (Math.random()-0.5)*0.3));
+          const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.7, (Math.random()-0.5)*0.9, (Math.random()-0.5)*0.6));
+          const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
+          mesh.userData.targetPos = targetPos;
+          mesh.userData.startPos = startPos;
+          mesh.userData.targetQuat = targetQuat;
+          mesh.userData.startQuat = finalStartQuat;
+          mesh.position.copy(startPos);
+          mesh.quaternion.copy(finalStartQuat);
+          if (mesh.material) {
+            const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+            mats.forEach(m=>{ m.transparent=true; m.opacity=0.14; m.needsUpdate=true; });
+            mesh.userData.startOpacity=0.14;
+          }
+          workspaceGroup.add(mesh);
+          workspaceMeshes.push(mesh);
+        });
+        workspaceLoaded = true;
+        window.workspaceMeshes = workspaceMeshes;
+        console.log('placeholder workspace', workspaceMeshes.length, 'parts');
+        if (loaderProgress < 96) { loaderProgress = 96; if (loaderPct) loaderPct.textContent='96%'; }
+      }
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableZoom = false;
       controls.enablePan = false;
