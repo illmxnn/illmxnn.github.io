@@ -369,22 +369,8 @@
         const placeholderMatDark = new THREE.MeshStandardMaterial({ color: 0x1A1A22, roughness: 0.82, metalness: 0.06 });
         const placeholderMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.55, metalness: 0.12, emissive: 0x330800, emissiveIntensity: 0.18 });
         const placeholderMatLight = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.68, metalness: 0.04 });
-        // helper to make texture with text for monitor
-        function makeTextTexture(text, w=512, h=256) {
-          const c = document.createElement('canvas'); c.width=w; c.height=h;
-          const ctx=c.getContext('2d');
-          ctx.fillStyle='#0A0A0F'; ctx.fillRect(0,0,w,h);
-          ctx.strokeStyle='#FF3B30'; ctx.lineWidth=4; ctx.strokeRect(8,8,w-16,h-16);
-          ctx.fillStyle='#FFFFFF'; ctx.font='bold 32px Inter, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
-          // split text into lines
-          const lines = text.split('\\n');
-          lines.forEach((line,i)=> ctx.fillText(line, w/2, h/2 - (lines.length-1)*18 + i*36));
-          ctx.fillStyle='rgba(255,59,48,0.9)'; ctx.font='12px JetBrains Mono, monospace';
-          ctx.fillText('placeholder · no external FBX', w/2, h-28);
-          const tex=new THREE.CanvasTexture(c); tex.colorSpace=THREE.SRGBColorSpace; tex.needsUpdate=true; return tex;
-        }
-        const texMonitor = makeTextTexture('Illia\\nWorkspace\\nPlaceholder');
-        const matMonitorScreen = new THREE.MeshStandardMaterial({ map: texMonitor, roughness: 0.45, metalness: 0.08, emissive: 0x111111, emissiveIntensity: 0.12 });
+        // заглушка без надписи — чистый экран
+        const matMonitorScreen = new THREE.MeshStandardMaterial({ color: 0x0A0A0F, roughness: 0.42, metalness: 0.14, emissive: 0x0A0A0F, emissiveIntensity: 0.04 });
         // Desk top
         const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.08, 1.1), placeholderMatDesk);
         deskTop.position.set(0, 0.42, 0);
@@ -394,13 +380,13 @@
         const legs = legPos.map(p=> {
           const m=new THREE.Mesh(legGeo, placeholderMatDark); m.position.set(p[0],p[1],p[2]); return m;
         });
-        // Monitor
-        const monitorStand = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.35, 0.12), placeholderMatDark);
-        monitorStand.position.set(0.15, 0.68, -0.15);
+        // Monitor — пофиксена стойка (раньше была перед экраном)
+        const monitorStand = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.06, 0.32, 12), placeholderMatDark);
+        monitorStand.position.set(0.15, 0.64, -0.18);
         const monitorFrame = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.52, 0.04), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness:0.45, metalness:0.22 }));
         monitorFrame.position.set(0.15, 0.92, -0.15);
         const monitorScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.86, 0.46), matMonitorScreen);
-        monitorScreen.position.set(0.15, 0.92, -0.12);
+        monitorScreen.position.set(0.15, 0.92, -0.128);
         // Keyboard
         const keyboard = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.04, 0.22), placeholderMatLight);
         keyboard.position.set(0.15, 0.48, 0.22);
