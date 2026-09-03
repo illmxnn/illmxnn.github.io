@@ -418,18 +418,72 @@
         monitorFrame.position.set(0.15, 0.92, -0.15);
         const monitorScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.86, 0.46), matMonitorScreen);
         monitorScreen.position.set(0.15, 0.92, -0.128);
-        // Keyboard
-        const keyboard = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.04, 0.22), placeholderMatLight);
-        keyboard.position.set(0.15, 0.48, 0.22);
-        // Plant (simple)
-        const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 0.18, 12), new THREE.MeshStandardMaterial({ color: 0x3A2E2A, roughness:0.85 }));
-        pot.position.set(-0.85, 0.52, -0.22);
-        const leaves = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 8), new THREE.MeshStandardMaterial({ color: 0x3A5A3A, roughness:0.85 }));
-        leaves.position.set(-0.85, 0.72, -0.22); leaves.scale.set(1,0.65,1);
-        // Small red accent cube
-        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.12,0.12,0.12), placeholderMatAccent);
+        // Keyboard — реалистичная с клавишами (процедурно)
+        const keyboardGroup = new THREE.Group();
+        const kbBase = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.028, 0.24), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness: 0.55, metalness: 0.18 }));
+        kbBase.position.set(0, 0, 0);
+        keyboardGroup.add(kbBase);
+        // keys — 4 rows x 12-4 keys
+        const keyMat = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.72, metalness: 0.02 });
+        const keyMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.6, emissive: 0x220800, emissiveIntensity: 0.08 });
+        const rows = 4, cols = 12;
+        for(let r=0;r<rows;r++){
+          for(let c=0;c<(r===3?4:cols);c++){
+            const isEnter = (r===2 && c===11);
+            const w = isEnter ? 0.09 : 0.042, h = 0.018, d = isEnter ? 0.05 : 0.042;
+            const key = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), (r===0 && c===0) ? keyMatAccent : keyMat);
+            key.position.set((c - 5.5)*0.052 + (r*0.006), 0.024, (r - 1.5)*0.052);
+            if (isEnter) key.position.x += 0.02;
+            // tiny gap
+            keyboardGroup.add(key);
+          }
+        }
+        keyboardGroup.position.set(0.15, 0.48, 0.22);
+        // Headphones — реалистичная замена растения (процедурно, без моделей)
+        const headphoneGroup = new THREE.Group();
+        const hpBandMat = new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness: 0.32, metalness: 0.55 });
+        const hpCupMat = new THREE.MeshStandardMaterial({ color: 0x1A1A22, roughness: 0.45, metalness: 0.35 });
+        const hpPadMat = new THREE.MeshStandardMaterial({ color: 0x2A0A08, roughness: 0.85, metalness: 0.02 });
+        // headband - half torus
+        const bandGeo = new THREE.TorusGeometry(0.18, 0.022, 12, 24, Math.PI);
+        const band = new THREE.Mesh(bandGeo, hpBandMat);
+        band.rotation.z = Math.PI; band.position.set(0, 0.14, 0);
+        // ear cups
+        const cupGeo = new THREE.CylinderGeometry(0.095, 0.095, 0.06, 16);
+        const cupL = new THREE.Mesh(cupGeo, hpCupMat); cupL.rotation.z = Math.PI/2; cupL.position.set(-0.18, 0, 0);
+        const cupR = new THREE.Mesh(cupGeo, hpCupMat); cupR.rotation.z = Math.PI/2; cupR.position.set(0.18, 0, 0);
+        const padGeo = new THREE.CylinderGeometry(0.085, 0.085, 0.04, 16);
+        const padL = new THREE.Mesh(padGeo, hpPadMat); padL.rotation.z = Math.PI/2; padL.position.set(-0.21, 0, 0);
+        const padR = new THREE.Mesh(padGeo, hpPadMat); padR.rotation.z = Math.PI/2; padR.position.set(0.21, 0, 0);
+        // red accent on cups
+        const hpAccentMat = new THREE.MeshStandardMaterial({ color: 0xFF3B30, emissive: 0x330800, emissiveIntensity: 0.2 });
+        const accentL = new THREE.Mesh(new THREE.RingGeometry(0.05, 0.065, 16), hpAccentMat); accentL.position.set(-0.21, 0, 0.031); accentL.rotation.y = Math.PI/2;
+        const accentR = new THREE.Mesh(new THREE.RingGeometry(0.05, 0.065, 16), hpAccentMat); accentR.position.set(0.21, 0, 0.031); accentR.rotation.y = Math.PI/2;
+        headphoneGroup.add(band, cupL, cupR, padL, padR, accentL, accentR);
+        headphoneGroup.position.set(-0.88, 0.50, -0.22);
+        headphoneGroup.rotation.y = -0.32; headphoneGroup.rotation.z = 0.08;
+        // Keyboard — реалистичная (база + клавиши)
+        // Mouse — реалистичная
+        const mouseGroup = new THREE.Group();
+        const mouseBase = new THREE.Mesh(new THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.07, 0.12, 4, 12) : new THREE.BoxGeometry(0.14, 0.04, 0.22), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.35, metalness: 0.45 }));
+        // Capsule not in r160, fallback to Box with rounded via Box
+        if (!mouseBase.geometry || mouseBase.geometry.type === 'BoxGeometry') {
+          // use Box with bevel via BoxGeometry for now (Box is fine)
+          mouseBase.geometry = new THREE.BoxGeometry(0.13, 0.035, 0.20);
+          // round via scale
+        }
+        mouseBase.position.set(0, 0, 0);
+        const mouseWheel = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.015, 0.06), new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.4 }));
+        mouseWheel.position.set(0, 0.022, 0.02);
+        const mouseBtnL = new THREE.Mesh(new THREE.BoxGeometry(0.055, 0.012, 0.18), new THREE.MeshStandardMaterial({ color: 0x1A1A22, roughness: 0.5 }));
+        mouseBtnL.position.set(-0.032, 0.02, 0.01);
+        const mouseBtnR = mouseBtnL.clone(); mouseBtnR.position.set(0.032, 0.02, 0.01);
+        mouseGroup.add(mouseBase, mouseWheel, mouseBtnL, mouseBtnR);
+        mouseGroup.position.set(0.62, 0.48, 0.32);
+        // Small red accent already exists as cube, keep but make it smaller mousepad accent
+        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.10,0.02,0.10), placeholderMatAccent);
         accent.position.set(0.95, 0.52, 0.38);
-        const parts = [deskTop, ...legs, monitorStand, monitorFrame, monitorScreen, keyboard, pot, leaves, accent];
+        const parts = [deskTop, ...legs, monitorStand, monitorFrame, monitorScreen, keyboardGroup, headphoneGroup, mouseGroup, accent];
         // center placeholder
         const box = new THREE.Box3().setFromObject(new THREE.Group().add(...parts.map(p=>p.clone())));
         // Actually compute center from parts
