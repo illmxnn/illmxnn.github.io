@@ -369,8 +369,45 @@
         const placeholderMatDark = new THREE.MeshStandardMaterial({ color: 0x1A1A22, roughness: 0.82, metalness: 0.06 });
         const placeholderMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.55, metalness: 0.12, emissive: 0x330800, emissiveIntensity: 0.18 });
         const placeholderMatLight = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.68, metalness: 0.04 });
-        // заглушка без надписи — чистый экран
-        const matMonitorScreen = new THREE.MeshStandardMaterial({ color: 0x0A0A0F, roughness: 0.42, metalness: 0.14, emissive: 0x0A0A0F, emissiveIntensity: 0.04 });
+        // заглушка с параллакс-надписью на мониторе
+        // создаем текстуру с надписью "Стол собран. Смотрите детали." для параллакса
+        function makeParallaxTextTexture() {
+          const c = document.createElement('canvas'); c.width=1024; c.height=512;
+          const ctx=c.getContext('2d');
+          ctx.fillStyle='#0A0A0F'; ctx.fillRect(0,0,1024,512);
+          // red border
+          ctx.strokeStyle='#FF3B30'; ctx.lineWidth=6; ctx.strokeRect(12,12,1000,488);
+          // inner border
+          ctx.strokeStyle='rgba(255,59,48,0.22)'; ctx.lineWidth=2; ctx.strokeRect(22,22,980,468);
+          // text
+          ctx.fillStyle='#FFFFFF';
+          ctx.textAlign='center'; ctx.textBaseline='middle';
+          ctx.font='800 54px Inter, sans-serif';
+          ctx.fillText('Стол собран.', 512, 190);
+          ctx.font='800 54px Inter, sans-serif';
+          // red accent for second line
+          const grad = ctx.createLinearGradient(0,0,1024,0);
+          // keep white
+          ctx.fillStyle='#FFFFFF';
+          ctx.fillText('Смотрите детали.', 512, 260);
+          ctx.fillStyle='rgba(255,255,255,0.72)';
+          ctx.font='400 18px JetBrains Mono, monospace';
+          ctx.fillText('сборка по скроллу · 12 частей · dark #0A0A0F', 512, 340);
+          ctx.fillStyle='rgba(255,59,48,0.95)';
+          ctx.font='700 13px JetBrains Mono, monospace';
+          ctx.fillText('ILLIA  ·  170 / 4844  ·  placeholder', 512, 395);
+          // dot
+          ctx.fillStyle='#FF3B30'; ctx.beginPath(); ctx.arc(512, 435, 4, 0, Math.PI*2); ctx.fill();
+          const tex=new THREE.CanvasTexture(c); tex.colorSpace=THREE.SRGBColorSpace; tex.wrapS=THREE.RepeatWrapping; tex.wrapT=THREE.RepeatWrapping; tex.needsUpdate=true; return tex;
+        }
+        const texParallax = makeParallaxTextTexture();
+        const matMonitorScreen = new THREE.MeshStandardMaterial({ map: texParallax, roughness: 0.42, metalness: 0.12, emissive: 0x111111, emissiveIntensity: 0.06 });
+        // параллакс-константы
+        let parallaxOffsetX = 0, parallaxOffsetY = 0, targetParallaxX = 0, targetParallaxY = 0;
+        window.addEventListener('pointermove', (e)=>{
+          targetParallaxX = (e.clientX / window.innerWidth - 0.5) * 0.04;
+          targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 0.04;
+        }, {passive:true});
         // Desk top
         const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.08, 1.1), placeholderMatDesk);
         deskTop.position.set(0, 0.42, 0);
@@ -560,6 +597,14 @@
               });
             }
           });
+          // параллакс надписи на мониторе — сдвиг текстуры + лёгкий сдвиг плоскости
+          parallaxOffsetX += (targetParallaxX - parallaxOffsetX) * 0.06;
+          parallaxOffsetY += (targetParallaxY - parallaxOffsetY) * 0.06;
+          if (texParallax) {
+            texParallax.offset.x = parallaxOffsetX * 0.18 + scrollProgress * 0.04;
+            texParallax.offset.y = parallaxOffsetY * 0.18 + scrollProgress * 0.03;
+            texParallax.needsUpdate = true;
+          }
           // subtle group float + scroll
           workspaceGroup.position.y = 0.12 + Math.sin(t*0.28)*0.05 - scrollProgress*0.08;
           workspaceGroup.rotation.y = -0.28 + scrollProgress*0.24 + Math.sin(t*0.14)*0.04;
