@@ -360,6 +360,8 @@
       let workspaceMeshes = [];
       let workspaceAssembleCurrent = 0;
       let workspaceLoaded = false;
+      let texParallax = null;
+      let parallaxOffsetX = 0, parallaxOffsetY = 0, targetParallaxX = 0, targetParallaxY = 0;
       // expose for debugging
       window.workspaceGroup = workspaceGroup;
       // --- Placeholder workspace (заглушка) — сборка по скроллу, без внешних моделей ---
@@ -400,10 +402,9 @@
           ctx.fillStyle='#FF3B30'; ctx.beginPath(); ctx.arc(512, 435, 4, 0, Math.PI*2); ctx.fill();
           const tex=new THREE.CanvasTexture(c); tex.colorSpace=THREE.SRGBColorSpace; tex.wrapS=THREE.RepeatWrapping; tex.wrapT=THREE.RepeatWrapping; tex.needsUpdate=true; return tex;
         }
-        const texParallax = makeParallaxTextTexture();
+        texParallax = makeParallaxTextTexture();
         const matMonitorScreen = new THREE.MeshStandardMaterial({ map: texParallax, roughness: 0.42, metalness: 0.12, emissive: 0x111111, emissiveIntensity: 0.06 });
-        // параллакс-константы
-        let parallaxOffsetX = 0, parallaxOffsetY = 0, targetParallaxX = 0, targetParallaxY = 0;
+        // параллакс-константы уже объявлены выше
         window.addEventListener('pointermove', (e)=>{
           targetParallaxX = (e.clientX / window.innerWidth - 0.5) * 0.04;
           targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 0.04;
