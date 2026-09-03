@@ -454,20 +454,21 @@
         const hpCupMat = new THREE.MeshStandardMaterial({ color: 0x15151A, roughness: 0.42, metalness: 0.38 });
         const hpPadMat = new THREE.MeshStandardMaterial({ color: 0x1F0A08, roughness: 0.92, metalness: 0.01 });
         // headband - half torus lying flat
-        const bandGeo = new THREE.TorusGeometry(0.19, 0.018, 12, 24, Math.PI);
+        // headband - smooth U lying flat, correct orientation
+        const bandGeo = new THREE.TorusGeometry(0.20, 0.016, 12, 32, Math.PI);
         const band = new THREE.Mesh(bandGeo, hpBandMat);
-        band.rotation.x = Math.PI/2; band.rotation.z = 0; band.position.set(0, 0.02, 0);
-        // ear cups - lying flat on desk
-        const cupGeo = new THREE.CylinderGeometry(0.092, 0.092, 0.055, 20);
-        const cupL = new THREE.Mesh(cupGeo, hpCupMat); cupL.rotation.x = Math.PI/2; cupL.position.set(-0.19, 0.015, 0);
-        const cupR = new THREE.Mesh(cupGeo, hpCupMat); cupR.rotation.x = Math.PI/2; cupR.position.set(0.19, 0.015, 0);
-        const padGeo = new THREE.CylinderGeometry(0.082, 0.082, 0.035, 20);
-        const padL = new THREE.Mesh(padGeo, hpPadMat); padL.rotation.x = Math.PI/2; padL.position.set(-0.19, -0.015, 0);
-        const padR = new THREE.Mesh(padGeo, hpPadMat); padR.rotation.x = Math.PI/2; padR.position.set(0.19, -0.015, 0);
-        // red accent rings on outside of cups
-        const hpAccentMat = new THREE.MeshStandardMaterial({ color: 0xFF3B30, emissive: 0x330800, emissiveIntensity: 0.22, roughness: 0.5 });
-        const accentL = new THREE.Mesh(new THREE.RingGeometry(0.048, 0.062, 20), hpAccentMat); accentL.position.set(-0.19, 0.015, 0.028); accentL.rotation.x = 0;
-        const accentR = new THREE.Mesh(new THREE.RingGeometry(0.048, 0.062, 20), hpAccentMat); accentR.position.set(0.19, 0.015, 0.028); accentR.rotation.x = 0;
+        band.rotation.x = Math.PI/2; band.rotation.y = 0; band.rotation.z = Math.PI; band.position.set(0, 0.018, 0);
+        // ear cups - vertical, pads facing inward/outward correctly
+        const cupGeo = new THREE.CylinderGeometry(0.088, 0.088, 0.052, 20);
+        const cupL = new THREE.Mesh(cupGeo, hpCupMat); cupL.rotation.z = Math.PI/2; cupL.position.set(-0.20, 0.012, 0);
+        const cupR = new THREE.Mesh(cupGeo, hpCupMat); cupR.rotation.z = Math.PI/2; cupR.position.set(0.20, 0.012, 0);
+        const padGeo = new THREE.CylinderGeometry(0.078, 0.078, 0.032, 20);
+        const padL = new THREE.Mesh(padGeo, hpPadMat); padL.rotation.z = Math.PI/2; padL.position.set(-0.20, 0.012, 0); padL.scale.set(1,1,0.9);
+        const padR = new THREE.Mesh(padGeo, hpPadMat); padR.rotation.z = Math.PI/2; padR.position.set(0.20, 0.012, 0); padR.scale.set(1,1,0.9);
+        // red accent on outer rim (visible from top)
+        const hpAccentMat = new THREE.MeshStandardMaterial({ color: 0xFF3B30, emissive: 0x330800, emissiveIntensity: 0.24, roughness: 0.45, metalness: 0.12 });
+        const accentL = new THREE.Mesh(new THREE.TorusGeometry(0.058, 0.008, 8, 16), hpAccentMat); accentL.position.set(-0.20, 0.012, 0); accentL.rotation.y = Math.PI/2;
+        const accentR = new THREE.Mesh(new THREE.TorusGeometry(0.058, 0.008, 8, 16), hpAccentMat); accentR.position.set(0.20, 0.012, 0); accentR.rotation.y = Math.PI/2;
         headphoneGroup.add(band, cupL, cupR, padL, padR, accentL, accentR);
         headphoneGroup.position.set(-0.84, 0.46, -0.24);
         headphoneGroup.rotation.set(0, -0.32, 0.04);
