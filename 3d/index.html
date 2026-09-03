@@ -403,8 +403,9 @@
           targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 0.04;
         }, {passive:true});
         // Desk top
-        const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.08, 1.1), placeholderMatDesk);
+        const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.08, 1.1, 12, 1, 6), placeholderMatDesk);
         deskTop.position.set(0, 0.42, 0);
+        window.deskTop = deskTop;
         // legs
         const legGeo = new THREE.BoxGeometry(0.08, 0.7, 0.08);
         const legPos = [[-1.1, -0.02, 0.48], [-1.1, -0.02, -0.48], [1.1, -0.02, 0.48], [1.1, -0.02, -0.48]];
@@ -683,13 +684,38 @@
             texParallax.offset.y = parallaxOffsetY * 0.18 + scrollProgress * 0.03;
             texParallax.needsUpdate = true;
           }
-          // мягкая волна всего стола — покачивание волной
-          const waveY = Math.sin(t*0.42)*0.035 + Math.sin(t*0.18 + scrollProgress*2.2)*0.015;
-          const waveRot = Math.sin(t*0.22)*0.015 + Math.sin(scrollProgress*Math.PI)*0.04;
-          workspaceGroup.position.y = 0.12 + waveY - scrollProgress*0.08;
-          workspaceGroup.rotation.y = -0.28 + scrollProgress*0.24 + waveRot;
-          workspaceGroup.position.x = Math.sin(t*0.12)*0.08 + Math.sin(t*0.16 + scrollProgress)*0.012;
-          workspaceGroup.rotation.z = Math.sin(t*0.18)*0.008 + Math.sin(scrollProgress*1.2)*0.012;
+          // стол плывет волнами — усиленная волна
+          const waveY = Math.sin(t*0.52)*0.095 + Math.sin(t*0.24 + scrollProgress*2.6)*0.042 + Math.cos(t*0.18)*0.018;
+          const waveX = Math.sin(t*0.16)*0.028 + Math.sin(t*0.22 + scrollProgress*1.4)*0.018;
+          const waveRotY = Math.sin(t*0.22)*0.022 + Math.sin(scrollProgress*Math.PI)*0.06;
+          const waveRotZ = Math.sin(t*0.18)*0.016 + Math.cos(t*0.32)*0.012 + Math.sin(scrollProgress*1.4)*0.018;
+          const waveRotX = Math.sin(t*0.14)*0.010 + Math.cos(scrollProgress*0.9)*0.008;
+          workspaceGroup.position.y = 0.08 + waveY - scrollProgress*0.06;
+          workspaceGroup.position.x = waveX;
+          workspaceGroup.rotation.y = -0.24 + waveRotY;
+          workspaceGroup.rotation.z = waveRotZ;
+          workspaceGroup.rotation.x = waveRotX;
+          // дополнительная волна для столешницы — вершины плывут
+          if (typeof deskTop !== 'undefined' && deskTop.geometry) {
+            const attr = deskTop.geometry.attributes.position;
+            if (attr && !deskTop.userData.origPositions) {
+              deskTop.userData.origPositions = attr.array.slice();
+            }
+            if (deskTop.userData.origPositions) {
+              const orig = deskTop.userData.origPositions;
+              for(let i=0;i<attr.count;i++){
+                const ix=i*3;
+                const ox=orig[ix], oz=orig[ix+2];
+                // только верхняя плоскость стола (y > 0)
+                if (orig[ix+1] > 0.02) {
+                  const wave = Math.sin(ox*2.2 + t*1.1)*0.018 + Math.cos(oz*2.8 + t*0.9)*0.012 + Math.sin((ox+oz)*1.4 + t*0.7)*0.008;
+                  attr.array[ix+1] = orig[ix+1] + wave;
+                }
+              }
+              attr.needsUpdate = true;
+              deskTop.geometry.computeVertexNormals();
+            }
+          }
         } else {
           // before load: gentle float
           workspaceGroup.position.y = 0.12 + Math.sin(t*0.28)*0.04;
