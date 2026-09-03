@@ -346,9 +346,9 @@
       scene.add(terrainWire);
       // --- Workspace FBX assembly on scroll ---
       const workspaceGroup = new THREE.Group();
-      workspaceGroup.position.set(1.15, 0.12, 0.42);
-      workspaceGroup.scale.set(1.25, 1.25, 1.25);
-      workspaceGroup.rotation.y = -0.28;
+      workspaceGroup.position.set(1.12, 0.08, 0.38);
+      workspaceGroup.scale.set(1.22, 1.22, 1.22);
+      workspaceGroup.rotation.y = -0.24;
       scene.add(workspaceGroup);
       let workspaceMeshes = [];
       let workspaceAssembleCurrent = 0;
@@ -420,8 +420,8 @@
         monitorScreen.position.set(0.15, 0.92, -0.128);
         // Keyboard — реалистичная с клавишами (процедурно)
         const keyboardGroup = new THREE.Group();
-        const kbBase = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.028, 0.24), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness: 0.55, metalness: 0.18 }));
-        kbBase.position.set(0, 0, 0);
+        const kbBase = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.022, 0.25), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness: 0.55, metalness: 0.18 }));
+        kbBase.position.set(0, -0.005, 0);
         keyboardGroup.add(kbBase);
         // keys — 4 rows x 12-4 keys
         const keyMat = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.72, metalness: 0.02 });
@@ -469,8 +469,8 @@
         const accentL = new THREE.Mesh(new THREE.RingGeometry(0.048, 0.062, 20), hpAccentMat); accentL.position.set(-0.19, 0.015, 0.028); accentL.rotation.x = 0;
         const accentR = new THREE.Mesh(new THREE.RingGeometry(0.048, 0.062, 20), hpAccentMat); accentR.position.set(0.19, 0.015, 0.028); accentR.rotation.x = 0;
         headphoneGroup.add(band, cupL, cupR, padL, padR, accentL, accentR);
-        headphoneGroup.position.set(-0.82, 0.50, -0.18);
-        headphoneGroup.rotation.set(0, -0.28, 0.12);
+        headphoneGroup.position.set(-0.84, 0.46, -0.24);
+        headphoneGroup.rotation.set(0, -0.32, 0.04);
         // Keyboard — реалистичная (база + клавиши)
         // Mouse — реалистичная
         const mouseGroup = new THREE.Group();
@@ -486,11 +486,17 @@
         const mouseBtnGap = new THREE.Mesh(new THREE.BoxGeometry(0.002, 0.008, 0.16), new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.8 }));
         mouseBtnGap.position.set(0, 0.032, 0.01);
         mouseGroup.add(mouseBase, mouseTop, mouseWheel, mouseBtnGap);
-        mouseGroup.position.set(0.62, 0.47, 0.32);
+        mouseGroup.position.set(0.60, 0.465, 0.32);
         mouseGroup.rotation.y = -0.18;
         // Small red accent already exists as cube, keep but make it smaller mousepad accent
-        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.10,0.02,0.10), placeholderMatAccent);
-        accent.position.set(0.95, 0.52, 0.38);
+        // red mousepad accent - flat under mouse
+        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.18,0.006,0.22), new THREE.MeshStandardMaterial({ color: 0x1A1A1A, roughness: 0.92, metalness: 0.02 }));
+        accent.position.set(0.62, 0.455, 0.32);
+        // small red detail on mousepad
+        const accentDetail = new THREE.Mesh(new THREE.BoxGeometry(0.16,0.002,0.02), placeholderMatAccent);
+        accentDetail.position.set(0.62, 0.458, 0.42);
+        // add both as separate meshes to parts, but we need to handle them as one part? Keep accent as mousepad, detail as child of accent
+        accent.add(accentDetail);
         const parts = [deskTop, ...legs, monitorStand, monitorFrame, monitorScreen, keyboardGroup, headphoneGroup, mouseGroup, accent];
         // center placeholder
         const box = new THREE.Box3().setFromObject(new THREE.Group().add(...parts.map(p=>p.clone())));
