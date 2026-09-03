@@ -423,27 +423,33 @@
         const kbBase = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.022, 0.25), new THREE.MeshStandardMaterial({ color: 0x0F1115, roughness: 0.55, metalness: 0.18 }));
         kbBase.position.set(0, -0.005, 0);
         keyboardGroup.add(kbBase);
-        // keys — 4 rows x 12-4 keys
-        const keyMat = new THREE.MeshStandardMaterial({ color: 0xE8E6E0, roughness: 0.72, metalness: 0.02 });
-        const keyMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.6, emissive: 0x220800, emissiveIntensity: 0.08 });
+        // keys — realistic, sit flush, slight bevel via Box, tight gap
+        const keyMat = new THREE.MeshStandardMaterial({ color: 0xECE8E0, roughness: 0.68, metalness: 0.04 });
+        const keyMatAccent = new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.55, emissive: 0x220800, emissiveIntensity: 0.10 });
         const rows = 4, cols = 12;
         for(let r=0;r<rows;r++){
-          for(let c=0;c<(r===3?4:cols);c++){
+          const colsThisRow = (r===3?4:cols);
+          for(let c=0;c<colsThisRow;c++){
             const isEnter = (r===2 && c===11);
             const isSpace = (r===3);
-            const w = isEnter ? 0.094 : (isSpace ? 0.18 : 0.042), h = 0.016, d = isEnter ? 0.05 : 0.042;
+            let w, d;
+            if (isSpace) { w = (c===1? 0.26 : 0.09); d = 0.048; }
+            else if (isEnter) { w = 0.088; d = 0.052; }
+            else { w = 0.041; d = 0.041; }
+            const h = 0.014;
             const key = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), (r===0 && c===0) ? keyMatAccent : keyMat);
-            // sit flush on base (base top is at 0.014, key bottom should be at 0.014)
-            const y = 0.022;
-            key.position.set((c - 5.5)*0.051 + (r*0.005), y, (r - 1.5)*0.051);
-            if (isEnter) key.position.x += 0.022;
+            const y = 0.018; // flush on base (base 0.022 height, top at 0.011, key bottom at 0.011)
+            let x = (c - 5.5)*0.050 + (r*0.004);
+            let z = (r - 1.5)*0.050;
+            if (isEnter) x += 0.020;
             if (isSpace) {
-              // center spacebar
-              if (c===0) key.position.x = -0.08;
-              if (c===1) key.position.x = 0.10;
-              if (c===2) continue; // skip extra, we only want 4 keys centered
-              if (c===3) key.position.x = 0.28;
+              if (c===0) x = -0.14;
+              if (c===1) x = 0.04;
+              if (c===2) continue;
+              if (c===3) x = 0.22;
             }
+            key.position.set(x, y, z);
+            // slight chamfer via scale
             keyboardGroup.add(key);
           }
         }
@@ -476,27 +482,24 @@
         // Mouse — реалистичная
         const mouseGroup = new THREE.Group();
         // realistic mouse - rounded capsule-like using Box + sphere blend
-        const mouseBaseMat = new THREE.MeshStandardMaterial({ color: 0x0F0F12, roughness: 0.28, metalness: 0.52 });
-        const mouseBase = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.032, 0.20), mouseBaseMat);
-        mouseBase.position.set(0, 0.016, 0);
-        // add rounded top via half-sphere
-        const mouseTop = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 8, 0, Math.PI*2, 0, Math.PI/2), mouseBaseMat);
-        mouseTop.scale.set(1, 0.45, 1.55); mouseTop.position.set(0, 0.032, 0); mouseTop.rotation.x = 0;
-        const mouseWheel = new THREE.Mesh(new THREE.BoxGeometry(0.016, 0.014, 0.05), new THREE.MeshStandardMaterial({ color: 0xFF3B30, roughness: 0.35, emissive: 0x220800, emissiveIntensity: 0.12 }));
-        mouseWheel.position.set(0, 0.038, 0.015);
-        const mouseBtnGap = new THREE.Mesh(new THREE.BoxGeometry(0.002, 0.008, 0.16), new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.8 }));
-        mouseBtnGap.position.set(0, 0.032, 0.01);
-        mouseGroup.add(mouseBase, mouseTop, mouseWheel, mouseBtnGap);
-        mouseGroup.position.set(0.60, 0.465, 0.32);
-        mouseGroup.rotation.y = -0.18;
+        const mouseBaseMat = new THREE.MeshStandardMaterial({ color: 0x0F0F12, roughness: 0.32, metalness: 0.52 });
+        const mouseBase = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.024, 0.19), mouseBaseMat);
+        mouseBase.position.set(0, 0.006, 0);
+        const mouseTop = new THREE.Mesh(new THREE.SphereGeometry(0.062, 14, 10, 0, Math.PI*2, 0, Math.PI/2), mouseBaseMat);
+        mouseTop.scale.set(1, 0.42, 1.42); mouseTop.position.set(0, 0.018, -0.015);
+        const mouseWheel = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.028, 10), new THREE.MeshStandardMaterial({ color: 0x1A1A1A, roughness: 0.6 }));
+        mouseWheel.rotation.z = Math.PI/2; mouseWheel.position.set(0, 0.032, 0.02);
+        const mouseWheelRed = new THREE.Mesh(new THREE.TorusGeometry(0.012, 0.003, 6, 12), new THREE.MeshStandardMaterial({ color: 0xFF3B30, emissive: 0x330800, emissiveIntensity: 0.18 }));
+        mouseWheelRed.rotation.y = Math.PI/2; mouseWheelRed.position.set(0, 0.032, 0.02);
+        mouseGroup.add(mouseBase, mouseTop, mouseWheel, mouseWheelRed);
+        mouseGroup.position.set(0.60, 0.462, 0.32);
+        mouseGroup.rotation.y = -0.12;
         // Small red accent already exists as cube, keep but make it smaller mousepad accent
-        // red mousepad accent - flat under mouse
-        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.18,0.006,0.22), new THREE.MeshStandardMaterial({ color: 0x1A1A1A, roughness: 0.92, metalness: 0.02 }));
-        accent.position.set(0.62, 0.455, 0.32);
-        // small red detail on mousepad
-        const accentDetail = new THREE.Mesh(new THREE.BoxGeometry(0.16,0.002,0.02), placeholderMatAccent);
-        accentDetail.position.set(0.62, 0.458, 0.42);
-        // add both as separate meshes to parts, but we need to handle them as one part? Keep accent as mousepad, detail as child of accent
+        // mousepad - flat, realistic, sits flush on desk
+        const accent = new THREE.Mesh(new THREE.BoxGeometry(0.20,0.004,0.26), new THREE.MeshStandardMaterial({ color: 0x121214, roughness: 0.88, metalness: 0.04 }));
+        accent.position.set(0.60, 0.45, 0.32);
+        const accentDetail = new THREE.Mesh(new THREE.BoxGeometry(0.16,0.0015,0.012), new THREE.MeshStandardMaterial({ color: 0xFF3B30, emissive: 0x220800, emissiveIntensity: 0.12 }));
+        accentDetail.position.set(0, 0.0035, 0.08);
         accent.add(accentDetail);
         const parts = [deskTop, ...legs, monitorStand, monitorFrame, monitorScreen, keyboardGroup, headphoneGroup, mouseGroup, accent];
         // center placeholder
