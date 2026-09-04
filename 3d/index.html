@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.38, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.36, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
@@ -690,9 +690,9 @@
           try{
             if(typeof mouseGroup !== 'undefined' && mouseGroup && workspaceGroup) workspaceGroup.remove(mouseGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==mouseGroup);
-            const mGroup = normalizeAndPlace(gltf, 0.22, new THREE.Vector3(0.60, 0.462, 0.32), new THREE.Vector3(0, -0.12, 0), 1.0);
+            const mGroup = normalizeAndPlace(gltf, 0.20, new THREE.Vector3(0.65, 0.435, 0.30), new THREE.Vector3(0, -0.12, 0), 1.0);
             // sit flush on desk / pad
-            mGroup.position.y = 0.435;
+            mGroup.position.y = 0.415;
             const targetPos = mGroup.position.clone();
             const targetQuat = mGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.3).normalize();
