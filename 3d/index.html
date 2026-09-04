@@ -29,7 +29,7 @@
   <div id="loader" aria-live="polite" aria-label="Загрузка 3D">
     <div class="loader__ring" aria-hidden="true"></div>
     <div class="loader__pct" id="loaderPct">0%</div>
-    <div class="loader__hint">Заглушка workspace · <span style="color:var(--text)">сборка по скроллу</span> — placeholder, без модели</div>
+    <div class="loader__hint">Загрузка моделей · <span style="color:var(--text)">наушники + клавиатура</span> — glb + placeholder сборка</div>
   </div>
   <div class="fallback" id="fallback" role="status" aria-live="polite">
     <div class="fallback__card">
@@ -237,6 +237,7 @@
         if(gsap && ScrollTrigger && gsap.registerPlugin) gsap.registerPlugin(ScrollTrigger);
       } catch(e){ console.warn('GSAP not loaded', e); }
       const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+      const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
       const scene = new THREE.Scene();
       scene.fog = new THREE.Fog(0x0A0A0F, 8, 22);
       const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -536,7 +537,146 @@
         });
         workspaceLoaded = true;
         window.workspaceMeshes = workspaceMeshes;
-        console.log('placeholder workspace', workspaceMeshes.length, 'parts');
+        console.log('placeholder workspace', workspaceMeshes.length, 'parts — procedural');
+        // --- Real GLB models: headphones + keyboard (replace placeholder) ---
+        const loaderGLB = new GLTFLoader();
+        let realModelsToLoad = 2;
+        let realModelsLoaded = 0;
+        function checkAllRealLoaded(){
+          realModelsLoaded++;
+          const pct = 92 + Math.round((realModelsLoaded/realModelsToLoad)*6);
+          if(loaderPct) loaderPct.textContent = Math.min(98, pct) + '%';
+          if(realModelsLoaded===realModelsToLoad){
+            console.log('real models loaded — headphones + keyboard');
+          }
+        }
+        function normalizeAndPlace(gltf, targetSize, position, rotation, scaleMul=1){
+          const obj = gltf.scene || gltf.scenes[0];
+          // compute bbox
+          const box = new THREE.Box3().setFromObject(obj);
+          const size = new THREE.Vector3(); box.getSize(size);
+          const maxDim = Math.max(size.x, size.y, size.z) || 1;
+          const s = (targetSize / maxDim) * scaleMul;
+          obj.scale.set(s,s,s);
+          // recenter
+          const center = new THREE.Vector3(); box.getCenter(center);
+          // clone to avoid mutation after scale? compute after scale adjust
+          // Instead, shift object so its center at origin before placing
+          obj.position.sub(center.multiplyScalar(s));
+          // wrap in group for placement
+          const grp = new THREE.Group();
+          grp.add(obj);
+          grp.position.copy(position);
+          if(rotation) grp.rotation.set(rotation.x, rotation.y, rotation.z);
+          // enable shadows off, set materials rough
+          obj.traverse(o=>{
+            if(o.isMesh){
+              if(o.material){
+                // keep original material but ensure roughness
+                if(o.material.metalness!==undefined) o.material.metalness = Math.min(0.3, o.material.metalness||0.2);
+                o.material.needsUpdate = true;
+              }
+              o.castShadow=false; o.receiveShadow=false;
+            }
+          });
+          return grp;
+        }
+        // Headphones — replace headphoneGroup
+        loaderGLB.load('assets/models/headphones_jtoastie.glb', (gltf)=>{
+          try{
+            // remove procedural headphoneGroup from workspaceGroup and meshes
+            if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
+            workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
+            const hpGroup = normalizeAndPlace(gltf, 0.42, new THREE.Vector3(-0.84, 0.46, -0.24), new THREE.Vector3(0, -0.32, 0.04), 1.0);
+            // set start/target for explosion
+            const targetPos = hpGroup.position.clone();
+            const targetQuat = hpGroup.quaternion.clone();
+            const dir = targetPos.clone().normalize();
+            if(dir.length()<0.1) dir.set(0.2,0.4,0.2).normalize();
+            const spread = 1.6 + Math.random()*0.8;
+            const startPos = targetPos.clone().add(dir.multiplyScalar(spread)).add(new THREE.Vector3((Math.random()-0.5)*0.2, (Math.random()-0.5)*0.2, (Math.random()-0.5)*0.2));
+            const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.5, (Math.random()-0.5)*0.7, (Math.random()-0.5)*0.4));
+            const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
+            hpGroup.userData.targetPos = targetPos;
+            hpGroup.userData.startPos = startPos;
+            hpGroup.userData.targetQuat = targetQuat;
+            hpGroup.userData.startQuat = finalStartQuat;
+            hpGroup.position.copy(startPos);
+            hpGroup.quaternion.copy(finalStartQuat);
+            hpGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+            hpGroup.userData.startOpacity=0.14;
+            workspaceGroup.add(hpGroup);
+            workspaceMeshes.push(hpGroup);
+            window.headphoneGroup = hpGroup;
+            console.log('headphones glb loaded, size', hpGroup);
+          }catch(e){ console.warn('headphones place err', e); }
+          checkAllRealLoaded();
+        }, undefined, (e)=>{
+          console.warn('headphones glb failed', e);
+          checkAllRealLoaded();
+        });
+        // Keyboard — choose poly (more detailed, 2224 tris, matches screenshot beige+red esc)
+        // fallback to kenney if needed
+        loaderGLB.load('assets/models/keyboard_poly.glb', (gltf)=>{
+          try{
+            if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
+            workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
+            // keyboard_poly is larger, center it and scale to 0.75 width
+            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
+            // adjust Y so it sits on desk (orig center at 0, need base at desk)
+            kbGroup.position.y = 0.465;
+            const targetPos = kbGroup.position.clone();
+            const targetQuat = kbGroup.quaternion.clone();
+            const dir = new THREE.Vector3(0,1,0.2).normalize();
+            const spread = 1.5 + Math.random()*0.6;
+            const startPos = targetPos.clone().add(dir.multiplyScalar(spread));
+            const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.4, (Math.random()-0.5)*0.6, (Math.random()-0.5)*0.3));
+            const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
+            kbGroup.userData.targetPos = targetPos;
+            kbGroup.userData.startPos = startPos;
+            kbGroup.userData.targetQuat = targetQuat;
+            kbGroup.userData.startQuat = finalStartQuat;
+            kbGroup.position.copy(startPos);
+            kbGroup.quaternion.copy(finalStartQuat);
+            kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+            kbGroup.userData.startOpacity=0.14;
+            workspaceGroup.add(kbGroup);
+            workspaceMeshes.push(kbGroup);
+            window.keyboardGroup = kbGroup;
+            console.log('keyboard poly glb loaded');
+          }catch(e){ console.warn('keyboard place err', e); }
+          checkAllRealLoaded();
+        }, undefined, (e)=>{
+          console.warn('keyboard poly failed, trying kenney', e);
+          // fallback to kenney
+          loaderGLB.load('assets/models/keyboard_kenney.glb', (g2)=>{
+            try{
+              if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
+              workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
+              const kbGroup = normalizeAndPlace(g2, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
+              kbGroup.position.y = 0.465;
+              const targetPos = kbGroup.position.clone();
+              const targetQuat = kbGroup.quaternion.clone();
+              const dir = new THREE.Vector3(0,1,0.2).normalize();
+              const spread = 1.5;
+              const startPos = targetPos.clone().add(dir.multiplyScalar(spread));
+              const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler(0.2,0.3,0));
+              const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
+              kbGroup.userData.targetPos = targetPos;
+              kbGroup.userData.startPos = startPos;
+              kbGroup.userData.targetQuat = targetQuat;
+              kbGroup.userData.startQuat = finalStartQuat;
+              kbGroup.position.copy(startPos);
+              kbGroup.quaternion.copy(finalStartQuat);
+              kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+              kbGroup.userData.startOpacity=0.14;
+              workspaceGroup.add(kbGroup);
+              workspaceMeshes.push(kbGroup);
+              window.keyboardGroup = kbGroup;
+            }catch(e2){ console.warn('kenney fallback err', e2); }
+            checkAllRealLoaded();
+          }, undefined, (e2)=>{ console.warn('kenney also failed', e2); checkAllRealLoaded(); });
+        });
         if (loaderProgress < 96) { loaderProgress = 96; if (loaderPct) loaderPct.textContent='96%'; }
       }
       const controls = new OrbitControls(camera, renderer.domElement);
