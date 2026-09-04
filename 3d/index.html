@@ -721,6 +721,49 @@
           console.warn('mouse glb failed', e);
           checkAllRealLoaded();
         });
+        // === Gamer block: стол + ПК (доп. сет) ===
+        const gamerGroup = new THREE.Group();
+        gamerGroup.position.set(-1.35, -0.68, -0.85);
+        gamerGroup.scale.set(0.95, 0.95, 0.95);
+        gamerGroup.rotation.y = 0.42;
+        scene.add(gamerGroup);
+        window.gamerGroup = gamerGroup;
+        // Gamer Desk
+        loaderGLB.load('assets/models/desk_dook.glb', (gltf)=>{
+          try{
+            const desk = gtlfNormalize(gltf, 2.0, new THREE.Vector3(0,0.40,0), new THREE.Vector3(0,0,0));
+            // desk_dook already has legs, place at 0
+            gamerGroup.add(desk);
+            console.log('gamer desk loaded');
+          }catch(e){ console.warn('gamer desk err',e); }
+        });
+        // Helper normalize for gamer block
+        function gtlfNormalize(gltf, targetSize, pos, rot){
+          const obj = gltf.scene || gltf.scenes[0];
+          const box = new THREE.Box3().setFromObject(obj);
+          const size = new THREE.Vector3(); box.getSize(size);
+          const maxDim = Math.max(size.x,size.y,size.z)||1;
+          const s = targetSize / maxDim;
+          obj.scale.set(s,s,s);
+          const center = new THREE.Vector3(); box.getCenter(center);
+          obj.position.sub(center.multiplyScalar(s));
+          const grp = new THREE.Group();
+          grp.add(obj);
+          grp.position.copy(pos);
+          if(rot) grp.rotation.set(rot.x,rot.y,rot.z);
+          obj.traverse(o=>{ if(o.isMesh && o.material){ o.material.needsUpdate=true; }});
+          return grp;
+        }
+        // Gaming PC tower
+        loaderGLB.load('assets/models/gaming_pc.glb', (gltf)=>{
+          try{
+            const pc = gtlfNormalize(gltf, 0.72, new THREE.Vector3(1.05, 0.42, 0.15), new THREE.Vector3(0,-0.35,0));
+            pc.position.y = 0.02; // on floor / desk side
+            gamerGroup.add(pc);
+            console.log('gaming pc loaded');
+          }catch(e){ console.warn('gaming pc err',e); }
+        });
+
         if (loaderProgress < 96) { loaderProgress = 96; if (loaderPct) loaderPct.textContent='96%'; }
       }
       const controls = new OrbitControls(camera, renderer.domElement);
