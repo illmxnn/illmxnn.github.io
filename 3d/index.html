@@ -527,11 +527,19 @@
           mesh.userData.startQuat = finalStartQuat;
           mesh.position.copy(startPos);
           mesh.quaternion.copy(finalStartQuat);
-          if (mesh.material) {
-            const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-            mats.forEach(m=>{ m.transparent=true; m.opacity=0.14; m.needsUpdate=true; });
-            mesh.userData.startOpacity=0.14;
-          }
+          // поддержка Group (клава/наушники) — traverse
+          mesh.traverse ? mesh.traverse(o=>{
+            if(o.isMesh && o.material){
+              const mats = Array.isArray(o.material) ? o.material : [o.material];
+              mats.forEach(m=>{ m.transparent=true; m.opacity=0.14; m.needsUpdate=true; });
+            }
+          }) : (()=>{
+            if (mesh.material) {
+              const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+              mats.forEach(m=>{ m.transparent=true; m.opacity=0.14; m.needsUpdate=true; });
+            }
+          })();
+          mesh.userData.startOpacity=0.14;
           workspaceGroup.add(mesh);
           workspaceMeshes.push(mesh);
         });
@@ -803,14 +811,22 @@
             // всё вместе плывет — добавляем волну стола к Y, чтобы периферия повторяла волну столешницы
             const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
             mesh.position.y += onDeskWave;
-            // мягкий общий wobble уже не нужен индивидуально — всё вместе
-            if (mesh.material) {
+            // прозрачность — поддержка Group (glb) через traverse
+            const sO = mesh.userData.startOpacity !== undefined ? mesh.userData.startOpacity : 0.14;
+            const curOp = sO + (1 - sO) * localP;
+            if (mesh.traverse) {
+              mesh.traverse(o=>{
+                if(o.isMesh && o.material){
+                  const mats = Array.isArray(o.material) ? o.material : [o.material];
+                  mats.forEach(m=>{
+                    if(m.transparent) m.opacity = curOp;
+                  });
+                }
+              });
+            } else if (mesh.material) {
               const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
               mats.forEach(m => {
-                if (m.transparent) {
-                  const sO = mesh.userData.startOpacity !== undefined ? mesh.userData.startOpacity : 0.14;
-                  m.opacity = sO + (1 - sO) * localP;
-                }
+                if (m.transparent) m.opacity = curOp;
               });
             }
           });
