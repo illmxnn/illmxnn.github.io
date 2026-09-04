@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.36, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.34, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
@@ -630,9 +630,9 @@
             if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
             // keyboard_poly is larger, center it and scale to 0.75 width
-            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.46, 0.22), new THREE.Vector3(0,0,0), 1.0);
+            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.44, 0.22), new THREE.Vector3(0,0,0), 1.0);
             // flush on desk
-            kbGroup.position.y = 0.40;
+            kbGroup.position.y = 0.38;
             const targetPos = kbGroup.position.clone();
             const targetQuat = kbGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -662,7 +662,7 @@
               if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
               workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
               const kbGroup = normalizeAndPlace(g2, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
-              kbGroup.position.y = 0.40;
+              kbGroup.position.y = 0.38;
               const targetPos = kbGroup.position.clone();
               const targetQuat = kbGroup.quaternion.clone();
               const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -692,7 +692,7 @@
             workspaceMeshes = workspaceMeshes.filter(m=> m!==mouseGroup);
             const mGroup = normalizeAndPlace(gltf, 0.20, new THREE.Vector3(0.65, 0.435, 0.30), new THREE.Vector3(0, -0.12, 0), 1.0);
             // sit flush on desk / pad
-            mGroup.position.y = 0.398;
+            mGroup.position.y = 0.378;
             const targetPos = mGroup.position.clone();
             const targetQuat = mGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.3).normalize();
