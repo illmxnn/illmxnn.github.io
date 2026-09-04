@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.46, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.42, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
