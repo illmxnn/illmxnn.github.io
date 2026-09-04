@@ -613,6 +613,7 @@
             hpGroup.quaternion.copy(finalStartQuat);
             hpGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             hpGroup.userData.startOpacity=0.14;
+            hpGroup.userData.glued=true;
             workspaceGroup.add(hpGroup);
             workspaceMeshes.push(hpGroup);
             window.headphoneGroup = hpGroup;
@@ -648,6 +649,7 @@
             kbGroup.quaternion.copy(finalStartQuat);
             kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             kbGroup.userData.startOpacity=0.14;
+            kbGroup.userData.glued=true;
             workspaceGroup.add(kbGroup);
             workspaceMeshes.push(kbGroup);
             window.keyboardGroup = kbGroup;
@@ -708,6 +710,7 @@
             mGroup.quaternion.copy(finalStartQuat);
             mGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             mGroup.userData.startOpacity=0.14;
+            mGroup.userData.glued=true;
             workspaceGroup.add(mGroup);
             workspaceMeshes.push(mGroup);
             window.mouseGroup = mGroup;
@@ -841,9 +844,11 @@
             const softP = localP === 1 ? 1 : (localP < 0.5 ? 2*localP*localP : 1 - Math.pow(-2*localP+2, 2)/2);
             mesh.position.lerpVectors(mesh.userData.startPos, mesh.userData.targetPos, softP);
             mesh.quaternion.slerpQuaternions(mesh.userData.startQuat, mesh.userData.targetQuat, softP);
-            // всё вместе плывет — добавляем волну стола к Y, чтобы периферия повторяла волну столешницы
-            const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
-            mesh.position.y += onDeskWave;
+            // приклеены как монитор — без волны, жёстко на столе
+            if (!mesh.userData.glued) {
+              const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
+              mesh.position.y += onDeskWave;
+            }
             // прозрачность — поддержка Group (glb) через traverse
             const sO = mesh.userData.startOpacity !== undefined ? mesh.userData.startOpacity : 0.14;
             const curOp = sO + (1 - sO) * localP;
