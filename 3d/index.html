@@ -649,23 +649,21 @@
           const assembleTarget = Math.min(1, Math.max(0, (scrollProgress - 0.04) / 0.38));
           workspaceAssembleCurrent += (assembleTarget - workspaceAssembleCurrent) * 0.08;
           const p = workspaceAssembleCurrent;
-          // мягкая волна — каждый элемент собирается с задержкой волны
+          // всё на столе плывет вместе — волна сборки + общая волна стола
+          // вычисляем волну стола для подстройки высоты периферии
+          const deskWaveAt = (x, z) => Math.sin(x*2.2 + t*1.05)*0.014 + Math.cos(z*2.8 + t*0.88)*0.009 + Math.sin((x+z)*1.4 + t*0.68)*0.006;
           workspaceMeshes.forEach((mesh, idx) => {
             if (!mesh.userData.targetPos) return;
-            // волна задержки по индексу (0..12) -> 0..0.42
-            const waveDelay = (idx / workspaceMeshes.length) * 0.42;
-            const waveDuration = 0.48;
+            const waveDelay = (idx / workspaceMeshes.length) * 0.36;
+            const waveDuration = 0.42;
             const localP = Math.min(1, Math.max(0, (p - waveDelay) / waveDuration));
-            // мягкая пружина (soft spring) — легкая эластичность в конце
-            const softP = localP === 1 ? 1 : (localP < 0.5 ? 2*localP*localP : 1 - Math.pow(-2*localP+2, 2)/2); // easeInOutQuad
-            const wobble = Math.sin(t*1.8 + idx*0.7) * 0.018 * (1 - localP) * Math.sin(localP*Math.PI);
+            const softP = localP === 1 ? 1 : (localP < 0.5 ? 2*localP*localP : 1 - Math.pow(-2*localP+2, 2)/2);
             mesh.position.lerpVectors(mesh.userData.startPos, mesh.userData.targetPos, softP);
-            // добавляем волну по Y для мягкости
-            mesh.position.y += wobble + Math.sin(t*0.9 + idx*0.5) * 0.008 * (1 - localP);
             mesh.quaternion.slerpQuaternions(mesh.userData.startQuat, mesh.userData.targetQuat, softP);
-            // мягкий скейл-пульс при сборке
-            const softScale = 1 + Math.sin(localP*Math.PI) * 0.04 * (1 - localP);
-            mesh.scale.setScalar(softScale);
+            // всё вместе плывет — добавляем волну стола к Y, чтобы периферия повторяла волну столешницы
+            const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
+            mesh.position.y += onDeskWave;
+            // мягкий общий wobble уже не нужен индивидуально — всё вместе
             if (mesh.material) {
               const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
               mats.forEach(m => {
