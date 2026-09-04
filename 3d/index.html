@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.38, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.06, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
@@ -613,7 +613,7 @@
             hpGroup.quaternion.copy(finalStartQuat);
             hpGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             hpGroup.userData.startOpacity=0.14;
-            workspaceGroup.add(hpGroup);
+            deskTop.add(hpGroup);
             workspaceMeshes.push(hpGroup);
             window.headphoneGroup = hpGroup;
             console.log('headphones glb loaded, size', hpGroup);
@@ -630,9 +630,9 @@
             if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
             // keyboard_poly is larger, center it and scale to 0.75 width
-            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
+            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.06, 0.22), new THREE.Vector3(0,0,0), 1.0);
             // flush on desk
-            kbGroup.position.y = 0.42;
+            kbGroup.position.y = 0.045;
             const targetPos = kbGroup.position.clone();
             const targetQuat = kbGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -648,7 +648,7 @@
             kbGroup.quaternion.copy(finalStartQuat);
             kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             kbGroup.userData.startOpacity=0.14;
-            workspaceGroup.add(kbGroup);
+            deskTop.add(kbGroup);
             workspaceMeshes.push(kbGroup);
             window.keyboardGroup = kbGroup;
             console.log('keyboard poly glb loaded');
@@ -662,7 +662,7 @@
               if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
               workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
               const kbGroup = normalizeAndPlace(g2, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
-              kbGroup.position.y = 0.42;
+              kbGroup.position.y = 0.045;
               const targetPos = kbGroup.position.clone();
               const targetQuat = kbGroup.quaternion.clone();
               const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -678,7 +678,7 @@
               kbGroup.quaternion.copy(finalStartQuat);
               kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
               kbGroup.userData.startOpacity=0.14;
-              workspaceGroup.add(kbGroup);
+              deskTop.add(kbGroup);
               workspaceMeshes.push(kbGroup);
               window.keyboardGroup = kbGroup;
             }catch(e2){ console.warn('kenney fallback err', e2); }
@@ -692,7 +692,7 @@
             workspaceMeshes = workspaceMeshes.filter(m=> m!==mouseGroup);
             const mGroup = normalizeAndPlace(gltf, 0.20, new THREE.Vector3(0.65, 0.435, 0.30), new THREE.Vector3(0, -0.12, 0), 1.0);
             // sit flush on desk / pad
-            mGroup.position.y = 0.415;
+            mGroup.position.y = 0.05;
             const targetPos = mGroup.position.clone();
             const targetQuat = mGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.3).normalize();
@@ -708,7 +708,7 @@
             mGroup.quaternion.copy(finalStartQuat);
             mGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             mGroup.userData.startOpacity=0.14;
-            workspaceGroup.add(mGroup);
+            deskTop.add(mGroup);
             workspaceMeshes.push(mGroup);
             window.mouseGroup = mGroup;
             console.log('mouse glb loaded');
