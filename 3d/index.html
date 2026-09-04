@@ -723,7 +723,7 @@
         });
         // === Gamer block: стол + ПК (доп. сет) ===
         const gamerGroup = new THREE.Group();
-        gamerGroup.position.set(-1.35, -0.68, -0.85);
+        gamerGroup.position.set(1.85, -0.72, -1.15);
         gamerGroup.scale.set(0.95, 0.95, 0.95);
         gamerGroup.rotation.y = 0.42;
         scene.add(gamerGroup);
@@ -757,7 +757,7 @@
         // Gaming PC tower
         loaderGLB.load('assets/models/gaming_pc.glb', (gltf)=>{
           try{
-            const pc = gtlfNormalize(gltf, 0.72, new THREE.Vector3(1.05, 0.42, 0.15), new THREE.Vector3(0,-0.35,0));
+            const pc = gtlfNormalize(gltf, 0.68, new THREE.Vector3(0.85, 0.38, 0.12), new THREE.Vector3(0,-0.35,0));
             pc.position.y = 0.02; // on floor / desk side
             gamerGroup.add(pc);
             console.log('gaming pc loaded');
@@ -887,11 +887,9 @@
             const softP = localP === 1 ? 1 : (localP < 0.5 ? 2*localP*localP : 1 - Math.pow(-2*localP+2, 2)/2);
             mesh.position.lerpVectors(mesh.userData.startPos, mesh.userData.targetPos, softP);
             mesh.quaternion.slerpQuaternions(mesh.userData.startQuat, mesh.userData.targetQuat, softP);
-            // приклеены как монитор — без волны, жёстко на столе
-            if (!mesh.userData.glued) {
-              const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
-              mesh.position.y += onDeskWave;
-            }
+            // приклеены как монитор — с малой волной, чтобы не парить и не проваливаться
+            const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP * (mesh.userData.glued ? 0.35 : 1.0);
+            mesh.position.y += onDeskWave;
             // прозрачность — поддержка Group (glb) через traverse
             const sO = mesh.userData.startOpacity !== undefined ? mesh.userData.startOpacity : 0.14;
             const curOp = sO + (1 - sO) * localP;
