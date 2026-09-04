@@ -647,7 +647,7 @@
             kbGroup.userData.startQuat = finalStartQuat;
             kbGroup.position.copy(startPos);
             kbGroup.quaternion.copy(finalStartQuat);
-            kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+            kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.color.set(0x0F0F12); o.material.roughness=0.45; o.material.metalness=0.18; o.material.emissive.setHex(0x000000); o.material.transparent=true; o.material.opacity=0.14; }});
             kbGroup.userData.startOpacity=0.14;
             kbGroup.userData.glued=true;
             workspaceGroup.add(kbGroup);
@@ -678,7 +678,7 @@
               kbGroup.userData.startQuat = finalStartQuat;
               kbGroup.position.copy(startPos);
               kbGroup.quaternion.copy(finalStartQuat);
-              kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+              kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.color.set(0x0F0F12); o.material.roughness=0.45; o.material.metalness=0.18; o.material.emissive.setHex(0x000000); o.material.transparent=true; o.material.opacity=0.14; }});
               kbGroup.userData.startOpacity=0.14;
               workspaceGroup.add(kbGroup);
               workspaceMeshes.push(kbGroup);
