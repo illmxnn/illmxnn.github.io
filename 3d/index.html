@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.12, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.34, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
@@ -613,7 +613,6 @@
             hpGroup.quaternion.copy(finalStartQuat);
             hpGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             hpGroup.userData.startOpacity=0.14;
-            hpGroup.userData.glued=true;
             workspaceGroup.add(hpGroup);
             workspaceMeshes.push(hpGroup);
             window.headphoneGroup = hpGroup;
@@ -631,9 +630,9 @@
             if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
             // keyboard_poly is larger, center it and scale to 0.75 width
-            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.08, 0.22), new THREE.Vector3(0,0,0), 1.0);
+            const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.44, 0.22), new THREE.Vector3(0,0,0), 1.0);
             // flush on desk
-            kbGroup.position.y = 0.08;
+            kbGroup.position.y = 0.38;
             const targetPos = kbGroup.position.clone();
             const targetQuat = kbGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -649,7 +648,6 @@
             kbGroup.quaternion.copy(finalStartQuat);
             kbGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             kbGroup.userData.startOpacity=0.14;
-            kbGroup.userData.glued=true;
             workspaceGroup.add(kbGroup);
             workspaceMeshes.push(kbGroup);
             window.keyboardGroup = kbGroup;
@@ -664,7 +662,7 @@
               if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
               workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
               const kbGroup = normalizeAndPlace(g2, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
-              kbGroup.position.y = 0.08;
+              kbGroup.position.y = 0.38;
               const targetPos = kbGroup.position.clone();
               const targetQuat = kbGroup.quaternion.clone();
               const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -694,7 +692,7 @@
             workspaceMeshes = workspaceMeshes.filter(m=> m!==mouseGroup);
             const mGroup = normalizeAndPlace(gltf, 0.20, new THREE.Vector3(0.65, 0.435, 0.30), new THREE.Vector3(0, -0.12, 0), 1.0);
             // sit flush on desk / pad
-            mGroup.position.y = 0.08;
+            mGroup.position.y = 0.378;
             const targetPos = mGroup.position.clone();
             const targetQuat = mGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.3).normalize();
@@ -710,7 +708,6 @@
             mGroup.quaternion.copy(finalStartQuat);
             mGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
             mGroup.userData.startOpacity=0.14;
-            mGroup.userData.glued=true;
             workspaceGroup.add(mGroup);
             workspaceMeshes.push(mGroup);
             window.mouseGroup = mGroup;
@@ -844,11 +841,9 @@
             const softP = localP === 1 ? 1 : (localP < 0.5 ? 2*localP*localP : 1 - Math.pow(-2*localP+2, 2)/2);
             mesh.position.lerpVectors(mesh.userData.startPos, mesh.userData.targetPos, softP);
             mesh.quaternion.slerpQuaternions(mesh.userData.startQuat, mesh.userData.targetQuat, softP);
-            // приклеены как монитор — без волны, жёстко на столе (userData.glued)
-            if (!mesh.userData.glued) {
-              const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
-              mesh.position.y += onDeskWave;
-            }
+            // всё вместе плывет — добавляем волну стола к Y, чтобы периферия повторяла волну столешницы
+            const onDeskWave = deskWaveAt(mesh.userData.targetPos.x, mesh.userData.targetPos.z) * softP;
+            mesh.position.y += onDeskWave;
             // прозрачность — поддержка Group (glb) через traverse
             const sO = mesh.userData.startOpacity !== undefined ? mesh.userData.startOpacity : 0.14;
             const curOp = sO + (1 - sO) * localP;
