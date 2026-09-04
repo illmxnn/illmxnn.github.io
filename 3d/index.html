@@ -548,7 +548,7 @@
         console.log('placeholder workspace', workspaceMeshes.length, 'parts — procedural');
         // --- Real GLB models: headphones + keyboard (replace placeholder) ---
         const loaderGLB = new GLTFLoader();
-        let realModelsToLoad = 2;
+        let realModelsToLoad = 3;
         let realModelsLoaded = 0;
         function checkAllRealLoaded(){
           realModelsLoaded++;
@@ -595,7 +595,7 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.415, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
+            const hpGroup = normalizeAndPlace(gltf, 0.36, new THREE.Vector3(-0.58, 0.40, 0.18), new THREE.Vector3(0, -0.38, 0.06), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
@@ -631,8 +631,8 @@
             workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
             // keyboard_poly is larger, center it and scale to 0.75 width
             const kbGroup = normalizeAndPlace(gltf, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
-            // adjust Y so it sits on desk (orig center at 0, need base at desk)
-            kbGroup.position.y = 0.465;
+            // flush on desk
+            kbGroup.position.y = 0.44;
             const targetPos = kbGroup.position.clone();
             const targetQuat = kbGroup.quaternion.clone();
             const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -662,7 +662,7 @@
               if(keyboardGroup && workspaceGroup) workspaceGroup.remove(keyboardGroup);
               workspaceMeshes = workspaceMeshes.filter(m=> m!==keyboardGroup);
               const kbGroup = normalizeAndPlace(g2, 0.72, new THREE.Vector3(0.15, 0.48, 0.22), new THREE.Vector3(0,0,0), 1.0);
-              kbGroup.position.y = 0.465;
+              kbGroup.position.y = 0.44;
               const targetPos = kbGroup.position.clone();
               const targetQuat = kbGroup.quaternion.clone();
               const dir = new THREE.Vector3(0,1,0.2).normalize();
@@ -684,6 +684,39 @@
             }catch(e2){ console.warn('kenney fallback err', e2); }
             checkAllRealLoaded();
           }, undefined, (e2)=>{ console.warn('kenney also failed', e2); checkAllRealLoaded(); });
+        });
+        // Mouse — CreativeTrio CC0 100 tris, black
+        loaderGLB.load('assets/models/mouse_creative.glb', (gltf)=>{
+          try{
+            if(typeof mouseGroup !== 'undefined' && mouseGroup && workspaceGroup) workspaceGroup.remove(mouseGroup);
+            workspaceMeshes = workspaceMeshes.filter(m=> m!==mouseGroup);
+            const mGroup = normalizeAndPlace(gltf, 0.22, new THREE.Vector3(0.60, 0.462, 0.32), new THREE.Vector3(0, -0.12, 0), 1.0);
+            // sit flush on desk / pad
+            mGroup.position.y = 0.455;
+            const targetPos = mGroup.position.clone();
+            const targetQuat = mGroup.quaternion.clone();
+            const dir = new THREE.Vector3(0,1,0.3).normalize();
+            const spread = 1.4 + Math.random()*0.5;
+            const startPos = targetPos.clone().add(dir.multiplyScalar(spread));
+            const startQuat = new THREE.Quaternion().setFromEuler(new THREE.Euler((Math.random()-0.5)*0.4, (Math.random()-0.5)*0.6, (Math.random()-0.5)*0.3));
+            const finalStartQuat = new THREE.Quaternion().multiplyQuaternions(startQuat, targetQuat);
+            mGroup.userData.targetPos = targetPos;
+            mGroup.userData.startPos = startPos;
+            mGroup.userData.targetQuat = targetQuat;
+            mGroup.userData.startQuat = finalStartQuat;
+            mGroup.position.copy(startPos);
+            mGroup.quaternion.copy(finalStartQuat);
+            mGroup.traverse(o=>{ if(o.isMesh && o.material){ o.material.transparent=true; o.material.opacity=0.14; }});
+            mGroup.userData.startOpacity=0.14;
+            workspaceGroup.add(mGroup);
+            workspaceMeshes.push(mGroup);
+            window.mouseGroup = mGroup;
+            console.log('mouse glb loaded');
+          }catch(e){ console.warn('mouse place err', e); }
+          checkAllRealLoaded();
+        }, undefined, (e)=>{
+          console.warn('mouse glb failed', e);
+          checkAllRealLoaded();
         });
         if (loaderProgress < 96) { loaderProgress = 96; if (loaderPct) loaderPct.textContent='96%'; }
       }
