@@ -595,7 +595,8 @@
             // remove procedural headphoneGroup from workspaceGroup and meshes
             if(headphoneGroup && workspaceGroup) workspaceGroup.remove(headphoneGroup);
             workspaceMeshes = workspaceMeshes.filter(m=> m!==headphoneGroup);
-            const hpGroup = normalizeAndPlace(gltf, 0.42, new THREE.Vector3(-0.84, 0.46, -0.24), new THREE.Vector3(0, -0.32, 0.04), 1.0);
+            // J-Toastie headphones upright → lay flat on desk
+            const hpGroup = normalizeAndPlace(gltf, 0.42, new THREE.Vector3(-0.86, 0.445, -0.22), new THREE.Vector3(Math.PI/2, -0.32, 0.04), 1.0);
             // set start/target for explosion
             const targetPos = hpGroup.position.clone();
             const targetQuat = hpGroup.quaternion.clone();
