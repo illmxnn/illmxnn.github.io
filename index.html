@@ -128,7 +128,6 @@
           <p class="hero__visual-caption" data-i18n="heroCaption">Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.</p>
         </div>
       </div>
-      <div class="rail" aria-hidden="true"></div>
     </section>
 
     <!-- Projects -->
@@ -418,7 +417,7 @@
           <p class="section__sub" data-i18n="galSub">Плавные прокруты, параллакс фоток, один стиль: тёплая бумага, почти чёрный, красный сигнал. Фото анимируются при скролле — лёгкий zoom + fade, уважает reduced-motion.</p>
         </div>
         <div class="gallery-wrap reveal" data-delay="1">
-          <div class="gallery__counter" aria-live="polite" aria-label="Позиция в галерее"><strong id="galleryCounter">01</strong>&nbsp;—&nbsp;04</div>
+          <div class="gallery__counter" aria-live="polite" aria-label="Позиция в галерее"><strong id="galleryCounter">01</strong>&nbsp;—&nbsp;05</div>
           <div class="gallery" role="list" aria-label="Галерея примеров">
             <figure class="gallery__item" role="listitem">
               <div class="gallery__media">
@@ -452,8 +451,16 @@
                 <strong data-i18n="gal4Title">JustCars Exporter</strong> <span data-i18n="gal4Desc">— 170 авто, детерминированно</span>
               </figcaption>
             </figure>
+            <figure class="gallery__item" role="listitem">
+              <div class="gallery__media">
+                <img src="https://picsum.photos/seed/illia-ledstil-wide/600/400" srcset="https://picsum.photos/seed/illia-ledstil-wide/300/200 300w, https://picsum.photos/seed/illia-ledstil-wide/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="LedStil — магазин" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" />
+              </div>
+              <figcaption>
+                <strong data-i18n="gal5Title">LedStil</strong> <span data-i18n="gal5Desc">— 2500+ товаров, флагман</span>
+              </figcaption>
+            </figure>
           </div>
-          <div class="gallery__progress" aria-hidden="true"><div class="gallery__progress-bar" id="galleryProgress"></div></div>
+
         </div>
         <p class="gallery__hint reveal" data-i18n="galHint">Горизонтальная лента — скролль или свайп. Листай → Все фото — placeholder, заменю на реальные скринкасты по твоим материалам.</p>
       </div>
@@ -671,27 +678,22 @@
         });
       })();
 
-      // ---------- GALLERY manual only — proximity + counter + progress (no auto 20ms) ----------
+      // ---------- GALLERY manual only — counter only, ultra-light ----------
       (function(){
         var gallery = document.querySelector(".gallery");
         if(!gallery) return;
         var counter = document.getElementById("galleryCounter");
-        var progress = document.getElementById("galleryProgress");
         var items = gallery.querySelectorAll(".gallery__item");
         var isDragging=false;
         var startX=0, scrollStart=0;
 
-        function updateProgress(){
-          var max = gallery.scrollWidth - gallery.clientWidth;
-          var pct = max > 0 ? (gallery.scrollLeft / max) * 100 : 0;
-          if(progress) progress.style.width = pct + "%";
-          if(counter && items.length){
-            var gap = 24;
-            var w = items[0].offsetWidth + gap;
-            var idx = Math.round(gallery.scrollLeft / w);
-            idx = Math.max(0, Math.min(idx, items.length - 1));
-            counter.textContent = String(idx + 1).padStart(2, "0");
-          }
+        function updateCounter(){
+          if(!counter || !items.length) return;
+          var gap = 24;
+          var w = (items[0].offsetWidth || 320) + gap;
+          var idx = Math.round(gallery.scrollLeft / w);
+          idx = Math.max(0, Math.min(idx, items.length - 1));
+          counter.textContent = String(idx + 1).padStart(2, "0");
         }
         if (rm) {
           // reduced-motion: static without snap auto
@@ -703,16 +705,14 @@
           if(tick) return;
           tick=true;
           requestAnimationFrame(function(){
-            updateProgress();
+            updateCounter();
             tick=false;
           });
         }, {passive:true});
-        window.addEventListener("resize", updateProgress, {passive:true});
-        // initial
-        requestAnimationFrame(updateProgress);
-        // also observe scrollWidth changes
+        window.addEventListener("resize", updateCounter, {passive:true});
+        requestAnimationFrame(updateCounter);
         if ("ResizeObserver" in window) {
-          var ro = new ResizeObserver(function(){ updateProgress(); });
+          var ro = new ResizeObserver(function(){ updateCounter(); });
           ro.observe(gallery);
         }
 
@@ -984,12 +984,13 @@
         var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
         camera.position.set(0, 0.6, 4.2);
 
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        var dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 1.5);
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+        var dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.25);
+        // limit pixel ratio on large screens for perf
 
         var renderer;
         try{
-          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !isMobile, alpha: true, powerPreference: 'low-power' });
         }catch(e){
           canvas.style.display='none'; if(fallback) fallback.style.display='block'; return;
         }
@@ -1110,35 +1111,33 @@
 
         var clock = new THREE.Clock();
 
+        // throttle to 30fps on mobile for perf
+        var frameSkip = isMobile ? 2 : 1, frameCount = 0;
         function loop(){
           if(!visible) return;
           animationId = requestAnimationFrame(loop);
+          frameCount++;
+          if(frameCount % frameSkip !== 0) return;
 
-          // smooth mouse lerp 0.06 for Apple spring feel — critically damped
           mouseX += (targetMouseX - mouseX) * 0.06;
           mouseY += (targetMouseY - mouseY) * 0.06;
 
           var t = clock.getElapsedTime();
 
-          // idle rotation y 0.002 + x 0.001 per frame ~ 0.12 rad/s at 60fps
           ico.rotation.y += 0.002;
           ico.rotation.x += 0.001;
           torus.rotation.y += 0.0012;
           torus.rotation.z += 0.0006;
 
-          // subtle float sin
           group.position.y = Math.sin(t * 0.35) * 0.06;
-          group.rotation.y = mouseX * 0.08; // ±0.08
+          group.rotation.y = mouseX * 0.08;
           group.rotation.x = -mouseY * 0.06;
 
-          // scroll -> camera z and y : scrollY * 0.0003  (skill)
-          scrollY += (latestScroll - scrollY) * 0.08; // lerp for smoothness
+          scrollY += (latestScroll - scrollY) * 0.08;
           var s = Math.min(scrollY * 0.0003, 0.8);
-          camera.position.z = 4.2 - s * 1.4; // subtle dolly
+          camera.position.z = 4.2 - s * 1.4;
           camera.position.y = 0.6 + s * 0.6;
           camera.lookAt(0, 0, 0);
-
-          // mouse parallax ±0.1 on camera x/y (Apple velocity handoff)
           camera.position.x += (mouseX * 0.1 - camera.position.x) * 0.05;
 
           renderer.render(scene, camera);

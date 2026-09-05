@@ -379,19 +379,17 @@
           ctx.fillStyle='#FFFFFF';
           ctx.textAlign='center'; ctx.textBaseline='middle';
           ctx.font='800 54px Inter, sans-serif';
-          ctx.fillText('Стол собран.', 512, 190);
+          ctx.fillText('Система собрана.', 512, 190);
           ctx.font='800 54px Inter, sans-serif';
-          // red accent for second line
           const grad = ctx.createLinearGradient(0,0,1024,0);
-          // keep white
           ctx.fillStyle='#FFFFFF';
-          ctx.fillText('Смотрите детали.', 512, 260);
+          ctx.fillText('Смотрите кейсы.', 512, 260);
           ctx.fillStyle='rgba(255,255,255,0.72)';
           ctx.font='400 18px JetBrains Mono, monospace';
-          ctx.fillText('сборка по скроллу · 12 частей · dark #0A0A0F', 512, 340);
+          ctx.fillText('scroll to fly · 5 кейсов · dark #0A0A0F', 512, 340);
           ctx.fillStyle='rgba(255,59,48,0.95)';
           ctx.font='700 13px JetBrains Mono, monospace';
-          ctx.fillText('ILLIA  ·  170 / 4844  ·  placeholder', 512, 395);
+          ctx.fillText('ILLIA  ·  Python · Telegram · RAG  ·  2026', 512, 395);
           // dot
           ctx.fillStyle='#FF3B30'; ctx.beginPath(); ctx.arc(512, 435, 4, 0, Math.PI*2); ctx.fill();
           const tex=new THREE.CanvasTexture(c); tex.colorSpace=THREE.SRGBColorSpace; tex.wrapS=THREE.RepeatWrapping; tex.wrapT=THREE.RepeatWrapping; tex.needsUpdate=true; return tex;
