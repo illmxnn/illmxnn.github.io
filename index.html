@@ -135,12 +135,12 @@
     <section id="projects" class="section">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow" data-i18n="projEyebrow">Проекты — только подтверждённое</p>
+          <p class="eyebrow" data-i18n="projEyebrow">Проекты — сложные бэкенды, не только CRM</p>
           <div class="section__title-row">
             <span class="section__kicker" aria-hidden="true">01</span>
-            <h2 class="section__title" data-i18n="projTitle">Четыре кейса с цифрами. Пятый — по запросу, NDA-safe.</h2>
+            <h2 class="section__title" data-i18n="projTitle">От хаоса — к системе без ручной сверки. 5 кейсов.</h2>
           </div>
-          <p class="section__sub" data-i18n="projSub">Каждый кейс: проблема → моё решение → стек → измеренный результат. Без «Advanced», «Lead», «выручка» — только то, что прошло тесты и экспорт.</p>
+          <p class="section__sub" data-i18n="projSub">Каждый кейс: проблема бизнеса → что сделал → что получите вы. Авто — один из примеров, тот же подход для магазина, недвижимости, услуг.</p>
         </div>
 
         <div class="projects">
@@ -300,19 +300,19 @@
                 <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
               </div>
             </div>
-            <div class="card__eyebrow">JustCars Exporter · Telegram + FastAPI</div>
-            <h3 class="card__title" data-i18n="card4Title">Детерминированный экспорт 170 авто / 4 844 фото</h3>
+            <div class="card__eyebrow">Exporter · Telegram + FastAPI — паттерн для любого импортёра</div>
+            <h3 class="card__title" data-i18n="card4Title">Детерминированный экспорт 100-500 позиций</h3>
             <div class="card__grid">
               <div class="card__col">
                 <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card4Prob">перенос каталога в CRM вручную — ошибки цен, потерянные фото</p>
+                <p class="card__col-text" data-i18n="card4Prob">перенос каталога товаров/услуг в CRM/1С вручную — ошибки, потери</p>
               </div>
               <div class="card__col">
                 <p class="card__col-head">Решение</p>
                 <ul class="card__bullets">
-                  <li data-i18n="card4Sol1">экспорт-only, 24 заголовка, нормализация PLN/EUR</li>
-                  <li data-i18n="card4Sol2">детерминированные изображения, валидация dry-run 9 тестов</li>
-                  <li data-i18n="card4Sol3">24/24 headers no diff, 1.8s, обезличенно</li>
+                  <li data-i18n="card4Sol1">экспорт-only, 24 заголовка, нормализация цен</li>
+                  <li data-i18n="card4Sol2">детерминированные фото, валидация 9 тестов</li>
+                  <li data-i18n="card4Sol3">24/24 headers no diff, 1.8s — пример 170/4844</li>
                 </ul>
               </div>
               <div class="card__col card__result-col">
@@ -346,8 +346,8 @@
               <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;<span data-i18n="onReq1Stack">TypeScript / Bun / Postgres / gateway + virtual keys</span></div>
             </div>
             <div class="onrequest__item">
-              <h4 data-i18n="onReq2Title">MorCars CRM — брони, тарифы, OCR</h4>
-              <p data-i18n="onReq2Desc">Бэкенд/фронт для бронирований, расчёты тарифов/депозитов, OCR документов, XLSX-импорт флота, тесты и деплой. Без клиентских деталей — только подход и скринкаст по запросу.</p>
+              <h4 data-i18n="onReq2Title">CRM с каталогом и бронями — на примере 170 позиций</h4>
+              <p data-i18n="onReq2Desc">Парсер → CRM: 172 позиции, дедуп 243→172, XLSX тарифов, калькулятор 92/100, брони с логикой “от офиса / от адреса”. Тот же подход для товаров, квартир, услуг — чистый каталог и импорт без правки.</p>
               <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;<span data-i18n="onReq2Stack">Python / FastAPI / OCR / XLSX-import + Telegram</span></div>
             </div>
           </div>
