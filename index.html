@@ -144,6 +144,53 @@
         </div>
 
         <div class="projects">
+          <!-- LedStil — самый большой -->
+          <article class="card card--accent reveal" data-delay="0">
+            <div class="card__media">
+              <div class="carousel" role="region" aria-roledescription="carousel" aria-label="LedStil — 3 кадра">
+                <div class="carousel__slide is-active"><img src="https://picsum.photos/seed/illia-ledstil/600/400" srcset="https://picsum.photos/seed/illia-ledstil/300/200 300w, https://picsum.photos/seed/illia-ledstil/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="LedStil — каталог освещения 1" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+                <div class="carousel__slide"><img src="https://picsum.photos/seed/illia-ledstil2/600/400" srcset="https://picsum.photos/seed/illia-ledstil2/300/200 300w, https://picsum.photos/seed/illia-ledstil2/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="LedStil — каталог освещения 2" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+                <div class="carousel__slide"><img src="https://picsum.photos/seed/illia-ledstil3/600/400" srcset="https://picsum.photos/seed/illia-ledstil3/300/200 300w, https://picsum.photos/seed/illia-ledstil3/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="LedStil — каталог освещения 3" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+              </div>
+              <span class="card__media-badge">PHP · 2500+ товаров · флагман</span>
+              <div class="carousel__dots" role="tablist" aria-label="Навигация по слайдам">
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 1 из 3" aria-current="true" aria-selected="true"></button>
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 2 из 3" aria-selected="false"></button>
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
+              </div>
+            </div>
+            <div class="card__eyebrow">LedStil · E-commerce — самый большой</div>
+            <h3 class="card__title">Магазин-каталог 2500+ товаров, 500+ категорий</h3>
+            <div class="card__grid">
+              <div class="card__col">
+                <p class="card__col-head">Проблема</p>
+                <p class="card__col-text">тысячи товаров, атрибуты в хаосе, админка без защит, тормозит</p>
+              </div>
+              <div class="card__col">
+                <p class="card__col-head">Решение</p>
+                <ul class="card__bullets">
+                  <li>PHP без фреймворка, генерация `public/products/{ua,ru}`, .htaccess</li>
+                  <li>аудит 5 Critical — закрыл анонимные записи, CSRF, traversal, секреты</li>
+                  <li>сортировка атрибутов per категории + drag&drop + autosave 30s</li>
+                </ul>
+              </div>
+              <div class="card__col card__result-col">
+                <p class="card__col-head">Результат</p>
+                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span>2500+ страниц, 500+ категорий</span></span>
+                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);">Генерация 54/2534, mobile 390/768/1280 без overflow</p>
+              </div>
+            </div>
+            <div class="card__stack" aria-label="Стек">
+              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Apache</span><span class="tag">Security audit</span><span class="tag">Responsive</span>
+            </div>
+            <div class="card__facts" aria-label="Факты">
+              <span class="card__fact">2500+</span><span class="card__fact">500+</span><span class="card__fact">5 Critical fix</span>
+            </div>
+            <div class="card__actions">
+              <span class="card__hint">Демо по запросу, NDA-safe</span>
+            </div>
+          </article>
+
           <!-- DocumentAnalyzer -->
           <article class="card reveal" data-delay="0">
             <div class="card__media">
@@ -159,19 +206,19 @@
                 <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
               </div>
             </div>
-            <div class="card__eyebrow">DocumentAnalyzer · Desktop</div>
-            <h3 class="card__title" data-i18n="card1Title">Поиск по PDF, DOCX, HTML, TXT, RAR — локально</h3>
+            <div class="card__eyebrow">DocumentAnalyzer · Desktop — паттерн для любого архива</div>
+            <h3 class="card__title" data-i18n="card1Title">Поиск по документам — локально, без облака</h3>
             <div class="card__grid">
               <div class="card__col">
                 <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card1Prob">документы разбросаны по форматам, поиск вручную — долго и без релевантности</p>
+                <p class="card__col-text" data-i18n="card1Prob">документы / договоры / сканы разбросаны — поиск вручную, без релевантности и без цитат</p>
               </div>
               <div class="card__col">
                 <p class="card__col-head">Решение</p>
                 <ul class="card__bullets">
-                  <li data-i18n="card1Sol1">инкрементальная индексация, SQLite FTS</li>
-                  <li data-i18n="card1Sol2">OCR-fallback (Tesseract/Poppler), много-поточный батч</li>
-                  <li data-i18n="card1Sol3">батч 160 файлов, подсветка, дедуп, экспорт snippet</li>
+                  <li data-i18n="card1Sol1">инкрементальная индексация, SQLite FTS, подсветка</li>
+                  <li data-i18n="card1Sol2">OCR для сканов (Tesseract), батч 160 файлов</li>
+                  <li data-i18n="card1Sol3">дедуп + экспорт сниппета, офлайн</li>
                 </ul>
               </div>
               <div class="card__col card__result-col">
@@ -206,19 +253,19 @@
                 <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
               </div>
             </div>
-            <div class="card__eyebrow">RAG Demo · Live репо</div>
-            <h3 class="card__title" data-i18n="card2Title">Hybrid RAG с цитатами и оцениваемостью</h3>
+            <div class="card__eyebrow">RAG Demo · Паттерн для любого бота/базы знаний</div>
+            <h3 class="card__title" data-i18n="card2Title">AI-поиск с цитатами и проверкой</h3>
             <div class="card__grid">
               <div class="card__col">
                 <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card2Prob">ответы LLM без источника — не проверить</p>
+                <p class="card__col-text" data-i18n="card2Prob">ответы ИИ без источника — не проверить, галлюцинации</p>
               </div>
               <div class="card__col">
                 <p class="card__col-head">Решение</p>
                 <ul class="card__bullets">
-                  <li data-i18n="card2Sol1">чанки 512 + overlap 50, гибрид RRF</li>
-                  <li data-i18n="card2Sol2">Qdrant, цитаты с page, lexical/semantic</li>
-                  <li data-i18n="card2Sol3">eval 13/13 supported + 3/3 unsupported</li>
+                  <li data-i18n="card2Sol1">чанки + гибрид (lexical + semantic) RRF</li>
+                  <li data-i18n="card2Sol2">Qdrant, цитаты со страницей, офлайн</li>
+                  <li data-i18n="card2Sol3">оценка 16 тестов, воспроизводимо</li>
                 </ul>
               </div>
               <div class="card__col card__result-col">
@@ -253,19 +300,19 @@
                 <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
               </div>
             </div>
-            <div class="card__eyebrow">Ingul · Static catalog</div>
-            <h3 class="card__title" data-i18n="card3Title">Каталог упаковки с галереями — быстро и адаптивно</h3>
+            <div class="card__eyebrow">Ingul · Витрина — паттерн для любого каталога</div>
+            <h3 class="card__title" data-i18n="card3Title">Быстрая витрина без CMS — на телефоне летает</h3>
             <div class="card__grid">
               <div class="card__col">
                 <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card3Prob">показать продукцию на телефоне — без галерей и адаптива тяжело</p>
+                <p class="card__col-text" data-i18n="card3Prob">показать товары/услуги на телефоне — без галерей тяжело</p>
               </div>
               <div class="card__col">
                 <p class="card__col-head">Решение</p>
                 <ul class="card__bullets">
-                  <li data-i18n="card3Sol1">static каталог, responsive ленты 12/14/18</li>
-                  <li data-i18n="card3Sol2">лайтбокс, 36 routes, a11y focus</li>
-                  <li data-i18n="card3Sol3">Pages deploy, без HScroll 390/768/1280</li>
+                  <li data-i18n="card3Sol1">static каталог, ленты 12/14/18, адаптив</li>
+                  <li data-i18n="card3Sol2">лайтбокс, 36 routes, a11y</li>
+                  <li data-i18n="card3Sol3">Pages, без HScroll 390/768/1280</li>
                 </ul>
               </div>
               <div class="card__col card__result-col">
