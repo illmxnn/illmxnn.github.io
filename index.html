@@ -137,9 +137,9 @@
           <p class="eyebrow" data-i18n="projEyebrow">Проекты — сложные бэкенды, не только CRM</p>
           <div class="section__title-row">
             <span class="section__kicker" aria-hidden="true">01</span>
-            <h2 class="section__title" data-i18n="projTitle">От хаоса — к системе без ручной сверки. 5 кейсов.</h2>
+            <h2 class="section__title" data-i18n="projTitle">От хаоса — к системе без ручной сверки. 6 кейсов.</h2>
           </div>
-          <p class="section__sub" data-i18n="projSub">Каждый кейс: проблема бизнеса → что сделал → что получите вы. Авто — один из примеров, тот же подход для магазина, недвижимости, услуг.</p>
+          <p class="section__sub" data-i18n="projSub">5 кейсов с цифрами. Шестой — по запросу, NDA-safe. Авто — один из примеров, тот же подход для магазина, недвижимости, услуг.</p>
         </div>
 
         <div class="projects">
@@ -377,6 +377,53 @@
               <a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="card4Link">Спросить про пайплайн →</a>
             </div>
           </article>
+
+          <!-- Payment Bots / Aivora — шестой -->
+          <article class="card reveal" data-delay="0">
+            <div class="card__media">
+              <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Payment Bots — 3 кадра">
+                <div class="carousel__slide is-active"><img src="https://picsum.photos/seed/illia-pay/600/400" srcset="https://picsum.photos/seed/illia-pay/300/200 300w, https://picsum.photos/seed/illia-pay/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="Payment Bots — Telegram платежи 1" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+                <div class="carousel__slide"><img src="https://picsum.photos/seed/illia-pay2/600/400" srcset="https://picsum.photos/seed/illia-pay2/300/200 300w, https://picsum.photos/seed/illia-pay2/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="Payment Bots — Telegram платежи 2" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+                <div class="carousel__slide"><img src="https://picsum.photos/seed/illia-pay3/600/400" srcset="https://picsum.photos/seed/illia-pay3/300/200 300w, https://picsum.photos/seed/illia-pay3/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="Payment Bots — Telegram платежи 3" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" /></div>
+              </div>
+              <span class="card__media-badge">Telegram · 15+ ботов</span>
+              <div class="carousel__dots" role="tablist" aria-label="Навигация по слайдам">
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 1 из 3" aria-current="true" aria-selected="true"></button>
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 2 из 3" aria-selected="false"></button>
+                <button class="carousel__dot" type="button" role="tab" aria-label="Слайд 3 из 3" aria-selected="false"></button>
+              </div>
+            </div>
+            <div class="card__eyebrow">Payment Bots · Telegram + Crypto — паттерн для любых платежей</div>
+            <h3 class="card__title">Боты, которые не падают на платежах</h3>
+            <div class="card__grid">
+              <div class="card__col">
+                <p class="card__col-head">Проблема</p>
+                <p class="card__col-text">бот теряет платежи, дубли списаний, нет HD-кошельков и свопа</p>
+              </div>
+              <div class="card__col">
+                <p class="card__col-head">Решение</p>
+                <ul class="card__bullets">
+                  <li>идемпотентность, 409/retry, вебхуки</li>
+                  <li>HD-кошельки TON/TRON/EVM, своп на холодный</li>
+                  <li>15+ ботов в проде, FSM, Mini App</li>
+                </ul>
+              </div>
+              <div class="card__col card__result-col">
+                <p class="card__col-head">Результат</p>
+                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span>15+ ботов, без дублей</span></span>
+                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);">Своп + 409, проверяемо</p>
+              </div>
+            </div>
+            <div class="card__stack" aria-label="Стек">
+              <span class="tag">Python</span><span class="tag">aiogram</span><span class="tag">TON</span><span class="tag">TRON</span><span class="tag">Docker</span>
+            </div>
+            <div class="card__facts" aria-label="Факты">
+              <span class="card__fact">15+ ботов</span><span class="card__fact">HD</span><span class="card__fact">409</span>
+            </div>
+            <div class="card__actions">
+              <a class="link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить платежи →</a>
+            </div>
+          </article>
         </div>
 
         <!-- On request -->
@@ -417,7 +464,7 @@
           <p class="section__sub" data-i18n="galSub">Плавные прокруты, параллакс фоток, один стиль: тёплая бумага, почти чёрный, красный сигнал. Фото анимируются при скролле — лёгкий zoom + fade, уважает reduced-motion.</p>
         </div>
         <div class="gallery-wrap reveal" data-delay="1">
-          <div class="gallery__counter" aria-live="polite" aria-label="Позиция в галерее"><strong id="galleryCounter">01</strong>&nbsp;—&nbsp;05</div>
+          <div class="gallery__counter" aria-live="polite" aria-label="Позиция в галерее"><strong id="galleryCounter">01</strong>&nbsp;—&nbsp;06</div>
           <div class="gallery" role="list" aria-label="Галерея примеров">
             <figure class="gallery__item" role="listitem">
               <div class="gallery__media">
@@ -457,6 +504,14 @@
               </div>
               <figcaption>
                 <strong data-i18n="gal5Title">LedStil</strong> <span data-i18n="gal5Desc">— 2500+ товаров, флагман</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <div class="gallery__media">
+                <img src="https://picsum.photos/seed/illia-pay-wide/600/400" srcset="https://picsum.photos/seed/illia-pay-wide/300/200 300w, https://picsum.photos/seed/illia-pay-wide/600/400 600w" sizes="(max-width:640px) 260px, 340px" alt="Payment Bots" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" />
+              </div>
+              <figcaption>
+                <strong>Payment Bots</strong> <span>— 15+ ботов, без дублей</span>
               </figcaption>
             </figure>
           </div>
