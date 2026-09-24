@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Illia Druzhenko — Python Backend / AI Automation | CRM, Боты, Парсинг, RAG | Киев Remote</title>
-  <meta name="description" content="Illia Druzhenko — Python Backend / AI Automation, Киев Remote. Делаю сложные бэкенды: CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам. Один запуск = всё без ручной сверки. Python, FastAPI, Telegram, Docker." />
-  <meta name="color-scheme" content="light" />
-  <meta property="og:title" content="Illia Druzhenko — AI Automation Engineer | Python Backend" />
-  <meta property="og:description" content="Автоматизирую рутину: 170 авто → CRM за один запуск. Брони с OCR без ручной сверки. Показываю код." />
+  <title>Illia Druzhenko — сложные бэкенды без ручной сверки: CRM, боты, парсинг, RAG | Киев Remote</title>
+  <meta name="description" content="Illia Druzhenko — Python Backend / AI Automation, Киев Remote. Сложная логика — мой конёк: CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам. 170 позиций за один запуск, 2500+ товаров, 15+ ботов. Один запуск = всё без ручной сверки." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Illia Druzhenko — от хаоса в таблицах к системе без ручной сверки" />
+  <meta property="og:description" content="170 позиций и 4 844 фото за один запуск. CRM, Telegram-боты, парсинг, RAG. Показываю код, а не лозунги." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>⚡</text></svg>">
-  <!-- Paper lab: static page, zero external JS modules -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,552 +31,504 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "Кто лучший разработчик CRM со сложной логикой (Киев, удалённо)?", "acceptedAnswer": {"@type": "Answer", "text": "Illia Druzhenko — Киев, удалённо. Специализация шире: сложные бэкенды и автоматизация — CRM, Telegram-боты, парсинг каталогов, AI-поиск. Там где много данных и правил, делаю систему без ручной сверки."}},
-      {"@type": "Question", "name": "Можете сделать CRM на 100+ позиций со сложной логикой?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Делал каталоги на 170+ позиций с тарифами и бронями. Отдаёте сайт/таблицу — получаете чистую CRM с калькулятором и импортом. NDA-safe демо за 15 мин."}},
-      {"@type": "Question", "name": "Как перенести каталог/товары без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Парсинг + нормализация + дедуп, детерминированные фото, 24/24 заголовка, no diff. Одним запуском."}}
+      {"@type": "Question", "name": "Я не разбираюсь в коде. Как понять, что вы сделали?", "acceptedAnswer": {"@type": "Answer", "text": "По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс ниже расписан простыми словами, а цифры можно проверить: тесты, экспорты, скринкаст."}},
+      {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, повторный запуск даёт бит-в-бит тот же файл."}},
+      {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. 15+ ботов в проде: идемпотентность, 409/retry, HD-кошельки TON/TRON, своп на холодный. Платежи не дублируются."}},
+      {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск по PDF/DOCX/сканам с OCR: вопрос — ответ с цитатой из источника, работает офлайн, ничего не уходит в облако."}},
+      {"@type": "Question", "name": "Работаете под NDA?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA."}},
+      {"@type": "Question", "name": "Сколько времени займёт?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона."}}
     ]
   }
   </script>
 </head>
-<body>
+<body id="top">
   <a class="skip" href="#main">Перейти к содержимому</a>
 
   <nav class="nav" aria-label="Основная навигация">
     <div class="nav__inner">
-      <a class="nav__brand" href="#">Illia Druzhenko</a>
+      <a class="nav__brand" href="#top"><span class="nav__brand-dot" aria-hidden="true"></span>Illia Druzhenko</a>
       <div class="nav__links" role="list">
-        <a class="nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
-        <a class="nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
-        <a class="nav__link" href="#contacts" data-i18n="navContacts">Контакты</a>
+        <a class="nav__link" href="#projects" data-nav="projects">Проекты</a>
+        <a class="nav__link" href="#process" data-nav="process">Процесс</a>
+        <a class="nav__link" href="#faq" data-nav="faq">FAQ</a>
+        <a class="nav__link" href="#contacts" data-nav="contacts">Контакты</a>
       </div>
       <div class="nav__actions">
-        <button id="langToggle" class="nav__lang" type="button" aria-label="Switch to English">EN</button>
-        <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать →</a>
+        <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать →</a>
       </div>
+      <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">☰</button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a class="nav__link" href="#projects">Проекты</a>
+      <a class="nav__link" href="#process">Процесс</a>
+      <a class="nav__link" href="#faq">FAQ</a>
+      <a class="nav__link" href="#contacts">Контакты</a>
+      <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать →</a>
     </div>
   </nav>
 
   <main id="main">
-    <!-- Hero — Paper lab: drafting grid + live console + pipeline scheme -->
-    <section class="hero-wrap hero-wrap--lab" aria-labelledby="hero-title">
+    <!-- Hero -->
+    <section class="hero-wrap" aria-labelledby="hero-title">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"></div>
+      <div class="hero-veil" aria-hidden="true"></div>
       <div class="container hero">
         <div class="hero__content">
-          <p class="eyebrow reveal" data-i18n="heroEyebrow">Python Backend / AI Automation &nbsp;·&nbsp; CRM · Боты · Парсинг · RAG &nbsp;·&nbsp; Киев · Remote</p>
-          <h1 id="hero-title" class="hero__h1 reveal" data-delay="1" data-i18n="heroTitle">Делаю сложные бэкенды: <span class="accent-underline">от хаоса — к системе</span> без ручной сверки.</h1>
-          <p class="hero__sub reveal" data-delay="2" data-i18n="heroSub"><span class="hero__sub-lead">Сложная логика — мой конёк: CRM, боты, парсинг, AI-поиск.</span> Там, где много данных и правил, делаю систему, где ошибка невозможна. Один запуск = всё готово. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.</p>
+          <p class="eyebrow reveal">Python Backend / AI Automation · CRM · Боты · Парсинг · RAG · Киев · Remote</p>
+          <h1 id="hero-title" class="hero__h1 reveal" data-delay="1">От хаоса в таблицах — к системе <span class="grad-text">без ручной сверки</span>.</h1>
+          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото собираются за один запуск.</span> CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам — там, где много данных и правил, делаю так, чтобы ошибка стала невозможна. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.</p>
           <div class="hero__ctas reveal" data-delay="2">
-            <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="heroCta1">Посмотреть GitHub →</a>
-            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="heroCta2">Написать в Telegram — отвечу сегодня</a>
+            <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код на GitHub →</a>
+            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram — отвечу сегодня</a>
           </div>
-          <p class="hero__note reveal" data-i18n="heroNote">DUICT, 3-й курс · B2 English · Доступен для Remote Ukraine / Worldwide</p>
-
-          <div class="evidence reveal" data-delay="3" aria-label="Подтверждённые метрики">
+          <p class="hero__note reveal">DUICT, 3-й курс · B2 English · Remote Ukraine / Worldwide</p>
+          <div class="evidence reveal" data-delay="2" aria-label="Подтверждённые метрики">
             <div class="evidence__item">
-              <div class="evidence__num">170 / 4 844</div>
-              <div class="evidence__label" data-i18n="ev1">Авто / изображений — один экспорт</div>
+              <div class="evidence__num"><span class="grad-text">170 / 4 844</span></div>
+              <div class="evidence__label">Позиций / фото — один экспорт</div>
             </div>
             <div class="evidence__item">
-              <div class="evidence__num">16</div>
-              <div class="evidence__label" data-i18n="ev2">Тестов RAG-демо (13+3)</div>
+              <div class="evidence__num">2 500+</div>
+              <div class="evidence__label">Товаров в каталоге-флагмане</div>
             </div>
             <div class="evidence__item">
               <div class="evidence__num">656+</div>
-              <div class="evidence__label" data-i18n="ev3">Тестов CRM (пик)</div>
+              <div class="evidence__label">Тестов CRM на пике</div>
             </div>
             <div class="evidence__item">
-              <div class="evidence__num">Qdrant + FTS</div>
-              <div class="evidence__label" data-i18n="ev4">Hybrid поиск с цитатами</div>
+              <div class="evidence__num">15+</div>
+              <div class="evidence__label">Ботов в проде</div>
             </div>
           </div>
         </div>
 
-        <div class="hero__visual reveal" data-delay="1" aria-hidden="true">
-          <div class="lab-console">
-            <div class="lab-console__head">
+        <div class="hero__visual reveal" data-delay="1">
+          <div class="glass-console" data-tilt aria-label="Детерминированный прогон экспортёра">
+            <div class="glass-console__head">
               <span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span>
-              <span class="lab-console__title">exporter — deterministic run</span>
-              <span class="lab-console__badge">PASS</span>
+              <span class="glass-console__title">exporter — deterministic run</span>
+              <span class="glass-console__badge">PASS</span>
             </div>
-            <pre class="lab-console__code"><code id="labTyping"># JustCars Exporter — FastAPI + Telegram
-&gt; validate headers: 24 / 24 OK
-&gt; normalize prices: 170 rows
-&gt; images: 4 844 deterministic
-&gt; write XLSX / XML: done in 1.8s
-&gt; import check — no diff
+            <pre class="glass-console__code"><code><span class="dim"># каталог 170 позиций → импортёр</span>
+&gt; validate headers ......... <span class="ok">24 / 24 OK</span>
+&gt; normalize prices ......... <span class="ok">170 rows</span>
+&gt; images ................... <span class="ok">4 844 deterministic</span>
+&gt; write XLSX / XML ......... <span class="ok">done in 1.8s</span>
+&gt; import check ............. <span class="ok">no diff</span>
 
-# RAG Demo — hybrid retrieval
-&gt; chunking + lexical / semantic / hybrid
-&gt; Qdrant citations: 16 tests pass</code><span class="lab-caret"></span></pre>
-            <svg class="lab-flow" viewBox="0 0 360 92" role="img" aria-label="Схема пайплайна: парсинг, нормализация, импорт">
-              <defs>
-                <marker id="labArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                  <path d="M0,0 L8,4 L0,8" fill="none" stroke="#6E7681" stroke-width="1.4" />
-                </marker>
-              </defs>
-              <line class="flow-edge" x1="110" y1="46" x2="126" y2="46" marker-end="url(#labArrow)" />
-              <line class="flow-edge" x1="232" y1="46" x2="248" y2="46" marker-end="url(#labArrow)" />
-              <g>
-                <rect class="node-box" x="8" y="26" width="100" height="40" rx="10" />
-                <text class="node-text" x="58" y="50" text-anchor="middle">парсинг</text>
-              </g>
-              <g>
-                <rect class="node-box" x="130" y="26" width="100" height="40" rx="10" />
-                <text class="node-text" x="180" y="50" text-anchor="middle">нормализация</text>
-              </g>
-              <g>
-                <rect class="node-box" x="252" y="26" width="100" height="40" rx="10" />
-                <text class="node-text" x="302" y="50" text-anchor="middle">импорт</text>
-              </g>
-            </svg>
-            <div class="lab-console__foot">
+<span class="dim"># RAG Demo — честный отказ без evidence</span>
+&gt; POST /query .............. <span class="ok">200</span>
+&gt; sufficient_evidence ...... <span class="ok">false → без выдумок</span></code><span class="glass-caret" aria-hidden="true"></span></pre>
+            <div class="glass-console__foot">
               <span>Python · FastAPI · Docker · SQLite FTS</span>
-              <span class="lab-console__foot-accent">без ручной сверки</span>
+              <span class="glass-console__foot-accent">без ручной сверки</span>
             </div>
           </div>
-          <p class="hero__visual-caption" data-i18n="heroCaption">Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.</p>
+          <p class="hero__visual-caption">Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.</p>
         </div>
       </div>
     </section>
 
+    <!-- Marquee -->
+    <div class="marquee" aria-label="Ключевые цифры">
+      <div class="marquee__track" aria-hidden="true">
+        <span class="marquee__item"><strong>170 / 4 844</strong> один экспорт</span>
+        <span class="marquee__item"><strong>24 / 24</strong> заголовка под импортёр</span>
+        <span class="marquee__item"><strong>1.8s</strong> вместо 2 недель сверки</span>
+        <span class="marquee__item"><strong>no diff</strong> повторный прогон</span>
+        <span class="marquee__item"><strong>2 500+</strong> товаров · <strong>500+</strong> категорий</span>
+        <span class="marquee__item"><strong>15+</strong> ботов в проде</span>
+        <span class="marquee__item"><strong>170 / 4 844</strong> один экспорт</span>
+        <span class="marquee__item"><strong>24 / 24</strong> заголовка под импортёр</span>
+        <span class="marquee__item"><strong>1.8s</strong> вместо 2 недель сверки</span>
+        <span class="marquee__item"><strong>no diff</strong> повторный прогон</span>
+        <span class="marquee__item"><strong>2 500+</strong> товаров · <strong>500+</strong> категорий</span>
+        <span class="marquee__item"><strong>15+</strong> ботов в проде</span>
+      </div>
+    </div>
+
     <!-- Projects -->
-    <section id="projects" class="section">
+    <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow" data-i18n="projEyebrow">Проекты — сложные бэкенды, не только CRM</p>
-          <div class="section__title-row">
-            <span class="section__kicker" aria-hidden="true">01</span>
-            <h2 class="section__title" data-i18n="projTitle">От хаоса — к системе без ручной сверки. 6 кейсов.</h2>
-          </div>
-          <p class="section__sub" data-i18n="projSub">5 кейсов с цифрами. Шестой — по запросу, NDA-safe. Авто — один из примеров, тот же подход для магазина, недвижимости, услуг.</p>
+          <p class="eyebrow">Проекты — с реальными кадрами</p>
+          <h2 class="section__title" id="projects-title">6 кейсов: было «вручную и с ошибками» — стало <span class="grad-text">«одним запуском»</span>.</h2>
+          <p class="section__sub">Каждый кейс — дважды: простыми словами и технически. Переключайте табы. Все кадры — настоящие: интерфейс, терминал, код и страницы репозиториев, честно подписанные.</p>
         </div>
 
         <div class="projects">
-          <!-- LedStil — самый большой -->
-          <article class="card card--accent reveal" data-delay="0">
-            <div class="lab-scheme" role="img" aria-label="Схема: каталог, аудит, генерация">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sLedArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sLedArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sLedArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">каталог</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">аудит</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">генерация</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">PHP · 2500+ товаров · флагман</span>
+          <!-- 1. LedStil -->
+          <article class="case case--flag reveal" data-tilt aria-labelledby="case-ledstil">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/ledstil-catalog-1280.png" alt="Каталог LedStil в браузере: сетка товаров" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ каталог LedStil в браузере, desktop · реальный кадр</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/ledstil-card-390.png" alt="Карточка товара LedStil на телефоне" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ карточка товара, mobile 390 · реальный кадр</p>
             </div>
-            <div class="card__eyebrow">LedStil · E-commerce — самый большой</div>
-            <h3 class="card__title">Магазин-каталог 2500+ товаров, 500+ категорий</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text">тысячи товаров, атрибуты в хаосе, админка без защит, тормозит</p>
+            <div class="case__body">
+              <p class="case__eyebrow">LedStil · E-commerce — флагман, самый большой</p>
+              <h3 class="case__title" id="case-ledstil">Магазин на 2 500+ товаров, где порядок наводится перетаскиванием</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="LedStil: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-simple" aria-controls="panel-ledstil-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-tech" aria-controls="panel-ledstil-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-ledstil-simple" aria-labelledby="tab-ledstil-simple" tabindex="0">
+                  <p>Тысячи товаров лежали в хаосе: категории, характеристики, фото — всё вразнобой, а сайт тормозил.</p>
+                  <p>Я навёл порядок: категории и характеристики разложены, лишнее закрыто от посторонних, а товары можно сортировать мышкой — перетащил и сохранилось само.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-ledstil-tech" aria-labelledby="tab-ledstil-tech" tabindex="0" hidden>
+                  <p>PHP без фреймворка, генерация <code>public/products/{ua,ru}</code>, <code>.htaccess</code>-маршруты. Аудит безопасности: закрыты 5 Critical — анонимные записи, CSRF, traversal, секреты в публичной зоне.</p>
+                  <p>Сортировка атрибутов per категории + drag&amp;drop с автосохранением каждые 30 секунд. Адаптив 390 / 768 / 1280 без горизонтального скролла.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li>PHP без фреймворка, генерация `public/products/{ua,ru}`, .htaccess</li>
-                  <li>аудит 5 Critical — закрыл анонимные записи, CSRF, traversal, секреты</li>
-                  <li>сортировка атрибутов per категории + drag&drop + autosave 30s</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span>2500+ страниц, 500+ категорий</span></span>
-                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);">Генерация 54/2534, mobile 390/768/1280 без overflow</p>
-              </div>
-            </div>
-            <div class="card__stack" aria-label="Стек">
-              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Apache</span><span class="tag">Security audit</span><span class="tag">Responsive</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">2500+</span><span class="card__fact">500+</span><span class="card__fact">5 Critical fix</span>
-            </div>
-            <div class="card__actions">
-              <span class="card__hint">Демо по запросу, NDA-safe</span>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>2 500+ страниц · 500+ категорий · 5 Critical-уязвимостей закрыто</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Apache</span><span class="tag">Security audit</span><span class="tag">Responsive</span></div>
+              <p style="margin:12px 0 0; font-size:13px; color: var(--text-tertiary);">Демо по запросу, NDA-safe — покажу скринкаст.</p>
             </div>
           </article>
 
-          <!-- DocumentAnalyzer -->
-          <article class="card reveal" data-delay="0">
-            <div class="lab-scheme" role="img" aria-label="Схема: сканы, FTS-индекс, поиск">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sDocArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sDocArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sDocArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">сканы</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">FTS</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">поиск</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">Desktop · offline</span>
+          <!-- 2. JustCars Exporter -->
+          <article class="case reveal" data-tilt aria-labelledby="case-justcars">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/justcars-help-1280.png" alt="Терминал: справка команды экспорта каталога" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ терминал: справка команды экспорта · реальный кадр</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/justcars-code-1280.png" alt="Фрагмент кода sync_catalog.py, строки 143–201: загрузка и повторы" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ фрагмент кода: sync_catalog.py, строки 143–201 · fallback-кадр</p>
             </div>
-            <div class="card__eyebrow">DocumentAnalyzer · Desktop — паттерн для любого архива</div>
-            <h3 class="card__title" data-i18n="card1Title">Поиск по документам — локально, без облака</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card1Prob">документы / договоры / сканы разбросаны — поиск вручную, без релевантности и без цитат</p>
+            <div class="case__body">
+              <p class="case__eyebrow">Exporter · Telegram + FastAPI — паттерн для любого импортёра</p>
+              <h3 class="case__title" id="case-justcars">Перенос 170 позиций в CRM без единой правки руками</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Exporter: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-simple" aria-controls="panel-justcars-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-tech" aria-controls="panel-justcars-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-justcars-simple" aria-labelledby="tab-justcars-simple" tabindex="0">
+                  <p>Перенос каталога вручную — это недели сверки: цены не сходятся, фото теряются, импортёр ругается на заголовки.</p>
+                  <p>Здесь — одна команда: цены нормализуются сами, фото раскладываются одинаково при каждом запуске, файл сразу принимает импортёр. Было 2 недели — стало 1.8 секунды.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-justcars-tech" aria-labelledby="tab-justcars-tech" tabindex="0" hidden>
+                  <p>Экспорт-only пайплайн: <code>24/24</code> заголовка под импортёр, нормализация цен PLN/EUR, детерминированные имена фото, валидация dry-run, 9 тестов. Интеграция: FastAPI <code>POST /import</code> + Telegram-бот.</p>
+                  <p>Повторный прогон — бит-в-бит тот же файл (<code>no diff</code>), импортёр не ругается.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li data-i18n="card1Sol1">инкрементальная индексация, SQLite FTS, подсветка</li>
-                  <li data-i18n="card1Sol2">OCR для сканов (Tesseract), батч 160 файлов</li>
-                  <li data-i18n="card1Sol3">дедуп + экспорт сниппета, офлайн</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span data-i18n="card1Result">FTS offline, без облака</span></span>
-                <p class="card__col-text" data-i18n="card1Run" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);">Запустить: PyInstaller .exe — двойной клик</p>
-              </div>
-            </div>
-            <div class="card__stack" aria-label="Стек">
-              <span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">SQLite FTS</span><span class="tag">Tesseract</span><span class="tag">Poppler</span><span class="tag">PyInstaller</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">FTS offline</span><span class="card__fact">160 файлов</span><span class="card__fact">.exe</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn/PDF-HTML-TXT-WORD-Document-Analyzer" target="_blank" rel="noopener" data-i18n="card1Link">Репозиторий →</a>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>170 позиций / 4 844 фото за 1.8s · 24/24 заголовка · no diff</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python 3.11</span><span class="tag">python-telegram-bot</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Docker</span></div>
+              <a class="case__link" href="https://github.com/illmxnn" target="_blank" rel="noopener">Спросить про пайплайн →</a>
             </div>
           </article>
 
-          <!-- RAG Demo -->
-          <article class="card reveal" data-delay="1">
-            <div class="lab-scheme" role="img" aria-label="Схема: чанки, hybrid-поиск, цитаты">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sRagArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sRagArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sRagArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">чанки</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">hybrid</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">цитаты</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">Qdrant · 16 tests</span>
+          <!-- 3. RAG Demo -->
+          <article class="case reveal" data-tilt aria-labelledby="case-rag">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/rag-docs-1280.png" alt="Swagger-документация RAG-сервиса" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ Swagger-документация сервиса · реальный кадр</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/rag-query-1280.png" alt="Ответ API: честный отказ при недостатке доказательств" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ ответ API: отказ без выдумок (sufficient_evidence: false) · реальный кадр</p>
             </div>
-            <div class="card__eyebrow">RAG Demo · Паттерн для любого бота/базы знаний</div>
-            <h3 class="card__title" data-i18n="card2Title">AI-поиск с цитатами и проверкой</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card2Prob">ответы ИИ без источника — не проверить, галлюцинации</p>
+            <div class="case__body">
+              <p class="case__eyebrow">RAG Demo · Паттерн для любой базы знаний</p>
+              <h3 class="case__title" id="case-rag">AI-поиск, который не выдумывает: нет доказательств — так и говорит</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="RAG: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-simple" aria-controls="panel-rag-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-tech" aria-controls="panel-rag-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-rag-simple" aria-labelledby="tab-rag-simple" tabindex="0">
+                  <p>Обычный чат-бот отвечает уверенно, даже когда не знает, — и проверить его нельзя.</p>
+                  <p>Этот поиск отвечает только с цитатой из вашего документа. А если доказательств мало — честно отказывается вместо выдумки. Видно на кадре справа.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-rag-tech" aria-labelledby="tab-rag-tech" tabindex="0" hidden>
+                  <p>FastAPI + lexical retrieval, чанкинг, evidence-gate: <code>sufficient_evidence:false</code> блокирует генерацию без опоры. Swagger Try-it-out, воспроизводимый запуск, 12 тестов.</p>
+                  <p>Паттерн масштабируется до гибрида <code>Qdrant + FTS</code> с цитатами и постраничными ссылками.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li data-i18n="card2Sol1">чанки + гибрид (lexical + semantic) RRF</li>
-                  <li data-i18n="card2Sol2">Qdrant, цитаты со страницей, офлайн</li>
-                  <li data-i18n="card2Sol3">оценка 16 тестов, воспроизводимо</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span data-i18n="card2Result">16 tests, rag-demo</span></span>
-                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);" data-i18n="card2Run">Запуск: docker compose up</p>
-              </div>
-            </div>
-            <div class="card__stack">
-              <span class="tag">FastAPI</span><span class="tag">Qdrant</span><span class="tag">Hybrid retrieval</span><span class="tag">Docker</span><span class="tag">Python</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">512 / 50</span><span class="card__fact">RRF</span><span class="card__fact">16 eval</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener" data-i18n="card2Link">Открыть rag-demo →</a>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>12 тестов · evidence-gate · запуск одной командой</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">FastAPI</span><span class="tag">Qdrant</span><span class="tag">Hybrid retrieval</span><span class="tag">Docker</span><span class="tag">Python</span></div>
+              <a class="case__link" href="https://github.com/illmxnn/rag-demo" target="_blank" rel="noopener">Открыть rag-demo →</a>
             </div>
           </article>
 
-          <!-- Ingul -->
-          <article class="card reveal" data-delay="0">
-            <div class="lab-scheme" role="img" aria-label="Схема: static, ленты, Pages">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sIngArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sIngArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sIngArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">static</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">ленты</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">Pages</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">Static · Pages</span>
+          <!-- 4. Ingul -->
+          <article class="case reveal" data-tilt aria-labelledby="case-ingul">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/ingul-catalog-1280.png" alt="Витрина Ingul в браузере на desktop" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ витрина Ingul, desktop · реальный кадр</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/ingul-catalog-390.png" alt="Витрина Ingul на телефоне" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ та же витрина, mobile 390 · реальный кадр</p>
             </div>
-            <div class="card__eyebrow">Ingul · Витрина — паттерн для любого каталога</div>
-            <h3 class="card__title" data-i18n="card3Title">Быстрая витрина без CMS — на телефоне летает</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card3Prob">показать товары/услуги на телефоне — без галерей тяжело</p>
+            <div class="case__body">
+              <p class="case__eyebrow">Ingul · Витрина — паттерн для любого каталога</p>
+              <h3 class="case__title" id="case-ingul">Витрина без CMS, которая на телефоне просто летает</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Ingul: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-simple" aria-controls="panel-ingul-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-tech" aria-controls="panel-ingul-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-ingul-simple" aria-labelledby="tab-ingul-simple" tabindex="0">
+                  <p>Клиенту нужно было показывать товары с телефона — быстро, без тяжёлой системы управления.</p>
+                  <p>Собрал лёгкую витрину: листается свайпом, фото открываются крупно, на телефоне ничего не тормозит и не уезжает за край.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-ingul-tech" aria-labelledby="tab-ingul-tech" tabindex="0" hidden>
+                  <p>Статика без CMS: ленты по <code>12/14/18</code> фото, лайтбокс с фокус-менеджментом, 36 роутов, деплой на Pages. Контрольные ширины 390 / 768 / 1280 — ноль горизонтального скролла.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li data-i18n="card3Sol1">static каталог, ленты 12/14/18, адаптив</li>
-                  <li data-i18n="card3Sol2">лайтбокс, 36 routes, a11y</li>
-                  <li data-i18n="card3Sol3">Pages, без HScroll 390/768/1280</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span data-i18n="card3Result">12 / 14 / 18 фото</span></span>
-                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);" data-i18n="card3Demo">Демо: 390/768/1280 без HScroll</p>
-              </div>
-            </div>
-            <div class="card__stack">
-              <span class="tag">HTML/CSS/JS</span><span class="tag">Responsive</span><span class="tag">GitHub Pages</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">12 / 14 / 18</span><span class="card__fact">36 routes</span><span class="card__fact">Pages</span>
-            </div>
-            <div class="card__actions">
-              <span class="card__hint" data-i18n="card3Hint">Демо по запросу — покажу скринкаст/ссылку</span>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>12 / 14 / 18 фото · 36 роутов · 390/768/1280 без скролла</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">HTML/CSS/JS</span><span class="tag">Responsive</span><span class="tag">GitHub Pages</span></div>
+              <p style="margin:12px 0 0; font-size:13px; color: var(--text-tertiary);">Демо по запросу — покажу скринкаст и ссылку.</p>
             </div>
           </article>
 
-          <!-- JustCars Exporter -->
-          <article class="card card--accent reveal" data-delay="1">
-            <div class="lab-scheme" role="img" aria-label="Схема: парсинг, нормализация, импорт">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sCarArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sCarArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sCarArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">парсинг</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">нормализация</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">импорт</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">170 / 4 844 · deterministic</span>
+          <!-- 5. DocumentAnalyzer -->
+          <article class="case reveal" data-tilt aria-labelledby="case-docs">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/docs-analyzer-repo-1280.png" alt="Страница репозитория DocumentAnalyzer на GitHub" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ страница репозитория на GitHub · кадр-подмена GUI (desktop-программу в браузере не снять)</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/docs-analyzer-code-1280.png" alt="Фрагмент кода src/core/search.py из репозитория" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ фрагмент кода: src/core/search.py · кадр-подмена GUI, честно</p>
             </div>
-            <div class="card__eyebrow">Exporter · Telegram + FastAPI — паттерн для любого импортёра</div>
-            <h3 class="card__title" data-i18n="card4Title">Детерминированный экспорт 100-500 позиций</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text" data-i18n="card4Prob">перенос каталога товаров/услуг в CRM/1С вручную — ошибки, потери</p>
+            <div class="case__body">
+              <p class="case__eyebrow">DocumentAnalyzer · Desktop — паттерн для любого архива</p>
+              <h3 class="case__title" id="case-docs">Поиск по документам и сканам — локально, без облака</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Analyzer: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-simple" aria-controls="panel-docs-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-tech" aria-controls="panel-docs-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-docs-simple" aria-labelledby="tab-docs-simple" tabindex="0">
+                  <p>Договоры и сканы лежат по папкам — найти нужный вручную почти невозможно.</p>
+                  <p>Программа ищет по всем файлам сразу, понимает даже отсканированные страницы и показывает, где именно нашла. Всё хранится у вас — ничего не уходит в интернет.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-docs-tech" aria-labelledby="tab-docs-tech" tabindex="0" hidden>
+                  <p>PySide6 + SQLite FTS: инкрементальная индексация, подсветка совпадений, дедуп, экспорт сниппета. OCR-фолбэк (Tesseract/Poppler) многопоточным батчем, сборка в <code>.exe</code> через PyInstaller — запуск двойным кликом.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li data-i18n="card4Sol1">экспорт-only, 24 заголовка, нормализация цен</li>
-                  <li data-i18n="card4Sol2">детерминированные фото, валидация 9 тестов</li>
-                  <li data-i18n="card4Sol3">24/24 headers no diff, 1.8s — пример 170/4844</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span data-i18n="card4Result">170 / 4 844 за прогон</span></span>
-                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);" data-i18n="card4Run">Интеграция: FastAPI POST /import + Telegram</p>
-              </div>
-            </div>
-            <div class="card__stack">
-              <span class="tag">Python 3.11</span><span class="tag">python-telegram-bot</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Docker</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">24/24</span><span class="card__fact">PLN/EUR</span><span class="card__fact">1.8s</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="card4Link">Спросить про пайплайн →</a>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>FTS офлайн · батч 160 файлов · запуск двойным кликом</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">SQLite FTS</span><span class="tag">Tesseract</span><span class="tag">PyInstaller</span></div>
+              <a class="case__link" href="https://github.com/illmxnn/PDF-HTML-TXT-WORD-Document-Analyzer" target="_blank" rel="noopener">Репозиторий →</a>
             </div>
           </article>
 
-          <!-- Payment Bots / Aivora — шестой -->
-          <article class="card reveal" data-delay="0">
-            <div class="lab-scheme" role="img" aria-label="Схема: платежи, защита от дублей, своп">
-              <svg viewBox="0 0 340 84" aria-hidden="true">
-                <defs>
-                  <marker id="sPayArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M0,0 L8,4 L0,8" fill="none" stroke="#9A9A94" stroke-width="1.4" />
-                  </marker>
-                </defs>
-                <line class="flow-edge" x1="106" y1="42" x2="118" y2="42" marker-end="url(#sPayArrow)" />
-                <line class="flow-edge" x1="220" y1="42" x2="232" y2="42" marker-end="url(#sPayArrow)" />
-                <g>
-                  <rect class="node-box" x="8" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="56" y="47" text-anchor="middle">платежи</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="122" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="170" y="47" text-anchor="middle">409 · retry</text>
-                </g>
-                <g>
-                  <rect class="node-box" x="236" y="24" width="96" height="36" rx="10" />
-                  <text class="node-text" x="284" y="47" text-anchor="middle">своп</text>
-                </g>
-              </svg>
-              <span class="lab-scheme__badge">Telegram · 15+ ботов</span>
+          <!-- 6. Payment Bots -->
+          <article class="case reveal" data-tilt aria-labelledby="case-paybots">
+            <div class="case__media">
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/paybots-code-1280.png" alt="Фрагмент кода handlers/payments.py, строки 1–60" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ фрагмент кода: handlers/payments.py, строки 1–60 · fallback-кадр</p>
+              <figure class="case__shot" style="margin:0">
+                <img src="assets/shots/paybots-struct-1280.png" alt="Структура каталога платформы: 15 папок ботов, platform и main" loading="lazy" decoding="async" />
+              </figure>
+              <p class="case__cap">▲ структура каталога: 15 папок ботов + platform · fallback-кадр</p>
             </div>
-            <div class="card__eyebrow">Payment Bots · Telegram + Crypto — паттерн для любых платежей</div>
-            <h3 class="card__title">Боты, которые не падают на платежах</h3>
-            <div class="card__grid">
-              <div class="card__col">
-                <p class="card__col-head">Проблема</p>
-                <p class="card__col-text">бот теряет платежи, дубли списаний, нет HD-кошельков и свопа</p>
+            <div class="case__body">
+              <p class="case__eyebrow">Payment Bots · Telegram + Crypto — паттерн для любых платежей</p>
+              <h3 class="case__title" id="case-paybots">Боты, которые не падают на платежах и не дублируют списания</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Bots: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-simple" aria-controls="panel-paybots-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-tech" aria-controls="panel-paybots-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-paybots-simple" aria-labelledby="tab-paybots-simple" tabindex="0">
+                  <p>Обычный бот при сбое оплаты либо теряет деньги, либо списывает дважды — и разбираться приходится вручную.</p>
+                  <p>Мои боты переживают сбои: повторный платёж распознаётся и не списывается снова, а крипта автоматически уходит в холодное хранение.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-paybots-tech" aria-labelledby="tab-paybots-tech" tabindex="0" hidden>
+                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. 15+ ботов в проде.</p>
+                </div>
               </div>
-              <div class="card__col">
-                <p class="card__col-head">Решение</p>
-                <ul class="card__bullets">
-                  <li>идемпотентность, 409/retry, вебхуки</li>
-                  <li>HD-кошельки TON/TRON/EVM, своп на холодный</li>
-                  <li>15+ ботов в проде, FSM, Mini App</li>
-                </ul>
-              </div>
-              <div class="card__col card__result-col">
-                <p class="card__col-head">Результат</p>
-                <span class="card__result"><span class="card__result-icon" aria-hidden="true">✓</span><span>15+ ботов, без дублей</span></span>
-                <p class="card__col-text" style="font-size:12px; margin-top:4px; color: var(--text-tertiary);">Своп + 409, проверяемо</p>
-              </div>
-            </div>
-            <div class="card__stack" aria-label="Стек">
-              <span class="tag">Python</span><span class="tag">aiogram</span><span class="tag">TON</span><span class="tag">TRON</span><span class="tag">Docker</span>
-            </div>
-            <div class="card__facts" aria-label="Факты">
-              <span class="card__fact">15+ ботов</span><span class="card__fact">HD</span><span class="card__fact">409</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить платежи →</a>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>15+ ботов в проде · ноль дублей списаний</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">aiogram</span><span class="tag">TON</span><span class="tag">TRON</span><span class="tag">Docker</span></div>
+              <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить платежи →</a>
             </div>
           </article>
         </div>
 
         <!-- On request -->
-        <div class="onrequest reveal" id="onrequest" data-delay="2">
-          <div class="onrequest__head">
-            <p class="eyebrow" data-i18n="onReqEyebrow">По запросу для вакансии — NDA-safe</p>
-            <h3 class="onrequest__title" data-i18n="onReqTitle">Доступно описание и скринкаст, без раскрытия деталей</h3>
-          </div>
+        <div class="onrequest reveal" id="onrequest">
+          <p class="eyebrow">По запросу для вакансии — NDA-safe</p>
+          <h3 class="onrequest__title">Есть ещё два кейса: покажу описание и скринкаст, без раскрытия деталей</h3>
           <div class="onrequest__grid">
             <div class="onrequest__item">
-              <h4 data-i18n="onReq1Title">AgendHub — AI agent control plane</h4>
-              <p data-i18n="onReq1Desc">Форк OpenCode: gateway, провайдеры/модели, tenant-границы, виртуальные ключи, allowlists, USD/time бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.</p>
-              <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;<span data-i18n="onReq1Stack">TypeScript / Bun / Postgres / gateway + virtual keys</span></div>
+              <h3>AgendHub — AI agent control plane</h3>
+              <p>Форк OpenCode: gateway, провайдеры и модели, границы tenants, виртуальные ключи, allowlists, USD/time-бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.</p>
+              <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;TypeScript / Bun / Postgres / gateway + virtual keys</div>
             </div>
             <div class="onrequest__item">
-              <h4 data-i18n="onReq2Title">CRM с каталогом и бронями — на примере 170 позиций</h4>
-              <p data-i18n="onReq2Desc">Парсер → CRM: 172 позиции, дедуп 243→172, XLSX тарифов, калькулятор 92/100, брони с логикой “от офиса / от адреса”. Тот же подход для товаров, квартир, услуг — чистый каталог и импорт без правки.</p>
-              <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;<span data-i18n="onReq2Stack">Python / FastAPI / OCR / XLSX-import + Telegram</span></div>
+              <h3>CRM с каталогом и бронями — на примере 170 позиций</h3>
+              <p>Парсер → CRM: 172 позиции, дедуп 243→172, XLSX тарифов, калькулятор 92/100, брони с логикой «от офиса / от адреса». Тот же подход для товаров, квартир, услуг — чистый каталог и импорт без правки.</p>
+              <div class="onrequest__stack"><strong>Stack peek:</strong>&nbsp;Python / FastAPI / OCR / XLSX-import + Telegram</div>
             </div>
           </div>
-          <p class="onrequest__note" data-i18n="onReqNote">Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.</p>
-          <div class="onrequest__ctas">
-            <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="onReqCta">Запросить материалы в Telegram →</a>
+          <p class="onrequest__note">Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.</p>
+          <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Запросить материалы в Telegram →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section section--alt" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Процесс — 4 шага</p>
+          <h2 class="section__title" id="process-title">От первого сообщения до запуска — <span class="grad-text">без вашего доступа к данным</span> на старте.</h2>
+          <p class="section__sub">Прототип собираю на своих данных. Ваши подключаем, только когда уже видно, что всё работает.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>15 минут в Telegram</h3>
+            <p>Разбираем ваш процесс, показываю подходящий NDA-safe кейс. Сразу говорю, берусь или нет.</p>
+          </div>
+          <div class="step reveal" data-delay="1">
+            <h3>Прототип за 2–3 дня</h3>
+            <p>Рабочий прототип и скринкаст на моих данных — видно до оплаты основной части.</p>
+          </div>
+          <div class="step reveal" data-delay="2">
+            <h3>В прод за 1–2 недели</h3>
+            <p>Docker, тесты, запуск одной командой. Детерминированно: у вас работает так же, как у меня.</p>
+          </div>
+          <div class="step reveal" data-delay="2">
+            <h3>Передача и поддержка</h3>
+            <p>Обучаю, отдаю инструкции, остаюсь на связи. Смета — после 15-минутного созвона.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" style="content-visibility:auto; contain-intrinsic-size:600px" class="section section--alt">
+    <!-- Help -->
+    <section id="help" class="section" aria-labelledby="help-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow" data-i18n="skillsEyebrow">Навыки — лента</p>
-          <div class="section__title-row">
-            <span class="section__kicker" aria-hidden="true">02</span>
-            <h2 class="section__title" data-i18n="skillsTitle">Держу фокус на автоматизации, API и воспроизводимости.</h2>
+          <p class="eyebrow">Возможности — чем могу помочь</p>
+          <h2 class="section__title" id="help-title">Узнали свою боль? <span class="grad-text">Уже решал такое.</span></h2>
+        </div>
+        <div class="help">
+          <div class="help-card reveal">
+            <span class="help-card__when">Когда правил много</span>
+            <h3>Сложная логика и бэкенды</h3>
+            <p>Цены, статусы, брони, платежи, роли, согласования — собираю в систему, где ошибка невозможна. CRM — частый случай, но то же работает для магазинов, сервисов и документооборота.</p>
           </div>
-          <p class="section__sub" data-i18n="skillsSub">Платформенный опыт с LLM/AI-агентами — углубляю RAG и eval. Ниже — подтверждённый стек из проектов.</p>
+          <div class="help-card reveal" data-delay="1">
+            <span class="help-card__when">15+ ботов в проде</span>
+            <h3>Telegram-боты и платежи</h3>
+            <p>Бот не падает на оплате: HD-кошельки, TON / USDT / TRON, своп на холодный, вебхуки, Mini App. Платежи не дублируются.</p>
+          </div>
+          <div class="help-card reveal">
+            <span class="help-card__when">Офлайн, без облака</span>
+            <h3>AI-поиск по документам</h3>
+            <p>Учу систему искать по вашим PDF, DOCX и сканам: вопрос — ответ с цитатой из источника. Работает локально, с OCR для сканов.</p>
+          </div>
+          <div class="help-card reveal" data-delay="1">
+            <span class="help-card__when">100–5 000 карточек</span>
+            <h3>Парсинг и переносы без потерь</h3>
+            <p>Спаршу карточки с сайта, нормализую и выгружу строго под ваш импортёр: все заголовки, числа, фото. Проверка no diff — файл всегда одинаковый.</p>
+          </div>
         </div>
-        <div class="skills reveal" data-delay="1" aria-label="Навыки">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">REST API</span>
-          <span class="skill-pill">Webhooks</span>
-          <span class="skill-pill">Telegram Bot API</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">React / Next.js</span>
-          <span class="skill-pill">Java / Spring Boot</span>
-          <span class="skill-pill">PostgreSQL / MySQL</span>
-          <span class="skill-pill">SQLite</span>
-          <span class="skill-pill">MongoDB</span>
-          <span class="skill-pill">Redis</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">OCR / Doc processing</span>
-          <span class="skill-pill">LLM apps / AI agents</span>
-          <span class="skill-pill skill-pill--muted" data-i18n="skillsMuted">платформенный опыт, углубляю RAG/eval</span>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section--alt" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">FAQ — для неайтишников</p>
+          <h2 class="section__title" id="faq-title">Частые вопросы <span class="grad-text">простыми словами</span>.</h2>
         </div>
-        <p class="skills__note reveal" data-i18n="skillsNote">Не указываю «Advanced/Lead» — уровни подтверждаются кодом и ревью.</p>
+        <div class="faq">
+          <details class="faq__item reveal" open>
+            <summary class="faq__q">Я не разбираюсь в коде. Как понять, что вы сделали?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс выше расписан простыми словами, а цифры проверяются: тесты, экспорты, скринкаст.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">У нас каталог в Excel / на сайте. Перенесёте без потерь?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Да. Парсинг, нормализация и дедуп: пример — 170 позиций и 4 844 изображения за один прогон, все заголовки под ваш импортёр, повторный запуск даёт бит-в-бит тот же файл.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Бот теряет платежи. Почините?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Да. 15+ ботов в проде: идемпотентность, обработка повторов, HD-кошельки TON / TRON, своп на холодный. Платежи не дублируются.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Нужно искать по сотням PDF и сканов. Это к вам?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Да. Локальный поиск по PDF, DOCX и сканам с OCR: вопрос — ответ с цитатой из источника. Работает офлайн, ничего не уходит в облако.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">А если у нас не авто / не магазин?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Авто — один из примеров. Тот же подход уже работал для недвижимости, товаров, услуг и документов: везде, где много данных и правил, собирается система без ручной сверки.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Работаете под NDA?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Сколько времени займёт и сколько стоит?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона, напишите в Telegram.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Обо мне</p>
+          <h2 class="section__title" id="about-title">Инженер, который <span class="grad-text">объясняет без кода</span>.</h2>
+        </div>
+        <div class="about">
+          <div class="about-card reveal">
+            <p class="about-card__name">Illia Druzhenko</p>
+            <p class="about-card__role">PYTHON BACKEND / AI AUTOMATION · КИЕВ · REMOTE</p>
+            <div class="about-card__row"><span>База</span><span>Киев, удалённо по всему миру</span></div>
+            <div class="about-card__row"><span>Учёба</span><span>DUICT, 3-й курс</span></div>
+            <div class="about-card__row"><span>Английский</span><span>B2</span></div>
+            <div class="about-card__row"><span>Стек</span><span>Python · FastAPI · Telegram · Docker</span></div>
+          </div>
+          <div class="about__text reveal" data-delay="1">
+            <p><strong>Сильная сторона — детерминированные пайплайны:</strong> один запуск — и всё в нужном формате, без ручной сверки. Любой человек запускает и получает тот же результат: никакого «у меня работает».</p>
+            <p>Люблю задачи, где правил много: тарифы, брони, статусы, платежи, дедуп. Если бизнес держится на таблицах и созвонах — собираю систему, где всё считается само.</p>
+            <p>Для бизнеса — скринкаст и объяснение простыми словами. Для технарей — репозитории, 656+ тестов CRM и воспроизводимый <code>docker compose up</code>.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Contacts -->
-    <section id="contacts" class="section">
+    <section id="contacts" class="section section--alt" aria-labelledby="contacts-title">
       <div class="container">
-        <div class="contact-grid reveal">
-          <div>
-            <div class="section__title-row" style="margin:0 0 8px;">
-              <span class="section__kicker" aria-hidden="true">03</span>
-              <p class="eyebrow" style="margin:0;" data-i18n="contEyebrow">Контакты — отвечаю сегодня</p>
-            </div>
-            <h2 class="section__title" data-i18n="contTitle">Обсудим ваш процесс за 15 минут.</h2>
-            <p class="section__sub" data-i18n="contSub">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал.</p>
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="eyebrow">Контакты — отвечаю сегодня</p>
+            <h2 class="section__title" id="contacts-title">Обсудим ваш процесс <span class="grad-text">за 15 минут</span>.</h2>
+            <p class="section__sub">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Самый быстрый канал — Telegram.</p>
             <div class="contact__ctas">
-              <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-i18n="contCta1">Посмотреть GitHub →</a>
-              <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-i18n="contCta2">Написать в Telegram</a>
-              <a class="btn btn--ghost" href="Illia_Druzhenko_CV.pdf" download aria-label="Скачать CV PDF" data-i18n="contCta3">Скачать CV PDF →</a>
+              <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код →</a>
+              <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram</a>
+              <a class="btn btn--ghost" href="Illia_Druzhenko_CV.pdf" download data-magnetic>Скачать CV PDF →</a>
             </div>
           </div>
-          <div class="contact-card">
+          <div class="contact-card reveal" data-delay="1">
             <div class="contact-card__row">
               <span class="contact-card__label">Telegram</span>
               <a class="contact-card__value link" href="https://t.me/illia_dev" target="_blank" rel="noopener">@illia_dev</a>
@@ -592,9 +543,9 @@
             </div>
             <div class="contact-card__row">
               <span class="contact-card__label">Локация</span>
-              <span class="contact-card__value" data-i18n="contLoc">Kyiv · Remote · B2 English</span>
+              <span class="contact-card__value">Kyiv · Remote · B2 English</span>
             </div>
-            <p class="contact-card__hint" data-i18n="contHint">Отвечу в течение дня. Для вакансии — пришлю описание AgendHub/MorCars и скринкаст.</p>
+            <p class="contact-card__hint">Отвечу в течение дня. Для вакансии — пришлю описание кейсов под NDA и скринкаст.</p>
           </div>
         </div>
       </div>
@@ -603,154 +554,223 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span data-i18n="foot1">Kyiv · Remote · B2 English</span>
+      <span>Kyiv · Remote · B2 English</span>
       <span>© 2026 Illia Druzhenko</span>
     </div>
   </footer>
 
+  <button class="totop" id="toTop" type="button" aria-label="Наверх">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script>
     (function(){
-      // Reveal + stagger 700ms — Apple §11, respects reduced-motion
+      "use strict";
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* Reveal */
       var els = document.querySelectorAll(".reveal");
-      var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (rm || !("IntersectionObserver" in window)) {
+      if (reduceMotion || !("IntersectionObserver" in window)) {
         els.forEach(function(e){ e.classList.add("is-visible"); });
       } else {
         var io = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){
-            if(entry.isIntersecting){
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) { entry.target.classList.add("is-visible"); io.unobserve(entry.target); }
           });
         }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
         els.forEach(function(el){ io.observe(el); });
       }
 
-      // ---------- LAB CONSOLE typing — exporter log cycle, RM keeps full static text ----------
-      (function(){
-        var code = document.getElementById("labTyping");
-        if(!code) return;
-        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if(reduce) return;
-        var full = code.textContent;
-        var i = 0;
-        var CHAR_MIN = 40, CHAR_VAR = 20;
-        var HOLD_MS = 2600, START_MS = 600;
-        function tick(){
-          if(i <= full.length){
-            code.textContent = full.slice(0, i);
-            i++;
-            setTimeout(tick, CHAR_MIN + Math.random() * CHAR_VAR);
-          } else {
-            setTimeout(function(){ i = 0; tick(); }, HOLD_MS);
-          }
+      /* Tabs — buttons + arrow-key nav */
+      document.querySelectorAll("[data-tabs]").forEach(function(root){
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+        function select(tab, focus){
+          tabs.forEach(function(t){
+            var on = (t === tab);
+            t.setAttribute("aria-selected", on ? "true" : "false");
+            t.tabIndex = on ? 0 : -1;
+            var panel = document.getElementById(t.getAttribute("aria-controls"));
+            if (panel) panel.hidden = !on;
+          });
+          if (focus) tab.focus();
         }
-        setTimeout(tick, START_MS);
-      })();
-
-      // i18n toggle — RU ↔ EN, sales-copy checked + new keys
-      var dict = {
-        ru: {
-          navProjects:"Проекты", navSkills:"Навыки", navContacts:"Контакты",
-          heroEyebrow:"AI Automation Engineer · Python Backend Developer · Киев · Remote",
-          heroTitle:'Автоматизирую рутину: <span class="accent-underline">170 авто → CRM</span> за один запуск.',
-          heroSub:'<span class="hero__sub-lead">Каталог 170 авто и 4&nbsp;844 фото → детерминированный XLSX/XML без ручной сверки.</span> Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.',
-          heroCta1:"Посмотреть GitHub →", heroCta2:"Написать в Telegram — отвечу сегодня",
-          heroNote:"DUICT, 3-й курс · B2 English · Доступен для Remote Ukraine / Worldwide",
-          heroCaption:"Один пайплайн — от каталога до CRM, воспроизводимо и покрыто тестами.",
-          ev1:"Авто / изображений — один экспорт", ev2:"Тестов RAG-демо (13+3)", ev3:"Тестов CRM (пик)", ev4:"Hybrid поиск с цитатами",
-          projEyebrow:"Проекты — только подтверждённое", projTitle:"Четыре кейса с цифрами. Пятый — по запросу, NDA-safe.", projSub:"Каждый кейс: проблема → моё решение → стек → измеренный результат. Без «Advanced», «Lead», «выручка» — только то, что прошло тесты и экспорт.",
-          card1Title:"Поиск по PDF, DOCX, HTML, TXT, RAR — локально",
-          card1Prob:"документы разбросаны по форматам, поиск вручную — долго и без релевантности",
-          card1Sol1:"инкрементальная индексация, SQLite FTS", card1Sol2:"OCR-fallback (Tesseract/Poppler), много-поточный батч", card1Sol3:"батч 160 файлов, подсветка, дедуп, экспорт snippet",
-          card1Result:"FTS offline, без облака", card1Link:"Репозиторий →",
-          card2Title:"Hybrid RAG с цитатами и оцениваемостью",
-          card2Prob:"ответы LLM без источника — не проверить",
-          card2Sol1:"чанки 512 + overlap 50, гибрид RRF", card2Sol2:"Qdrant, цитаты с page, lexical/semantic", card2Sol3:"eval 13/13 supported + 3/3 unsupported",
-          card2Result:"16 tests, rag-demo", card2Run:"Запуск: docker compose up", card2Link:"Открыть rag-demo →",
-          card3Title:"Каталог упаковки с галереями — быстро и адаптивно",
-          card3Prob:"показать продукцию на телефоне — без галерей и адаптива тяжело",
-          card3Sol1:"static каталог, responsive ленты 12/14/18", card3Sol2:"лайтбокс, 36 routes, a11y focus", card3Sol3:"Pages deploy, без HScroll 390/768/1280",
-          card3Result:"12 / 14 / 18 фото", card3Hint:"Демо по запросу — покажу скринкаст/ссылку", card3Demo:"Демо: 390/768/1280 без HScroll",
-          card4Title:"Детерминированный экспорт 170 авто / 4 844 фото",
-          card4Prob:"перенос каталога в CRM вручную — ошибки цен, потерянные фото",
-          card4Sol1:"экспорт-only, 24 заголовка, нормализация PLN/EUR", card4Sol2:"детерминированные изображения, валидация dry-run 9 тестов", card4Sol3:"24/24 headers no diff, 1.8s, обезличенно",
-          card4Result:"170 / 4 844 за прогон", card4Link:"Спросить про пайплайн →", card4Run:"Интеграция: FastAPI POST /import + Telegram",
-          onReqEyebrow:"По запросу для вакансии — NDA-safe", onReqTitle:"Доступно описание и скринкаст, без раскрытия деталей",
-          onReq1Title:"AgendHub — AI agent control plane", onReq1Desc:"Форк OpenCode: gateway, провайдеры/модели, tenant-границы, виртуальные ключи, allowlists, USD/time бюджеты, reserve/settle/refund, идемпотентность, Postgres. Покажу архитектуру и сессионный blueprint.", onReq1Stack:"TypeScript / Bun / Postgres / gateway + virtual keys",
-          onReq2Title:"MorCars CRM — брони, тарифы, OCR", onReq2Desc:"Бэкенд/фронт для бронирований, расчёты тарифов/депозитов, OCR документов, XLSX-импорт флота, тесты и деплой. Без клиентских деталей — только подход и скринкаст по запросу.", onReq2Stack:"Python / FastAPI / OCR / XLSX-import + Telegram",
-          onReqNote:"Формулировка согласована с NDA: показываю только то, что безопасно для конкретной вакансии после вашего запроса.", onReqCta:"Запросить материалы в Telegram →",
-          skillsEyebrow:"Навыки — лента", skillsTitle:"Держу фокус на автоматизации, API и воспроизводимости.", skillsSub:"Платформенный опыт с LLM/AI-агентами — углубляю RAG и eval. Ниже — подтверждённый стек из проектов.",
-          skillsMuted:"платформенный опыт, углубляю RAG/eval", skillsNote:"Не указываю «Advanced/Lead» — уровни подтверждаются кодом и ревью.",
-          contEyebrow:"Контакты — отвечаю сегодня", contTitle:"Обсудим ваш процесс за 15 минут.", contSub:"Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Пишите в Telegram — самый быстрый канал.",
-           contCta1:"Посмотреть GitHub →", contCta2:"Написать в Telegram", contCta3:"Скачать CV PDF →",
-          contLoc:"Kyiv · Remote · B2 English", contHint:"Отвечу в течение дня. Для вакансии — пришлю описание AgendHub/MorCars и скринкаст.",
-          foot1:"Kyiv · Remote · B2 English"
-        },
-        en: {
-          navProjects:"Projects", navSkills:"Skills", navContacts:"Contact",
-          heroEyebrow:"AI Automation Engineer · Python Backend Developer · Kyiv · Remote",
-          heroTitle:'Automating routine: <span class="accent-underline">170 cars → CRM</span> in one run.',
-          heroSub:'<span class="hero__sub-lead">Catalog of 170 cars and 4,844 photos → deterministic XLSX/XML without manual checks.</span> Bookings with OCR and tariffs — no import errors. Python, FastAPI, Telegram, Docker. I show code, not slogans.',
-          heroCta1:"View GitHub →", heroCta2:"Message on Telegram — reply today",
-          heroNote:"DUICT, 3rd year · B2 English · Available for Remote Ukraine / Worldwide",
-          heroCaption:"One pipeline — from catalog to CRM, reproducible and tested.",
-          ev1:"Cars / images — one export", ev2:"RAG demo tests (13+3)", ev3:"CRM tests (peak)", ev4:"Hybrid search with citations",
-          projEyebrow:"Projects — evidence only", projTitle:"Four cases with numbers. Fifth — on request, NDA-safe.", projSub:"Each case: problem → my solution → stack → measured result. No «Advanced», «Lead», revenue claims — only what passed tests and export.",
-          card1Title:"Search across PDF, DOCX, HTML, TXT, RAR — locally",
-          card1Prob:"documents scattered across formats, manual search is slow and irrelevant",
-          card1Sol1:"incremental indexing, SQLite FTS", card1Sol2:"OCR fallback (Tesseract/Poppler), multi-thread batch", card1Sol3:"160-file batch, highlight, dedup, snippet export",
-          card1Result:"FTS offline, no cloud", card1Link:"Repository →",
-          card2Title:"Hybrid RAG with citations and eval",
-          card2Prob:"LLM answers without source cannot be verified",
-          card2Sol1:"chunks 512 + overlap 50, hybrid RRF", card2Sol2:"Qdrant, citations with page, lexical/semantic", card2Sol3:"eval 13/13 supported + 3/3 unsupported",
-          card2Result:"16 tests, rag-demo", card2Run:"Run: docker compose up", card2Link:"Open rag-demo →",
-          card3Title:"Packaging catalog with galleries — fast and adaptive",
-          card3Prob:"showing products on mobile without galleries is painful",
-          card3Sol1:"static catalog, responsive strips 12/14/18", card3Sol2:"lightbox, 36 routes, a11y focus", card3Sol3:"Pages deploy, no HScroll 390/768/1280",
-          card3Result:"12 / 14 / 18 photos", card3Hint:"Demo on request — will show screencast / link", card3Demo:"Demo: 390/768/1280 no HScroll",
-          card4Title:"Deterministic export 170 cars / 4,844 photos",
-          card4Prob:"manual catalog → CRM transfer causes price errors and lost photos",
-          card4Sol1:"export-only, 24 headers, numeric PLN/EUR normalization", card4Sol2:"deterministic images, validator dry-run 9 tests", card4Sol3:"24/24 headers no diff, 1.8s, anonymized",
-          card4Result:"170 / 4,844 in one run", card4Link:"Ask about pipeline →", card4Run:"Integration: FastAPI POST /import + Telegram",
-          onReqEyebrow:"On request for vacancy — NDA-safe", onReqTitle:"Description and screencast available on request",
-          onReq1Title:"AgendHub — AI agent control plane", onReq1Desc:"OpenCode fork: gateway, providers/models, tenant boundaries, virtual keys, allowlists, USD/time budgets, reserve/settle/refund, idempotency, Postgres. I will show architecture and session blueprint.", onReq1Stack:"TypeScript / Bun / Postgres / gateway + virtual keys",
-          onReq2Title:"MorCars CRM — bookings, tariffs, OCR", onReq2Desc:"Backend/frontend for bookings, tariff/deposit calculations, document OCR, fleet XLSX import, tests and deploy. No client details — approach and screencast on request.", onReq2Stack:"Python / FastAPI / OCR / XLSX-import + Telegram",
-          onReqNote:"Wording is NDA-aligned: I show only what is safe for a specific vacancy after your request.", onReqCta:"Request materials on Telegram →",
-          skillsEyebrow:"Skills", skillsTitle:"Focused on automation, APIs and reproducibility.", skillsSub:"Platform experience with LLM/AI agents — deepening RAG and eval. Below — proven stack from projects.",
-          skillsMuted:"platform experience, deepening RAG/eval", skillsNote:"No «Advanced/Lead» — levels proven by code and review.",
-          contEyebrow:"Contact — reply today", contTitle:"Let’s discuss your process in 15 minutes.", contSub:"Kyiv · Remote Ukraine / Worldwide · DUICT, 3rd year · B2 English. Fastest via Telegram.",
-           contCta1:"View GitHub →", contCta2:"Message on Telegram", contCta3:"Download CV PDF →",
-          contLoc:"Kyiv · Remote · B2 English", contHint:"Reply within a day. For vacancy — will send AgendHub/MorCars details and screencast.",
-          foot1:"Kyiv · Remote · B2 English"
-        }
-      };
-      var lang = "ru";
-      var btn = document.getElementById("langToggle");
-      function applyLang(l){
-        lang = l;
-        document.documentElement.lang = l;
-        document.querySelectorAll("[data-i18n]").forEach(function(el){
-          var k = el.getAttribute("data-i18n");
-          var v = dict[l][k];
-          if (v !== undefined) {
-            if (k.indexOf("Title") !== -1 || k.indexOf("Desc") !== -1 || k.indexOf("Sub") !== -1 || k === "heroTitle" || k.indexOf("Prob") !== -1 || k.indexOf("Sol") !== -1 || k.indexOf("Result") !== -1 || k.indexOf("Stack") !== -1) el.innerHTML = v;
-            else el.textContent = v;
-          }
+        tabs.forEach(function(tab, i){
+          tab.addEventListener("click", function(){ select(tab, false); });
+          tab.addEventListener("keydown", function(e){
+            var j = null;
+            if (e.key === "ArrowRight") j = (i + 1) % tabs.length;
+            else if (e.key === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
+            else if (e.key === "Home") j = 0;
+            else if (e.key === "End") j = tabs.length - 1;
+            if (j !== null) { e.preventDefault(); select(tabs[j], true); }
+          });
         });
-        btn.textContent = l === "ru" ? "EN" : "RU";
-        btn.setAttribute("aria-label", l === "ru" ? "Switch to English" : "Switch to Russian");
-        try{ localStorage.setItem("lang", l); }catch(e){}
+      });
+
+      /* Mobile menu */
+      var burger = document.getElementById("burger");
+      var menu = document.getElementById("mobileMenu");
+      if (burger && menu) {
+        burger.addEventListener("click", function(){
+          var open = menu.classList.toggle("is-open");
+          burger.setAttribute("aria-expanded", open ? "true" : "false");
+          burger.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+        });
+        menu.querySelectorAll("a").forEach(function(a){
+          a.addEventListener("click", function(){
+            menu.classList.remove("is-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
       }
-      btn.addEventListener("click", function(){ applyLang(lang === "ru" ? "en" : "ru"); });
-      try{
-        var saved = localStorage.getItem("lang");
-        if (saved === "en" || saved === "ru") applyLang(saved);
-      }catch(e){}
+
+      /* Active anchor */
+      var navLinks = document.querySelectorAll(".nav__links .nav__link");
+      var sections = ["projects", "process", "faq", "contacts"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+      if ("IntersectionObserver" in window && navLinks.length) {
+        var spy = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (entry.isIntersecting) {
+              navLinks.forEach(function(l){ l.classList.toggle("is-active", l.getAttribute("data-nav") === entry.target.id); });
+            }
+          });
+        }, { rootMargin: "-40% 0px -55% 0px" });
+        sections.forEach(function(s){ spy.observe(s); });
+      }
+
+      /* Back to top */
+      var toTop = document.getElementById("toTop");
+      function onScroll(){ toTop.classList.toggle("is-visible", window.scrollY > 700); }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener("click", function(){
+        if (reduceMotion) window.scrollTo(0, 0);
+        else window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      /* CSS tilt — cheap, transform only, no touch / no reduced-motion */
+      var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (fine && !reduceMotion) {
+        document.querySelectorAll("[data-tilt]").forEach(function(card){
+          var raf = 0;
+          card.addEventListener("pointermove", function(e){
+            if (raf) return;
+            raf = requestAnimationFrame(function(){
+              raf = 0;
+              var r = card.getBoundingClientRect();
+              var x = (e.clientX - r.left) / r.width - 0.5;
+              var y = (e.clientY - r.top) / r.height - 0.5;
+              card.style.transform = "perspective(1100px) rotateX(" + (-y * 4).toFixed(2) + "deg) rotateY(" + (x * 5).toFixed(2) + "deg)";
+            });
+          });
+          card.addEventListener("pointerleave", function(){ card.style.transform = ""; });
+        });
+
+        /* Magnetic CTA — max 6px */
+        document.querySelectorAll("[data-magnetic]").forEach(function(el){
+          el.addEventListener("pointermove", function(e){
+            var r = el.getBoundingClientRect();
+            var dx = e.clientX - (r.left + r.width / 2);
+            var dy = e.clientY - (r.top + r.height / 2);
+            var m = 6 / Math.max(r.width, r.height);
+            el.style.transform = "translate(" + (dx * m * 2).toFixed(1) + "px," + (dy * m * 2).toFixed(1) + "px)";
+          });
+          el.addEventListener("pointerleave", function(){ el.style.transform = ""; });
+        });
+      }
+
+      /* Hero 3D — one canvas, async after first paint */
+      function initHero(){
+        if (reduceMotion) return;
+        var canvas = document.getElementById("hero-canvas");
+        if (!canvas) return;
+        try {
+          if (typeof THREE === "undefined") throw new Error("no three");
+          var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: "low-power" });
+        } catch (err) {
+          document.body.classList.add("hero--no-webgl");
+          return;
+        }
+        var isMobile = Math.min(window.innerWidth, window.innerHeight) < 640;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.0 : 1.5));
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(58, 1, 0.1, 100);
+        camera.position.set(0, 1.6, 7.2);
+        camera.lookAt(0, 0, 0);
+
+        var COUNT = isMobile ? 2600 : 5200;
+        var W = 16, H = 9;
+        var pos = new Float32Array(COUNT * 3);
+        var seed = new Float32Array(COUNT * 2);
+        for (var i = 0; i < COUNT; i++) {
+          pos[i * 3] = (Math.random() - 0.5) * W;
+          pos[i * 3 + 1] = (Math.random() - 0.5) * H;
+          pos[i * 3 + 2] = (Math.random() - 0.5) * 2.4;
+          seed[i * 2] = Math.random() * Math.PI * 2;
+          seed[i * 2 + 1] = 0.4 + Math.random() * 0.9;
+        }
+        var geo = new THREE.BufferGeometry();
+        geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        var mat = new THREE.PointsMaterial({ color: 0x8f7bff, size: 0.045, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false });
+        var points = new THREE.Points(geo, mat);
+        scene.add(points);
+        var glow = new THREE.PointLight(0x38e1ff, 1.2, 30);
+        glow.position.set(4, 3, 4);
+        scene.add(glow);
+
+        var mouseX = 0, mouseY = 0, scrollY = 0, visible = true;
+        window.addEventListener("pointermove", function(e){
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        }, { passive: true });
+        window.addEventListener("scroll", function(){ scrollY = window.scrollY; }, { passive: true });
+        document.addEventListener("visibilitychange", function(){
+          if (document.hidden) { visible = false; }
+          else { visible = true; last = performance.now(); requestAnimationFrame(frame); }
+        });
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function(entries){ visible = entries[0].isIntersecting && !document.hidden; }, { threshold: 0 }).observe(canvas);
+        }
+
+        function resize(){
+          var w = canvas.clientWidth || window.innerWidth;
+          var h = canvas.clientHeight || 600;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        var arr = geo.attributes.position.array;
+        var last = performance.now();
+        var t = 0;
+        function frame(now){
+          if (!visible) return;
+          var dt = Math.min((now - last) / 1000, 0.05);
+          last = now;
+          t += dt;
+          var drift = t * 0.35 + scrollY * 0.0012;
+          for (var k = 0; k < COUNT; k++) {
+            var s1 = seed[k * 2], s2 = seed[k * 2 + 1];
+            arr[k * 3 + 1] += Math.sin(drift * s2 + s1) * 0.0035;
+            arr[k * 3] += Math.cos(drift * 0.6 * s2 + s1) * 0.0018 + mouseX * 0.0012;
+          }
+          geo.attributes.position.needsUpdate = true;
+          points.rotation.y = mouseX * 0.14;
+          points.rotation.x = mouseY * 0.08;
+          camera.position.y = 1.6 - Math.min(scrollY, 900) * 0.0011;
+          renderer.render(scene, camera);
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+      function afterPaint(){
+        if ("requestIdleCallback" in window) window.requestIdleCallback(initHero, { timeout: 2500 });
+        else window.setTimeout(initHero, 400);
+      }
+      if (document.readyState === "complete") afterPaint();
+      else window.addEventListener("load", afterPaint);
     })();
   </script>
-
-  <!-- Paper lab: no canvas scene — hero is grid, console and SVG scheme -->
 </body>
 </html>
