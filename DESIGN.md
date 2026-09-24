@@ -1,7 +1,6 @@
 # DESIGN.md — Illia Druzhenko Portfolio
 
 > Инженерная точность вместо лозунгов: один запуск вместо недель ручной сверки.
-
 Источник фактов: `C:\Work\Orchestrator\career\CANDIDATE_PROFILE.md` (только CONFIRMED), `GITHUB_PORTFOLIO_AUDIT.md`, `INTERVIEW_CHEATSHEET.md`. Все цифры ниже — только подтверждённые: 170 / 4844, 12 тестов RAG, 590+/656+ тестов MorCars.
 
 ---
@@ -20,7 +19,6 @@ Signature risk: **моно-рельс** — вертикальная линия-
 ---
 
 ## 2. Color Palette & Roles
-
 ```css
 :root {
   /* Backgrounds */
@@ -28,25 +26,21 @@ Signature risk: **моно-рельс** — вертикальная линия-
   --surface: #FFFFFF;                    /* карточка */
   --surface-alt: #F2F2EF;                /* чередующаяся секция / muted */
   --surface-hover: #FFFFFF;              /* hover карточки — остаётся белой, меняется бордер/тень */
-
   /* Borders */
   --border: #E8E8E0;                     /* волосная линия */
   --border-hover: #D6D6CF;               /* hover бордера */
   --border-strong: #111214;              /* акцентный бордер для primary */
-
   /* Text */
   --text: #0F1115;                        /* заголовки — почти чёрный */
   --text-secondary: #5E636E;              /* описания — тёплый серый */
   --text-tertiary: #6E6E73;               /* подпись, лейбл */
   --text-on-accent: #FFFFFF;
-
   /* Accent — сдержанный: чёрный как primary, вермильон как сигнал */
   --accent: #0F1115;                      /* primary CTA, ссылки-акценты */
   --accent-hover: #000000;
   --signal: #FF3B30;                      /* одна сигнальная точка/маркер */
   --signal-hover: #E6352B;
   --accent-muted: #EDEDEA;                /* pill фон */
-
   /* RGB variants */
   --bg-rgb: 251,251,249;
   --surface-rgb: 255,255,255;
@@ -54,7 +48,6 @@ Signature risk: **моно-рельс** — вертикальная линия-
   --accent-rgb: 15,17,21;
   --signal-rgb: 255,59,48;
   --border-rgb: 232,232,224;
-
   /* Semantic */
   --success: #1A7F37;
   --warning: #9A6700;
@@ -112,6 +105,7 @@ Signature risk: **моно-рельс** — вертикальная линия-
 ## 4. Component Stylings
 
 ### Buttons
+
 ```css
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -122,7 +116,6 @@ Signature risk: **моно-рельс** — вертикальная линия-
   will-change: transform;
 }
 .btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-
 /* Primary — чёрная таблетка (Apple-like) */
 .btn--primary {
   background: var(--accent); color: var(--text-on-accent); border: 1px solid var(--accent);
@@ -131,7 +124,6 @@ Signature risk: **моно-рельс** — вертикальная линия-
 .btn--primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(15,17,21,0.14); }
 .btn--primary:active { transform: scale(0.98); transition-duration: 100ms; }
 .btn--primary:disabled { opacity: 0.45; pointer-events: none; }
-
 /* Secondary — контур на белом */
 .btn--secondary {
   background: var(--surface); color: var(--text); border: 1px solid var(--border-strong);
@@ -139,7 +131,6 @@ Signature risk: **моно-рельс** — вертикальная линия-
 .btn--secondary:hover { background: var(--surface); border-color: var(--text); transform: translateY(-1px); }
 .btn--secondary:active { transform: scale(0.98); }
 .btn--secondary:disabled { opacity: 0.45; pointer-events: none; }
-
 /* Ghost — текстовая, для «Демо по запросу» */
 .btn--ghost {
   background: transparent; color: var(--text-secondary); border: 1px solid var(--border);
@@ -311,7 +302,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 - Показывать код/репозиторий вместо лозунгов («показываю код, а не лозунги»)
 - Формулировать «По запросу» NDA-safe: без клиентских деталей, только «доступно описание/скринкаст»
 - Держать сетку 8pt и волосы-линии 1px — точность читается как надёжность
-
 ### Don''t
 - ? Не писать «Разрабатываю боты и CRM» / «Спокойная панель» — сухое перечисление фичей без выгоды
 - ? Не выдумывать метрики: никаких «пользователей», «выручки», «на 40% быстрее» без CONFIRMED
@@ -323,11 +313,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 - ? Не прятать CTA внизу — первый экран должен содержать 2 CTA (GitHub + Telegram)
 - ? Не использовать тяжёлые фреймворки/бандлы — чистая статика для GitHub Pages
 - ? Не оставлять AI-следов в коде/коммитах/комментах
-
 ---
-
 ## 9. Responsive Behavior
-
 **Breakpoints:**
 | Name | Width | Key Changes |
 |------|-------|-------------|
@@ -335,7 +322,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline
 | Tablet | 641–960px | hero 1 колонка, проекты 2>1 при 720, evidence 4>2 |
 | Mobile | ? 640px | всё в 1 колонку, nav компакт, карточки radius 16, кнопки full-width где нужно |
 | Small | 390px | тестовая ширина — нет горизонтального скролла, padding 16, текст 15.5px читаем |
-
 **Touch Targets:** minimum 44?44px (кнопки 44px высота, nav link увеличенный hit-area)
 **Collapsing Strategy:** hero visual уходит под текст; evidence strip схлопывается в 2?2; проекты — 1 колонка; скиллы — перенос; контакты — 1 колонка
 **Overflow guard:**
@@ -344,7 +330,6 @@ html, body { overflow-x: clip; }
 img, video { max-width: 100%; height: auto; }
 .container, .card, .evidence { min-width: 0; }
 ```
-
 ```css
 @media (max-width: 640px) {
   .hero { gap: 20px; }
@@ -353,30 +338,24 @@ img, video { max-width: 100%; height: auto; }
   .nav__links { gap: 12px; }
 }
 ```
-
 ---
-
 ## 10. Sales Copy — 3 варианта hero (AIDA / PAS / 4U) + выбор
-
 ### Вариант A — AIDA (выбран для сайта) — Рекомендован
 **H1:** Автоматизирую рутину: 170 авто > CRM за один запуск.
 **Sub:** Каталог 170 авто и 4 844 фото > детерминированный XLSX/XML без ручной сверки. Брони с OCR и тарифами — без ошибок импорта. Python, FastAPI, Telegram, Docker. Показываю код: 12 тестов RAG-демо и 656+ тестов CRM.
 **CTA:** [Посмотреть GitHub >] [Написать в Telegram — отвечу сегодня]
 **Формула:** Attention (автоматизирую рутину) > Interest (170>CRM за запуск) > Desire (без ручной сверки/ошибок) > Action (глагол+выгода)
 **Почему работает:** один месседж, сверх-конкретика, доказательство цифрами, глагол+выгода в CTA.
-
 ### Вариант B — PAS (болевой, для вдумчивых)
 **H1:** Надоело переносить каталог и брони вручную?
 **Sub:** Каждый экспорт — часы сверки, ошибки цен и потерянные фото. Собираю поток в один детерминированный пайплайн: парсинг > нормализация > XLSX/XML > импорт. 170 авто и 4 844 изображения за один прогон, воспроизводимо и покрыто тестами.
 **CTA:** [Разобрать ваш процесс за 15 минут >]
 **Формула:** Problem (ручной перенос) > Agitate (часы, ошибки) > Solution (детерминированный пайплайн + цифры)
-
 ### Вариант C — 4U (ультра-конкретика, для скептиков)
 **H1:** От идеи до рабочего экспорта — за один спринт. Без NDA-рисков.
 **Sub:** Готовый пайплайн уже проверен: точные заголовки, нормализация чисел, детерминированные изображения, валидация под импортёр. RAG-демо с hybrid-поиском и цитатами — на GitHub, 12 тестов, Docker.
 **CTA:** [Скачать пример экспорта >]
 **Формула:** Useful (готовый пайплайн) + Urgent (за спринт) + Unique (детерминированно + NDA-safe) + Ultra-specific (170/4844, заголовки, Qdrant)
-
 **Чеклист 7 — прогон варианта A (выбранного):**
 - [x] Выгода, а не фича: «за один запуск без ручной сверки» вместо «панель провайдеров»
 - [x] Конкретика: 170, 4 844, 12, 656+, XLSX/XML, OCR, FastAPI/Telegram/Docker
@@ -385,18 +364,27 @@ img, video { max-width: 100%; height: auto; }
 - [x] Срочность/уникальность: «за один запуск», «детерминированно», NDA-safe
 - [x] Один месседж: автоматизация рутины > CRM без ручной работы
 - [x] CTA глагол+выгода: «Посмотреть GitHub >» и «Написать в Telegram — отвечу сегодня»
-
 Apple copy доп-проверка (copywriting.md): один тезис на строку, коротко, выгода впереди, ритм через точку — соблюдено.
-
 ---
-
 ## 11. Контент-карта (для index.html)
-
 - Header/nav: Illia Druzhenko — AI Automation Engineer | Python Backend Developer (позиционирование), якоря: Проекты / Навыки / Контакты
 - Hero: Вариант A + proof-strip (170 / 4844 / 12 / 656+) + 2 CTA + моно-рельс
 - Проекты: 4 карточки (DocumentAnalyzer, RAG Demo, Ingul, JustCars Exporter) + 1 широкая «По запросу»
 - Навыки: лента пилюль
 - Контакты: Telegram @illia_dev, GitHub illmxnn, email, Киев/Remote/B2/DUICT
 - Footer: Kyiv • Remote • B2 English • © 2026 Illia Druzhenko
+Все тексты проектов — по формуле PAS/JTBD, без «Advanced/Lead/выручка/пользователи». Только CONFIRMED.
 
-Все тексты проектов — по формуле PAS/JTBD, без «Advanced/Lead/выручка/пользователи». Только CONFIRMED.
+---
+## 12. Paper lab (2026-09-24)
+
+> Светлая лаборатория вместо тёмного космоса: чертёжная сетка, моно-схемы, одна тёмная консоль.
+
+- supersedes 2026-09-24: dark void (stash@{0}) + picsum gallery (removal note: void-маршрут и фото-лента удалены, stash не трогать).
+- **Hero**: чертёжная сетка 28px на `hero-wrap` + тёмная консоль `#101216` с typing-циклом лога экспортёра (40–60ms/char, hold 2.6s, каретка `--signal`) + inline SVG-схема парсинг→нормализация→импорт с dash-flow 1.1s. Reduced-motion: полный текст сразу, поток статичен, каретка скрыта.
+- **Карточки (6)**: вместо фото-лент — мини pipeline-SVG (3 узла, моно 11px) + бейдж моно-цифрами; структура Проблема→Решение→Стек→Результат и все тексты untouched. Схемы: LedStil каталог→аудит→генерация, DocumentAnalyzer сканы→FTS→поиск, RAG чанки→hybrid→цитаты, Ingul static→ленты→Pages, JustCars парсинг→нормализация→импорт, Payment платежи→409·retry→своп.
+- **Галерея**: секция, якорь в nav, CSS и JS удалены без хвостов; кикеры Skills 03→02, Contacts 04→03.
+- **`/3d/`**: редирект на `/` (meta refresh + `location.replace` + ссылка + 5 строк); внешних модулей и моделей ноль, страница статична.
+- **Motion**: только `transform` + `opacity` 200–220ms + dash-flow/stagger reveal; tilt и параллакс убраны — плоская чертёжная эстетика. Зависимостей JS ноль.
+- **Бюджеты**: 0 JS-библиотек, LCP <2.5s, 1280/390 без HScroll, tap 44px, AA, консоль 0 ошибок.
+
