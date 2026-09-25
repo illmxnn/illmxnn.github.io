@@ -244,6 +244,57 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .shot-frame__view img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .case__cap { margin: 0; font: 500 13px/1.6 var(--font-mono); color: var(--text-secondary); }
 
+/* Shots slider — swipe gallery inside case cards */
+.shots { min-width: 0; }
+.shots__viewport {
+  border: 1px solid rgba(56, 225, 255, 0.22);
+  border-radius: 16px;
+  padding: 12px;
+  background:
+    radial-gradient(420px 200px at 50% 0%, rgba(124, 92, 255, 0.10), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.015);
+  background-size: auto, 28px 28px, 28px 28px, auto;
+  box-shadow: inset 0 0 0 1px rgba(7, 7, 13, 0.4);
+  min-width: 0;
+}
+.shots__track {
+  display: flex; gap: 12px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  border-radius: 10px;
+  min-width: 0;
+}
+.shots__track::-webkit-scrollbar { display: none; }
+.shots__track.is-drag { cursor: grabbing; scroll-snap-type: none; }
+.shots__track:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.shots__slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: center; scroll-snap-stop: always; }
+.shots__slide .shot-frame { transition: border-color 220ms ease, box-shadow 220ms ease; }
+.shots__slide.is-active .shot-frame {
+  border-color: rgba(56, 225, 255, 0.5);
+  box-shadow: 0 0 0 1px rgba(56, 225, 255, 0.28), 0 0 32px rgba(56, 225, 255, 0.18), 0 10px 34px rgba(0, 0, 0, 0.45);
+}
+.shots__slide .case__cap { margin-top: 8px; }
+.shots__bar { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.shots__arrow {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border-hover); color: var(--text);
+  font: 500 20px/1 var(--font-mono);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.shots__arrow:hover { border-color: var(--accent); box-shadow: var(--glow-a); }
+.shots__arrow:active { transform: scale(0.96); }
+.shots__arrow:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+.shots__count { font: 500 12px/1 var(--font-mono); letter-spacing: 0.12em; color: var(--text-tertiary); white-space: nowrap; }
+.shots__count b { color: var(--hue-b); font-weight: 600; }
+.shots__dots { display: inline-flex; align-items: center; gap: 6px; margin-right: auto; }
+.shots__dots i { width: 6px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.22); transition: width 220ms ease, background 220ms ease, box-shadow 220ms ease; }
+.shots__dots i.is-on { width: 20px; background: linear-gradient(90deg, var(--hue-a), var(--hue-b)); box-shadow: var(--glow-b); }
+
 /* Shotbox — fullscreen viewer */
 .shotbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .shotbox[hidden] { display: none; }
@@ -425,6 +476,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
   .shot-frame--wide, .shot-frame--tall { max-height: 320px; }
   .shot-frame--tall .shot-frame__view { max-height: 282px; }
   .shot-frame--wide .shot-frame__view { max-height: 282px; }
+  .shots__viewport { padding: 8px; border-radius: 14px; }
   .shotbox { padding: 12px; }
   .btn--primary, .btn--secondary { width: 100%; }
   .hero__ctas .btn { flex: 1 1 100%; }
@@ -440,6 +492,8 @@ body.hero--no-webgl #hero-canvas { display: none; }
   .btn, .nav__cta, .card, .case, .step, .help-card, .tabs__tab, .totop, .faq__icon { transition: none; }
   .btn:hover, .nav__cta:hover, .step:hover, .help-card:hover { transform: none; }
   .shotbox__fig { animation: none; }
+  .shots__track { scroll-snap-type: x proximity; }
+  .shots__slide .shot-frame, .shots__arrow, .shots__dots i { transition: none; }
   #hero-canvas { display: none; }
   .hero-fallback { opacity: 1; }
 }
