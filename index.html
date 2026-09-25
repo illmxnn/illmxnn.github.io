@@ -32,9 +32,9 @@
     "@type": "FAQPage",
     "mainEntity": [
       {"@type": "Question", "name": "Я не разбираюсь в коде. Как понять, что вы сделали?", "acceptedAnswer": {"@type": "Answer", "text": "По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс ниже расписан простыми словами, а цифры можно проверить: тесты, экспорты, скринкаст."}},
-      {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, повторный запуск даёт бит-в-бит тот же файл."}},
-      {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. 15+ ботов в проде: идемпотентность, 409/retry, HD-кошельки TON/TRON, своп на холодный. Платежи не дублируются."}},
-      {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск по PDF/DOCX/сканам с OCR: вопрос — ответ с цитатой из источника, работает офлайн, ничего не уходит в облако."}},
+      {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп 243-172: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, повторный запуск даёт бит-в-бит тот же файл."}},
+      {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. 15+ ботов на aiogram в проде: идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный. Дублей списаний — ноль."}},
+      {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск: SQLite FTS + Qdrant, OCR Tesseract для сканов. Вопрос — ответ с цитатой из источника, офлайн."}},
       {"@type": "Question", "name": "Работаете под NDA?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA."}},
       {"@type": "Question", "name": "Сколько времени займёт?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона."}}
     ]
@@ -77,7 +77,7 @@
         <div class="hero__content">
           <p class="eyebrow reveal">Python Backend / AI Automation · CRM · Боты · Парсинг · RAG · Киев · Remote</p>
           <h1 id="hero-title" class="hero__h1 reveal" data-delay="1">От хаоса в таблицах — к системе <span class="grad-text">без ручной сверки</span>.</h1>
-          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото собираются за один запуск.</span> CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам — там, где много данных и правил, делаю так, чтобы ошибка стала невозможна. Python, FastAPI, Telegram, Docker. Показываю код, а не лозунги.</p>
+          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото уходят в импортёр за 1.8 секунды, без ручной сверки.</span> CRM с тарифами, бронями и дедупом, Telegram-боты с идемпотентностью платежей, парсинг Scrapegraph/Scrapling, RAG Qdrant+FTS с цитатами из источника. Python, FastAPI, aiogram, Docker. Показываю код: 656+ тестов CRM, 12 тестов RAG.</p>
           <div class="hero__ctas reveal" data-delay="2">
             <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код на GitHub →</a>
             <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram — отвечу сегодня</a>
@@ -154,7 +154,7 @@
         <div class="section__head reveal">
           <p class="eyebrow">Проекты — с реальными кадрами</p>
           <h2 class="section__title" id="projects-title">6 кейсов: было «вручную и с ошибками» — стало <span class="grad-text">«одним запуском»</span>.</h2>
-          <p class="section__sub">Каждый кейс — дважды: простыми словами и технически. Переключайте табы. Все кадры — настоящие: интерфейс, терминал, код и страницы репозиториев, честно подписанные.</p>
+          <p class="section__sub">Каждый кейс — дважды: простыми словами (боль → решение → цифра) и технически (стек, тесты, воспроизводимость). Кадры настоящие: интерфейс, терминал, код и репозитории, честно подписанные.</p>
         </div>
 
         <div class="projects">
@@ -201,11 +201,11 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-tech" aria-controls="panel-ledstil-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ledstil-simple" aria-labelledby="tab-ledstil-simple" tabindex="0">
-                  <p>Тысячи товаров лежали в хаосе: категории, характеристики, фото — всё вразнобой, а сайт тормозил.</p>
-                  <p>Я навёл порядок: категории и характеристики разложены, лишнее закрыто от посторонних, а товары можно сортировать мышкой — перетащил и сохранилось само.</p>
+                  <p>2 500+ товаров жили в хаосе: категории и характеристики вразнобой, сайт тормозил, порядок наводили вручную.</p>
+                  <p>Разложил каталог: 500+ категорий, сортировка перетаскиванием с автосохранением каждые 30 секунд, лишнее закрыто. 5 Critical-уязвимостей закрыто — магазин не падает.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ledstil-tech" aria-labelledby="tab-ledstil-tech" tabindex="0" hidden>
-                  <p>PHP без фреймворка, генерация <code>public/products/{ua,ru}</code>, <code>.htaccess</code>-маршруты. Аудит безопасности: закрыты 5 Critical — анонимные записи, CSRF, traversal, секреты в публичной зоне.</p>
+                  <p>PHP без фреймворка + MySQL, генерация <code>public/products/{ua,ru}</code>, <code>.htaccess</code>-маршруты. Аудит безопасности: закрыты 5 Critical — анонимные записи, CSRF, traversal, секреты в публичной зоне.</p>
                   <p>Сортировка атрибутов per категории + drag&amp;drop с автосохранением каждые 30 секунд. Адаптив 390 / 768 / 1280 без горизонтального скролла.</p>
                 </div>
               </div>
@@ -258,12 +258,12 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-justcars-tech" aria-controls="panel-justcars-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-justcars-simple" aria-labelledby="tab-justcars-simple" tabindex="0">
-                  <p>Перенос каталога вручную — это недели сверки: цены не сходятся, фото теряются, импортёр ругается на заголовки.</p>
-                  <p>Здесь — одна команда: цены нормализуются сами, фото раскладываются одинаково при каждом запуске, файл сразу принимает импортёр. Было 2 недели — стало 1.8 секунды.</p>
+                  <p>Перенос каталога вручную — недели сверки: цены не сходятся, фото теряются, импортёр отклоняет файл из-за заголовков.</p>
+                  <p>Одна команда — и готово: цены из тарифной таблицы, фото детерминированы, 24/24 заголовка на месте. Было 2 недели — стало 1.8 секунды, повторный прогон бит-в-бит.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-justcars-tech" aria-labelledby="tab-justcars-tech" tabindex="0" hidden>
-                  <p>Экспорт-only пайплайн: <code>24/24</code> заголовка под импортёр, нормализация цен PLN/EUR, детерминированные имена фото, валидация dry-run, 9 тестов. Интеграция: FastAPI <code>POST /import</code> + Telegram-бот.</p>
-                  <p>Повторный прогон — бит-в-бит тот же файл (<code>no diff</code>), импортёр не ругается.</p>
+                  <p>Экспорт-only пайплайн: <code>24/24</code> заголовка под импортёр, нормализация цен, детерминированные имена фото, валидация dry-run, 9 тестов. Интеграция: FastAPI <code>POST /import</code> + Telegram-бот.</p>
+                  <p>Повторный прогон — бит-в-бит тот же файл (<code>no diff</code>), импортёр принимает без правок.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>170 позиций / 4 844 фото за 1.8s · 24/24 заголовка · no diff</span></div>
@@ -315,11 +315,11 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-rag-tech" aria-controls="panel-rag-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-rag-simple" aria-labelledby="tab-rag-simple" tabindex="0">
-                  <p>Обычный чат-бот отвечает уверенно, даже когда не знает, — и проверить его нельзя.</p>
-                  <p>Этот поиск отвечает только с цитатой из вашего документа. А если доказательств мало — честно отказывается вместо выдумки. Видно на кадре справа.</p>
+                  <p>Обычный чат-бот отвечает уверенно, даже когда не знает, — проверить его нельзя, ошибка стоит дорого.</p>
+                  <p>Этот поиск отвечает только с цитатой из вашего документа, а без доказательств — честно отказывается. 12 тестов, запуск одной командой, видно на кадре.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-rag-tech" aria-labelledby="tab-rag-tech" tabindex="0" hidden>
-                  <p>FastAPI + lexical retrieval, чанкинг, evidence-gate: <code>sufficient_evidence:false</code> блокирует генерацию без опоры. Swagger Try-it-out, воспроизводимый запуск, 12 тестов.</p>
+                  <p>FastAPI + lexical retrieval, чанкинг, evidence-gate: <code>sufficient_evidence:false</code> блокирует генерацию без опоры. Swagger Try-it-out, воспроизводимый Docker-запуск, 12 тестов.</p>
                   <p>Паттерн масштабируется до гибрида <code>Qdrant + FTS</code> с цитатами и постраничными ссылками.</p>
                 </div>
               </div>
@@ -372,8 +372,8 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-ingul-tech" aria-controls="panel-ingul-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ingul-simple" aria-labelledby="tab-ingul-simple" tabindex="0">
-                  <p>Клиенту нужно было показывать товары с телефона — быстро, без тяжёлой системы управления.</p>
-                  <p>Собрал лёгкую витрину: листается свайпом, фото открываются крупно, на телефоне ничего не тормозит и не уезжает за край.</p>
+                  <p>Тяжёлая CMS для витрины — медленно на телефоне и дорого в поддержке, а смотреть товары нужно с руки.</p>
+                  <p>Лёгкая статика без CMS: свайп-ленты 12/14/18 фото, кадры открываются крупно, на 390 ничего не уезжает за край. 36 роутов, деплой на Pages.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ingul-tech" aria-labelledby="tab-ingul-tech" tabindex="0" hidden>
                   <p>Статика без CMS: ленты по <code>12/14/18</code> фото, лайтбокс с фокус-менеджментом, 36 роутов, деплой на Pages. Контрольные ширины 390 / 768 / 1280 — ноль горизонтального скролла.</p>
@@ -428,11 +428,11 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-docs-tech" aria-controls="panel-docs-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-docs-simple" aria-labelledby="tab-docs-simple" tabindex="0">
-                  <p>Договоры и сканы лежат по папкам — найти нужный вручную почти невозможно.</p>
-                  <p>Программа ищет по всем файлам сразу, понимает даже отсканированные страницы и показывает, где именно нашла. Всё хранится у вас — ничего не уходит в интернет.</p>
+                  <p>Договоры и сканы лежат по папкам — нужный ищут 10 минут, сканы вообще не ищутся.</p>
+                  <p>Программа ищет по всем файлам за секунду, читает сканы через OCR Tesseract и показывает место совпадения с подсветкой. Всё локально — ничего не уходит в облако.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-docs-tech" aria-labelledby="tab-docs-tech" tabindex="0" hidden>
-                  <p>PySide6 + SQLite FTS: инкрементальная индексация, подсветка совпадений, дедуп, экспорт сниппета. OCR-фолбэк (Tesseract/Poppler) многопоточным батчем, сборка в <code>.exe</code> через PyInstaller — запуск двойным кликом.</p>
+                  <p>PySide6 + SQLite FTS: инкрементальная индексация, подсветка совпадений, дедуп, экспорт сниппета. OCR-фолбэк (Tesseract/Poppler) многопоточным батчем на 160 файлов, сборка в <code>.exe</code> через PyInstaller — запуск двойным кликом.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>FTS офлайн · батч 160 файлов · запуск двойным кликом</span></div>
@@ -484,11 +484,11 @@
                   <button class="tabs__tab" type="button" role="tab" id="tab-paybots-tech" aria-controls="panel-paybots-tech" aria-selected="false" tabindex="-1">Технически</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-simple" aria-labelledby="tab-paybots-simple" tabindex="0">
-                  <p>Обычный бот при сбое оплаты либо теряет деньги, либо списывает дважды — и разбираться приходится вручную.</p>
-                  <p>Мои боты переживают сбои: повторный платёж распознаётся и не списывается снова, а крипта автоматически уходит в холодное хранение.</p>
+                  <p>Обычный бот считает каждый вебхук новым платежом: ретрай — и клиент списан дважды, таймаут — и деньги потеряны. Разбор — вручную по логам.</p>
+                  <p>Мои 15+ ботов так не умеют: идемпотентность и 409/retry гасят дубли, HD-кошельки TON/TRON/EVM держат ключи детерминированно, своп уходит на холодный сам. Платёж либо засчитан один раз, либо честно отклонён.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-tech" aria-labelledby="tab-paybots-tech" tabindex="0" hidden>
-                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. 15+ ботов в проде.</p>
+                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии на aiogram, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. 15+ ботов в проде, ноль дублей списаний.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>15+ ботов в проде · ноль дублей списаний</span></div>
@@ -525,25 +525,25 @@
       <div class="container">
         <div class="section__head reveal">
           <p class="eyebrow">Процесс — 4 шага</p>
-          <h2 class="section__title" id="process-title">От первого сообщения до запуска — <span class="grad-text">без вашего доступа к данным</span> на старте.</h2>
-          <p class="section__sub">Прототип собираю на своих данных. Ваши подключаем, только когда уже видно, что всё работает.</p>
+          <h2 class="section__title" id="process-title">От первого сообщения до запуска — <span class="grad-text">без доступа к вашим данным</span> на старте.</h2>
+          <p class="section__sub">Прототип собираю на своих данных и показываю скринкастом. Ваши подключаем, только когда видно: работает детерминированно.</p>
         </div>
         <div class="steps">
           <div class="step reveal">
             <h3>15 минут в Telegram</h3>
-            <p>Разбираем ваш процесс, показываю подходящий NDA-safe кейс. Сразу говорю, берусь или нет.</p>
+            <p>Разбираем ваш процесс, показываю подходящий кейс без клиентских данных. Сразу говорю, берусь или нет.</p>
           </div>
           <div class="step reveal" data-delay="1">
             <h3>Прототип за 2–3 дня</h3>
-            <p>Рабочий прототип и скринкаст на моих данных — видно до оплаты основной части.</p>
+            <p>Рабочий прототип и скринкаст на моих данных — результат видно до основной оплаты.</p>
           </div>
           <div class="step reveal" data-delay="2">
             <h3>В прод за 1–2 недели</h3>
-            <p>Docker, тесты, запуск одной командой. Детерминированно: у вас работает так же, как у меня.</p>
+            <p>Docker, тесты, запуск одной командой. Повторный прогон — тот же файл: у вас работает как у меня.</p>
           </div>
           <div class="step reveal" data-delay="2">
             <h3>Передача и поддержка</h3>
-            <p>Обучаю, отдаю инструкции, остаюсь на связи. Смета — после 15-минутного созвона.</p>
+            <p>Инструкции, обучение, остаюсь на связи. Смета — после 15-минутного созвона.</p>
           </div>
         </div>
       </div>
@@ -553,30 +553,27 @@
     <section id="help" class="section" aria-labelledby="help-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Возможности — чем могу помочь</p>
-          <h2 class="section__title" id="help-title">Узнали свою боль? <span class="grad-text">Уже решал такое.</span></h2>
+          <p class="eyebrow">Возможности — боль → кейс</p>
+          <h2 class="section__title" id="help-title">Узнали свою боль? <span class="grad-text">Смотрите, где уже решено.</span></h2>
+          <p class="section__sub">Четыре строки — четыре кейса ниже и выше. Никаких дублей: каждая ведёт к доказательству.</p>
         </div>
-        <div class="help">
-          <div class="help-card reveal">
-            <span class="help-card__when">Когда правил много</span>
-            <h3>Сложная логика и бэкенды</h3>
-            <p>Цены, статусы, брони, платежи, роли, согласования — собираю в систему, где ошибка невозможна. CRM — частый случай, но то же работает для магазинов, сервисов и документооборота.</p>
-          </div>
-          <div class="help-card reveal" data-delay="1">
-            <span class="help-card__when">15+ ботов в проде</span>
-            <h3>Telegram-боты и платежи</h3>
-            <p>Бот не падает на оплате: HD-кошельки, TON / USDT / TRON, своп на холодный, вебхуки, Mini App. Платежи не дублируются.</p>
-          </div>
-          <div class="help-card reveal">
-            <span class="help-card__when">Офлайн, без облака</span>
-            <h3>AI-поиск по документам</h3>
-            <p>Учу систему искать по вашим PDF, DOCX и сканам: вопрос — ответ с цитатой из источника. Работает локально, с OCR для сканов.</p>
-          </div>
-          <div class="help-card reveal" data-delay="1">
-            <span class="help-card__when">100–5 000 карточек</span>
-            <h3>Парсинг и переносы без потерь</h3>
-            <p>Спаршу карточки с сайта, нормализую и выгружу строго под ваш импортёр: все заголовки, числа, фото. Проверка no diff — файл всегда одинаковый.</p>
-          </div>
+        <div class="help-list" role="list">
+          <a class="help-row reveal" role="listitem" href="#onrequest">
+            <span class="help-row__pain">Цены, статусы, брони и дубли считаются вручную — нужна система без ошибок</span>
+            <span class="help-row__go">CRM-паттерн: 243→172, калькулятор 92/100 <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" data-delay="1" role="listitem" href="#case-paybots">
+            <span class="help-row__pain">Бот падает на оплате: дубли списаний, потерянные вебхуки</span>
+            <span class="help-row__go">15+ ботов: идемпотентность, 409, HD, своп <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" role="listitem" href="#case-docs">
+            <span class="help-row__pain">PDF и сканы не ищутся, отправлять в облако нельзя</span>
+            <span class="help-row__go">FTS + OCR локально, ответ с цитатой <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" data-delay="1" role="listitem" href="#case-justcars">
+            <span class="help-row__pain">Каталог 100–5 000 карточек, импортёр отклоняет файл</span>
+            <span class="help-row__go">170/4 844 за 1.8s, 24/24, no diff <span aria-hidden="true">→</span></span>
+          </a>
         </div>
       </div>
     </section>
@@ -591,31 +588,31 @@
         <div class="faq">
           <details class="faq__item reveal" open>
             <summary class="faq__q">Я не разбираюсь в коде. Как понять, что вы сделали?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс выше расписан простыми словами, а цифры проверяются: тесты, экспорты, скринкаст.</p>
+            <p class="faq__a">По результату: было 2 недели ручной сверки — стал прогон за 1.8 секунды. Каждый кейс расписан простыми словами и технически, цифры проверяются: 170/4 844, 24/24, no diff, скринкаст.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">У нас каталог в Excel / на сайте. Перенесёте без потерь?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Да. Парсинг, нормализация и дедуп: пример — 170 позиций и 4 844 изображения за один прогон, все заголовки под ваш импортёр, повторный запуск даёт бит-в-бит тот же файл.</p>
+            <p class="faq__a">Да. Парсинг Scrapegraph/Scrapling, нормализация и дедуп 243→172: 170 позиций и 4 844 фото за один прогон, 24/24 заголовка под импортёр, повторный запуск бит-в-бит.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Бот теряет платежи. Почините?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Да. 15+ ботов в проде: идемпотентность, обработка повторов, HD-кошельки TON / TRON, своп на холодный. Платежи не дублируются.</p>
+            <p class="faq__a">Да. 15+ ботов на aiogram в проде: идемпотентность, 409/retry, вебхуки, HD-кошельки TON/TRON/EVM, своп на холодный. Дублей списаний — ноль.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Нужно искать по сотням PDF и сканов. Это к вам?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Да. Локальный поиск по PDF, DOCX и сканам с OCR: вопрос — ответ с цитатой из источника. Работает офлайн, ничего не уходит в облако.</p>
+            <p class="faq__a">Да. Локальный поиск: SQLite FTS + Qdrant, OCR Tesseract для сканов. Вопрос — ответ с цитатой из источника, офлайн, ничего не уходит в облако.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">А если у нас не авто / не магазин?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Авто — один из примеров. Тот же подход уже работал для недвижимости, товаров, услуг и документов: везде, где много данных и правил, собирается система без ручной сверки.</p>
+            <p class="faq__a">Авто — один пример. Тот же пайплайн работает для товаров, квартир, услуг и документов: тарифы, брони, статусы, дедуп — везде, где много правил.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Работаете под NDA?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA.</p>
+            <p class="faq__a">Да. Показываю описание и скринкаст без клиентских данных — как в блоке «По запросу». Детали — после подписания NDA.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Сколько времени займёт и сколько стоит?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона, напишите в Telegram.</p>
+            <p class="faq__a">Прототип и скринкаст — 2–3 дня на моих данных. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона в Telegram.</p>
           </details>
         </div>
       </div>
@@ -637,9 +634,9 @@
             <div class="about-card__row"><span>Стек</span><span>Python · FastAPI · Telegram · Docker</span></div>
           </div>
           <div class="about__text reveal" data-delay="1">
-            <p><strong>Сильная сторона — детерминированные пайплайны:</strong> один запуск — и всё в нужном формате, без ручной сверки. Любой человек запускает и получает тот же результат: никакого «у меня работает».</p>
-            <p>Люблю задачи, где правил много: тарифы, брони, статусы, платежи, дедуп. Если бизнес держится на таблицах и созвонах — собираю систему, где всё считается само.</p>
-            <p>Для бизнеса — скринкаст и объяснение простыми словами. Для технарей — репозитории, 656+ тестов CRM и воспроизводимый <code>docker compose up</code>.</p>
+            <p><strong>Сильная сторона — детерминированные пайплайны:</strong> один запуск — и каталог в формате импортёра: 170 позиций, 4 844 фото, 24/24 заголовка. Любой запускает и получает тот же файл — никакого «у меня работает».</p>
+            <p>Беру задачи, где правил много: тарифы, брони, статусы, дедуп 243→172, платежи с идемпотентностью. Python, FastAPI, aiogram, Scrapegraph/Scrapling, Qdrant+FTS, Tesseract, Docker.</p>
+            <p>Для бизнеса — скринкаст простыми словами. Для технарей — репозитории, 656+ тестов CRM, 12 тестов RAG и воспроизводимый <code>docker compose up</code>.</p>
           </div>
         </div>
       </div>
@@ -747,6 +744,15 @@
             if (j !== null) { e.preventDefault(); select(tabs[j], true); }
           });
         });
+      });
+
+      /* FAQ — explicit expanded sync (2026-09-25: desktop hit-test + AT role fix) */
+      document.querySelectorAll(".faq__item").forEach(function(d){
+        var s = d.querySelector("summary");
+        if (!s) return;
+        function sync(){ s.setAttribute("aria-expanded", d.open ? "true" : "false"); }
+        s.setAttribute("aria-expanded", d.open ? "true" : "false");
+        d.addEventListener("toggle", sync);
       });
 
       /* Mobile menu — fixed overlay: no layout shift, Esc/X/link close, body lock */
