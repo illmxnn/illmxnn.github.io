@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Illia Druzhenko — сложные бэкенды без ручной сверки: CRM, боты, парсинг, RAG | Киев Remote</title>
-  <meta name="description" content="Illia Druzhenko — Python Backend / AI Automation, Киев Remote. Сложная логика — мой конёк: CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам. 170 позиций за один запуск, 2500+ товаров, 15+ ботов. Один запуск = всё без ручной сверки." />
+  <meta name="description" content="Illia Druzhenko — Python Backend / AI Automation, Киев Remote. Сложная логика — мой конёк: CRM, Telegram-боты, парсинг каталогов, AI-поиск по документам. 170 позиций за один запуск, 2500+ товаров, платежи без дублей. Один запуск = всё без ручной сверки." />
   <meta name="color-scheme" content="dark" />
   <meta property="og:title" content="Illia Druzhenko — от хаоса в таблицах к системе без ручной сверки" />
   <meta property="og:description" content="170 позиций и 4 844 фото за один запуск. CRM, Telegram-боты, парсинг, RAG. Показываю код, а не лозунги." />
@@ -33,7 +33,7 @@
     "mainEntity": [
       {"@type": "Question", "name": "Я не разбираюсь в коде. Как понять, что вы сделали?", "acceptedAnswer": {"@type": "Answer", "text": "По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс ниже расписан простыми словами, а цифры можно проверить: тесты, экспорты, скринкаст."}},
       {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп 243-172: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, повторный запуск даёт бит-в-бит тот же файл."}},
-      {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. 15+ ботов на aiogram в проде: идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный. Дублей списаний — ноль."}},
+      {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Собираю так: aiogram, идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный. Платёж засчитывается один раз или честно отклоняется."}},
       {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск: SQLite FTS + Qdrant, OCR Tesseract для сканов. Вопрос — ответ с цитатой из источника, офлайн."}},
       {"@type": "Question", "name": "Работаете под NDA?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA."}},
       {"@type": "Question", "name": "Сколько времени займёт?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск одной командой. Смета — после 15-минутного созвона."}}
@@ -97,8 +97,8 @@
               <div class="evidence__label">Тестов CRM на пике</div>
             </div>
             <div class="evidence__item">
-              <div class="evidence__num">15+</div>
-              <div class="evidence__label">Ботов в проде</div>
+              <div class="evidence__num">9</div>
+              <div class="evidence__label">Кейсов: бэкенд · трейдинг · контент · постинг</div>
             </div>
           </div>
         </div>
@@ -138,13 +138,13 @@
         <span class="marquee__item"><strong>1.8s</strong> вместо 2 недель сверки</span>
         <span class="marquee__item"><strong>no diff</strong> повторный прогон</span>
         <span class="marquee__item"><strong>2 500+</strong> товаров · <strong>500+</strong> категорий</span>
-        <span class="marquee__item"><strong>15+</strong> ботов в проде</span>
+        <span class="marquee__item"><strong>платежи без дублей</strong> 409 · HD · своп</span>
         <span class="marquee__item"><strong>170 / 4 844</strong> один экспорт</span>
         <span class="marquee__item"><strong>24 / 24</strong> заголовка под импортёр</span>
         <span class="marquee__item"><strong>1.8s</strong> вместо 2 недель сверки</span>
         <span class="marquee__item"><strong>no diff</strong> повторный прогон</span>
         <span class="marquee__item"><strong>2 500+</strong> товаров · <strong>500+</strong> категорий</span>
-        <span class="marquee__item"><strong>15+</strong> ботов в проде</span>
+        <span class="marquee__item"><strong>платежи без дублей</strong> 409 · HD · своп</span>
       </div>
     </div>
 
@@ -153,8 +153,8 @@
       <div class="container">
         <div class="section__head reveal">
           <p class="eyebrow">Проекты — с реальными кадрами</p>
-          <h2 class="section__title" id="projects-title">6 кейсов: было «вручную и с ошибками» — стало <span class="grad-text">«одним запуском»</span>.</h2>
-          <p class="section__sub">Каждый кейс — дважды: простыми словами (боль → решение → цифра) и технически (стек, тесты, воспроизводимость). Кадры настоящие: интерфейс, терминал, код и репозитории, честно подписанные.</p>
+          <h2 class="section__title" id="projects-title">9 кейсов: автоматизация + трейдинг + контент + <span class="grad-text">платформа</span>.</h2>
+          <p class="section__sub">Было «вручную и с ошибками» — стало «одним запуском». Каждый кейс — дважды: простыми словами и технически. Кадры настоящие, схемы — честные SVG (подписаны, не скриншоты).</p>
         </div>
 
         <div class="projects">
@@ -460,7 +460,7 @@
               <figure class="shot-frame shot-frame--code" style="margin:0">
                 <button class="shot-frame__open" type="button" data-shot="assets/shots/paybots-struct-1280.png" data-name="paybots-struct-1280.png" data-cap="▲ Структура каталога платформы · код" aria-label="Открыть кадр крупно: структура каталога, открывается полностью">
                   <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>paybots-struct-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/paybots-struct-1280.png" alt="Структура каталога платформы: 15 папок ботов, platform и main" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                  <span class="shot-frame__view"><img src="assets/shots/paybots-struct-1280.png" alt="Структура каталога платежей: handlers, platform и main" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
                 </button>
               </figure>
               <p class="case__cap">▲ Структура каталога платформы · код</p>
@@ -477,7 +477,7 @@
             </div>
             <div class="case__body">
               <p class="case__eyebrow">Payment Bots · Telegram + Crypto — паттерн для любых платежей</p>
-              <h3 class="case__title" id="case-paybots">Боты, которые не падают на платежах и не дублируют списания</h3>
+              <h3 class="case__title" id="case-paybots">Платежи без дублей и потерь</h3>
               <div class="tabs" data-tabs>
                 <div class="tabs__list" role="tablist" aria-label="Bots: уровень рассказа">
                   <button class="tabs__tab" type="button" role="tab" id="tab-paybots-simple" aria-controls="panel-paybots-simple" aria-selected="true">Простыми словами</button>
@@ -485,15 +485,150 @@
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-simple" aria-labelledby="tab-paybots-simple" tabindex="0">
                   <p>Обычный бот считает каждый вебхук новым платежом: ретрай — и клиент списан дважды, таймаут — и деньги потеряны. Разбор — вручную по логам.</p>
-                  <p>Мои 15+ ботов так не умеют: идемпотентность и 409/retry гасят дубли, HD-кошельки TON/TRON/EVM держат ключи детерминированно, своп уходит на холодный сам. Платёж либо засчитан один раз, либо честно отклонён.</p>
+                  <p>Собираю так: идемпотентность и 409/retry гасят дубли, HD-кошельки TON/TRON/EVM держат ключи детерминированно, своп уходит на холодный сам. Платёж либо засчитан один раз, либо честно отклонён.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-tech" aria-labelledby="tab-paybots-tech" tabindex="0" hidden>
-                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии на aiogram, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. 15+ ботов в проде, ноль дублей списаний.</p>
+                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии на aiogram, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. Паттерн: один платёж — одна запись, повтор вебхука не создаёт второе списание.</p>
                 </div>
               </div>
-              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>15+ ботов в проде · ноль дублей списаний</span></div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>Идемпотентность · 409/retry · HD TON/TRON/EVM · своп на холодный</span></div>
               <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">aiogram</span><span class="tag">TON</span><span class="tag">TRON</span><span class="tag">Docker</span></div>
               <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить платежи →</a>
+            </div>
+          </article>
+
+          <!-- 7. Aivora -->
+          <article class="case reveal" data-tilt aria-labelledby="case-aivora">
+            <div class="case__media">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема советника: multi-TF данные идут в ATR-BB скоринг, дальше либо сигнал с входом, либо NO_TRADE">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">multi-TF</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">15м · 1ч · 4ч</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">ATR / BB</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">конфлюенс + скоринг</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">сигнал / NO_TRADE</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">вход · TP/SL или молчит</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
+                  <defs><marker id="arrA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">нет уверенности — нет сигнала · не финсовет</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: multi-TF → скоринг → сигнал или NO_TRADE · схема, не скриншот</p>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">Aivora · Trading — советник, который чаще молчит</p>
+              <h3 class="case__title" id="case-aivora">Торговый советник: без уверенности — NO_TRADE, а не выдумка</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Aivora: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-simple" aria-controls="panel-aivora-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-tech" aria-controls="panel-aivora-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-aivora-simple" aria-labelledby="tab-aivora-simple" tabindex="0">
+                  <p>Платные «сигналы» врут чаще, чем молчат: вход без пруфа, убытки прячут, виноват всегда ты.</p>
+                  <p>Советник наоборот: смотрит несколько таймфреймов, считает скоринг — и чаще молчит, чем врёт. Сигнал приходит только с входом, TP/SL и скриншотом. Не финсовет: риск потери депозита.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-aivora-tech" aria-labelledby="tab-aivora-tech" tabindex="0" hidden>
+                  <p>Сигналы multi-TF (<code>15м / 1ч / 4ч</code>), ATR/BB-конфлюенс, скоринг 5 слоёв, гейт <code>NO_TRADE</code> без уверенности, кламп TP/SL, версионированная аналитика с логированием сделок.</p>
+                  <p>Telegram-бот: сигнал с пруфом → вход → PnL в профиле. Формат сигнала фиксирован: вход, TP/SL, скрин, зона ±0.1%.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>multi-TF · ATR/BB · скоринг 5 слоёв · NO_TRADE-гейт</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">Telegram</span><span class="tag">TradingView</span><span class="tag">Risk-gate</span><span class="tag">Docker</span></div>
+              <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить советника →</a>
+            </div>
+          </article>
+
+          <!-- 8. ContenQ -->
+          <article class="case reveal" data-tilt aria-labelledby="case-contenq">
+            <div class="case__media">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема фабрики: одно видео превращается в чанки с кропом и озвучкой, дальше пачка клипов уходит в handoff">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">1 видео</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">upload · анализ</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">чанки · кроп</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">FFmpeg · Celery</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">N клипов</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">субтитры · дубляж</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
+                  <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">10-stage pipeline · handoff на публикацию</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: 1 видео → чанки/кроп/озвучка → N клипов · схема, не скриншот</p>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">ContenQ · Content — фабрика 1 видео → N клипов</p>
+              <h3 class="case__title" id="case-contenq">1 видео — пачка клипов: кропы, субтитры, дубляж за один прогон</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="ContenQ: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-simple" aria-controls="panel-contenq-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-tech" aria-controls="panel-contenq-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-contenq-simple" aria-labelledby="tab-contenq-simple" tabindex="0">
+                  <p>Один ролик в неделю — а план требует посты каждый день: кроп, субтитры и озвучка живут в трёх разных программах, монтажер горит.</p>
+                  <p>Фабрика решает: загрузил 1 видео — получил пачку клипов (чанки, кропы 9:16/4:5/1:1, субтитры, дубляж) за один прогон и кнопку handoff на публикацию.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-contenq-tech" aria-labelledby="tab-contenq-tech" tabindex="0" hidden>
+                  <p>10-stage pipeline: анализ → транскрибация (<code>Whisper/Deepgram</code>) → озвучка (<code>ElevenLabs 10+ голосов</code>) → FFmpeg-ремикс (кроп/скорость/фильтр) → клипы, дубляж, субтитры, монтаж → <code>handoff</code>.</p>
+                  <p>FastAPI + MySQL (22 таблицы) + Redis/Celery + FFmpeg. Очередь держит пачки, повторный прогон детерминирован.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>10-stage pipeline · FFmpeg/Celery · чанки/кроп/субтитры/дубляж</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Celery</span><span class="tag">FFmpeg</span><span class="tag">ElevenLabs</span></div>
+              <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить фабрику →</a>
+            </div>
+          </article>
+
+          <!-- 9. PubLane -->
+          <article class="case reveal" data-tilt aria-labelledby="case-publane">
+            <div class="case__media">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема планера: пачка клипов попадает в календарь с timezone, дальше постинг в восемь сетей через официальные API">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">пачка клипов</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">handoff из фабрики</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">календарь</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">timezone · approval</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">8 сетей</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">OAuth · шедулер</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
+                  <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">белый постинг · только официальные аккаунты</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: пачка → календарь/timezone → 8 сетей по API · схема, не скриншот</p>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">PubLane · Platform — белый автопостинг</p>
+              <h3 class="case__title" id="case-publane">Пачка Reels за минуты: календарь, шедулер, официальные API</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="PubLane: уровень рассказа">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-simple" aria-controls="panel-publane-simple" aria-selected="true">Простыми словами</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-tech" aria-controls="panel-publane-tech" aria-selected="false" tabindex="-1">Технически</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-publane-simple" aria-labelledby="tab-publane-simple" tabindex="0">
+                  <p>Посты каждый день руками в несколько сетей: timezone путается, согласование тонет в чатах, публикации горят.</p>
+                  <p>Белый планер: пачка Reels уходит за минуты — один календарь с timezone, multi-account внутри бренда, approval клиента. Постинг только через официальные API/OAuth, без серых схем.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-publane-tech" aria-labelledby="tab-publane-tech" tabindex="0" hidden>
+                  <p>Шедулер с timezone-календарём, <code>multi-account per platform</code>, team + approval, OAuth (TikTok первым), Developer API + webhooks, 30 таблиц.</p>
+                  <p>Связка: фабрика ContenQ → <code>handoff</code> → PubLane → 8 сетей. Планер не знает про серый фарм — только официальные аккаунты.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>Шедулер · timezone-календарь · approval · официальные API</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">OAuth</span><span class="tag">Scheduler</span><span class="tag">Webhooks</span></div>
+              <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить автопостинг →</a>
             </div>
           </article>
         </div>
@@ -564,7 +699,7 @@
           </a>
           <a class="help-row reveal" data-delay="1" role="listitem" href="#case-paybots">
             <span class="help-row__pain">Бот падает на оплате: дубли списаний, потерянные вебхуки</span>
-            <span class="help-row__go">15+ ботов: идемпотентность, 409, HD, своп <span aria-hidden="true">→</span></span>
+            <span class="help-row__go">Платежи: идемпотентность, 409, HD, своп <span aria-hidden="true">→</span></span>
           </a>
           <a class="help-row reveal" role="listitem" href="#case-docs">
             <span class="help-row__pain">PDF и сканы не ищутся, отправлять в облако нельзя</span>
@@ -596,7 +731,7 @@
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Бот теряет платежи. Почините?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">Да. 15+ ботов на aiogram в проде: идемпотентность, 409/retry, вебхуки, HD-кошельки TON/TRON/EVM, своп на холодный. Дублей списаний — ноль.</p>
+            <p class="faq__a">Да. Собираю так: aiogram, идемпотентность, 409/retry, вебхуки, HD-кошельки TON/TRON/EVM, своп на холодный. Повтор вебхука не создаёт второе списание.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">Нужно искать по сотням PDF и сканов. Это к вам?<span class="faq__icon" aria-hidden="true">+</span></summary>
