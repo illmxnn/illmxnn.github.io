@@ -242,6 +242,25 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .shot-frame--tall .shot-frame__view { aspect-ratio: 3 / 4; max-height: 382px; flex: 0 1 auto; }
 .shot-frame--code .shot-frame__view { aspect-ratio: 16 / 7; max-height: 262px; flex: 0 1 auto; }
 .shot-frame__view img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+/* Retina anti-upscale (2026-09-25): shots are DPR2, display at <=0.5x native */
+.shot-frame { max-width: 100%; }
+.shot-frame--wide, .shot-frame--code { max-width: 100%; }
+.shot-frame--tall { max-width: 390px; width: 100%; margin-inline: auto; }
+.shots__slide .shot-frame--tall { margin-inline: auto; }
+/* Hint chip «открыть» (2026-09-25): hover/focus show, touch always */
+.shot-frame__open { position: relative; }
+.shot-hint {
+  position: absolute; right: 10px; bottom: 10px; z-index: 2;
+  font: 600 12.5px/1 var(--font-sans); letter-spacing: 0.01em;
+  color: var(--text); background: rgba(7, 7, 13, 0.72);
+  border: 1px solid var(--border-hover); border-radius: 999px; padding: 9px 12px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; transform: translateY(4px); pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+}
+.shot-frame__open:hover .shot-hint, .shot-frame__open:focus-visible .shot-hint, .shot-frame__open:focus-within .shot-hint { opacity: 1; transform: none; }
+@media (hover: none) { .shot-hint { opacity: 0.92; transform: none; } }
 .case__cap { margin: 0; font: 500 13px/1.6 var(--font-mono); color: var(--text-secondary); }
 
 /* Shots slider — swipe gallery inside case cards */
@@ -493,7 +512,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
   .btn:hover, .nav__cta:hover, .step:hover, .help-card:hover { transform: none; }
   .shotbox__fig { animation: none; }
   .shots__track { scroll-snap-type: x proximity; }
-  .shots__slide .shot-frame, .shots__arrow, .shots__dots i { transition: none; }
+  .shots__slide .shot-frame, .shots__arrow, .shots__dots i, .shot-hint { transition: none; }
   #hero-canvas { display: none; }
   .hero-fallback { opacity: 1; }
 }

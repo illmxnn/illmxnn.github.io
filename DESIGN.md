@@ -431,3 +431,15 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - **Высоты**: reuse shot-system — wide 16/10, tall 3/4, code 16/7; в карточке виден один слайд + хром-бар, карточка не раздувается.
 - **Reduced motion**: snap proximity, programmatic scroll `auto`, transitions off; автоплея нет вообще.
 - **Бюджеты**: HScroll 0 @1280/@390, консоль 0, стрелки/крест 44px, `diff --check` clean.
+
+---
+
+## 16. Retina shots + hint (2026-09-25)
+
+> Кадры чёткие на ретине, открытие очевидно: мыло от апскейла убрано, хинт виден.
+
+- **DPR2**: все 12 png сняты с `deviceScaleFactor=2` (1280 CSS → 2560 px, 390 CSS → 780 px), те же имена/фрейминг; MANIFEST фиксирует dpr2 + размеры.
+- **Anti-upscale**: `.shot-frame--tall { max-width: 390px }` — мобильные кадры никогда не шире 390 CSS (0.5x от 780 px); wide/code и так уже в даунскейле (колонка ~574 < 1280); `image-rendering` не тронут, srcset не нужен.
+- **Хинт `.shot-hint`**: чип «⤢ Открыть полностью» 12.5px поверх кадра справа-снизу; hover/focus — появление, touch (`hover: none`) — всегда полупрозрачный 0.92; `aria-hidden`, клик проходит в кнопку; cursor zoom-in сохранён; aria-label каждого кадра дополнен «, открывается полностью»; лайтбокс без изменений.
+- **Подписи**: `.case__cap` 13px (≥12.5px), формат «▲ что · тип» сохранён.
+- **Бюджеты**: HScroll 0 @1280/@390, консоль 0, reduced-motion — хинт без транзишена.
