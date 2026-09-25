@@ -457,3 +457,15 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - **Единая высота**: `--shots-h: 380px` desktop / `340px` mobile 390; `.shot-frame` строго `height: var(--shots-h)`; `.shot-frame__view` — `height: 342px` desktop / `302px` mobile, `aspect-ratio: auto`, `object-fit: cover, top`; варианты wide/tall/code переопределены — высота не прыгает при листании; tall-кадры по-прежнему `max-width: 390px` по центру.
 - **Сигнал обрезки**: `::after` фейд 76px `transparent → rgba(7,7,13,0.92)` поверх низа кадра + чип по центру низа всегда видим (не только hover); чип — пилюля с cyan-бордером и свечением; курсор zoom-in; подписи и лайтбокс без изменений.
 - **Бюджеты**: высоты равны внутри каждого слайдера (замер evaluate), HScroll 0 @1280/@390, консоль 0, тапы 44px, `diff --check` clean.
+
+---
+
+## 18. HUD-compact + центрирование кадров (2026-09-25)
+
+> Прибор стал компактным: узкая пилюля по центру, счётчик строго посередине, тонкая нить прогресса поверх.
+
+- **Панель `.shots__bar`**: `max-width: 320px`, `width: fit-content`, `margin-inline: auto` — вся строка по центру карточки; radius 999px (пилюля), padding 8px 10px, gap 12px (8px на 390). Порядок в DOM без изменений: стрелка ‹ счётчик › стрелка; бар вынесен поверх.
+- **Счётчик `.shots__count`**: `flex: 0 1 auto`, `min-width: 76px`, `text-align: center` — цифры строго по центру панели; mono 14px, tabular-nums, `aria-live="polite"` без изменений.
+- **Прогресс `.shots__progress`**: тонкая нить 2px поверх панели (`position: absolute; left: 30px; right: 30px; top: -1px`), ширина `(i+1)/n`, градиент violet→cyan + glow; transition 260ms; reduced-motion — без transition.
+- **Кадры по центру**: `.shots__slide { align-items: center }`, `.shot-frame { width: 100%; margin-inline: auto }`; tall — `max-width: 390px` по центру, боковые gutter симметричны; `object-position: top center` сохранён; высоты 380/340, фейд 76px + чип, лайтбокс, DPR2 — без изменений.
+- **Бюджеты**: ширина панели ≤340px desktop, gutter-diff tall ≤2px, HScroll 0 @1280/@390, консоль 0, тапы 44px, `diff --check` clean.
