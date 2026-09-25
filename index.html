@@ -82,7 +82,7 @@
             <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код на GitHub →</a>
             <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram — отвечу сегодня</a>
           </div>
-          <p class="hero__note reveal">DUICT, 3-й курс · B2 English · Remote Ukraine / Worldwide</p>
+          <p class="hero__note reveal">B2 English · Remote Ukraine / Worldwide</p>
           <div class="evidence reveal" data-delay="2" aria-label="Подтверждённые метрики">
             <div class="evidence__item">
               <div class="evidence__num"><span class="grad-text">170 / 4 844</span></div>
@@ -633,7 +633,6 @@
             <p class="about-card__name">Illia Druzhenko</p>
             <p class="about-card__role">PYTHON BACKEND / AI AUTOMATION · КИЕВ · REMOTE</p>
             <div class="about-card__row"><span>База</span><span>Киев, удалённо по всему миру</span></div>
-            <div class="about-card__row"><span>Учёба</span><span>DUICT, 3-й курс</span></div>
             <div class="about-card__row"><span>Английский</span><span>B2</span></div>
             <div class="about-card__row"><span>Стек</span><span>Python · FastAPI · Telegram · Docker</span></div>
           </div>
@@ -653,7 +652,7 @@
           <div class="reveal">
             <p class="eyebrow">Контакты — отвечаю сегодня</p>
             <h2 class="section__title" id="contacts-title">Обсудим ваш процесс <span class="grad-text">за 15 минут</span>.</h2>
-            <p class="section__sub">Киев · Remote Ukraine / Worldwide · DUICT, 3-й курс · B2 English. Самый быстрый канал — Telegram.</p>
+            <p class="section__sub">Киев · Remote Ukraine / Worldwide · B2 English. Самый быстрый канал — Telegram.</p>
             <div class="contact__ctas">
               <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код →</a>
               <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram</a>
@@ -750,19 +749,37 @@
         });
       });
 
-      /* Mobile menu */
+      /* Mobile menu — fixed overlay: no layout shift, Esc/X/link close, body lock */
       var burger = document.getElementById("burger");
       var menu = document.getElementById("mobileMenu");
       if (burger && menu) {
-        burger.addEventListener("click", function(){
-          var open = menu.classList.toggle("is-open");
+        var burgerLabel = burger.textContent;
+        var lastBurgerFocus = null;
+        function setMenu(open){
+          menu.classList.toggle("is-open", open);
+          document.body.classList.toggle("menu-open", open);
           burger.setAttribute("aria-expanded", open ? "true" : "false");
           burger.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+          burger.textContent = open ? "×" : burgerLabel;
+          if (open) {
+            lastBurgerFocus = document.activeElement;
+            var first = menu.querySelector("a");
+            if (first) first.focus();
+          } else if (lastBurgerFocus && document.contains(lastBurgerFocus)) {
+            lastBurgerFocus.focus();
+          } else {
+            burger.focus();
+          }
+        }
+        burger.addEventListener("click", function(){
+          setMenu(!menu.classList.contains("is-open"));
+        });
+        document.addEventListener("keydown", function(e){
+          if (e.key === "Escape" && menu.classList.contains("is-open")) setMenu(false);
         });
         menu.querySelectorAll("a").forEach(function(a){
           a.addEventListener("click", function(){
-            menu.classList.remove("is-open");
-            burger.setAttribute("aria-expanded", "false");
+            setMenu(false);
           });
         });
       }
@@ -837,7 +854,9 @@
           else if (e.key === "Home") { e.preventDefault(); go(0); }
           else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
         });
-        /* Mouse drag-to-scroll; touch scrolls natively */
+        /* Mouse drag-to-scroll; touch scrolls natively.
+           Native image drag would hijack the gesture, so kill it. */
+        track.addEventListener("dragstart", function(e){ e.preventDefault(); });
         var down = false, sx = 0, sl = 0, moved = false;
         track.addEventListener("pointerdown", function(e){
           if (e.pointerType !== "mouse" || e.button !== 0) return;

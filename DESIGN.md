@@ -371,7 +371,7 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - Hero: Вариант A + proof-strip (170 / 4844 / 12 / 656+) + 2 CTA + моно-рельс
 - Проекты: 4 карточки (DocumentAnalyzer, RAG Demo, Ingul, JustCars Exporter) + 1 широкая «По запросу»
 - Навыки: лента пилюль
-- Контакты: Telegram @illia_dev, GitHub illmxnn, email, Киев/Remote/B2/DUICT
+- Контакты: Telegram @illia_dev, GitHub illmxnn, email, Киев/Remote/B2 English (изм. копи 2026-09-25: упоминание DUICT удалено везде — hero-note, about, contacts)
 - Footer: Kyiv • Remote • B2 English • © 2026 Illia Druzhenko
 Все тексты проектов — по формуле PAS/JTBD, без «Advanced/Lead/выручка/пользователи». Только CONFIRMED.
 
@@ -470,3 +470,15 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - **Прогресс `.shots__progress`**: тонкая нить 2px поверх панели (`position: absolute; left: 24px; right: 24px; top: -1px`), ширина `(i+1)/n`, градиент violet→cyan + glow; transition 260ms; reduced-motion — без transition.
 - **Кадры по центру**: `.shots__slide { align-items: center }`, `.shot-frame { width: 100%; margin-inline: auto }`; tall — `max-width: 390px` по центру, боковые gutter симметричны; `object-position: top center` сохранён; высоты 380/340, фейд 76px + чип, лайтбокс, DPR2 — без изменений.
 - **Бюджеты**: ширина панели ≤340px desktop, gutter-diff tall ≤2px, HScroll 0 @1280/@390, консоль 0, тапы 44px, `diff --check` clean.
+
+---
+
+## 19. Mobile fixes (2026-09-25)
+
+> Четыре фикса по скринам юзера @390: читаемый hero, меню-оверлей, без универа, слайдер без стрелок.
+
+- **Hero ≤640px**: `.hero .eyebrow` — 10.5px, `letter-spacing 0.04em`, `text-transform: none`, wrap без трекинг-каши; `.hero__h1` — 30px / `line-height 1.18`; `.hero__sub` — 15px/1.65; hero-padding 48px.
+- **Меню-оверлей ≤760px**: `.nav__mobile` — `position: fixed; inset: 0; z-index: 80`, фон `rgba(7,7,13,0.92)` + blur 18px; открытие не сдвигает layout; бургер поверх (z 82, крест × при открыто); закрытие — Esc / крест / клик по ссылке; `body.menu-open` — lock скролла; фокус — первый линк при открытии, возврат на бургер при закрытии.
+- **Без универа (изм. копи)**: «DUICT, 3-й курс» удалено везде — hero-note («B2 English · Remote Ukraine / Worldwide»), about-ряд «Учёба» удалён целиком, contacts-sub («Киев · Remote Ukraine / Worldwide · B2 English»); footer и так чист; §11 обновлён.
+- **Слайдеры mobile**: `.shots__arrow { display: none }` @≤640px; `.shots__track` — `touch-action: pan-x pan-y` + `-webkit-overflow-scrolling: touch` (свайп работает, вертикальный скролл не ломается); нативный drag картинок подавлен (`dragstart` preventDefault + `-webkit-user-drag: none` — иначе жест перехватывается и трек не едет); счётчик+нить остаются; лайтбокс/высоты/фейд без изменений.
+- **Бюджеты**: HScroll 0 @1280/@390, консоль 0, `diff --check` clean, без коммита.
