@@ -482,3 +482,17 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - **Без универа (изм. копи)**: «DUICT, 3-й курс» удалено везде — hero-note («B2 English · Remote Ukraine / Worldwide»), about-ряд «Учёба» удалён целиком, contacts-sub («Киев · Remote Ukraine / Worldwide · B2 English»); footer и так чист; §11 обновлён.
 - **Слайдеры mobile**: `.shots__arrow { display: none }` @≤640px; `.shots__track` — `touch-action: pan-x pan-y` + `-webkit-overflow-scrolling: touch` (свайп работает, вертикальный скролл не ломается); нативный drag картинок подавлен (`dragstart` preventDefault + `-webkit-user-drag: none` — иначе жест перехватывается и трек не едет); счётчик+нить остаются; лайтбокс/высоты/фейд без изменений.
 - **Бюджеты**: HScroll 0 @1280/@390, консоль 0, `diff --check` clean, без коммита.
+
+---
+
+## 20. Frames dynamics + spacing + custom fonts (2026-09-25)
+
+> Рамки живые, отступы по шкале, шрифты с характером: активный слайд переливается, консоль дышит, текст читается display-гарнитурой.
+
+- **Живая рамка активного слайда**: `.shots__slide.is-active .shot-frame` — градиентный border (`violet→cyan→magenta`, `background-size 220%`, `frame-flow 3.6s` по `background-position`) + мягкий пульс `box-shadow` (22→36px glow). Неактивные слайды — `opacity 0.55`, активный — `1` (кросс-фейд 320ms при смене). Всё interruptible: анимации не блокируют скролл/свайп/стрелки, индекс по-прежнему из реального скролла.
+- **Hover-lift + shine**: `.shot-frame:hover` — `translateY(-4px)` + усиленная тень; `shine`-блик (`frame-shine 700ms`, skewed white gradient через `::after` на `__view`, только `transform`/`opacity`). На touch (`hover: none`) блик не срабатывает — кадр остаётся статичным, хинт виден как раньше.
+- **Дыхание консоли**: `.glass-console` — `console-breathe 4.2s ease-in-out infinite` (glow violet 22→38px + лёгкий cyan на пике). Только `box-shadow`, без layout.
+- **Отступы по шкале 8/12/16/20**: шапка консоли `12/16`, код `20` (≥16 от краёв), футер `12/20` отделён бордером, бар фрейма `8/12`, `case__media gap 12`, подпись `margin-top 12 + padding-top 4`, панель `margin-top 16` — капшн не впритык. Все значения из шкалы §5, ничего вне её.
+- **Шрифты**: Google Fonts `display=swap` + preconnect — display `Unbounded 500/600/700` (H1, section-H2, case-H3, onrequest/step/help/about имена — футуристично, кириллица есть; Space Grotesk отклонён 2026-09-25: нет кириллицы в Google Fonts), mono `JetBrains Mono` (код, счётчики, подписи, лейблы — без изменений), текст `Inter` (body/sub — без изменений). `--font-display` с fallback-стеком (`Unbounded → Inter → system-ui → sans`). Файловые имена в барах фреймов остаются mono (системная метка, не заголовок).
+- **Reduced-motion**: `frame-flow`, `frame-shine`, `console-breathe` — off; слайды `opacity 1`, hover-lift off, шрифты остаются.
+- **Бюджеты**: HScroll 0 @1280/@390, консоль 0, `diff --check` clean, без коммита.
