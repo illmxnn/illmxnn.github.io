@@ -464,8 +464,9 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 
 > Прибор стал компактным: узкая пилюля по центру, счётчик строго посередине, тонкая нить прогресса поверх.
 
-- **Панель `.shots__bar`**: `max-width: 320px`, `width: fit-content`, `margin-inline: auto` — вся строка по центру карточки; radius 999px (пилюля), padding 8px 10px, gap 12px (8px на 390). Порядок в DOM без изменений: стрелка ‹ счётчик › стрелка; бар вынесен поверх.
-- **Счётчик `.shots__count`**: `flex: 0 1 auto`, `min-width: 76px`, `text-align: center` — цифры строго по центру панели; mono 14px, tabular-nums, `aria-live="polite"` без изменений.
-- **Прогресс `.shots__progress`**: тонкая нить 2px поверх панели (`position: absolute; left: 30px; right: 30px; top: -1px`), ширина `(i+1)/n`, градиент violet→cyan + glow; transition 260ms; reduced-motion — без transition.
+- **Панель `.shots__bar`**: `max-width: 240px`, `width: fit-content`, `margin-inline: auto` — вся строка по центру карточки; radius 999px (пилюля), padding 5px 8px, gap 8px. Порядок в DOM без изменений: стрелка ‹ счётчик › стрелка; бар вынесен поверх.
+- **Стрелки `.shots__arrow`**: круг 32px (визуально мелкие по вердикту юзера 2026-09-25 «всё равно огромный»), шеврон 14px, glow-бордер и состояния без изменений.
+- **Счётчик `.shots__count`**: `flex: 0 1 auto`, `min-width: 62px`, `text-align: center` — цифры строго по центру панели; mono 12px, tabular-nums, `aria-live="polite"` без изменений.
+- **Прогресс `.shots__progress`**: тонкая нить 2px поверх панели (`position: absolute; left: 24px; right: 24px; top: -1px`), ширина `(i+1)/n`, градиент violet→cyan + glow; transition 260ms; reduced-motion — без transition.
 - **Кадры по центру**: `.shots__slide { align-items: center }`, `.shot-frame { width: 100%; margin-inline: auto }`; tall — `max-width: 390px` по центру, боковые gutter симметричны; `object-position: top center` сохранён; высоты 380/340, фейд 76px + чип, лайтбокс, DPR2 — без изменений.
 - **Бюджеты**: ширина панели ≤340px desktop, gutter-diff tall ≤2px, HScroll 0 @1280/@390, консоль 0, тапы 44px, `diff --check` clean.
