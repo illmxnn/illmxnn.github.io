@@ -31,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "Я не разбираюсь в коде. Как понять, что вы сделали?", "acceptedAnswer": {"@type": "Answer", "text": "По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс ниже расписан простыми словами, а цифры можно проверить: тесты, экспорты, скринкаст."}},
+      {"@type": "Question", "name": "Как проверить результат без доступа к коду?", "acceptedAnswer": {"@type": "Answer", "text": "По результату: было 2 недели ручной сверки каталога — стал один запуск за секунды. Каждый кейс ниже — в двух видах (Обзор/Детали), цифры проверяются: тесты, экспорты, скринкаст."}},
       {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп 243-172: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, повторный запуск даёт бит-в-бит тот же файл."}},
       {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Собираю так: aiogram, идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный. Платёж засчитывается один раз или честно отклоняется."}},
       {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск: SQLite FTS + Qdrant, OCR Tesseract для сканов. Вопрос — ответ с цитатой из источника, офлайн."}},
@@ -154,7 +154,7 @@
         <div class="section__head reveal">
           <p class="eyebrow">Проекты — с реальными кадрами</p>
           <h2 class="section__title" id="projects-title">9 кейсов: автоматизация + трейдинг + контент + <span class="grad-text">платформа</span>.</h2>
-          <p class="section__sub">Было «вручную и с ошибками» — стало «одним запуском». Каждый кейс — дважды: простыми словами и технически. Кадры настоящие, схемы — честные SVG (подписаны, не скриншоты).</p>
+          <p class="section__sub">Было «вручную и с ошибками» — стало «одним запуском». Каждый кейс — в двух видах: Обзор и Детали. Кадры настоящие, схемы — честные SVG (подписаны, не скриншоты).</p>
         </div>
 
         <div class="projects">
@@ -196,9 +196,9 @@
               <p class="case__eyebrow">LedStil · E-commerce — флагман, самый большой</p>
               <h3 class="case__title" id="case-ledstil">Магазин на 2 500+ товаров, где порядок наводится перетаскиванием</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="LedStil: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-simple" aria-controls="panel-ledstil-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-tech" aria-controls="panel-ledstil-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="LedStil: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-simple" aria-controls="panel-ledstil-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ledstil-tech" aria-controls="panel-ledstil-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ledstil-simple" aria-labelledby="tab-ledstil-simple" tabindex="0">
                   <p>2 500+ товаров жили в хаосе: категории и характеристики вразнобой, сайт тормозил, порядок наводили вручную.</p>
@@ -253,9 +253,9 @@
               <p class="case__eyebrow">Exporter · Telegram + FastAPI — паттерн для любого импортёра</p>
               <h3 class="case__title" id="case-justcars">Перенос 170 позиций в CRM без единой правки руками</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="Exporter: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-simple" aria-controls="panel-justcars-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-tech" aria-controls="panel-justcars-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="Exporter: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-simple" aria-controls="panel-justcars-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-justcars-tech" aria-controls="panel-justcars-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-justcars-simple" aria-labelledby="tab-justcars-simple" tabindex="0">
                   <p>Перенос каталога вручную — недели сверки: цены не сходятся, фото теряются, импортёр отклоняет файл из-за заголовков.</p>
@@ -310,9 +310,9 @@
               <p class="case__eyebrow">RAG Demo · Паттерн для любой базы знаний</p>
               <h3 class="case__title" id="case-rag">AI-поиск, который не выдумывает: нет доказательств — так и говорит</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="RAG: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-simple" aria-controls="panel-rag-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-tech" aria-controls="panel-rag-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="RAG: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-simple" aria-controls="panel-rag-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-rag-tech" aria-controls="panel-rag-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-rag-simple" aria-labelledby="tab-rag-simple" tabindex="0">
                   <p>Обычный чат-бот отвечает уверенно, даже когда не знает, — проверить его нельзя, ошибка стоит дорого.</p>
@@ -367,9 +367,9 @@
               <p class="case__eyebrow">Ingul · Витрина — паттерн для любого каталога</p>
               <h3 class="case__title" id="case-ingul">Витрина без CMS, которая на телефоне просто летает</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="Ingul: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-simple" aria-controls="panel-ingul-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-tech" aria-controls="panel-ingul-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="Ingul: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-simple" aria-controls="panel-ingul-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-ingul-tech" aria-controls="panel-ingul-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ingul-simple" aria-labelledby="tab-ingul-simple" tabindex="0">
                   <p>Тяжёлая CMS для витрины — медленно на телефоне и дорого в поддержке, а смотреть товары нужно с руки.</p>
@@ -423,9 +423,9 @@
               <p class="case__eyebrow">DocumentAnalyzer · Desktop — паттерн для любого архива</p>
               <h3 class="case__title" id="case-docs">Поиск по документам и сканам — локально, без облака</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="Analyzer: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-simple" aria-controls="panel-docs-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-tech" aria-controls="panel-docs-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="Analyzer: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-simple" aria-controls="panel-docs-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-docs-tech" aria-controls="panel-docs-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-docs-simple" aria-labelledby="tab-docs-simple" tabindex="0">
                   <p>Договоры и сканы лежат по папкам — нужный ищут 10 минут, сканы вообще не ищутся.</p>
@@ -479,9 +479,9 @@
               <p class="case__eyebrow">Payment Bots · Telegram + Crypto — паттерн для любых платежей</p>
               <h3 class="case__title" id="case-paybots">Платежи без дублей и потерь</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="Bots: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-simple" aria-controls="panel-paybots-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-tech" aria-controls="panel-paybots-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="Bots: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-simple" aria-controls="panel-paybots-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-paybots-tech" aria-controls="panel-paybots-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-simple" aria-labelledby="tab-paybots-simple" tabindex="0">
                   <p>Обычный бот считает каждый вебхук новым платежом: ретрай — и клиент списан дважды, таймаут — и деньги потеряны. Разбор — вручную по логам.</p>
@@ -555,9 +555,9 @@
               <p class="case__eyebrow">Aivora · Trading — советник, который чаще молчит</p>
               <h3 class="case__title" id="case-aivora">Торговый советник: без уверенности — NO_TRADE, а не выдумка</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="Aivora: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-simple" aria-controls="panel-aivora-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-tech" aria-controls="panel-aivora-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="Aivora: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-simple" aria-controls="panel-aivora-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-aivora-tech" aria-controls="panel-aivora-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-aivora-simple" aria-labelledby="tab-aivora-simple" tabindex="0">
                   <p>Платные «сигналы» врут чаще, чем молчат: вход без пруфа, убытки прячут, виноват всегда ты.</p>
@@ -623,9 +623,9 @@
               <p class="case__eyebrow">ContenQ · Content — фабрика 1 видео → N клипов</p>
               <h3 class="case__title" id="case-contenq">1 видео — пачка клипов: кропы, субтитры, дубляж за один прогон</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="ContenQ: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-simple" aria-controls="panel-contenq-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-tech" aria-controls="panel-contenq-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="ContenQ: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-simple" aria-controls="panel-contenq-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-contenq-tech" aria-controls="panel-contenq-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-contenq-simple" aria-labelledby="tab-contenq-simple" tabindex="0">
                   <p>Один ролик в неделю — а план требует посты каждый день: кроп, субтитры и озвучка живут в трёх разных программах, монтажер горит.</p>
@@ -691,9 +691,9 @@
               <p class="case__eyebrow">PubLane · Platform — белый автопостинг</p>
               <h3 class="case__title" id="case-publane">Пачка Reels за минуты: календарь, шедулер, официальные API</h3>
               <div class="tabs" data-tabs>
-                <div class="tabs__list" role="tablist" aria-label="PubLane: уровень рассказа">
-                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-simple" aria-controls="panel-publane-simple" aria-selected="true">Простыми словами</button>
-                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-tech" aria-controls="panel-publane-tech" aria-selected="false" tabindex="-1">Технически</button>
+                <div class="tabs__list" role="tablist" aria-label="PubLane: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-simple" aria-controls="panel-publane-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-publane-tech" aria-controls="panel-publane-tech" aria-selected="false" tabindex="-1">Детали</button>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-publane-simple" aria-labelledby="tab-publane-simple" tabindex="0">
                   <p>Посты каждый день руками в несколько сетей: timezone путается, согласование тонет в чатах, публикации горят.</p>
@@ -801,13 +801,13 @@
     <section id="faq" class="section section--alt" aria-labelledby="faq-title">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">FAQ — для неайтишников</p>
-          <h2 class="section__title" id="faq-title">Частые вопросы <span class="grad-text">простыми словами</span>.</h2>
+          <p class="eyebrow">FAQ — по делу</p>
+          <h2 class="section__title" id="faq-title">Частые вопросы <span class="grad-text">по существу</span>.</h2>
         </div>
         <div class="faq">
           <details class="faq__item reveal" open>
-            <summary class="faq__q">Я не разбираюсь в коде. Как понять, что вы сделали?<span class="faq__icon" aria-hidden="true">+</span></summary>
-            <p class="faq__a">По результату: было 2 недели ручной сверки — стал прогон за 1.8 секунды. Каждый кейс расписан простыми словами и технически, цифры проверяются: 170/4 844, 24/24, no diff, скринкаст.</p>
+            <summary class="faq__q">Как проверить результат без доступа к коду?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">По результату: было 2 недели ручной сверки — стал прогон за 1.8 секунды. Каждый кейс — в двух видах (Обзор/Детали), цифры проверяются: 170/4 844, 24/24, no diff, скринкаст.</p>
           </details>
           <details class="faq__item reveal">
             <summary class="faq__q">У нас каталог в Excel / на сайте. Перенесёте без потерь?<span class="faq__icon" aria-hidden="true">+</span></summary>
@@ -842,20 +842,13 @@
       <div class="container">
         <div class="section__head reveal">
           <p class="eyebrow">Обо мне</p>
-          <h2 class="section__title" id="about-title">Инженер, который <span class="grad-text">объясняет без кода</span>.</h2>
+          <h2 class="section__title" id="about-title">Инженер <span class="grad-text">детерминированных систем</span>.</h2>
         </div>
-        <div class="about">
-          <div class="about-card reveal">
-            <p class="about-card__name">Illia Druzhenko</p>
-            <p class="about-card__role">PYTHON BACKEND / AI AUTOMATION · КИЕВ · REMOTE</p>
-            <div class="about-card__row"><span>База</span><span>Киев, удалённо по всему миру</span></div>
-            <div class="about-card__row"><span>Английский</span><span>B2</span></div>
-            <div class="about-card__row"><span>Стек</span><span>Python · FastAPI · Telegram · Docker</span></div>
-          </div>
+        <div class="about about--single">
           <div class="about__text reveal" data-delay="1">
             <p><strong>Сильная сторона — детерминированные пайплайны:</strong> один запуск — и каталог в формате импортёра: 170 позиций, 4 844 фото, 24/24 заголовка. Любой запускает и получает тот же файл — никакого «у меня работает».</p>
             <p>Беру задачи, где правил много: тарифы, брони, статусы, дедуп 243→172, платежи с идемпотентностью. Python, FastAPI, aiogram, Scrapegraph/Scrapling, Qdrant+FTS, Tesseract, Docker.</p>
-            <p>Для бизнеса — скринкаст простыми словами. Для технарей — репозитории, 656+ тестов CRM, 12 тестов RAG и воспроизводимый <code>docker compose up</code>.</p>
+            <p>Скринкаст — по запросу. Код и тесты открыты: 656+ тестов CRM, 12 тестов RAG, воспроизводимый <code>docker compose up</code>.</p>
           </div>
         </div>
       </div>
@@ -866,7 +859,7 @@
       <div class="container">
         <div class="contact-grid">
           <div class="reveal">
-            <p class="eyebrow">Контакты — отвечаю сегодня</p>
+            <p class="eyebrow">Связаться — отвечаю сегодня</p>
             <h2 class="section__title" id="contacts-title">Обсудим ваш процесс <span class="grad-text">за 15 минут</span>.</h2>
             <p class="section__sub">Киев · Remote Ukraine / Worldwide · B2 English. Самый быстрый канал — Telegram.</p>
             <div class="contact__ctas">
@@ -891,6 +884,10 @@
             <div class="contact-card__row">
               <span class="contact-card__label">Локация</span>
               <span class="contact-card__value">Kyiv · Remote · B2 English</span>
+            </div>
+            <div class="contact-card__row">
+              <span class="contact-card__label">Стек</span>
+              <span class="contact-card__value">Python · FastAPI · Telegram · Docker</span>
             </div>
             <p class="contact-card__hint">Отвечу в течение дня. Для вакансии — пришлю описание кейсов под NDA и скринкаст.</p>
           </div>

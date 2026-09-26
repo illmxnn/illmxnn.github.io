@@ -522,15 +522,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 
 /* About */
 .about { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: start; }
-.about-card {
-  border: 1px solid var(--border); border-radius: var(--radius-card); padding: 26px;
-  background: linear-gradient(160deg, rgba(124,92,255,0.12), rgba(56,225,255,0.05));
-  box-shadow: var(--glow-a);
-}
-.about-card__name { margin: 0 0 4px; font-family: var(--font-display); font-size: 22px; letter-spacing: -0.015em; }
-.about-card__role { margin: 0 0 16px; font: 500 12px/1.6 var(--font-mono); color: var(--accent-strong); letter-spacing: 0.06em; }
-.about-card__row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 14px; }
-.about-card__row span:first-child { color: var(--text-tertiary); }
+.about--single { grid-template-columns: 1fr; max-width: 760px; }
 .about__text p { margin: 0 0 14px; color: var(--text-secondary); font-size: 15.5px; line-height: 1.7; }
 .about__text p strong { color: var(--text); }
 
