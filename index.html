@@ -224,7 +224,7 @@
 
         <div class="projects">
           <!-- 1. LedStil -->
-          <article class="case case--flag reveal" data-tilt aria-labelledby="case-ledstil">
+          <article class="case case--flag reveal" aria-labelledby="case-ledstil">
             <div class="case__media">
               <div class="shots" data-shots="ledstil">
                 <div class="shots__viewport">
@@ -288,7 +288,7 @@
           </article>
 
           <!-- 2. JustCars Exporter -->
-          <article class="case reveal" data-tilt aria-labelledby="case-justcars">
+          <article class="case reveal" aria-labelledby="case-justcars">
             <div class="case__media">
               <div class="shots" data-shots="exporter">
                 <div class="shots__viewport">
@@ -352,7 +352,7 @@
           </article>
 
           <!-- 3. RAG Demo -->
-          <article class="case reveal" data-tilt aria-labelledby="case-rag">
+          <article class="case reveal" aria-labelledby="case-rag">
             <div class="case__media">
               <div class="shots" data-shots="rag">
                 <div class="shots__viewport">
@@ -416,7 +416,7 @@
           </article>
 
           <!-- 4. Ingul -->
-          <article class="case reveal" data-tilt aria-labelledby="case-ingul">
+          <article class="case reveal" aria-labelledby="case-ingul">
             <div class="case__media">
               <div class="shots" data-shots="ingul">
                 <div class="shots__viewport">
@@ -479,7 +479,7 @@
           </article>
 
           <!-- 5. DocumentAnalyzer -->
-          <article class="case reveal" data-tilt aria-labelledby="case-docs">
+          <article class="case reveal" aria-labelledby="case-docs">
             <div class="case__media">
               <div class="shots" data-shots="docs">
                 <div class="shots__viewport">
@@ -543,7 +543,7 @@
           </article>
 
           <!-- 6. Payment Bots -->
-          <article class="case reveal" data-tilt aria-labelledby="case-paybots">
+          <article class="case reveal" aria-labelledby="case-paybots">
             <div class="case__media">
               <div class="shots" data-shots="paybots">
                 <div class="shots__viewport">
@@ -606,7 +606,7 @@
           </article>
 
           <!-- 7. Aivora -->
-          <article class="case reveal" data-tilt aria-labelledby="case-aivora">
+          <article class="case reveal" aria-labelledby="case-aivora">
             <div class="case__media">
               <div class="shots" data-shots="aivora">
                 <div class="shots__viewport">
@@ -690,7 +690,7 @@
           </article>
 
           <!-- 8. ContenQ -->
-          <article class="case reveal" data-tilt aria-labelledby="case-contenq">
+          <article class="case reveal" aria-labelledby="case-contenq">
             <div class="case__media">
               <div class="shots" data-shots="contenq">
                 <div class="shots__viewport">
@@ -764,7 +764,7 @@
           </article>
 
           <!-- 9. PubLane -->
-          <article class="case reveal" data-tilt aria-labelledby="case-publane">
+          <article class="case reveal" aria-labelledby="case-publane">
             <div class="case__media">
               <div class="shots" data-shots="publane">
                 <div class="shots__viewport">
@@ -1162,8 +1162,21 @@
         var total = box.querySelector("[data-shots-total]");
         var bar = box.querySelector("[data-shots-progress]");
         var dots = Array.prototype.slice.call(box.querySelectorAll(".shots__dots i"));
+        /* One caption under the track (2026-09-26): texts come from the slides, in-slide nodes removed */
+        var caps = slides.map(function(s){
+          var c = s.querySelector(".case__cap");
+          var t = c ? c.textContent : "";
+          if (c && c.parentNode) c.parentNode.removeChild(c);
+          return t;
+        });
+        var viewport = box.querySelector(".shots__viewport");
+        var capEl = document.createElement("p");
+        capEl.className = "shots__cap";
+        capEl.textContent = caps[0] || "";
+        if (viewport && viewport.parentNode) viewport.parentNode.insertBefore(capEl, viewport.nextSibling);
         if (!track || slides.length < 2) return;
         var index = 0;
+        var swipeMq = window.matchMedia("(max-width: 640px)");
         function pad(n){ return (n < 10 ? "0" : "") + n; }
         function targetLeft(i){
           var tr = track.getBoundingClientRect();
@@ -1172,6 +1185,7 @@
         }
         function render(){
           if (count) count.textContent = pad(index + 1);
+          if (capEl) capEl.textContent = caps[index] || "";
           if (total) total.textContent = pad(slides.length);
           if (bar) bar.style.width = ((index + 1) / slides.length * 100).toFixed(1) + "%";
           dots.forEach(function(d, i){ d.classList.toggle("is-on", i === index); });
@@ -1208,12 +1222,12 @@
           else if (e.key === "Home") { e.preventDefault(); go(0); }
           else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
         });
-        /* Mouse drag-to-scroll; touch scrolls natively.
+        /* Mouse drag-to-scroll on <=640px only (desktop: arrows + keys); touch scrolls natively.
            Native image drag would hijack the gesture, so kill it. */
         track.addEventListener("dragstart", function(e){ e.preventDefault(); });
         var down = false, sx = 0, sl = 0, moved = false;
         track.addEventListener("pointerdown", function(e){
-          if (e.pointerType !== "mouse" || e.button !== 0) return;
+          if (!swipeMq.matches || e.pointerType !== "mouse" || e.button !== 0) return;
           down = true; moved = false; sx = e.clientX; sl = track.scrollLeft;
           track.classList.add("is-drag");
         });
