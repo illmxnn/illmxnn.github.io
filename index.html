@@ -48,6 +48,7 @@
     <div class="nav__inner">
       <a class="nav__brand" href="#top"><span class="nav__brand-dot" aria-hidden="true"></span>Illia Druzhenko</a>
       <div class="nav__links" role="list">
+        <a class="nav__link" href="#services" data-nav="services">Услуги</a>
         <a class="nav__link" href="#projects" data-nav="projects">Проекты</a>
         <a class="nav__link" href="#process" data-nav="process">Процесс</a>
         <a class="nav__link" href="#faq" data-nav="faq">FAQ</a>
@@ -59,6 +60,7 @@
       <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
+      <a class="nav__link" href="#services">Услуги</a>
       <a class="nav__link" href="#projects">Проекты</a>
       <a class="nav__link" href="#process">Процесс</a>
       <a class="nav__link" href="#faq">FAQ</a>
@@ -77,7 +79,7 @@
         <div class="hero__content">
           <p class="eyebrow reveal">Python Backend / AI Automation · CRM · Боты · Парсинг · RAG · Киев · Remote</p>
           <h1 id="hero-title" class="hero__h1 reveal" data-delay="1">От хаоса в таблицах — к системе <span class="grad-text">без ручной сверки</span>.</h1>
-          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото уходят в импортёр за 1.8 секунды, без ручной сверки.</span> CRM с тарифами, бронями и дедупом, Telegram-боты с идемпотентностью платежей, парсинг Scrapegraph/Scrapling, RAG Qdrant+FTS с цитатами из источника. Python, FastAPI, aiogram, Docker. Показываю код: 656+ тестов CRM, 12 тестов RAG.</p>
+          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото уходят в импортёр за 1.8 секунды, без ручной сверки.</span> CRM с тарифами, бронями и дедупом, Telegram-боты с идемпотентностью платежей, парсинг Scrapegraph/Scrapling, RAG Qdrant+FTS с цитатами из источника. Python, FastAPI, aiogram, Docker. Показываю код: 656+ тестов CRM, 12 тестов RAG. Ниже — конкретно, что делаю: <a href="#services">8 направлений с примерами из кейсов</a>.</p>
           <div class="hero__ctas reveal" data-delay="2">
             <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код на GitHub →</a>
             <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram — отвечу сегодня</a>
@@ -148,6 +150,67 @@
       </div>
     </div>
 
+    <!-- Services: concretely what I do, each anchored to a case -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Что я делаю — конкретно</p>
+          <h2 class="section__title" id="services-title">8 направлений: <span class="grad-text">навык + пример</span>.</h2>
+          <p class="section__sub">Без общих фраз: каждая позиция — это работа с цифрами, а не лозунг. Клик — и попадаешь в кейс, где это уже сделано.</p>
+        </div>
+        <div class="services">
+          <a class="svc reveal" href="#case-justcars">
+            <span class="svc__num" aria-hidden="true">01</span>
+            <span class="svc__title">Парсинг каталогов без потерь</span>
+            <span class="svc__desc">100–5 000 карточек с сайта → XLSX/XML строго под импортёр: 24/24 заголовка, 1.8s, no diff.</span>
+            <span class="svc__go">Кейс: 170 / 4 844 за один прогон <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#onrequest">
+            <span class="svc__num" aria-hidden="true">02</span>
+            <span class="svc__title">CRM, тарифы и брони</span>
+            <span class="svc__desc">Цены из таблицы, дедуп 243→172, калькулятор 92/100, брони с логикой «от офиса / от адреса».</span>
+            <span class="svc__go">Паттерн: каталог + брони без ошибок <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" href="#case-paybots">
+            <span class="svc__num" aria-hidden="true">03</span>
+            <span class="svc__title">Telegram-боты с платежами</span>
+            <span class="svc__desc">Идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный: 1 платёж — 1 запись.</span>
+            <span class="svc__go">Кейс: платежи без дублей <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#case-rag">
+            <span class="svc__num" aria-hidden="true">04</span>
+            <span class="svc__title">RAG-поиск по документам</span>
+            <span class="svc__desc">Вопрос → ответ с цитатой из источника; нет доказательств — честный отказ. Hybrid Qdrant+FTS.</span>
+            <span class="svc__go">Кейс: поиск, который не выдумывает <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" href="#case-ledstil">
+            <span class="svc__num" aria-hidden="true">05</span>
+            <span class="svc__title">E-commerce каталоги</span>
+            <span class="svc__desc">2 500+ товаров, 500+ категорий, порядок — перетаскиванием, 5 Critical-уязвимостей закрыто.</span>
+            <span class="svc__go">Кейс: магазин-флагман <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#case-contenq">
+            <span class="svc__num" aria-hidden="true">06</span>
+            <span class="svc__title">Контент-фабрика + автопостинг</span>
+            <span class="svc__desc">1 видео → N клипов (10-stage, 22 таблицы) → handoff в PubLane: 8 сетей по официальным API.</span>
+            <span class="svc__go">Кейсы: фабрика и белый планер <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" href="#case-aivora">
+            <span class="svc__num" aria-hidden="true">07</span>
+            <span class="svc__title">Торговые сигналы</span>
+            <span class="svc__desc">Multi-TF 15м/1ч/4ч, ATR/BB-конфлюенс, скоринг 5 слоёв: без уверенности — NO_TRADE, а не выдумка.</span>
+            <span class="svc__go">Кейс: советник, который молчит <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#case-docs">
+            <span class="svc__num" aria-hidden="true">08</span>
+            <span class="svc__title">Desktop-утилиты для документов</span>
+            <span class="svc__desc">Поиск по PDF и сканам локально: SQLite FTS + OCR Tesseract батчем на 160 файлов, запуск двойным кликом.</span>
+            <span class="svc__go">Кейс: архив без облака <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Projects -->
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
@@ -205,8 +268,15 @@
                   <p>Разложил каталог: 500+ категорий, сортировка перетаскиванием с автосохранением каждые 30 секунд, лишнее закрыто. 5 Critical-уязвимостей закрыто — магазин не падает.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ledstil-tech" aria-labelledby="tab-ledstil-tech" tabindex="0" hidden>
-                  <p>PHP без фреймворка + MySQL, генерация <code>public/products/{ua,ru}</code>, <code>.htaccess</code>-маршруты. Аудит безопасности: закрыты 5 Critical — анонимные записи, CSRF, traversal, секреты в публичной зоне.</p>
-                  <p>Сортировка атрибутов per категории + drag&amp;drop с автосохранением каждые 30 секунд. Адаптив 390 / 768 / 1280 без горизонтального скролла.</p>
+                  <p>Флагман по размеру: живой магазин, где каталог и админка росли годами без аудита. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>Разложил <code>2 500+</code> товаров по <code>500+</code> категориям: характеристики — per категории, порядок — drag&amp;drop с автосохранением каждые <code>30 секунд</code>.</li>
+                    <li>Закрыл <code>5 Critical</code>-уязвимостей: анонимные записи, CSRF, path traversal, секреты в публичной зоне — плюс лишнее закрыто от индекса.</li>
+                    <li>Генерация <code>public/products/{ua,ru}</code> + <code>.htaccess</code>-маршруты: <code>2 языка</code> из одного каталога без дублей URL.</li>
+                    <li>PHP без фреймворка + MySQL: ноль зависимостей, правится без пересборки.</li>
+                    <li>Адаптив <code>390 / 768 / 1280</code> — ноль горизонтального скролла, мобильная карточка читается с руки.</li>
+                  </ul>
+                  <p>Результат: магазин не падает, порядок наводится перетаскиванием, а не правками в коде.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>2 500+ страниц · 500+ категорий · 5 Critical-уязвимостей закрыто</span></div>
@@ -262,8 +332,15 @@
                   <p>Одна команда — и готово: цены из тарифной таблицы, фото детерминированы, 24/24 заголовка на месте. Было 2 недели — стало 1.8 секунды, повторный прогон бит-в-бит.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-justcars-tech" aria-labelledby="tab-justcars-tech" tabindex="0" hidden>
-                  <p>Экспорт-only пайплайн: <code>24/24</code> заголовка под импортёр, нормализация цен, детерминированные имена фото, валидация dry-run, 9 тестов. Интеграция: FastAPI <code>POST /import</code> + Telegram-бот.</p>
-                  <p>Повторный прогон — бит-в-бит тот же файл (<code>no diff</code>), импортёр принимает без правок.</p>
+                  <p>Перенос каталога вручную — недели сверки: цены не сходятся, фото теряются, импортёр отклоняет файл. Что сделано:</p>
+                  <ul class="case__points">
+                    <li><code>24/24</code> заголовка строго под импортёр — валидация dry-run ловит mismatch до записи файла.</li>
+                    <li>Нормализация цен из тарифной таблицы: <code>170 строк</code> без единой ручной правки.</li>
+                    <li><code>4 844 фото</code> с детерминированными именами — повторный прогон даёт бит-в-бит тот же файл (<code>no diff</code>).</li>
+                    <li>Скорость: полный экспорт за <code>1.8 секунды</code> вместо ~<code>2 недель</code> ручной сверки.</li>
+                    <li><code>9 тестов</code> + связка FastAPI <code>POST /import</code> и Telegram-бот: запуск из чата, результат — готовый XLSX/XML.</li>
+                  </ul>
+                  <p>Результат: импортёр принимает файл без правок, повторный запуск — тот же байт в байт.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>170 позиций / 4 844 фото за 1.8s · 24/24 заголовка · no diff</span></div>
@@ -319,8 +396,15 @@
                   <p>Этот поиск отвечает только с цитатой из вашего документа, а без доказательств — честно отказывается. 12 тестов, запуск одной командой, видно на кадре.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-rag-tech" aria-labelledby="tab-rag-tech" tabindex="0" hidden>
-                  <p>FastAPI + lexical retrieval, чанкинг, evidence-gate: <code>sufficient_evidence:false</code> блокирует генерацию без опоры. Swagger Try-it-out, воспроизводимый Docker-запуск, 12 тестов.</p>
-                  <p>Паттерн масштабируется до гибрида <code>Qdrant + FTS</code> с цитатами и постраничными ссылками.</p>
+                  <p>Обычный чат-бот отвечает уверенно, даже когда не знает. Здесь наоборот: без опоры в документах ответа нет. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>Evidence-gate: <code>sufficient_evidence:false</code> блокирует генерацию — честный отказ вместо выдумки (на кадре: <code>POST /query → 200</code>).</li>
+                    <li>Гибридный поиск <code>Qdrant + SQLite FTS</code> с RRF-фьюжном: векторная близость плюс точные совпадения.</li>
+                    <li>Чанкинг <code>512/50</code> — чанк <code>512</code> токенов с перекрытием <code>50</code>, ответы с цитатами и постраничными ссылками.</li>
+                    <li><code>12 тестов</code> покрывают гейт, ретривер и API; воспроизводимый Docker-запуск одной командой.</li>
+                    <li>Swagger Try-it-out из коробки — проверка без Postman и без кода.</li>
+                  </ul>
+                  <p>Результат: поиск отвечает только тем, что есть в ваших документах, — с указанием, откуда взято.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>12 тестов · evidence-gate · запуск одной командой</span></div>
@@ -376,7 +460,14 @@
                   <p>Лёгкая статика без CMS: свайп-ленты 12/14/18 фото, кадры открываются крупно, на 390 ничего не уезжает за край. 36 роутов, деплой на Pages.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-ingul-tech" aria-labelledby="tab-ingul-tech" tabindex="0" hidden>
-                  <p>Статика без CMS: ленты по <code>12/14/18</code> фото, лайтбокс с фокус-менеджментом, 36 роутов, деплой на Pages. Контрольные ширины 390 / 768 / 1280 — ноль горизонтального скролла.</p>
+                  <p>Клиенту нужна витрина, которую смотрят с телефона: быстро, свайпом, без тяжёлой CMS. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>Свайп-ленты <code>12 / 14 / 18</code> фото — каждый раздел листается пальцем, кадры открываются крупно.</li>
+                    <li><code>36 роутов</code> чистой статики без CMS: страница — файл, деплой на Pages за минуты.</li>
+                    <li>Лайтбокс с фокус-менеджментом: Esc и крест закрывают, фокус возвращается на кадр.</li>
+                    <li>Контрольные ширины <code>390 / 768 / 1280</code> — ноль горизонтального скролла на всех трёх.</li>
+                  </ul>
+                  <p>Результат: витрина летает на телефоне и не требует поддержки CMS.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>12 / 14 / 18 фото · 36 роутов · 390/768/1280 без скролла</span></div>
@@ -432,7 +523,15 @@
                   <p>Программа ищет по всем файлам за секунду, читает сканы через OCR Tesseract и показывает место совпадения с подсветкой. Всё локально — ничего не уходит в облако.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-docs-tech" aria-labelledby="tab-docs-tech" tabindex="0" hidden>
-                  <p>PySide6 + SQLite FTS: инкрементальная индексация, подсветка совпадений, дедуп, экспорт сниппета. OCR-фолбэк (Tesseract/Poppler) многопоточным батчем на 160 файлов, сборка в <code>.exe</code> через PyInstaller — запуск двойным кликом.</p>
+                  <p>Договоры и сканы лежат по папкам: нужный ищут <code>10 минут</code>, сканы не ищутся вообще. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>SQLite FTS-индекс: поиск по всем файлам за <code>&lt;1 секунду</code> вместо <code>10 минут</code> листания папок.</li>
+                    <li>OCR-фолбэк Tesseract/Poppler многопоточным батчем на <code>160 файлов</code> — сканы становятся searchable.</li>
+                    <li>Инкрементальная индексация: повторный прогон дочитывает только новое, дедуп режет копии.</li>
+                    <li>Подсветка совпадений + экспорт сниппета — видно, где именно в документе ответ.</li>
+                    <li>Сборка в <code>.exe</code> через PyInstaller на PySide6: запуск двойным кликом, всё офлайн — <code>0 байт</code> в облако.</li>
+                  </ul>
+                  <p>Результат: архив ищется за секунду и никуда не утекает.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>FTS офлайн · батч 160 файлов · запуск двойным кликом</span></div>
@@ -488,7 +587,14 @@
                   <p>Собираю так: идемпотентность и 409/retry гасят дубли, HD-кошельки TON/TRON/EVM держат ключи детерминированно, своп уходит на холодный сам. Платёж либо засчитан один раз, либо честно отклонён.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-paybots-tech" aria-labelledby="tab-paybots-tech" tabindex="0" hidden>
-                  <p>Идемпотентность платежей, обработка <code>409/retry</code>, вебхуки, FSM-сценарии на aiogram, Mini App. HD-кошельки TON / TRON / EVM, своп на холодный. Паттерн: один платёж — одна запись, повтор вебхука не создаёт второе списание.</p>
+                  <p>Обычный бот считает каждый вебхук новым платежом: ретрай — двойное списание, таймаут — потерянные деньги. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>Идемпотентность: <code>1 платёж — 1 запись</code>; повтор вебхука не создаёт второе списание.</li>
+                    <li>Обработка <code>409/retry</code> и таймаутов: платёж либо засчитан один раз, либо честно отклонён — разбора по логам вручную больше нет.</li>
+                    <li>HD-кошельки <code>3 сетей</code> — TON / TRON / EVM: ключи детерминированы, своп уходит на холодный сам.</li>
+                    <li>FSM-сценарии на aiogram + Mini App: воронка ведёт пользователя, вебхуки подтверждают оплату.</li>
+                  </ul>
+                  <p>Результат: деньги не дублируются и не теряются — паттерн переносится на любые платежи.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>Идемпотентность · 409/retry · HD TON/TRON/EVM · своп на холодный</span></div>
@@ -564,8 +670,15 @@
                   <p>Советник наоборот: смотрит несколько таймфреймов, считает скоринг — и чаще молчит, чем врёт. Сигнал приходит только с входом, TP/SL и скриншотом. Не финсовет: риск потери депозита.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-aivora-tech" aria-labelledby="tab-aivora-tech" tabindex="0" hidden>
-                  <p>Сигналы multi-TF (<code>15м / 1ч / 4ч</code>), ATR/BB-конфлюенс, скоринг 5 слоёв, гейт <code>NO_TRADE</code> без уверенности, кламп TP/SL, версионированная аналитика с логированием сделок.</p>
-                  <p>Telegram-бот: сигнал с пруфом → вход → PnL в профиле. Формат сигнала фиксирован: вход, TP/SL, скрин, зона ±0.1%.</p>
+                  <p>Платные «сигналы» врут чаще, чем молчат. Советник собран наоборот: без уверенности — молчит. Что сделано:</p>
+                  <ul class="case__points">
+                    <li>Данные <code>3 таймфреймов</code> — <code>15м / 1ч / 4ч</code>: сигнал против старшего тренда не проходит.</li>
+                    <li>ATR/BB-конфлюенс + скоринг <code>5 независимых слоёв</code> вместо <code>1 RSI</code>.</li>
+                    <li>Гейт <code>NO_TRADE</code>: нет уверенности — нет сигнала; кламп TP/SL режет выбросы.</li>
+                    <li>Фиксированный формат сигнала: вход, TP/SL, скрин с зоной <code>±0.1%</code> — повторяется <code>1 в 1</code>.</li>
+                    <li>Telegram-бот: сигнал с пруфом → вход → PnL в профиле; версионированная аналитика с логом сделок.</li>
+                  </ul>
+                  <p>Результат: сигнал приходит только с входом, TP/SL и скриншотом. Не финсовет: риск потери депозита.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>multi-TF · ATR/BB · скоринг 5 слоёв · NO_TRADE-гейт</span></div>
@@ -632,8 +745,14 @@
                   <p>Фабрика решает: загрузил 1 видео — получил пачку клипов (чанки, кропы 9:16/4:5/1:1, субтитры, дубляж) за один прогон и кнопку handoff на публикацию.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-contenq-tech" aria-labelledby="tab-contenq-tech" tabindex="0" hidden>
-                  <p>10-stage pipeline: анализ → транскрибация (<code>Whisper/Deepgram</code>) → озвучка (<code>ElevenLabs 10+ голосов</code>) → FFmpeg-ремикс (кроп/скорость/фильтр) → клипы, дубляж, субтитры, монтаж → <code>handoff</code>.</p>
-                  <p>FastAPI + MySQL (22 таблицы) + Redis/Celery + FFmpeg. Очередь держит пачки, повторный прогон детерминирован.</p>
+                  <p>Один ролик в неделю, а план требует посты каждый день: кроп, субтитры и озвучка живут в трёх программах. Что сделано:</p>
+                  <ul class="case__points">
+                    <li><code>10-stage</code> pipeline: анализ → транскрибация (<code>Whisper/Deepgram</code>) → озвучка → FFmpeg-ремикс → клипы → субтитры → дубляж → монтаж → <code>handoff</code>.</li>
+                    <li>Озвучка ElevenLabs: <code>10+ голосов</code> на выбор; кропы <code>9:16 / 4:5 / 1:1</code> под каждую площадку.</li>
+                    <li>Хранилище FastAPI + MySQL на <code>22 таблицах</code>; очередь Redis/Celery держит пачки без потерь.</li>
+                    <li>Повторный прогон детерминирован; кнопка <code>handoff</code> отдаёт пачку в PubLane на белый постинг.</li>
+                  </ul>
+                  <p>Результат: загрузил <code>1 видео</code> — получил пачку клипов и кнопку публикации.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>10-stage pipeline · FFmpeg/Celery · чанки/кроп/субтитры/дубляж</span></div>
@@ -700,8 +819,15 @@
                   <p>Белый планер: пачка Reels уходит за минуты — один календарь с timezone, multi-account внутри бренда, approval клиента. Постинг только через официальные API/OAuth, без серых схем.</p>
                 </div>
                 <div class="tabs__panel" role="tabpanel" id="panel-publane-tech" aria-labelledby="tab-publane-tech" tabindex="0" hidden>
-                  <p>Шедулер с timezone-календарём, <code>multi-account per platform</code>, team + approval, OAuth (TikTok первым), Developer API + webhooks, 30 таблиц.</p>
-                  <p>Связка: фабрика ContenQ → <code>handoff</code> → PubLane → 8 сетей. Планер не знает про серый фарм — только официальные аккаунты.</p>
+                  <p>Посты каждый день руками в несколько сетей: timezone путается, согласование тонет в чатах. Что сделано:</p>
+                  <ul class="case__points">
+                    <li><code>1 timezone</code>-календарь на <code>8 сетей</code>: пачка Reels планируется за минуты, посты не улетают в <code>3 ночи</code>.</li>
+                    <li><code>Multi-account per platform</code>: <code>1 бренд → 3 акка</code> одной сети за <code>1 пост</code> — франшизы без <code>3 отдельных</code> каналов.</li>
+                    <li>Team + approval: <code>4 роли</code> Owner/Admin/Editor/Viewer — клиент апрувит в интерфейсе, а не в ТГ-чате.</li>
+                    <li>OAuth (TikTok первым) + Developer API + webhooks; схема на <code>30 таблицах</code>.</li>
+                    <li>Связка ContenQ → <code>handoff</code> → PubLane → <code>8 сетей</code>; только официальные аккаунты, без серых схем.</li>
+                  </ul>
+                  <p>Результат: <code>1 календарь</code> вместо ручного постинга по <code>5 кабинетам</code>.</p>
                 </div>
               </div>
               <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>Шедулер · timezone-календарь · approval · официальные API</span></div>
@@ -1012,7 +1138,7 @@
 
       /* Active anchor */
       var navLinks = document.querySelectorAll(".nav__links .nav__link");
-      var sections = ["projects", "process", "faq", "contacts"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+      var sections = ["services", "projects", "process", "faq", "contacts"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
       if ("IntersectionObserver" in window && navLinks.length) {
         var spy = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){
