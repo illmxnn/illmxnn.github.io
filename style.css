@@ -373,13 +373,13 @@ body.hero--no-webgl #hero-canvas { display: none; }
   background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-/* Case-balance (2026-09-26): левая колонка тянется на высоту строки, HUD-пилюля прижата к низу */
+/* Case-balance (2026-09-26): левая колонка тянется на высоту строки, подпись+пилюля одним блоком у низа */
 .case { align-items: stretch; }
 .case__media { align-self: stretch; }
 @media (min-width: 1001px) {
   .case__media .shots { display: flex; flex-direction: column; flex: 1 1 auto; height: 100%; }
-  .case__media .shots__cap { margin: 12px 2px 16px; }
-  .case__media .shots__bar { margin-top: auto; }
+  .case__media .shots__cap { margin-top: auto; margin-bottom: 0; padding-top: 12px; }
+  .case__media .shots__bar { margin-top: 12px; }
 }
 .shots__arrow {
   flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
