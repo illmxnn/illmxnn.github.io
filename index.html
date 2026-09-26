@@ -13,7 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png" />
+  <meta name="theme-color" content="#07070D" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1077,7 +1081,14 @@
             t.setAttribute("aria-selected", on ? "true" : "false");
             t.tabIndex = on ? 0 : -1;
             var panel = document.getElementById(t.getAttribute("aria-controls"));
-            if (panel) panel.hidden = !on;
+            /* Grid-stack (2026-09-26): обе панели всегда в сетке (высота = max),
+               неактивная — visibility:hidden + inert, из таба и скринридера убрана */
+            if (panel) {
+              panel.hidden = !on;
+              panel.setAttribute("aria-hidden", on ? "false" : "true");
+              if (on) { panel.removeAttribute("inert"); panel.tabIndex = 0; }
+              else { panel.tabIndex = -1; panel.setAttribute("inert", ""); }
+            }
           });
           if (focus) tab.focus();
         }
@@ -1092,6 +1103,8 @@
             if (j !== null) { e.preventDefault(); select(tabs[j], true); }
           });
         });
+        /* Синк начального состояния: неактивные панели — inert + aria-hidden */
+        select(tabs[0], false);
       });
 
       /* FAQ — explicit expanded sync (2026-09-25: desktop hit-test + AT role fix) */
@@ -1192,6 +1205,22 @@
           slides.forEach(function(s, i){ s.classList.toggle("is-active", i === index); });
           if (prev) prev.disabled = (index === 0);
           if (next) next.disabled = (index === slides.length - 1);
+          preload(index);
+        }
+        /* Anti-lag (2026-09-26): соседние слайды греются заранее — decode к моменту показа */
+        function preload(i){
+          [i - 1, i + 1].forEach(function(j){
+            if (j < 0 || j >= slides.length) return;
+            var img = slides[j].querySelector("img");
+            if (!img || img.dataset.pre) return;
+            img.dataset.pre = "1";
+            if (img.getAttribute("loading") !== "eager") img.setAttribute("loading", "eager");
+            try {
+              var pre = new Image();
+              pre.decoding = "async";
+              pre.src = img.currentSrc || img.src;
+            } catch (err) { /* preload best-effort */ }
+          });
         }
         function go(i){
           index = Math.max(0, Math.min(slides.length - 1, i));
@@ -1199,8 +1228,12 @@
           render();
         }
         /* Index always derives from the real scroll pos — snap, drag and keys land here */
-        var tick = 0;
+        var tick = 0, scrollT = 0;
         track.addEventListener("scroll", function(){
+          /* Anti-lag (2026-09-26): glow-анимации стоят, пока трек едет */
+          box.classList.add("is-scroll");
+          if (scrollT) window.clearTimeout(scrollT);
+          scrollT = window.setTimeout(function(){ box.classList.remove("is-scroll"); }, 180);
           if (tick) return;
           tick = requestAnimationFrame(function(){
             tick = 0;
