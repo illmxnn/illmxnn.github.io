@@ -373,6 +373,14 @@ body.hero--no-webgl #hero-canvas { display: none; }
   background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
+/* Case-balance (2026-09-26): левая колонка тянется на высоту строки, HUD-пилюля прижата к низу */
+.case { align-items: stretch; }
+.case__media { align-self: stretch; }
+@media (min-width: 1001px) {
+  .case__media .shots { display: flex; flex-direction: column; flex: 1 1 auto; height: 100%; }
+  .case__media .shots__cap { margin: 12px 2px 16px; }
+  .case__media .shots__bar { margin-top: auto; }
+}
 .shots__arrow {
   flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
   background: linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
