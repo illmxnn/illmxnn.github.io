@@ -37,3 +37,27 @@
 Проверки: `git status` career-site — только `assets/shots/` изменённые (+ предсуществующий `?? CANDIDATE_PROFILE.md.new`, не трогал), без коммита;
 `index.html`/остальное не тронуты; чужие проекты кодом не правились (только read-only запуски `--help` и GET/POST на локальных серверах);
 серверы 8091/8092 убиты скриптами (`srv.terminate()`), 8088 оставлен жив (чужой); `stash@{0}` не тронут.
+
+## NEWCASES-20260925: 6 живых кадров Aivora/ContenQ/PubLane (2026-09-25)
+
+6 кадров, DPR 1 (viewport = пиксели: 1280x900 / 390x844), ноль picsum/фейков.
+Метод: Playwright 1.52 + системный Chrome headless (`channel="chrome"`), `networkidle` + 2с, viewport-скрин.
+Серверы read-only на СВОИХ портах (`python -m http.server --bind 127.0.0.1`, dist-сборки, код не правлен),
+после съёмки убиты (`Stop-Process`), curl 000 на 8093/8094/8095. Чужие порты 3005/4010/4012/8002/8080/8086/8088
+не занимались и не трогались (8080/8086/8088 были OPEN чужим — оставлены как были).
+Aivora: сеть/торги НЕ тронуты, бот не запускался; живого UI самого Telegram-бота без сети нет —
+взяты безопасные живые поверхности: билд CRM-админки + реальный sample-выход рендера сигналов.
+
+| Файл | Кейс | Источник | Размер | Тип | Статус |
+|---|---|---|---|---|---|
+| aivora-login-1280.png | Aivora | живой билд `C:\Work\Aivora\crm-frontend\dist` via 8093, экран логина CRM (поле Username с app-дефолтом `admin` — как отрендерил сам билд, руками не вбивалось; Sign In не нажимался, внутрь не заходили) | 29.2 KB (1280x900) | ui | real, eye-ok-20260925-live |
+| aivora-signal-1280.png | Aivora | реальный sample-выход `public\screenshots\signal-1-e2e-0002-1788085388747.png` (1544x1200, gitignored-артефакт рендерера, read-only) — показан fit 1158x900 по центру `#0B0B12`, без кропа; частично срезанная правая ось цен — свойство исходника (так отрендерил Aivora), не кадрирование | 98.9 KB (1280x900) | ui | real, eye-ok-20260925-live |
+| contenq-hero-1280.png | ContenQ | живой билд `C:\Work\TikTokAI\contenq\frontend\dist` via 8094, лендинг RU (hero «Загрузите 1 видео — заберите 50 клипов») | 183.6 KB (1280x900) | ui | real, eye-ok-20260925-live |
+| contenq-hero-390.png | ContenQ | тот же билд, viewport 390x844 — hero корректно стэкается, CTA виден: responsive ok | 92.5 KB (390x844) | ui | real, eye-ok-20260925-live |
+| publane-hero-1280.png | PubLane | живой билд `C:\Work\TikTokAI\publane\apps\web\dist` via 8095, лендинг EN (hero «Ship a week of social posts in one afternoon» + Publishing cockpit) | 615.9 KB (1280x900) | ui | real, eye-ok-20260925-live |
+| publane-hero-390.png | PubLane | тот же билд, viewport 390x844 — стэк корректный, CTA видны: responsive ok | 239.9 KB (390x844) | ui | real, eye-ok-20260925-live |
+
+Что НЕ сделано (честно): CLI-smoke Aivora (`mvnw`/бот) не запускался — тяжёлый/сетевой, живых кадров не давал бы;
+GitHub-fallback не понадобился (живые поверхности нашлись); бэкенды ContenQ/PubLane не поднимались
+(лендинги dist самодостаточны; GET/POST к API — ноль). Мобильный кадр Aivora пропущен: логин-форма centered —
+десктопа + чарта достаточно (2/2 по кейсу, всего 6/6).
