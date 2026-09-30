@@ -70,8 +70,8 @@ a { color: inherit; }
   line-height: 1.12; letter-spacing: -0.02em; font-weight: 700;
   text-wrap: balance;
 }
-.section__sub { margin: 0; color: var(--text-secondary); font-size: 16px; line-height: 1.65; max-width: 68ch; }
-.section__head { margin-bottom: 40px; max-width: 860px; }
+.section__sub { margin: 0; color: var(--text-secondary); font-size: 16px; line-height: 1.65; max-width: none; }
+.section__head { margin-bottom: 40px; max-width: none; }
 .grad-text {
   background: linear-gradient(92deg, var(--accent-strong) 0%, var(--hue-b) 55%, var(--hue-c) 110%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -506,7 +506,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 
 /* Help — compact pain → case anchors (dedup 2026-09-25: no second cards grid) */
 .help { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.help-list { display: flex; flex-direction: column; gap: 12px; max-width: 860px; }
+.help-list { display: flex; flex-direction: column; gap: 12px; max-width: none; }
 .help-row {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px;
@@ -523,18 +523,27 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .help-card p { margin: 0; color: var(--text-secondary); font-size: 14.5px; line-height: 1.65; }
 .help-card__when { display: inline-block; margin-bottom: 10px; font: 500 11px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hue-b); border: 1px solid rgba(56,225,255,0.35); border-radius: 999px; padding: 7px 10px; }
 
-/* Services — 8 concrete positions, each anchored to a case (2026-09-26) */
+/* Services — 11 client-facing cards with icons, each anchored to a case (2026-09-30) */
 .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .svc {
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 12px;
   border: 1px solid var(--border); border-radius: var(--radius-card);
-  padding: 22px; background: var(--surface); text-decoration: none;
+  padding: 24px; background: var(--surface); text-decoration: none;
   transition: border-color 200ms ease, transform 200ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 200ms ease;
 }
 .svc:hover { border-color: rgba(56,225,255,0.4); transform: translateY(-2px); box-shadow: var(--glow-b); }
+.svc:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.svc__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.svc__icon { flex: 0 0 40px; width: 40px; height: 40px; color: var(--hue-b); }
+.svc__icon svg { display: block; width: 40px; height: 40px; }
 .svc__num { font: 700 13px/1 var(--font-mono); letter-spacing: 0.1em; color: var(--accent-strong); }
-.svc__title { font-family: var(--font-display); font-size: 17px; letter-spacing: -0.01em; color: var(--text); }
-.svc__desc { margin: 0; color: var(--text-secondary); font-size: 14.5px; line-height: 1.65; }
+.svc__title { font-family: var(--font-display); font-size: 19px; line-height: 1.35; letter-spacing: -0.01em; color: var(--text); text-wrap: balance; }
+.svc__lead { margin: 0; color: var(--text-secondary); font-size: 15.5px; line-height: 1.65; }
+.svc__lead strong { color: var(--text); }
+.svc__facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.svc__facts li { position: relative; margin: 0; padding: 0 0 0 24px; color: var(--text-secondary); font-size: 14.5px; line-height: 1.6; }
+.svc__facts li::before { content: "✓"; position: absolute; left: 0; top: 0; font: 600 14px/1.6 var(--font-mono); color: var(--hue-b); }
+.svc__facts li strong { color: var(--text); }
 .svc__go { margin-top: auto; padding-top: 8px; font: 500 12px/1.5 var(--font-mono); letter-spacing: 0.04em; color: var(--hue-b); }
 
 /* Case details — full work breakdown lists (2026-09-26) */
@@ -547,7 +556,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .hero__sub a:hover { color: var(--accent-strong); }
 
 /* FAQ */
-.faq { display: flex; flex-direction: column; gap: 12px; max-width: 860px; }
+.faq { display: flex; flex-direction: column; gap: 12px; max-width: none; }
 .faq__item { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); overflow: clip; }
 .faq__item[open] { border-color: var(--border-hover); }
 .faq__q {
@@ -564,7 +573,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 
 /* About */
 .about { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: start; }
-.about--single { grid-template-columns: 1fr; max-width: 760px; }
+.about--single { grid-template-columns: 1fr; max-width: none; }
 .about__text p { margin: 0 0 14px; color: var(--text-secondary); font-size: 15.5px; line-height: 1.7; }
 .about__text p strong { color: var(--text); }
 
@@ -645,8 +654,8 @@ body.menu-open { overflow: hidden; }
   .section { padding: 56px 0; }
   .evidence { grid-template-columns: repeat(2, 1fr); }
   .steps, .help, .onrequest__grid, .services { grid-template-columns: 1fr; }
-  .svc { padding: 18px; }
-  .svc__title { font-size: 16px; }
+  .svc { padding: 20px; }
+  .svc__title { font-size: 18px; }
   .case { padding: 20px; }
   .case__title { font-size: 19px; line-height: 1.3; }
   .case__cap { font-size: 12.5px; line-height: 1.6; }
@@ -707,6 +716,26 @@ body.menu-open { overflow: hidden; }
   .sticky-cta { transition: none; }
   #hero-canvas { display: none; }
   .hero-fallback { opacity: 1; }
+}
+/* TODO placeholder (2026-09-30): honest stub block, no missing-file img, no 404 */
+.shot-frame--todo .shot-frame__view--todo {
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(320px 160px at 50% 0%, rgba(124, 92, 255, 0.12), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 12px, transparent 12px 24px),
+    #0A0A12;
+}
+.todo-plot {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 24px 20px; text-align: center;
+  border: 1px dashed rgba(56, 225, 255, 0.45); border-radius: 12px;
+  max-width: 320px; margin: 0 auto;
+}
+.todo-plot b { font: 600 13px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); }
+.todo-plot span { font: 400 12.5px/1.6 var(--font-sans); color: var(--text-secondary); }
+.shot-frame__open--todo { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .todo-plot { transition: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .nav, .evidence, .glass-console, .contact-card { backdrop-filter: none; -webkit-backdrop-filter: none; }

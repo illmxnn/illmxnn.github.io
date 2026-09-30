@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260926-3" />
+  <link rel="stylesheet" href="style.css?v=20260930-1" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
@@ -39,8 +39,32 @@
       {"@type": "Question", "name": "У нас каталог в Excel / на сайте. Перенесёте без потерь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Парсинг, нормализация и дедуп 243-172: пример — 170 позиций и 4 844 изображения за один прогон, 24/24 заголовка под импортёр, следующий запуск — байт в байт тот же файл."}},
       {"@type": "Question", "name": "Бот теряет платежи. Почините?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Собираю так: aiogram, идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный. Платёж засчитывается один раз или честно отклоняется."}},
       {"@type": "Question", "name": "Нужно искать по сотням PDF и сканов. Это к вам?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Локальный поиск: SQLite FTS + Qdrant, OCR Tesseract для сканов. Вопрос — ответ с цитатой из источника, офлайн."}},
+      {"@type": "Question", "name": "А если у нас не авто / не магазин?", "acceptedAnswer": {"@type": "Answer", "text": "Авто — один пример. Тот же пайплайн работает для товаров, квартир, услуг и документов: тарифы, брони, статусы, дедуп — везде, где много правил."}},
       {"@type": "Question", "name": "Работаете под NDA?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Показываю санитизированный кейс и скринкаст без клиентских данных. Детали — после подписания NDA."}},
-      {"@type": "Question", "name": "Сколько времени займёт?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск — одна команда. Смета — после 15-минутного созвона."}}
+      {"@type": "Question", "name": "Сколько времени займёт?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип и скринкаст — 2–3 дня без доступа к вашим данным. Прод — 1–2 недели: Docker, тесты, запуск — одна команда. Смета — после 15-минутного созвона."}},
+      {"@type": "Question", "name": "Соберёте базу лидов под нашу нишу?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Пилот 30+10 калибрует ICP и шаблон, дальше батчи 30–40 с дедупом по реестру; отдаю XLSX import-ready под HubSpot с отчётом new/existing/excluded. Покажу пример без чужих данных за 15 минут в Telegram."}},
+      {"@type": "Question", "name": "Парсинг ТГ и рассылка под ключ?", "acceptedAnswer": {"@type": "Answer", "text": "Парсинг — да: публичные каналы/группы в структуру с дедупом. Рассылка — паттерном: сначала dry-run без отправок, запуск — на ваших доменах с лимитами и прогревом; живые адреса в витрине не показываю."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Кейсы: автоматизация, трейдинг, контент, платформа",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Магазин на 2 500+ товаров, где порядок наводится перетаскиванием", "url": "https://illmxnn.github.io/#case-ledstil"},
+      {"@type": "ListItem", "position": 2, "name": "Перенос 170 позиций в CRM без единой правки руками", "url": "https://illmxnn.github.io/#case-justcars"},
+      {"@type": "ListItem", "position": 3, "name": "AI-поиск, который не выдумывает: нет доказательств — так и говорит", "url": "https://illmxnn.github.io/#case-rag"},
+      {"@type": "ListItem", "position": 4, "name": "Витрина без CMS, которая на телефоне просто летает", "url": "https://illmxnn.github.io/#case-ingul"},
+      {"@type": "ListItem", "position": 5, "name": "Поиск по документам и сканам — локально, без облака", "url": "https://illmxnn.github.io/#case-docs"},
+      {"@type": "ListItem", "position": 6, "name": "Платежи без дублей и потерь", "url": "https://illmxnn.github.io/#case-paybots"},
+      {"@type": "ListItem", "position": 7, "name": "База лидов, которую импортёр принимает с первого раза", "url": "https://illmxnn.github.io/#case-leaddb"},
+      {"@type": "ListItem", "position": 8, "name": "Каналы и группы — в структуру, без ручного чтения", "url": "https://illmxnn.github.io/#case-tgparse"},
+      {"@type": "ListItem", "position": 9, "name": "Рассылка, после которой домен жив, а цифры видны", "url": "https://illmxnn.github.io/#case-mailing"},
+      {"@type": "ListItem", "position": 10, "name": "Торговый советник: без уверенности — NO_TRADE, а не выдумка", "url": "https://illmxnn.github.io/#case-aivora"},
+      {"@type": "ListItem", "position": 11, "name": "1 видео — пачка клипов: кропы, субтитры, дубляж одним прогоном", "url": "https://illmxnn.github.io/#case-contenq"},
+      {"@type": "ListItem", "position": 12, "name": "Пачка Reels за минуты: календарь, шедулер, официальные API", "url": "https://illmxnn.github.io/#case-publane"}
     ]
   }
   </script>
@@ -83,7 +107,7 @@
         <div class="hero__content">
           <p class="eyebrow reveal">Python Backend / AI Automation · CRM · Боты · Парсинг · RAG · Киев · Remote</p>
           <h1 id="hero-title" class="hero__h1 reveal" data-delay="1">От хаоса в таблицах — к системе <span class="grad-text">без ручной сверки</span>.</h1>
-          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото уходят в импортёр за 1.8 секунды — сверять нечего.</span> CRM с тарифами, бронями и дедупом, Telegram-боты с идемпотентностью платежей, парсинг Scrapegraph/Scrapling, RAG Qdrant+FTS с цитатами из источника. Python, FastAPI, aiogram, Docker. Показываю код: 656+ тестов CRM, 12 тестов RAG. Ниже — конкретно, что делаю: <a href="#services">8 направлений с примерами из кейсов</a>.</p>
+          <p class="hero__sub reveal" data-delay="2"><span class="hero__sub-lead">Сложная логика — мой конёк: 170 позиций и 4&nbsp;844 фото уходят в импортёр за 1.8 секунды — сверять нечего.</span> CRM с тарифами, бронями и дедупом, Telegram-боты с идемпотентностью платежей, парсинг Scrapegraph/Scrapling, RAG Qdrant+FTS с цитатами из источника. Python, FastAPI, aiogram, Docker. Показываю код: 656+ тестов CRM, 12 тестов RAG. Ниже — конкретно, что делаю: <a href="#services">11 направлений с примерами из кейсов</a>.</p>
           <div class="hero__ctas reveal" data-delay="2">
             <a class="btn btn--primary" href="https://github.com/illmxnn" target="_blank" rel="noopener" data-magnetic>Посмотреть код на GitHub →</a>
             <a class="btn btn--secondary" href="https://t.me/illia_dev" target="_blank" rel="noopener" data-magnetic>Написать в Telegram — отвечу сегодня</a>
@@ -131,7 +155,7 @@
             <div class="evidence__label">Тестов CRM на пике</div>
           </div>
           <div class="evidence__item">
-            <div class="evidence__num">9</div>
+            <div class="evidence__num">12</div>
               <div class="evidence__label">Кейсов · 4 направления</div>
           </div>
         </div>
@@ -161,57 +185,129 @@
       <div class="container">
         <div class="section__head reveal">
           <p class="eyebrow">Что я делаю — конкретно</p>
-          <h2 class="section__title" id="services-title">8 направлений: <span class="grad-text">навык + пример</span>.</h2>
-          <p class="section__sub">Без общих фраз: каждая позиция — это работа с цифрами, а не лозунг. Клик — и попадаешь в кейс, где это уже сделано.</p>
+          <h2 class="section__title" id="services-title">Закажите результат, <span class="grad-text">а не часы</span>.</h2>
+          <p class="section__sub">У вас каталог в Excel, товары на сайте или заказы в чатах — соберу систему, где всё сходится само: без ручной сверки и переделок. Ниже — 11 готовых результатов, каждый уже проверен в кейсе.</p>
         </div>
         <div class="services">
           <a class="svc reveal" href="#case-justcars">
-            <span class="svc__num" aria-hidden="true">01</span>
-            <span class="svc__title">Парсинг каталогов без потерь</span>
-            <span class="svc__desc">100–5 000 карточек с сайта → XLSX/XML строго под импортёр: 24/24 заголовка, 1.8s, без расхождений.</span>
-            <span class="svc__go">Кейс: 170 / 4 844 за прогон <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="7" width="28" height="19" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 13.5h28" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 7v19M21 7v19" stroke="currentColor" stroke-width="1.5" opacity="0.55"/><path d="M20 27v7m0 0-4.5-4.5M20 34l4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="svc__num" aria-hidden="true">01</span></span>
+            <span class="svc__title">Каталог в импортёр без ручной сверки</span>
+            <p class="svc__lead">Сверять цены и фото вручную — недели работы, а файл всё равно отклоняют.</p>
+            <ul class="svc__facts">
+              <li><strong>100–5 000</strong> карточек с сайта — в файл под импортёр</li>
+              <li><strong>24 из 24</strong> заголовков, <strong>170</strong> позиций, <strong>4 844</strong> фото</li>
+              <li><strong>1,8 секунды</strong> на прогон, повтор — без расхождений</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: 170 позиций за запуск <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" data-delay="1" href="#onrequest">
-            <span class="svc__num" aria-hidden="true">02</span>
-            <span class="svc__title">CRM, тарифы и брони</span>
-            <span class="svc__desc">Цены из таблицы, дедуп 243→172, калькулятор 92/100, брони с логикой «от офиса / от адреса».</span>
-            <span class="svc__go">Паттерн: каталог + брони без ошибок <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><circle cx="20" cy="17" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M20 6v3.5M20 23.5V27M9 17h3.5M27.5 17H31M12.2 9.2l2.5 2.5M25.3 22.3l2.5 2.5M27.8 9.2l-2.5 2.5M14.7 22.3l-2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="10" y="30" width="20" height="4.5" rx="2.25" stroke="currentColor" stroke-width="1.5"/></svg></span><span class="svc__num" aria-hidden="true">02</span></span>
+            <span class="svc__title">Цены и брони без дублей и ошибок</span>
+            <p class="svc__lead">Одинаковые позиции плодятся, цены не сходятся, брони путают «от офиса» и «от адреса».</p>
+            <ul class="svc__facts">
+              <li><strong>243 → 172</strong> — чистые позиции без дублей</li>
+              <li><strong>92 из 100</strong> — сходится калькулятор цен из таблицы</li>
+              <li>Брони — с понятной логикой</li>
+            </ul>
+            <span class="svc__go">Смотреть паттерн: каталог и брони <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" href="#case-paybots">
-            <span class="svc__num" aria-hidden="true">03</span>
-            <span class="svc__title">Telegram-боты с платежами</span>
-            <span class="svc__desc">Идемпотентность, 409/retry, HD-кошельки TON/TRON/EVM, своп на холодный: 1 платёж — 1 запись.</span>
-            <span class="svc__go">Кейс: платежи без дублей <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M7 8.5A5.5 5.5 0 0 1 12.5 3h15A5.5 5.5 0 0 1 33 8.5v9a5.5 5.5 0 0 1-5.5 5.5H17l-7.5 6.5V23A5.5 5.5 0 0 1 7 17.5v-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="15" cy="13.5" r="1.4" fill="currentColor"/><circle cx="20" cy="13.5" r="1.4" fill="currentColor"/><circle cx="25" cy="13.5" r="1.4" fill="currentColor"/></svg></span><span class="svc__num" aria-hidden="true">03</span></span>
+            <span class="svc__title">Бот, который не теряет платежи</span>
+            <p class="svc__lead">Обычный бот при повторе засчитывает оплату дважды или теряет её при сбое.</p>
+            <ul class="svc__facts">
+              <li>Идемпотентность — повтор не списывает дважды</li>
+              <li>HD-кошельки <strong>TON/TRON/EVM</strong>, сдача — в холод сама</li>
+              <li><strong>Один</strong> платёж — <strong>одна</strong> запись</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: платежи без дублей <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#case-leaddb">
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><ellipse cx="20" cy="9.5" rx="11" ry="4" stroke="currentColor" stroke-width="1.5"/><path d="M9 9.5v21c0 2.2 4.9 4 11 4s11-1.8 11-4v-21" stroke="currentColor" stroke-width="1.5"/><path d="M9 19.5c0 2.2 4.9 4 11 4s11-1.8 11-4" stroke="currentColor" stroke-width="1.5"/></svg></span><span class="svc__num" aria-hidden="true">09</span></span>
+            <span class="svc__title">База лидов для импорта с первого раза</span>
+            <p class="svc__lead">Списки из поиска расползаются: дубли, мёртвые контакты, один человек в трёх батчах.</p>
+            <ul class="svc__facts">
+              <li>Пилот: <strong>30</strong> проверяю, <strong>10</strong> уточняю под ваш профиль</li>
+              <li>Батчи по <strong>30–40</strong>, сверка каждой персоны с реестром</li>
+              <li>Таблица под HubSpot: новые / были / исключены</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: реестр против повторов <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" href="#case-tgparse">
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M13 20a7 7 0 0 1 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13 20a11 11 0 0 1 11-11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><circle cx="13" cy="20" r="1.8" fill="currentColor"/><path d="M22 20h11M22 25h11M22 30h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 32.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="svc__num" aria-hidden="true">10</span></span>
+            <span class="svc__title">Telegram-каналы в таблицу для работы</span>
+            <p class="svc__lead">Читать десятки каналов руками — часы в день, важное тонет, ссылки теряются.</p>
+            <ul class="svc__facts">
+              <li>Посты, ссылки и имена — в структуру</li>
+              <li>Дубли гашу, мёртвое помечаю</li>
+              <li>Вместо ленты — база для работы</li>
+            </ul>
+            <span class="svc__go">Смотреть применение: каналы в структуру <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="svc reveal" data-delay="1" href="#case-mailing">
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="10" width="28" height="17" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 12 20 21.5 32.5 12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 32c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="svc__num" aria-hidden="true">11</span></span>
+            <span class="svc__title">Рассылка, после которой домен жив</span>
+            <p class="svc__lead">Отправки с одного ящика без лимитов — быстрый путь в спам и повторы.</p>
+            <ul class="svc__facts">
+              <li>Сначала dry-run — прогон без отправок</li>
+              <li>Прогрев и лимиты на ваших доменах</li>
+              <li>Учёт и статистика «отправлено / ответы», без чужих адресов</li>
+            </ul>
+            <span class="svc__go">Смотреть паттерн: отправки с лимитами <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" data-delay="1" href="#case-rag">
-            <span class="svc__num" aria-hidden="true">04</span>
-            <span class="svc__title">RAG-поиск по документам</span>
-            <span class="svc__desc">Вопрос → ответ с цитатой из источника; нет доказательств — честный отказ. Hybrid Qdrant+FTS.</span>
-            <span class="svc__go">Кейс: поиск, который не выдумывает <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="5" width="16" height="22" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 10.5h8M10 14.5h8M10 18.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="25.5" cy="25.5" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M30 30 34.5 34.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="svc__num" aria-hidden="true">04</span></span>
+            <span class="svc__title">Поиск по документам, который не выдумывает</span>
+            <p class="svc__lead">Обычный чат-бот отвечает уверенно, даже когда не знает.</p>
+            <ul class="svc__facts">
+              <li>Ответ только с цитатой, без доказательств — отказ</li>
+              <li><strong>12 тестов</strong>, поиск: смысл + точные слова</li>
+              <li>Запуск из Docker <strong>одной</strong> командой</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: поиск с цитатами <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" href="#case-ledstil">
-            <span class="svc__num" aria-hidden="true">05</span>
-            <span class="svc__title">E-commerce каталоги</span>
-            <span class="svc__desc">2 500+ товаров, 500+ категорий, порядок — перетаскиванием, 5 Critical-уязвимостей закрыто.</span>
-            <span class="svc__go">Кейс: магазин-флагман <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M8 12.5h24l-2.4 11.5a3 3 0 0 1-3 2.5h-13.2a3 3 0 0 1-3-2.5L8 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14.5 12.5 20 6.5l5.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 17v4.5M20 17v4.5M23.5 17v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="svc__num" aria-hidden="true">05</span></span>
+            <span class="svc__title">Магазин, где порядок наводится перетаскиванием</span>
+            <p class="svc__lead"><strong>2 500+</strong> товаров жили в хаосе: сайт тормозил, порядок — правками в коде.</p>
+            <ul class="svc__facts">
+              <li><strong>500+</strong> категорий, порядок — перетаскиванием с автосохранением</li>
+              <li><strong>5</strong> критических дыр закрыто — магазин не падает</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: магазин-флагман <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" data-delay="1" href="#case-contenq">
-            <span class="svc__num" aria-hidden="true">06</span>
-            <span class="svc__title">Контент-фабрика + автопостинг</span>
-            <span class="svc__desc">1 видео → N клипов (10-stage, 22 таблицы) → handoff в PubLane: 8 сетей по официальным API.</span>
-            <span class="svc__go">Кейсы: фабрика и белый планер <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="9" width="28" height="22" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M14 9v22M26 9v22" stroke="currentColor" stroke-width="1.5"/><path d="M6 14h8M6 20h8M6 26h8M26 14h8M26 20h8M26 26h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 17.5 22.5 20 18 22.5v-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span class="svc__num" aria-hidden="true">06</span></span>
+            <span class="svc__title">Из одного видео — клипы во все сети</span>
+            <p class="svc__lead">Одно длинное видео лежит мёртвым грузом, а нарезка вручную съедает дни.</p>
+            <ul class="svc__facts">
+              <li><strong>10 шагов</strong>: нарезка, вертикальный кроп, субтитры</li>
+              <li>Автопостинг в <strong>8 сетей</strong> по официальным правилам</li>
+              <li>Учёт в <strong>22 таблицах</strong> — ничего не теряется</li>
+            </ul>
+            <span class="svc__go">Смотреть кейсы: фабрика и планер <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" href="#case-aivora">
-            <span class="svc__num" aria-hidden="true">07</span>
-            <span class="svc__title">Торговые сигналы</span>
-            <span class="svc__desc">Multi-TF 15м/1ч/4ч, ATR/BB-конфлюенс, скоринг 5 слоёв: без уверенности — NO_TRADE, а не выдумка.</span>
-            <span class="svc__go">Кейс: советник, который молчит <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M7 6.5V33h26.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10.5 24h5.5l2.5-6.5 4 11 2.8-7 1.7 2.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="svc__num" aria-hidden="true">07</span></span>
+            <span class="svc__title">Советник, который молчит без уверенности</span>
+            <p class="svc__lead">Большинство сигналов врут, когда рынок неясен.</p>
+            <ul class="svc__facts">
+              <li><strong>Три</strong> масштаба: <strong>15 минут</strong>, час, <strong>4 часа</strong></li>
+              <li>Оценка в <strong>5 слоёв</strong>: сила и границы движения</li>
+              <li>Нет уверенности — честно: сделок нет</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: советник, который молчит <span aria-hidden="true">→</span></span>
           </a>
           <a class="svc reveal" data-delay="1" href="#case-docs">
-            <span class="svc__num" aria-hidden="true">08</span>
-            <span class="svc__title">Desktop-утилиты для документов</span>
-            <span class="svc__desc">Поиск по PDF и сканам локально: SQLite FTS + OCR Tesseract батчем на 160 файлов, запуск двойным кликом.</span>
-            <span class="svc__go">Кейс: архив без облака <span aria-hidden="true">→</span></span>
+            <span class="svc__head"><span class="svc__icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="7.5" width="28" height="25" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 13.5h28" stroke="currentColor" stroke-width="1.5"/><circle cx="10.3" cy="10.5" r="1.2" fill="currentColor"/><path d="M12 20h9l2 2.8h7.5V29H12v-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span class="svc__num" aria-hidden="true">08</span></span>
+            <span class="svc__title">Архив документов с поиском без облака</span>
+            <p class="svc__lead">Сотни PDF и сканов лежат мёртвым грузом — нужный не найти, в облако нельзя.</p>
+            <ul class="svc__facts">
+              <li><strong>160 файлов</strong> — точный поиск за секунды</li>
+              <li>Сканы распознаю автоматически, текст с фото</li>
+              <li>Запуск двойным кликом, данные никуда не уходят</li>
+            </ul>
+            <span class="svc__go">Смотреть кейс: архив без облака <span aria-hidden="true">→</span></span>
           </a>
         </div>
       </div>
@@ -222,7 +318,7 @@
       <div class="container">
         <div class="section__head reveal">
           <p class="eyebrow">Проекты — с реальными кадрами</p>
-          <h2 class="section__title" id="projects-title">9 кейсов: автоматизация + трейдинг + контент + <span class="grad-text">платформа</span>.</h2>
+          <h2 class="section__title" id="projects-title">12 кейсов: автоматизация + трейдинг + контент + <span class="grad-text">платформа</span>.</h2>
           <p class="section__sub">Было «вручную и с ошибками» — стало «одним запуском». Каждый кейс — в двух видах: Обзор и Детали. Кадры настоящие, схемы — честные SVG (подписаны, не скриншоты).</p>
         </div>
 
@@ -609,6 +705,234 @@
             </div>
           </article>
 
+          <!-- LeadDB -->
+          <article class="case reveal" aria-labelledby="case-leaddb">
+            <div class="case__media">
+              <div class="shots" data-shots="leaddb">
+                <div class="shots__viewport">
+                  <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса LeadDB" tabindex="0">
+                    <div class="shots__slide">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема базы лидов: поиск идёт в реестр-дедуп, дальше XLSX под HubSpot">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">поиск</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">пилот 30+10</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">реестр-дедуп</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">496 baseline</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">XLSX</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">HubSpot-ready</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
+                  <defs><marker id="arrL" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">каждая персона сверяется до добавления</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: поиск → реестр-дедуп → XLSX · схема, не скриншот</p>
+                    </div>
+                    <div class="shots__slide">
+              <figure class="shot-frame shot-frame--todo" style="margin:0">
+                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-table-1280.png" data-name="TODO-leaddb-table-1280.png" data-cap="▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица-пример появится после портфолийного запуска">
+                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-table-1280.png</em></span>
+                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица-пример без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                </button>
+              </figure>
+              <p class="case__cap">▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот</p>
+                    </div>
+                    <div class="shots__slide">
+              <figure class="shot-frame shot-frame--todo" style="margin:0">
+                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-dedup-1280.png" data-name="TODO-leaddb-dedup-1280.png" data-cap="▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: дедуп-отчёт появится после портфолийного запуска">
+                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-dedup-1280.png</em></span>
+                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>дедуп-отчёт · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                </button>
+              </figure>
+              <p class="case__cap">▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="shots__bar">
+                  <button class="shots__arrow" type="button" data-shots-prev aria-label="LeadDB: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>03</span></span>
+                  <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
+                  <button class="shots__arrow" type="button" data-shots-next aria-label="LeadDB: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">LeadDB · Базы лидов — пилот → скейл без повторов</p>
+              <h3 class="case__title" id="case-leaddb">База лидов, которую импортёр принимает с первого раза</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="LeadDB: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-leaddb-simple" aria-controls="panel-leaddb-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-leaddb-tech" aria-controls="panel-leaddb-tech" aria-selected="false" tabindex="-1">Детали</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-leaddb-simple" aria-labelledby="tab-leaddb-simple" tabindex="0">
+                  <p>Списки из поиска расползаются: дубли, мёртвые контакты, один и тот же человек в трёх батчах — outreach бьёт по своим.</p>
+                  <p>Собираю иначе: пилот 30+10 калибрует ICP и шаблон, дальше батчи 30–40; каждая персона сверяется с реестром до добавления, повторы уходят в existing, а не в рассылку.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-leaddb-tech" aria-labelledby="tab-leaddb-tech" tabindex="0" hidden>
+                  <p>Пилот калибрует, реестр держит повторы:</p>
+                  <ul class="case__points">
+                    <li><code>30+10</code> пилот → ArbTeams <code>30/30</code>; legacy <code>1005</code> честно помечена и не пересдаётся как свежак.</li>
+                    <li>Реестр (<code>496</code> baseline) — ключ персоны LinkedIn→email→domain+name.</li>
+                    <li>XLSX import-ready с маппингом под HubSpot; TG-контакты — только живые, каналы — отдельной колонкой.</li>
+                  </ul>
+                  <p>Результат: каждый батч — <code>new/existing/excluded</code> отчёт, повторов заказчику нет.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>30+10 пилот · 30/30 ArbTeams · реестр 496 · HubSpot-ready</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">openpyxl</span><span class="tag">реестр-дедуп</span><span class="tag">XLSX-import</span><span class="tag">TG-playbook</span></div>
+              <p style="margin:12px 0 0; font-size:13px; color: var(--text-tertiary);">Таблица-пример без PII — по запросу в Telegram.</p>
+            </div>
+          </article>
+
+          <!-- TG-parse -->
+          <article class="case reveal" aria-labelledby="case-tgparse">
+            <div class="case__media">
+              <div class="shots" data-shots="tgparse">
+                <div class="shots__viewport">
+                  <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса TG-парсинг" tabindex="0">
+                    <div class="shots__slide">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема парсинга Telegram: лента раскладывается в структуру, дальше база с дедупом">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лента</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">каналы · группы</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">структура</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">ссылки · кнопки</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">база</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">таблица + дедуп</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
+                  <defs><marker id="arrT" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">вместо ручного чтения — база для работы</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: лента → структура → база · схема, не скриншот</p>
+                    </div>
+                    <div class="shots__slide">
+              <figure class="shot-frame shot-frame--todo" style="margin:0">
+                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-tgparse-table-1280.png" data-name="TODO-tgparse-table-1280.png" data-cap="▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица TG-парсинга появится после портфолийного запуска">
+                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-tgparse-table-1280.png</em></span>
+                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица TG-парсинга · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                </button>
+              </figure>
+              <p class="case__cap">▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="shots__bar">
+                  <button class="shots__arrow" type="button" data-shots-prev aria-label="TG-парсинг: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
+                  <button class="shots__arrow" type="button" data-shots-next aria-label="TG-парсинг: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">TG-парсинг · Каналы и группы — общее применение</p>
+              <h3 class="case__title" id="case-tgparse">Каналы и группы — в структуру, без ручного чтения</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="TG-парсинг: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-tgparse-simple" aria-controls="panel-tgparse-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-tgparse-tech" aria-controls="panel-tgparse-tech" aria-selected="false" tabindex="-1">Детали</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-tgparse-simple" aria-labelledby="tab-tgparse-simple" tabindex="0">
+                  <p>Читать десятки каналов руками — часы в день, важное тонет, ссылки из кнопок теряются.</p>
+                  <p>Забираю публичное: посты, ссылки всех форм (текст/кнопки), юзернеймы — и раскладываю в таблицу: что/откуда/куда ведёт; дубли гасятся, мёртвое помечается.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-tgparse-tech" aria-labelledby="tab-tgparse-tech" tabindex="0" hidden>
+                  <p>Честное покрытие вместо ручного чтения:</p>
+                  <ul class="case__points">
+                    <li>Дамп-анализ <code>t.me/s + ?before=</code>; покрытие кнопок честно отдельной фазой.</li>
+                    <li>Проверка ссылок preview-пруфом; выход — таблица + дедуп-отчёт.</li>
+                    <li>Headless для антибот-целей не используется.</li>
+                  </ul>
+                  <p>Результат: вместо ленты — база, по которой можно работать.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>структура из ленты · дедуп · честное покрытие кнопок</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">TG-playbook</span><span class="tag">дедуп</span><span class="tag">XLSX</span></div>
+              <a class="case__link" href="https://t.me/illia_dev" target="_blank" rel="noopener">Обсудить задачу →</a>
+            </div>
+          </article>
+
+          <!-- Mailing -->
+          <article class="case reveal" aria-labelledby="case-mailing">
+            <div class="case__media">
+              <div class="shots" data-shots="mailing">
+                <div class="shots__viewport">
+                  <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Рассылка" tabindex="0">
+                    <div class="shots__slide">
+              <figure class="scheme" style="margin:0">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Схема рассылки: dry-run проверяет шаблон, дальше лимиты и прогрев, затем статистика">
+                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">dry-run</text>
+                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">отправок ноль</text>
+                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лимиты/прогрев</text>
+                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">шаблоны · ротация</text>
+                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">статистика</text>
+                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">без PII</text>
+                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
+                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
+                  <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">домен жив · повторов нет</text>
+                </svg>
+              </figure>
+              <p class="case__cap">▲ Схема: dry-run → лимиты/прогрев → статистика · схема, не скриншот</p>
+                    </div>
+                    <div class="shots__slide">
+              <figure class="shot-frame shot-frame--todo" style="margin:0">
+                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-mailing-stats-1280.png" data-name="TODO-mailing-stats-1280.png" data-cap="▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: статистика рассылки появится после портфолийного запуска">
+                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-mailing-stats-1280.png</em></span>
+                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>статистика без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                </button>
+              </figure>
+              <p class="case__cap">▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="shots__bar">
+                  <button class="shots__arrow" type="button" data-shots-prev aria-label="Рассылка: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
+                  <button class="shots__arrow" type="button" data-shots-next aria-label="Рассылка: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="case__body">
+              <p class="case__eyebrow">Рассылка · Лимиты, прогрев, статистика</p>
+              <h3 class="case__title" id="case-mailing">Рассылка, после которой домен жив, а цифры видны</h3>
+              <div class="tabs" data-tabs>
+                <div class="tabs__list" role="tablist" aria-label="Рассылка: вид">
+                  <button class="tabs__tab" type="button" role="tab" id="tab-mailing-simple" aria-controls="panel-mailing-simple" aria-selected="true">Обзор</button>
+                  <button class="tabs__tab" type="button" role="tab" id="tab-mailing-tech" aria-controls="panel-mailing-tech" aria-selected="false" tabindex="-1">Детали</button>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-mailing-simple" aria-labelledby="tab-mailing-simple" tabindex="0">
+                  <p>Ручные отправки с одного ящика — быстрый путь в спам: без лимитов, прогрева и учёта касаний бьёте по тем же людям дважды.</p>
+                  <p>Собираю паттерн: лимиты/прогрев, шаблоны, учёт contacted, статистика «отправлено/ответы» — без живых адресов в витрине.</p>
+                </div>
+                <div class="tabs__panel" role="tabpanel" id="panel-mailing-tech" aria-labelledby="tab-mailing-tech" tabindex="0" hidden>
+                  <p>Сначала рендер, потом отправки:</p>
+                  <ul class="case__points">
+                    <li>Dry-run сначала (рендер в файлы, отправок ноль).</li>
+                    <li>P1 — только после зелёного dry-run и на доменах заказчика (SPF/DKIM/ротация).</li>
+                    <li>Реестр-колонка <code>Registry Key</code> против повторов; синтетика <code>@example.com</code> в тестах.</li>
+                  </ul>
+                  <p>Результат: видно, что ушло и что ответило, повторов нет.</p>
+                </div>
+              </div>
+              <div class="case__result"><span class="case__result-icon" aria-hidden="true">✓</span><span>dry-run · лимиты/прогрев · статистика без PII</span></div>
+              <div class="case__stack" aria-label="Стек"><span class="tag">Python</span><span class="tag">dry-run</span><span class="tag">шаблоны</span><span class="tag">статистика</span></div>
+              <p style="margin:12px 0 0; font-size:13px; color: var(--text-tertiary);">Паттерн отправок — по запросу в Telegram.</p>
+            </div>
+          </article>
+
           <!-- 7. Aivora -->
           <article class="case reveal" aria-labelledby="case-aivora">
             <div class="case__media">
@@ -906,7 +1230,7 @@
         <div class="section__head reveal">
           <p class="eyebrow">Возможности — боль → кейс</p>
           <h2 class="section__title" id="help-title">Узнали свою боль? <span class="grad-text">Смотрите, где уже решено.</span></h2>
-          <p class="section__sub">Четыре строки — четыре кейса ниже и выше. Никаких дублей: каждая ведёт к доказательству.</p>
+          <p class="section__sub">Семь строк — семь кейсов ниже и выше. Никаких дублей: каждая ведёт к доказательству.</p>
         </div>
         <div class="help-list" role="list">
           <a class="help-row reveal" role="listitem" href="#onrequest">
@@ -924,6 +1248,18 @@
           <a class="help-row reveal" data-delay="1" role="listitem" href="#case-justcars">
             <span class="help-row__pain">Каталог 100–5 000 карточек, импортёр отклоняет файл</span>
             <span class="help-row__go">170/4 844 за 1.8s, 24/24, без расхождений <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" role="listitem" href="#case-leaddb">
+            <span class="help-row__pain">Нужна база контактов, а не сырые ссылки</span>
+            <span class="help-row__go">Реестр против повторов, HubSpot-ready <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" data-delay="1" role="listitem" href="#case-tgparse">
+            <span class="help-row__pain">Каналы читаю руками, структура теряется</span>
+            <span class="help-row__go">TG в таблицу с дедупом <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="help-row reveal" role="listitem" href="#case-mailing">
+            <span class="help-row__pain">Шлём вручную, летим в спам</span>
+            <span class="help-row__go">Лимиты/прогрев/статистика <span aria-hidden="true">→</span></span>
           </a>
         </div>
       </div>
@@ -964,6 +1300,14 @@
           <details class="faq__item reveal">
             <summary class="faq__q">Сколько времени займёт и сколько стоит?<span class="faq__icon" aria-hidden="true">+</span></summary>
             <p class="faq__a">Прототип и скринкаст — 2–3 дня на моих данных. Прод — 1–2 недели: Docker, тесты, запуск — одна команда. Смета — после 15-минутного созвона в Telegram.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Соберёте базу лидов под нашу нишу?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Да. Пилот 30+10 калибрует ICP и шаблон, дальше батчи 30–40 с дедупом по реестру; отдаю XLSX import-ready под HubSpot с отчётом new/existing/excluded. Покажу пример без чужих данных за 15 минут в Telegram.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary class="faq__q">Парсинг ТГ и рассылка под ключ?<span class="faq__icon" aria-hidden="true">+</span></summary>
+            <p class="faq__a">Парсинг — да: публичные каналы/группы в структуру с дедупом. Рассылка — паттерном: сначала dry-run без отправок, запуск — на ваших доменах с лимитами и прогревом; живые адреса в витрине не показываю.</p>
           </details>
         </div>
       </div>
@@ -1046,7 +1390,7 @@
         <span class="shotbox__name" id="shotboxName"></span>
         <button class="shotbox__close" type="button" data-shotbox-close aria-label="Закрыть просмотр">×</button>
       </div>
-      <div class="shotbox__scroll"><img id="shotboxImg" alt="" /></div>
+      <div class="shotbox__scroll"><img id="shotboxImg" src="data:," alt="" /></div>
       <p class="shotbox__cap" id="shotboxCap"></p>
     </figure>
   </div>
@@ -1291,9 +1635,22 @@
       var lastFocus = null;
       function openShot(btn){
         if (!shotbox || !btn) return;
+        var src = btn.getAttribute("data-shot") || "";
+        if (src.indexOf("TODO-") !== -1) {
+          lastFocus = document.activeElement;
+          shotboxImg.setAttribute("src", "data:,");
+          shotboxImg.alt = "Плейсхолдер кадра — схема, не скриншот";
+          shotboxName.textContent = btn.getAttribute("data-name") || "";
+          shotboxCap.textContent = btn.getAttribute("data-cap") || "";
+          shotbox.hidden = false;
+          document.body.style.overflow = "hidden";
+          var closeTodo = shotbox.querySelector(".shotbox__close");
+          if (closeTodo) closeTodo.focus();
+          return;
+        }
         lastFocus = document.activeElement;
         var thumb = btn.querySelector("img");
-        shotboxImg.src = btn.getAttribute("data-shot");
+        shotboxImg.src = src;
         shotboxImg.alt = thumb ? (thumb.alt || "") : "";
         shotboxName.textContent = btn.getAttribute("data-name") || "";
         shotboxCap.textContent = btn.getAttribute("data-cap") || "";
@@ -1306,7 +1663,7 @@
         if (!shotbox || shotbox.hidden) return;
         shotbox.hidden = true;
         document.body.style.overflow = "";
-        shotboxImg.removeAttribute("src");
+        shotboxImg.setAttribute("src", "data:,");
         if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
       }
       document.querySelectorAll(".shot-frame__open").forEach(function(btn){
