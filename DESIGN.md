@@ -672,3 +672,16 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - **Services**: H2-хук «Закажите результат, а не часы.» (fallback B «Хватит сверять таблицы вручную.» / C «Что вы получите: систему без ручной сверки.»); 11 карточек outcome-first: лид ≤20 слов + ul.svc__facts 2-3 буллета ≤10 слов, цифры в strong с объяснением; жаргон переведён (идемпотентность/dry-run — в скобках при первом упоминании); 11 inline SVG 40px stroke hue-b; typo title 19px / lead 15.5px/1.65 / li 14.5px/1.6; маркер check hue-b mono; порядок и href-якоря 01,02,03,09,10,11,04,05,06,07,08.
 - **Full-width**: крышки читаемости сняты по вердикту («не на всю ширину»): .section__head/.section__sub/.help-list/.faq/.about--single → max-width none. Rejected: две колонки + sticky.
 - **Бюджеты**: HScroll 0 @1280/@390, console 0, diff --check clean, скрины в logs/ (не коммитить).
+
+---
+
+## 34. P2-фикс по Apple-ревью (2026-09-30)
+
+> Все 5 P2 из [[design-audits/career-site-apple-review-2026-09-30]] закрыты.
+
+- **Стрелки слайдеров 32→44px** (шеврон 14→18px): HUD-пилюля 240px вмещает (184px по замеру); на ≤640px стрелки скрыты, свайп.
+- **svc__title 400→600** (desktop 19px + mobile 18px) — иерархия.
+- **Схемы на 390**: ноды 13→14px (CSS-оверрайд атрибутов); на ≤640px .scheme — contained pan (overflow-x:auto, min-width:500px), текст полного размера, глобальный HScroll 0.
+- **Шов process→help 190→142px**: #process{padding-bottom:64px} + #help{padding-top:64px} только ≥1001px (мобайл-ритм 56 нетронут).
+- **Tab-панели 15→15.5px/1.75**: мера не капилась (вердикт full-width), читаемость — кеглем.
+- **Cache-busting**: style.css?v=20260930-1 → v=20260930-2 (профильный кеш отдавал старый CSS — замер 32px после правки).
