@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260930-2" />
+  <link rel="stylesheet" href="style.css?v=20261001-1" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
@@ -95,11 +95,11 @@
       <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
-      <a class="nav__link" href="#services">Услуги</a>
-      <a class="nav__link" href="#projects">Проекты</a>
-      <a class="nav__link" href="#process">Процесс</a>
-      <a class="nav__link" href="#faq">FAQ</a>
-      <a class="nav__link" href="#contacts">Контакты</a>
+      <a class="nav__link" href="#services" data-nav="services">Услуги</a>
+      <a class="nav__link" href="#projects" data-nav="projects">Проекты</a>
+      <a class="nav__link" href="#process" data-nav="process">Процесс</a>
+      <a class="nav__link" href="#faq" data-nav="faq">FAQ</a>
+      <a class="nav__link" href="#contacts" data-nav="contacts">Контакты</a>
       <a class="nav__cta" href="https://t.me/illia_dev" target="_blank" rel="noopener">Написать →</a>
     </div>
   </nav>
@@ -336,23 +336,27 @@
               <div class="shots" data-shots="ledstil">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса LedStil" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/ledstil-catalog-1280.png" data-name="ledstil-catalog-1280.png" data-cap="▲ Каталог LedStil в браузере · desktop UI" aria-label="Открыть кадр крупно: каталог LedStil в браузере, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ledstil-catalog-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/ledstil-catalog-1280.png" alt="Каталог LedStil в браузере: сетка товаров" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Каталог LedStil в браузере · desktop UI</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/ledstil-catalog-1280.png" data-name="ledstil-catalog-1280.png" data-cap="▲ Каталог LedStil в браузере · desktop UI" aria-label="Открыть кадр крупно: каталог LedStil в браузере, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ledstil-catalog-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/ledstil-catalog-1280.png" alt="Каталог LedStil в браузере: сетка товаров" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Каталог LedStil в браузере · desktop UI</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--tall" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/ledstil-card-390.png" data-name="ledstil-card-390.png" data-cap="▲ Карточка товара LedStil · mobile UI" aria-label="Открыть кадр крупно: карточка товара LedStil, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ledstil-card-390.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/ledstil-card-390.png" alt="Карточка товара LedStil на телефоне" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Карточка товара LedStil · mobile UI</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--tall" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/ledstil-card-390.png" data-name="ledstil-card-390.png" data-cap="▲ Карточка товара LedStil · mobile UI" aria-label="Открыть кадр крупно: карточка товара LedStil, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ledstil-card-390.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/ledstil-card-390.png" alt="Карточка товара LedStil на телефоне" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Карточка товара LedStil · mobile UI</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -402,31 +406,33 @@
               <div class="shots" data-shots="exporter">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Exporter" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/justcars-help-1280.png" data-name="justcars-help-1280.png" data-cap="▲ Справка команды экспорта в терминале · терминал" aria-label="Открыть кадр крупно: справка команды экспорта, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>justcars-help-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/justcars-help-1280.png" alt="Терминал: справка команды экспорта каталога" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Справка команды экспорта в терминале · терминал</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--code" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/justcars-code-1280.png" data-name="justcars-code-1280.png" data-cap="▲ Фрагмент sync_catalog.py, строки 143–201 · код" aria-label="Открыть кадр крупно: фрагмент кода sync_catalog.py, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>justcars-code-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/justcars-code-1280.png" alt="Фрагмент кода sync_catalog.py, строки 143–201: загрузка и повторы" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Фрагмент sync_catalog.py, строки 143–201 · код</p>
+                    <div class="shots__page shots__page--duo is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/justcars-help-1280.png" data-name="justcars-help-1280.png" data-cap="▲ Справка команды экспорта в терминале · терминал" aria-label="Открыть кадр крупно: справка команды экспорта, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>justcars-help-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/justcars-help-1280.png" alt="Терминал: справка команды экспорта каталога" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Справка команды экспорта в терминале · терминал</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--code" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/justcars-code-1280.png" data-name="justcars-code-1280.png" data-cap="▲ Фрагмент sync_catalog.py, строки 143–201 · код" aria-label="Открыть кадр крупно: фрагмент кода sync_catalog.py, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>justcars-code-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/justcars-code-1280.png" alt="Фрагмент кода sync_catalog.py, строки 143–201: загрузка и повторы" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Фрагмент sync_catalog.py, строки 143–201 · код</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
-                  <button class="shots__arrow" type="button" data-shots-prev aria-label="Exporter: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <button class="shots__arrow" type="button" data-shots-prev disabled aria-label="Exporter: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>01</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
-                  <button class="shots__arrow" type="button" data-shots-next aria-label="Exporter: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="shots__arrow" type="button" data-shots-next disabled aria-label="Exporter: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
@@ -468,31 +474,33 @@
               <div class="shots" data-shots="rag">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса RAG Demo" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/rag-docs-1280.png" data-name="rag-docs-1280.png" data-cap="▲ Документация RAG-сервиса в Swagger · API" aria-label="Открыть кадр крупно: документация RAG-сервиса, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>rag-docs-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/rag-docs-1280.png" alt="Swagger-документация RAG-сервиса" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Документация RAG-сервиса в Swagger · API</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/rag-query-1280.png" data-name="rag-query-1280.png" data-cap="▲ Ответ API: отказ без доказательств · API" aria-label="Открыть кадр крупно: ответ API с отказом, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>rag-query-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/rag-query-1280.png" alt="Ответ API: честный отказ при недостатке доказательств" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Ответ API: отказ без доказательств · API</p>
+                    <div class="shots__page shots__page--duo is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/rag-docs-1280.png" data-name="rag-docs-1280.png" data-cap="▲ Документация RAG-сервиса в Swagger · API" aria-label="Открыть кадр крупно: документация RAG-сервиса, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>rag-docs-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/rag-docs-1280.png" alt="Swagger-документация RAG-сервиса" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Документация RAG-сервиса в Swagger · API</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/rag-query-1280.png" data-name="rag-query-1280.png" data-cap="▲ Ответ API: отказ без доказательств · API" aria-label="Открыть кадр крупно: ответ API с отказом, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>rag-query-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/rag-query-1280.png" alt="Ответ API: честный отказ при недостатке доказательств" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Ответ API: отказ без доказательств · API</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
-                  <button class="shots__arrow" type="button" data-shots-prev aria-label="RAG Demo: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <button class="shots__arrow" type="button" data-shots-prev disabled aria-label="RAG Demo: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>01</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
-                  <button class="shots__arrow" type="button" data-shots-next aria-label="RAG Demo: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="shots__arrow" type="button" data-shots-next disabled aria-label="RAG Demo: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
@@ -534,23 +542,27 @@
               <div class="shots" data-shots="ingul">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Ingul" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/ingul-catalog-1280.png" data-name="ingul-catalog-1280.png" data-cap="▲ Витрина Ingul в браузере · desktop UI" aria-label="Открыть кадр крупно: витрина Ingul, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ingul-catalog-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/ingul-catalog-1280.png" alt="Витрина Ingul в браузере на desktop" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Витрина Ingul в браузере · desktop UI</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/ingul-catalog-1280.png" data-name="ingul-catalog-1280.png" data-cap="▲ Витрина Ingul в браузере · desktop UI" aria-label="Открыть кадр крупно: витрина Ingul, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ingul-catalog-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/ingul-catalog-1280.png" alt="Витрина Ingul в браузере на desktop" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Витрина Ingul в браузере · desktop UI</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--tall" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/ingul-catalog-390.png" data-name="ingul-catalog-390.png" data-cap="▲ Та же витрина на телефоне · mobile UI" aria-label="Открыть кадр крупно: витрина Ingul на телефоне, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ingul-catalog-390.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/ingul-catalog-390.png" alt="Витрина Ingul на телефоне" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Та же витрина на телефоне · mobile UI</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--tall" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/ingul-catalog-390.png" data-name="ingul-catalog-390.png" data-cap="▲ Та же витрина на телефоне · mobile UI" aria-label="Открыть кадр крупно: витрина Ingul на телефоне, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>ingul-catalog-390.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/ingul-catalog-390.png" alt="Витрина Ingul на телефоне" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Та же витрина на телефоне · mobile UI</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -599,31 +611,33 @@
               <div class="shots" data-shots="docs">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса DocumentAnalyzer" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/docs-analyzer-repo-1280.png" data-name="docs-analyzer-repo-1280.png" data-cap="▲ Страница репозитория DocumentAnalyzer · GitHub" aria-label="Открыть кадр крупно: страница репозитория, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>docs-analyzer-repo-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/docs-analyzer-repo-1280.png" alt="Страница репозитория DocumentAnalyzer на GitHub" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Страница репозитория DocumentAnalyzer · GitHub</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--code" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/docs-analyzer-code-1280.png" data-name="docs-analyzer-code-1280.png" data-cap="▲ Фрагмент src/core/search.py · код" aria-label="Открыть кадр крупно: фрагмент кода search.py, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>docs-analyzer-code-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/docs-analyzer-code-1280.png" alt="Фрагмент кода src/core/search.py из репозитория" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Фрагмент src/core/search.py · код</p>
+                    <div class="shots__page shots__page--duo is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/docs-analyzer-repo-1280.png" data-name="docs-analyzer-repo-1280.png" data-cap="▲ Страница репозитория DocumentAnalyzer · GitHub" aria-label="Открыть кадр крупно: страница репозитория, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>docs-analyzer-repo-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/docs-analyzer-repo-1280.png" alt="Страница репозитория DocumentAnalyzer на GitHub" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Страница репозитория DocumentAnalyzer · GitHub</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--code" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/docs-analyzer-code-1280.png" data-name="docs-analyzer-code-1280.png" data-cap="▲ Фрагмент src/core/search.py · код" aria-label="Открыть кадр крупно: фрагмент кода search.py, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>docs-analyzer-code-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/docs-analyzer-code-1280.png" alt="Фрагмент кода src/core/search.py из репозитория" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Фрагмент src/core/search.py · код</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
-                  <button class="shots__arrow" type="button" data-shots-prev aria-label="DocumentAnalyzer: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <button class="shots__arrow" type="button" data-shots-prev disabled aria-label="DocumentAnalyzer: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>01</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
-                  <button class="shots__arrow" type="button" data-shots-next aria-label="DocumentAnalyzer: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="shots__arrow" type="button" data-shots-next disabled aria-label="DocumentAnalyzer: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
@@ -665,31 +679,33 @@
               <div class="shots" data-shots="paybots">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Payment Bots" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--code" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/paybots-code-1280.png" data-name="paybots-code-1280.png" data-cap="▲ Фрагмент handlers/payments.py · код" aria-label="Открыть кадр крупно: фрагмент кода payments.py, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>paybots-code-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/paybots-code-1280.png" alt="Фрагмент кода handlers/payments.py, строки 1–60" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Фрагмент handlers/payments.py · код</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--code" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/paybots-struct-1280.png" data-name="paybots-struct-1280.png" data-cap="▲ Структура каталога платформы · код" aria-label="Открыть кадр крупно: структура каталога, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>paybots-struct-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/paybots-struct-1280.png" alt="Структура каталога платежей: handlers, platform и main" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Структура каталога платформы · код</p>
+                    <div class="shots__page shots__page--duo is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--code" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/paybots-code-1280.png" data-name="paybots-code-1280.png" data-cap="▲ Фрагмент handlers/payments.py · код" aria-label="Открыть кадр крупно: фрагмент кода payments.py, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>paybots-code-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/paybots-code-1280.png" alt="Фрагмент кода handlers/payments.py, строки 1–60" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Фрагмент handlers/payments.py · код</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--code" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/paybots-struct-1280.png" data-name="paybots-struct-1280.png" data-cap="▲ Структура каталога платформы · код" aria-label="Открыть кадр крупно: структура каталога, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>paybots-struct-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/paybots-struct-1280.png" alt="Структура каталога платежей: handlers, platform и main" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Структура каталога платформы · код</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
-                  <button class="shots__arrow" type="button" data-shots-prev aria-label="Payment Bots: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
+                  <button class="shots__arrow" type="button" data-shots-prev disabled aria-label="Payment Bots: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>01</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
-                  <button class="shots__arrow" type="button" data-shots-next aria-label="Payment Bots: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="shots__arrow" type="button" data-shots-next disabled aria-label="Payment Bots: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
@@ -730,49 +746,53 @@
               <div class="shots" data-shots="leaddb">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса LeadDB" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема базы лидов: поиск идёт в реестр-дедуп, дальше XLSX под HubSpot">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">поиск</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">пилот 30+10</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">реестр-дедуп</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">496 baseline</text>
-                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">XLSX</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">HubSpot-ready</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
-                  <defs><marker id="arrL" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">каждая персона сверяется до добавления</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: поиск → реестр-дедуп → XLSX · схема, не скриншот</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема базы лидов: поиск идёт в реестр-дедуп, дальше XLSX под HubSpot">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">поиск</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">пилот 30+10</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">реестр-дедуп</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">496 baseline</text>
+                        <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">XLSX</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">HubSpot-ready</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrL)"/>
+                        <defs><marker id="arrL" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">каждая персона сверяется до добавления</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: поиск → реестр-дедуп → XLSX · схема, не скриншот</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--todo" style="margin:0">
-                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-table-1280.png" data-name="TODO-leaddb-table-1280.png" data-cap="▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица-пример появится после портфолийного запуска">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-table-1280.png</em></span>
-                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица-пример без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--todo" style="margin:0">
-                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-dedup-1280.png" data-name="TODO-leaddb-dedup-1280.png" data-cap="▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: дедуп-отчёт появится после портфолийного запуска">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-dedup-1280.png</em></span>
-                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>дедуп-отчёт · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот</p>
+                    <div class="shots__page shots__page--duo">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--todo" style="margin:0">
+                        <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-table-1280.png" data-name="TODO-leaddb-table-1280.png" data-cap="▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица-пример появится после портфолийного запуска">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-table-1280.png</em></span>
+                        <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица-пример без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Таблица-пример без PII · плейсхолдер — схема, не скриншот</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--todo" style="margin:0">
+                        <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-leaddb-dedup-1280.png" data-name="TODO-leaddb-dedup-1280.png" data-cap="▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: дедуп-отчёт появится после портфолийного запуска">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-leaddb-dedup-1280.png</em></span>
+                        <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>дедуп-отчёт · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Дедуп-отчёт new/existing/excluded · плейсхолдер — схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
                   <button class="shots__arrow" type="button" data-shots-prev aria-label="LeadDB: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>03</span></span>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
                   <button class="shots__arrow" type="button" data-shots-next aria-label="LeadDB: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
@@ -814,34 +834,38 @@
               <div class="shots" data-shots="tgparse">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса TG-парсинг" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема парсинга Telegram: лента раскладывается в структуру, дальше база с дедупом">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лента</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">каналы · группы</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">структура</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">ссылки · кнопки</text>
-                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">база</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">таблица + дедуп</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
-                  <defs><marker id="arrT" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">вместо ручного чтения — база для работы</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: лента → структура → база · схема, не скриншот</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема парсинга Telegram: лента раскладывается в структуру, дальше база с дедупом">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лента</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">каналы · группы</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">структура</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">ссылки · кнопки</text>
+                        <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">база</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">таблица + дедуп</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrT)"/>
+                        <defs><marker id="arrT" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">вместо ручного чтения — база для работы</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: лента → структура → база · схема, не скриншот</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--todo" style="margin:0">
-                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-tgparse-table-1280.png" data-name="TODO-tgparse-table-1280.png" data-cap="▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица TG-парсинга появится после портфолийного запуска">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-tgparse-table-1280.png</em></span>
-                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица TG-парсинга · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--todo" style="margin:0">
+                        <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-tgparse-table-1280.png" data-name="TODO-tgparse-table-1280.png" data-cap="▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: таблица TG-парсинга появится после портфолийного запуска">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-tgparse-table-1280.png</em></span>
+                        <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>таблица TG-парсинга · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Таблица TG-парсинга · плейсхолдер — схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -889,34 +913,38 @@
               <div class="shots" data-shots="mailing">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Рассылка" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема рассылки: dry-run проверяет шаблон, дальше лимиты и прогрев, затем статистика">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">dry-run</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">отправок ноль</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лимиты/прогрев</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">шаблоны · ротация</text>
-                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">статистика</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">без PII</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
-                  <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">домен жив · повторов нет</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: dry-run → лимиты/прогрев → статистика · схема, не скриншот</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема рассылки: dry-run проверяет шаблон, дальше лимиты и прогрев, затем статистика">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">dry-run</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">отправок ноль</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">лимиты/прогрев</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">шаблоны · ротация</text>
+                        <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">статистика</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">без PII</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrM)"/>
+                        <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">домен жив · повторов нет</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: dry-run → лимиты/прогрев → статистика · схема, не скриншот</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--todo" style="margin:0">
-                <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-mailing-stats-1280.png" data-name="TODO-mailing-stats-1280.png" data-cap="▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: статистика рассылки появится после портфолийного запуска">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-mailing-stats-1280.png</em></span>
-                  <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>статистика без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--todo" style="margin:0">
+                        <button class="shot-frame__open shot-frame__open--todo" type="button" data-shot="assets/shots/TODO-mailing-stats-1280.png" data-name="TODO-mailing-stats-1280.png" data-cap="▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот" aria-label="Плейсхолдер кадра: статистика рассылки появится после портфолийного запуска">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>TODO-mailing-stats-1280.png</em></span>
+                        <span class="shot-frame__view shot-frame__view--todo" aria-hidden="true"><span class="todo-plot"><b>TODO-кадр</b><span>статистика без PII · схема, не скриншот</span></span></span><span class="shot-hint" aria-hidden="true">плейсхолдер · без 404</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Статистика рассылки без PII · плейсхолдер — схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -964,49 +992,53 @@
               <div class="shots" data-shots="aivora">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса Aivora" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/aivora-login-1280.png" data-name="aivora-login-1280.png" data-cap="▲ Экран логина CRM · интерфейс" aria-label="Открыть кадр крупно: экран логина CRM, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>aivora-login-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/aivora-login-1280.png" alt="Экран логина CRM-админки Aivora" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Экран логина CRM · интерфейс</p>
+                    <div class="shots__page shots__page--duo is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/aivora-login-1280.png" data-name="aivora-login-1280.png" data-cap="▲ Экран логина CRM · интерфейс" aria-label="Открыть кадр крупно: экран логина CRM, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>aivora-login-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/aivora-login-1280.png" alt="Экран логина CRM-админки Aivora" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Экран логина CRM · интерфейс</p>
+                      </div>
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide shot-frame--contain" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/aivora-signal-1280.png" data-name="aivora-signal-1280.png" data-cap="▲ Рендер сигнала с входом и TP/SL · правая ось срезана исходником" aria-label="Открыть кадр крупно: рендер сигнала с входом и TP/SL, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>aivora-signal-1280.png</em></span>
+                        <span class="shot-frame__view"><img src="assets/shots/aivora-signal-1280.png" alt="Рендер торгового сигнала Aivora: график с входом и уровнями TP/SL" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Рендер сигнала с входом и TP/SL · правая ось срезана исходником</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide shot-frame--contain" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/aivora-signal-1280.png" data-name="aivora-signal-1280.png" data-cap="▲ Рендер сигнала с входом и TP/SL · правая ось срезана исходником" aria-label="Открыть кадр крупно: рендер сигнала с входом и TP/SL, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>aivora-signal-1280.png</em></span>
-                  <span class="shot-frame__view"><img src="assets/shots/aivora-signal-1280.png" alt="Рендер торгового сигнала Aivora: график с входом и уровнями TP/SL" loading="lazy" decoding="async" /></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Рендер сигнала с входом и TP/SL · правая ось срезана исходником</p>
-                    </div>
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема советника: multi-TF данные идут в ATR-BB скоринг, дальше либо сигнал с входом, либо NO_TRADE">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">multi-TF</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">15м · 1ч · 4ч</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">ATR / BB</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">конфлюенс + скоринг</text>
-                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">сигнал / NO_TRADE</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">вход · TP/SL или молчит</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
-                  <defs><marker id="arrA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">нет уверенности — нет сигнала · не финсовет</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: multi-TF → скоринг → сигнал или NO_TRADE · схема, не скриншот</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема советника: multi-TF данные идут в ATR-BB скоринг, дальше либо сигнал с входом, либо NO_TRADE">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">multi-TF</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">15м · 1ч · 4ч</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">ATR / BB</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">конфлюенс + скоринг</text>
+                        <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">сигнал / NO_TRADE</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">вход · TP/SL или молчит</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrA)"/>
+                        <defs><marker id="arrA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">нет уверенности — нет сигнала · не финсовет</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: multi-TF → скоринг → сигнал или NO_TRADE · схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="shots__bar">
                   <button class="shots__arrow" type="button" data-shots-prev aria-label="Aivora: предыдущий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 3.5 6 9l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>03</span></span>
+                  <span class="shots__count" aria-live="polite"><b>01</b><i>/</i><span data-shots-total>02</span></span>
                   <span class="shots__progress" aria-hidden="true"><i data-shots-progress></i></span>
                   <button class="shots__arrow" type="button" data-shots-next aria-label="Aivora: следующий кадр"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 3.5 12 9l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
@@ -1050,34 +1082,38 @@
               <div class="shots" data-shots="contenq">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса ContenQ" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/contenq-hero-1280.png" data-name="contenq-hero-1280.png" data-cap="▲ Лендинг ContenQ в браузере · интерфейс" aria-label="Открыть кадр крупно: лендинг ContenQ, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>contenq-hero-1280.png</em></span>
-                  <span class="shot-frame__view"><picture><source media="(max-width: 640px)" srcset="assets/shots/contenq-hero-390.png" /><img src="assets/shots/contenq-hero-1280.png" alt="Лендинг ContenQ в браузере: hero с загрузкой видео" loading="lazy" decoding="async" /></picture></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Лендинг ContenQ в браузере · интерфейс</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/contenq-hero-1280.png" data-name="contenq-hero-1280.png" data-cap="▲ Лендинг ContenQ в браузере · интерфейс" aria-label="Открыть кадр крупно: лендинг ContenQ, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>contenq-hero-1280.png</em></span>
+                        <span class="shot-frame__view"><picture><source media="(max-width: 640px)" srcset="assets/shots/contenq-hero-390.png" /><img src="assets/shots/contenq-hero-1280.png" alt="Лендинг ContenQ в браузере: hero с загрузкой видео" loading="lazy" decoding="async" /></picture></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Лендинг ContenQ в браузере · интерфейс</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема фабрики: одно видео превращается в чанки с кропом и озвучкой, дальше пачка клипов уходит в handoff">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">1 видео</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">upload · анализ</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">чанки · кроп</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">FFmpeg · Celery</text>
-                  <rect x="394" y="55" width="155" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">N клипов</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">субтитры · дубляж</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
-                  <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">10-stage pipeline · handoff на публикацию</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: 1 видео → чанки/кроп/озвучка → N клипов · схема, не скриншот</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема фабрики: одно видео превращается в чанки с кропом и озвучкой, дальше пачка клипов уходит в handoff">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">1 видео</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">upload · анализ</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">чанки · кроп</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">FFmpeg · Celery</text>
+                        <rect x="394" y="55" width="155" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">N клипов</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">субтитры · дубляж</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrC)"/>
+                        <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">10-stage pipeline · handoff на публикацию</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: 1 видео → чанки/кроп/озвучка → N клипов · схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1126,34 +1162,38 @@
               <div class="shots" data-shots="publane">
                 <div class="shots__viewport">
                   <div class="shots__track" role="region" aria-roledescription="carousel" aria-label="Кадры кейса PubLane" tabindex="0">
-                    <div class="shots__slide">
-              <figure class="shot-frame shot-frame--wide" style="margin:0">
-                <button class="shot-frame__open" type="button" data-shot="assets/shots/publane-hero-1280.png" data-name="publane-hero-1280.png" data-cap="▲ Лендинг PubLane в браузере · интерфейс" aria-label="Открыть кадр крупно: лендинг PubLane, открывается полностью">
-                  <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>publane-hero-1280.png</em></span>
-                  <span class="shot-frame__view"><picture><source media="(max-width: 640px)" srcset="assets/shots/publane-hero-390.png" /><img src="assets/shots/publane-hero-1280.png" alt="Лендинг PubLane в браузере: hero и publishing cockpit" loading="lazy" decoding="async" /></picture></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
-                </button>
-              </figure>
-              <p class="case__cap">▲ Лендинг PubLane в браузере · интерфейс</p>
+                    <div class="shots__page is-active">
+                      <div class="shots__cell">
+                        <figure class="shot-frame shot-frame--wide" style="margin:0">
+                        <button class="shot-frame__open" type="button" data-shot="assets/shots/publane-hero-1280.png" data-name="publane-hero-1280.png" data-cap="▲ Лендинг PubLane в браузере · интерфейс" aria-label="Открыть кадр крупно: лендинг PubLane, открывается полностью">
+                        <span class="shot-frame__bar" aria-hidden="true"><i></i><i></i><i></i><em>publane-hero-1280.png</em></span>
+                        <span class="shot-frame__view"><picture><source media="(max-width: 640px)" srcset="assets/shots/publane-hero-390.png" /><img src="assets/shots/publane-hero-1280.png" alt="Лендинг PubLane в браузере: hero и publishing cockpit" loading="lazy" decoding="async" /></picture></span><span class="shot-hint" aria-hidden="true">⤢ Открыть полностью</span>
+                        </button>
+                        </figure>
+                        <p class="case__cap">▲ Лендинг PubLane в браузере · интерфейс</p>
+                      </div>
                     </div>
-                    <div class="shots__slide">
-              <figure class="scheme" style="margin:0">
-                <svg viewBox="0 0 560 190" role="img" aria-label="Схема планера: пачка клипов попадает в календарь с timezone, дальше постинг в восемь сетей через официальные API">
-                  <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
-                  <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">пачка клипов</text>
-                  <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">handoff из фабрики</text>
-                  <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
-                  <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">календарь</text>
-                  <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">timezone · approval</text>
-                  <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
-                  <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">8 сетей</text>
-                  <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">OAuth · шедулер</text>
-                  <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
-                  <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
-                  <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
-                  <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">белый постинг · только официальные аккаунты</text>
-                </svg>
-              </figure>
-              <p class="case__cap">▲ Схема: пачка → календарь/timezone → 8 сетей по API · схема, не скриншот</p>
+                    <div class="shots__page">
+                      <div class="shots__cell">
+                        <figure class="scheme" style="margin:0">
+                        <svg viewBox="0 0 560 190" role="img" aria-label="Схема планера: пачка клипов попадает в календарь с timezone, дальше постинг в восемь сетей через официальные API">
+                        <rect x="10" y="55" width="155" height="80" rx="10" fill="rgba(124,92,255,0.10)" stroke="#7C5CFF" stroke-width="1.5"/>
+                        <text x="87" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">пачка клипов</text>
+                        <text x="87" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">handoff из фабрики</text>
+                        <rect x="202" y="55" width="155" height="80" rx="10" fill="rgba(56,225,255,0.08)" stroke="#38E1FF" stroke-width="1.5"/>
+                        <text x="279" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">календарь</text>
+                        <text x="279" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">timezone · approval</text>
+                        <rect x="394" y="55" width="156" height="80" rx="10" fill="rgba(255,78,205,0.08)" stroke="#FF4ECD" stroke-width="1.5"/>
+                        <text x="472" y="88" text-anchor="middle" fill="#F4F4F5" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">8 сетей</text>
+                        <text x="472" y="108" text-anchor="middle" fill="#BDBDC9" font-size="11" font-family="JetBrains Mono, monospace">OAuth · шедулер</text>
+                        <line x1="165" y1="95" x2="202" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
+                        <line x1="357" y1="95" x2="394" y2="95" stroke="#BDBDC9" stroke-width="1.5" marker-end="url(#arrP)"/>
+                        <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#BDBDC9" stroke-width="1.5"/></marker></defs>
+                        <text x="280" y="165" text-anchor="middle" fill="#8E8E9C" font-size="11" font-family="JetBrains Mono, monospace">белый постинг · только официальные аккаунты</text>
+                        </svg>
+                        </figure>
+                        <p class="case__cap">▲ Схема: пачка → календарь/timezone → 8 сетей по API · схема, не скриншот</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1524,10 +1564,19 @@
             setMenu(false);
           });
         });
+        /* Tap on the overlay itself (not a link) closes too */
+        menu.addEventListener("click", function(e){
+          if (e.target === menu) setMenu(false);
+        });
+        /* Rotate/resize to desktop with open menu: unlock, or the page stays frozen with no burger to close it */
+        var desktopMq = window.matchMedia("(min-width: 761px)");
+        function autoCloseMenu(){ if (desktopMq.matches && menu.classList.contains("is-open")) setMenu(false); }
+        if (desktopMq.addEventListener) desktopMq.addEventListener("change", autoCloseMenu);
+        else if (desktopMq.addListener) desktopMq.addListener(autoCloseMenu);
       }
 
       /* Active anchor */
-      var navLinks = document.querySelectorAll(".nav__links .nav__link");
+      var navLinks = document.querySelectorAll(".nav__link[data-nav]");
       var sections = ["services", "projects", "process", "faq", "contacts"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
       if ("IntersectionObserver" in window && navLinks.length) {
         var spy = new IntersectionObserver(function(entries){
@@ -1540,29 +1589,72 @@
         sections.forEach(function(s){ spy.observe(s); });
       }
 
-      /* Shots slider — snap track + drag + arrows + HUD bar; viewer opens on slide click */
+      /* Shots slider — snap track + drag + arrows + HUD bar; viewer opens on page click (2026-09-30: page = 1-2 frames) */
       document.querySelectorAll("[data-shots]").forEach(function(box){
         var track = box.querySelector(".shots__track");
-        var slides = Array.prototype.slice.call(box.querySelectorAll(".shots__slide"));
+        var cellMq = window.matchMedia("(max-width: 640px)");
+        function collect(){
+          return Array.prototype.slice.call(box.querySelectorAll(cellMq.matches ? ".shots__cell" : ".shots__page"));
+        }
+        var slides = collect();
         var prev = box.querySelector("[data-shots-prev]");
         var next = box.querySelector("[data-shots-next]");
         var count = box.querySelector(".shots__count b");
         var total = box.querySelector("[data-shots-total]");
         var bar = box.querySelector("[data-shots-progress]");
         var dots = Array.prototype.slice.call(box.querySelectorAll(".shots__dots i"));
-        /* One caption under the track (2026-09-26): texts come from the slides, in-slide nodes removed */
-        var caps = slides.map(function(s){
-          var c = s.querySelector(".case__cap");
-          var t = c ? c.textContent : "";
-          if (c && c.parentNode) c.parentNode.removeChild(c);
-          return t;
+        /* Side controls (2026-10-01): arrows + counter live on the viewport, pill retired */
+        (function(){
+          var vp = box.querySelector(".shots__viewport");
+          if (!vp) return;
+          if (prev) vp.appendChild(prev);
+          if (next) vp.appendChild(next);
+          var cnt = box.querySelector(".shots__count");
+          if (cnt) vp.appendChild(cnt);
+          box.classList.add("has-side-controls");
+        })();
+        /* Captions: per-cell text kept in dataset; caption = cell text, or join of page cells */
+        Array.prototype.forEach.call(box.querySelectorAll(".shots__cell"), function(cell){
+          var n = cell.querySelector(".case__cap");
+          cell.dataset.cap = n ? n.textContent.trim() : "";
+          if (n && n.parentNode) n.parentNode.removeChild(n);
         });
+        function pageCap(s){
+          var cells = Array.prototype.slice.call(s.querySelectorAll(".shots__cell"));
+          var list = cells.length ? cells : [s];
+          return list.map(function(c){ return c.dataset.cap || ""; }).filter(Boolean).join(" · ");
+        }
+        var caps = slides.map(pageCap);
+        function recollect(){
+          var anchor = slides[index];
+          var cell = null;
+          if (anchor) cell = anchor.classList.contains("shots__page") ? anchor.querySelector(".shots__cell") : anchor;
+          slides = collect();
+          var at = cell ? slides.indexOf(cell) : -1;
+          index = at < 0 ? 0 : at;
+          var hide = slides.length < 2;
+          [prev, next, box.querySelector(".shots__count")].forEach(function(el){ if (el) el.style.display = hide ? "none" : ""; });
+          caps = slides.map(pageCap);
+          render();
+          go(index);
+        }
+        if (cellMq.addEventListener) cellMq.addEventListener("change", recollect);
+        else if (cellMq.addListener) cellMq.addListener(recollect);
         var viewport = box.querySelector(".shots__viewport");
         var capEl = document.createElement("p");
         capEl.className = "shots__cap";
         capEl.textContent = caps[0] || "";
         if (viewport && viewport.parentNode) viewport.parentNode.insertBefore(capEl, viewport.nextSibling);
-        if (!track || slides.length < 2) return;
+        if (!track || slides.length < 2) {
+          if (count) count.textContent = pad(1);
+          if (total) total.textContent = pad(slides.length);
+          if (bar) bar.style.width = "100%";
+          slides.forEach(function(s, i){ s.classList.toggle("is-active", i === 0); });
+          if (prev) prev.disabled = true;
+          if (next) next.disabled = true;
+          [prev, next, box.querySelector(".shots__count")].forEach(function(el){ if (el) el.style.display = "none"; });
+          return;
+        }
         var index = 0;
         var swipeMq = window.matchMedia("(max-width: 640px)");
         function pad(n){ return (n < 10 ? "0" : "") + n; }
@@ -1603,24 +1695,28 @@
           render();
         }
         /* Index always derives from the real scroll pos — snap, drag and keys land here */
-        var tick = 0, scrollT = 0;
+        /* Settle-commit (2026-10-01): индекс коммитится один раз по остановке скролла,
+           а не на каждый кадр — иначе счётчик/подпись дёргаются mid-gesture */
+        var scrollT = 0;
+        function nearest(){
+          var tr = track.getBoundingClientRect();
+          var best = 0, bestDist = Infinity;
+          slides.forEach(function(s, i){
+            var r = s.getBoundingClientRect();
+            var d = Math.abs((r.left + r.width / 2) - (tr.left + tr.width / 2));
+            if (d < bestDist) { bestDist = d; best = i; }
+          });
+          return best;
+        }
         track.addEventListener("scroll", function(){
           /* Anti-lag (2026-09-26): glow-анимации стоят, пока трек едет */
           box.classList.add("is-scroll");
           if (scrollT) window.clearTimeout(scrollT);
-          scrollT = window.setTimeout(function(){ box.classList.remove("is-scroll"); }, 180);
-          if (tick) return;
-          tick = requestAnimationFrame(function(){
-            tick = 0;
-            var tr = track.getBoundingClientRect();
-            var best = 0, bestDist = Infinity;
-            slides.forEach(function(s, i){
-              var r = s.getBoundingClientRect();
-              var d = Math.abs((r.left + r.width / 2) - (tr.left + tr.width / 2));
-              if (d < bestDist) { bestDist = d; best = i; }
-            });
-            if (best !== index) { index = best; render(); }
-          });
+          scrollT = window.setTimeout(function(){
+            box.classList.remove("is-scroll");
+            var at = nearest();
+            if (at !== index) { index = at; render(); }
+          }, 140);
         }, { passive: true });
         if (prev) prev.addEventListener("click", function(){ go(index - 1); });
         if (next) next.addEventListener("click", function(){ go(index + 1); });
