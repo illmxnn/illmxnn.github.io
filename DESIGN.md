@@ -725,3 +725,24 @@ Apple copy доп-проверка (copywriting.md): один тезис на с
 - Было: rAF-throttle считал nearest на каждый скролл-эвент — счётчик/подпись флипали mid-gesture.
 - Стало: nearest() + debounce 140мс; стрелки/клавиатура — мгновенно через go+render как раньше.
 - Замер: джиттер-последовательность — 0 флипов во время жеста, 1 коммит по сеттлу (02/1148); trusted ArrowRight — сразу 02.
+
+---
+
+## 40. Hover-rule: no lift + perf calm-down (2026-10-01, по вердикту 'убрать подъем полностью')
+
+> Кадр стоит на месте, рамка/свечение остаются; бесконечный репейнт и трэш убраны без смены дизайна.
+
+- **Hover**: `.shots__page .shot-frame:hover` — `transform: none` (был `translateY(-4px)`, замер rect delta -4.00px в браузере); transition кадра — только border-color/box-shadow. `prefers-reduced-motion` как был `transform: none`.
+- **Shine**: hover-sweep `frame-shine` 700ms удален полностью (::after-слой, триггер, keyframes) — остался статичный glow.
+- **Flow**: `frame-flow` 3.6s infinite удален (background-position + box-shadow анимировались на ~9 активных слайдах) — статичная gradient-рамка + статичная тень. CSS v20261001-2.
+- **Perf**: magnetic rAF-throttle как у tilt; hero COUNT 1800/800 -> 1000/450, pixelRatio cap 1.25, кадр ~30fps; toTop-scroll rAF-throttle (в трейсе 387ms forced reflow); backdrop-filter снят с `shots__bar`/боковых стрелок/`shots__count` (сплошной фон вместо блюра); `will-change` убран с `.btn`/`.case`. LCP 1641ms = 99.8% render delay (текстовый H1), CLS 0.00, DOM 1515, console 0.
+
+---
+
+## 41. Mobile calm: ноль движений на тач-экранах (2026-10-01, по вердикту «полный calm»)
+
+> На тач-экранах элемент не двигается при нажатии вообще; фоновый декор стоит; появление — мгновенное.
+
+- **Замер до**: мобильная эмуляция (390px, hasTouch) — matchMedia('(hover: none)') true; tap по .btn--primary оставляет эмулированный :hover — computed transform matrix(1,0,0,1,0,-2), кнопка залипает на -2px; marquee animation-name: marquee крутится на таче.
+- **Calm-блок** @media (hover: none), (pointer: coarse): все :hover/:active transform — none (CTA, кнопки, стрелки слайдера, кадры, steps, help-rows/cards, svc, табы, cases); transition движков — только border-color/box-shadow/background/color/opacity; marquee — animation none + wrap как в reduced-motion; console-breathe/caret-blink — animation none; .reveal — opacity 1, transform none, transition none; entry-анимации лайтбокса/меню — animation none. CSS v20261001-3.
+- **Живо**: мобильное меню, лайтбокс, snap-скролл, табы, sticky-CTA/toTop появление, якоря; tilt/magnetic уже только (hover: hover) and (pointer: fine) — без изменений; hero-canvas не тронут. Desktop-контроль: hover-lift без изменений.

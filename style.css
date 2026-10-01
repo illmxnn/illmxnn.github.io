@@ -112,7 +112,6 @@ a { color: inherit; }
   min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill);
   font: 600 15px/1 var(--font-sans); letter-spacing: -0.01em; text-decoration: none; cursor: pointer; border: 1px solid transparent;
   transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 200ms ease, background 200ms ease, border-color 200ms ease;
-  will-change: transform;
 }
 .btn--primary { background: var(--cta-bg); color: var(--cta-text); box-shadow: 0 6px 28px rgba(244, 244, 245, 0.14); }
 .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(56, 225, 255, 0.28); }
@@ -206,7 +205,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
   border: 1px solid var(--border); border-radius: var(--radius-card);
   background: linear-gradient(165deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
   padding: 28px; display: grid; grid-template-columns: 1fr; gap: 24px;
-  box-shadow: var(--shadow-card); transform-style: preserve-3d; will-change: transform;
+  box-shadow: var(--shadow-card); transform-style: preserve-3d;
   transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 .case:hover { border-color: var(--border-hover); box-shadow: var(--shadow-elevated); }
@@ -325,7 +324,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 /* Anti-lag (2026-09-26): offscreen-слайды пропускают рендер до показа */
 .shots__page:not(.is-active) { content-visibility: auto; contain-intrinsic-size: auto 380px; }
 .shots__page img { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
-.shots__page .shot-frame { position: relative; isolation: isolate; transition: transform 260ms cubic-bezier(0.2,0.8,0.2,1); width: 100%; margin-inline: auto; }
+.shots__page .shot-frame { position: relative; isolation: isolate; transition: border-color 260ms ease, box-shadow 260ms ease; width: 100%; margin-inline: auto; }
 /* Anti-lag (2026-09-26): на время скролла/свайпа glow-анимации стоят — только transform/opacity */
 .shots.is-scroll .shots__page .shot-frame,
 .shots.is-scroll .shots__page.is-active .shot-frame,
@@ -333,33 +332,17 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .shots__track.is-drag .shots__page.is-active .shot-frame { animation-play-state: paused; }
 .shots.is-scroll .shot-frame__view::after,
 .shots__track.is-drag .shot-frame__view::after { animation-play-state: paused; }
-/* Hover: lift + shine sweep (transform/opacity only, interruptible) */
-.shots__page .shot-frame:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 0 0 1px rgba(56,225,255,0.2), 0 18px 44px rgba(0,0,0,0.5), 0 0 28px rgba(56,225,255,0.12); }
-.shot-frame__view::after {
-  content: ""; position: absolute; inset: -20% -60% auto -60%; height: 140%; z-index: 1; pointer-events: none;
-  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.14) 50%, transparent 58%);
-  transform: translateX(-70%); opacity: 0;
-}
-.shots__page .shot-frame:hover .shot-frame__view::after { animation: frame-shine 700ms ease; }
-@keyframes frame-shine {
-  0% { transform: translateX(-70%); opacity: 0; }
-  15% { opacity: 1; }
-  100% { transform: translateX(70%); opacity: 0; }
-}
-/* Active slide: living gradient border (background-position flow + soft glow pulse) */
+/* Hover: frame + glow only, no lift (2026-10-01: translateY(-4px) removed — shifting looked broken, measured -4.00px rect delta) */
+.shots__page .shot-frame:hover { transform: none; border-color: var(--border-hover); box-shadow: 0 0 0 1px rgba(56,225,255,0.2), 0 18px 44px rgba(0,0,0,0.5), 0 0 28px rgba(56,225,255,0.12); }
+/* Shine removed (2026-10-01): hover sweep deleted with the lift — static glow only, no ::after layer on 20 frames */
+/* Active slide: static gradient border + static glow (2026-10-01: frame-flow infinite repaint removed — background-position/box-shadow animated every frame on ~9 slides) */
 .shots__page.is-active .shot-frame {
   border-color: transparent;
   background:
     linear-gradient(#0A0A12, #0A0A12) padding-box,
     linear-gradient(120deg, rgba(124,92,255,0.85), rgba(56,225,255,0.85), rgba(255,78,205,0.7), rgba(124,92,255,0.85)) border-box;
-  background-size: auto, 220% 220%;
   border: 1px solid transparent;
-  animation: frame-flow 3.6s ease-in-out infinite;
   box-shadow: 0 0 0 1px rgba(56, 225, 255, 0.28), 0 10px 34px rgba(0, 0, 0, 0.45);
-}
-@keyframes frame-flow {
-  0%, 100% { background-position: 0 0, 0% 40%; box-shadow: 0 0 0 1px rgba(56,225,255,0.22), 0 0 22px rgba(56,225,255,0.12), 0 10px 34px rgba(0,0,0,0.45); }
-  50% { background-position: 0 0, 100% 60%; box-shadow: 0 0 0 1px rgba(56,225,255,0.34), 0 0 36px rgba(56,225,255,0.22), 0 10px 34px rgba(0,0,0,0.45); }
 }
 .shots__cap { margin: 12px 2px 0; font: 500 13px/1.6 var(--font-mono); color: var(--text-secondary); }
 /* Scheme as a slider page: same height as shot frames, svg centered */
@@ -373,7 +356,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
   display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; margin-inline: auto; max-width: 240px; width: fit-content; min-width: 0; min-height: 0; position: relative;
   border: 1px solid var(--border); border-radius: 999px; padding: 5px 8px;
   background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(13, 13, 22, 0.94);
 }
 /* Case-balance (2026-09-26): левая колонка тянется на высоту строки, подпись+пилюля одним блоком у низа */
 .case { align-items: stretch; }
@@ -404,8 +387,7 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .shots__viewport > .shots__arrow {
   position: absolute; top: 50%; margin-top: -18px; z-index: 3;
   width: 36px; height: 36px;
-  background: rgba(7, 7, 13, 0.55);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  background: rgba(7, 7, 13, 0.85);
 }
 .shots__viewport > .shots__arrow svg { width: 15px; height: 15px; }
 .shots__viewport > [data-shots-prev] { left: 12px; }
@@ -413,9 +395,8 @@ body.hero--no-webgl #hero-canvas { display: none; }
 .shots__viewport > .shots__count {
   position: absolute; top: 10px; right: 12px; z-index: 3;
   color: var(--text);
-  background: rgba(7, 7, 13, 0.72);
+  background: rgba(7, 7, 13, 0.88);
   border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px;
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
 .shots__count { font: 600 12px/1 var(--font-mono); letter-spacing: 0.1em; color: var(--text-tertiary); white-space: nowrap; padding: 0 2px; font-variant-numeric: tabular-nums; flex: 0 1 auto; min-width: 62px; text-align: center; }
 .shots__count b { color: var(--text); font-weight: 600; }
@@ -731,6 +712,28 @@ body.menu-open { overflow: hidden; }
   body.sticky-on .totop { bottom: 100px; }
   .hero__ctas .btn { flex: 1 1 100%; }
   .glass-console__code { font-size: 12px; min-height: 0; }
+}
+
+/* Mobile calm (2026-10-01): на тач-экранах ноль движений — тап/наведение ничего не сдвигает, декор стоит, контент виден сразу */
+@media (hover: none), (pointer: coarse) {
+  /* Тап эмулирует :hover и залипает — все сдвиги в ноль (замер до: tap по .btn--primary оставлял matrix(1,0,0,1,0,-2)) */
+  .nav__cta:hover, .nav__cta:active { transform: none; }
+  .btn:hover, .btn:active, .btn--primary:hover, .btn--primary:active, .btn--secondary:hover, .btn--secondary:active, .btn--ghost:hover, .btn--ghost:active { transform: none; }
+  .shots__arrow:hover, .shots__arrow:active { transform: none; }
+  .shots__page .shot-frame:hover, .shots__page .shot-frame:active { transform: none; }
+  .step:hover, .step:active, .help-row:hover, .help-row:active, .help-card:hover, .help-card:active, .svc:hover, .svc:active { transform: none; }
+  .tabs__tab:hover, .tabs__tab:active, .case:hover, .case:active { transform: none; }
+  /* Состояния остаются через цвет/рамку/свечение — без transform в transition */
+  .nav__cta, .btn, .shots__arrow, .step, .svc, .help-row, .help-card, .tabs__tab, .case, .shots__page .shot-frame { transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease; }
+  /* Бесконечный декор стоит (marquee — как в reduced-motion: все пункты видны статично) */
+  .marquee__track { animation: none; flex-wrap: wrap; width: auto; }
+  .glass-console { animation: none; }
+  .glass-caret { animation: none; }
+  /* Появление — мгновенное, контент виден сразу */
+  .reveal, .reveal[data-delay="1"], .reveal[data-delay="2"] { opacity: 1; transform: none; transition: none; }
+  /* Entry-анимации служебного — без движения, функция жива */
+  .shotbox__fig { animation: none; }
+  .nav__mobile.is-open { animation: none; }
 }
 
 /* Reduced motion — full static content, zero animation */
