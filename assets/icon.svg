@@ -1,23 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Illia Druzhenko — pipeline mark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Illia Druzhenko — ID</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7C5CFF"/>
-      <stop offset="0.55" stop-color="#38E1FF"/>
-      <stop offset="1" stop-color="#FF4ECD"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11111F"/>
+      <stop offset="1" stop-color="#07070D"/>
     </linearGradient>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="2.6" result="b"/>
-      <feMerge>
-        <feMergeNode in="b"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="ac" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67F0DC"/>
+      <stop offset="1" stop-color="#22C7E8"/>
+    </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0A0A12"/>
-  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="13" fill="none" stroke="url(#g)" stroke-width="1.5" opacity="0.9"/>
-  <line x1="15" y1="32" x2="49" y2="32" stroke="url(#g)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-  <circle cx="15" cy="32" r="6" fill="#0A0A12" stroke="#7C5CFF" stroke-width="3.5"/>
-  <circle cx="32" cy="32" r="7" fill="#38E1FF" filter="url(#glow)"/>
-  <circle cx="32" cy="32" r="2.6" fill="#0A0A12" opacity="0.85"/>
-  <circle cx="49" cy="32" r="6" fill="#0A0A12" stroke="#FF4ECD" stroke-width="3.5"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="url(#bg)" stroke="#2B2B45" stroke-width="2"/>
+  <!-- "I" как курсор терминала -->
+  <rect x="11" y="14" width="8" height="36" rx="2.5" fill="url(#ac)"/>
+  <!-- "D" -->
+  <path fill="#F2F4FA" fill-rule="evenodd"
+        d="M26 14 H36 A18 18 0 0 1 36 50 H26 Z M34 22 V42 H36 A10 10 0 0 0 36 22 Z"/>
 </svg>
