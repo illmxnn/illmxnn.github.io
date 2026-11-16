@@ -5,7 +5,7 @@ const themeIcon = themeButton.querySelector('.theme-icon');
 const progress = document.querySelector('.progress span');
 
 function updateThemeLabel() {
-  const label = root.dataset.theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему';
+  const label = root.dataset.theme === 'light' ? themeButton.dataset.dark : themeButton.dataset.light;
   themeButton.setAttribute('aria-label', label);
   themeButton.title = label;
 }
@@ -45,12 +45,14 @@ if (typeof menu.showModal === 'function') {
 }
 
 const previousAnchors = new Map([['projects', 'automations'], ['work', 'automations'], ['contacts', 'contact']]);
+const languageLinks = document.querySelectorAll('.languages a');
 
 function openLinkedAutomation() {
   const hash = window.location.hash.slice(1);
   const target = document.getElementById(previousAnchors.get(hash) ?? hash);
   if (target?.matches('.work-item summary')) target.parentElement.open = true;
   if (previousAnchors.has(hash)) target.scrollIntoView();
+  for (const link of languageLinks) link.hash = window.location.hash;
 }
 
 function updateProgress() {
@@ -99,7 +101,7 @@ function startIntro() {
   const count = boot.querySelector('.boot-count');
   const bar = boot.querySelector('.boot-track span');
   const text = label.textContent;
-  const glyphs = 'АБВГДЖЗИКЛМПРСТУФХЦЧШ0123456789#/';
+  const glyphs = text + '0123456789#/';
   const start = performance.now();
   const events = new AbortController();
   let frame;

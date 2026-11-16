@@ -4,25 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="Illia Druzenko, Киев. Личная страница и коллекция автоматизаций — от компьютера до iPhone.">
+  <meta name="description" content="Личная страница Illia Druzenko из Киева. Заметки обо мне и автоматизациях — от каталогов, документов и видео до быстрых команд на iPhone.">
   <meta property="og:title" content="Illia Druzenko — личная страница">
-  <meta property="og:description" content="Киев. Обо мне и о том, что я автоматизирую.">
+  <meta property="og:description" content="Личная страница Illia Druzenko из Киева. Заметки обо мне и автоматизациях — от каталогов, документов и видео до быстрых команд на iPhone.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://illmxnn.github.io/">
   <link rel="canonical" href="https://illmxnn.github.io/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="alternate" hreflang="ru" href="https://illmxnn.github.io/">
+  <link rel="alternate" hreflang="uk" href="https://illmxnn.github.io/uk/">
+  <link rel="alternate" hreflang="en" href="https://illmxnn.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://illmxnn.github.io/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=glitch-1">
+  <link rel="stylesheet" href="/style.css?v=languages-1">
   <script>
     try {
       const theme = localStorage.getItem('illmxnn-theme');
       if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
     } catch {}
   </script>
-  <script src="site.js?v=glitch-1" defer></script>
+  <script src="/site.js?v=languages-1" defer></script>
   <title>Illia Druzenko — личная страница</title>
 </head>
 <body id="top">
@@ -45,19 +50,24 @@
         <a href="#automations">Автоматизации</a>
         <a href="#contact">Контакты</a>
       </div>
-      <button hidden class="theme" type="button" aria-label="Сменить тему">
+      <div class="languages" role="group" aria-label="Язык страницы">
+        <a href="/" hreflang="ru" lang="ru" aria-label="Русский" aria-current="page">RU</a>
+        <a href="/uk/" hreflang="uk" lang="uk" aria-label="Українська">UA</a>
+        <a href="/en/" hreflang="en" lang="en" aria-label="English">EN</a>
+      </div>
+      <button hidden class="theme" type="button" aria-label="Включить светлую тему" data-light="Включить светлую тему" data-dark="Включить тёмную тему">
         <span class="theme-icon" aria-hidden="true"><span class="moon"></span><span class="sun">☼</span></span>
       </button>
       <button hidden class="menu-trigger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button>
     </nav>
   </header>
 
-  <dialog id="mobile-menu" class="mobile-menu" aria-label="Навигация по разделам">
+  <dialog id="mobile-menu" class="mobile-menu" aria-label="Навигация">
     <button class="menu-close" type="button" aria-label="Закрыть меню" autofocus>×</button>
     <nav aria-label="Разделы страницы">
-      <a href="#about">Обо мне</a>
-      <a href="#automations">Автоматизации</a>
-      <a href="#contact">Контакты</a>
+        <a href="#about">Обо мне</a>
+        <a href="#automations">Автоматизации</a>
+        <a href="#contact">Контакты</a>
     </nav>
   </dialog>
 
@@ -80,7 +90,7 @@
             <figcaption>Место для портрета</figcaption>
           </figure>
         </div>
-        <p class="intro">Я Илья. Мне нравится замечать, что в повседневных делах можно упростить, и пробовать, как это будет работать.</p>
+        <p class="intro">Я Илья, живу в Киеве. Здесь собрал истории о том, как упрощал повседневные задачи — от разбора большого каталога до быстрых команд на телефоне.</p>
         <div class="hero-actions">
           <a class="magnet" href="#automations"><span>Автоматизации <b aria-hidden="true">↘</b></span></a>
           <a class="magnet" href="#contact"><span>Связаться <b aria-hidden="true">↗</b></span></a>
@@ -89,20 +99,32 @@
     </section>
 
     <section class="chapter about" id="about" aria-labelledby="about-title">
-      <div class="shell about-grid">
-        <div>
-          <h2 class="eyebrow" id="about-title" data-reveal>Обо мне</h2>
-          <p class="about-lead" data-words data-reveal>Я живу в Киеве. Если в привычном деле одни и те же шаги повторяются изо дня в день, мне хочется <strong class="outline">упростить</strong> их и посмотреть, что получится.</p>
+      <div class="shell">
+        <div class="about-grid">
+          <div>
+            <h2 class="eyebrow" id="about-title" data-reveal>Обо мне</h2>
+            <p class="about-lead" data-words data-reveal>Когда я ловлю себя на том, что третий раз делаю одно и то же, мне хочется <strong class="outline">упростить</strong> сам процесс. Так я начал собирать свои автоматизации.</p>
+          </div>
+          <div class="about-aside">
+            <p class="eyebrow" data-reveal>От компьютера до iPhone</p>
+            <p data-reveal>Я увлёкся автоматизациями ещё до iPhone. За компьютером я собирал каталоги, искал нужное в архивах и готовил видео. С телефоном появился новый масштаб — несколько бытовых шагов за одно касание.</p>
+            <ul class="about-links">
+              <li data-reveal><a href="#case-justcars"><span class="roll"><span data-copy="Каталоги">Каталоги</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#case-docs"><span class="roll"><span data-copy="Документы и сканы">Документы и сканы</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#case-contenq"><span class="roll"><span data-copy="Видео и субтитры">Видео и субтитры</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#iphone"><span class="roll"><span data-copy="Команды на iPhone">Команды на iPhone</span></span><span aria-hidden="true">↘</span></a></li>
+            </ul>
+          </div>
         </div>
-        <div class="about-aside">
-          <p class="eyebrow" data-reveal>От компьютера до iPhone</p>
-          <p data-reveal>Автоматизациями я увлёкся ещё до iPhone. На телефоне мне интересен другой масштаб — собрать несколько бытовых действий в одну быструю команду.</p>
-          <ul class="about-links">
-            <li data-reveal><a href="#case-justcars"><span class="roll"><span data-copy="Каталоги">Каталоги</span></span><span aria-hidden="true">↘</span></a></li>
-            <li data-reveal><a href="#case-docs"><span class="roll"><span data-copy="Документы и сканы">Документы и сканы</span></span><span aria-hidden="true">↘</span></a></li>
-            <li data-reveal><a href="#case-contenq"><span class="roll"><span data-copy="Клипы и субтитры">Клипы и субтитры</span></span><span aria-hidden="true">↘</span></a></li>
-            <li data-reveal><a href="#iphone"><span class="roll"><span data-copy="Команды на iPhone">Команды на iPhone</span></span><span aria-hidden="true">↘</span></a></li>
-          </ul>
+        <div class="about-notes">
+          <div data-reveal>
+            <h3>Как я проверяю результат</h3>
+            <p>Смотрю, что произойдёт при следующем запуске. При переносе каталога я сверял колонки и цены, проверял имена фото и сравнивал готовые файлы. С теми же исходными данными экспорт должен совпасть до байта.</p>
+          </div>
+          <div data-reveal>
+            <h3>Что мне интересно сейчас</h3>
+            <p>На iPhone мне интересно сокращать мелкие цепочки действий. Хороший ориентир — команда, которую можно запустить с экрана и сразу понять, что она сделала.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -110,57 +132,101 @@
     <section class="chapter work" id="automations" aria-labelledby="work-title">
       <div class="shell">
         <h2 class="eyebrow" id="work-title" data-reveal>Автоматизации</h2>
+        <p class="work-intro" data-reveal>Открой любую строку, чтобы прочитать, с чего началась задача и что получилось.</p>
         <div class="work-list">
           <details class="work-item" data-reveal>
             <summary id="case-justcars">
               <span class="work-index" aria-hidden="true">01</span>
               <span class="work-title glitch" data-glitch="Каталог без ручного переноса">Каталог без ручного переноса</span>
               <span class="work-note">Из каталога сайта — в CRM</span>
-              <span class="work-category">Каталоги</span>
+              <span class="work-category">JustCars</span>
               <span class="expand" aria-hidden="true"></span>
             </summary>
             <div class="work-body">
-              <p>Собрал данные с сайта и подготовил их к импорту в CRM. За один запуск перенеслись 170 позиций и 4 844 изображения.</p>
-              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота каталога</figcaption></figure>
+              <div class="work-copy">
+                <p>При ручном переносе приходилось приводить цены к одному формату, следить за фотографиями и подгонять таблицу под импортёр. Я объединил эти шаги в один экспорт, который проверяет колонки перед записью файла.</p>
+                <p>За один запуск подготовил 170 позиций и 4 844 фотографии. Повторный экспорт на тех же данных дал тот же файл.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
             </div>
           </details>
           <details class="work-item" data-reveal>
             <summary id="case-docs">
               <span class="work-index" aria-hidden="true">02</span>
               <span class="work-title glitch" data-glitch="Поиск по документам">Поиск по документам</span>
-              <span class="work-note">Нужный фрагмент и ссылка на источник</span>
-              <span class="work-category">PDF и сканы</span>
+              <span class="work-note">PDF, договоры и сканы</span>
+              <span class="work-category">Архив</span>
               <span class="expand" aria-hidden="true"></span>
             </summary>
             <div class="work-body">
-              <p>Собрал локальный поиск по документам и сканам. Он помогает найти нужный фрагмент и сразу показывает, из какого файла взят ответ.</p>
-              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота поиска</figcaption></figure>
+              <div class="work-copy">
+                <p>Собрал локальную программу, которая ищет текст по всему архиву. Она распознаёт текст в сканах, подсвечивает совпадение в документе и позволяет выгрузить найденный фрагмент.</p>
+                <p>Проверял распознавание на пачке из 160 файлов. При следующем запуске программа индексирует только новые или изменившиеся документы.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-ledstil">
+              <span class="work-index" aria-hidden="true">03</span>
+              <span class="work-title glitch" data-glitch="Порядок в большом магазине">Порядок в большом магазине</span>
+              <span class="work-note">Сортировка и автосохранение</span>
+              <span class="work-category">LedStil</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>Разложил больше 2 500 товаров по 500 с лишним категориям. Для каждой категории настроил свой набор характеристик, а порядок товаров можно менять перетаскиванием.</p>
+                <p>Изменения сохраняются автоматически. Русская и украинская витрины используют один каталог.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
             </div>
           </details>
           <details class="work-item" data-reveal>
             <summary id="case-contenq">
-              <span class="work-index" aria-hidden="true">03</span>
+              <span class="work-index" aria-hidden="true">04</span>
               <span class="work-title glitch" data-glitch="Одно видео, несколько клипов">Одно видео, несколько клипов</span>
-              <span class="work-note">Кадрирование, субтитры и озвучка</span>
-              <span class="work-category">Видео</span>
+              <span class="work-note">Кадрирование, субтитры и дубляж</span>
+              <span class="work-category">ContenQ</span>
               <span class="expand" aria-hidden="true"></span>
             </summary>
             <div class="work-body">
-              <p>Объединил кадрирование, субтитры и озвучку в один процесс. Из исходного видео получается несколько коротких клипов.</p>
-              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота обработки видео</figcaption></figure>
+              <div class="work-copy">
+                <p>Один процесс объединяет распознавание речи, нарезку, кадрирование, субтитры и дубляж. Из исходного ролика можно получить короткие версии в форматах 9:16, 4:5 и 1:1.</p>
+                <p>Готовые клипы можно передать в календарь публикаций одной кнопкой.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-publane">
+              <span class="work-index" aria-hidden="true">05</span>
+              <span class="work-title glitch" data-glitch="Календарь публикаций">Календарь публикаций</span>
+              <span class="work-note">Расписание, согласование и постинг</span>
+              <span class="work-category">PubLane</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>Собрал календарь, в котором можно заранее расставить публикации с учётом часового пояса, выбрать аккаунты бренда и отправить ролики на согласование.</p>
+                <p>Расписание и согласование видны в одном месте. Публикации отправляются через официальные интеграции платформ.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
             </div>
           </details>
           <details class="work-item" data-reveal>
             <summary id="iphone">
-              <span class="work-index" aria-hidden="true">04</span>
+              <span class="work-index" aria-hidden="true">06</span>
               <span class="work-title glitch" data-glitch="Автоматизации на iPhone">Автоматизации на iPhone</span>
               <span class="work-note">Несколько шагов за одно касание</span>
               <span class="work-category">Повседневность</span>
               <span class="expand" aria-hidden="true"></span>
             </summary>
             <div class="work-body">
-              <p>Мне нравится идея собрать повторяющиеся действия в одну команду, которую можно запустить прямо с телефона. Здесь появятся примеры моих сценариев для iPhone.</p>
-              <figure><div class="placeholder preview phone-preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота команды</figcaption></figure>
+              <div class="work-copy">
+                <p>На телефоне мне интересны быстрые команды для небольших задач. В приложении «Команды» можно связать несколько действий и запускать их с экрана «Домой». Здесь будут примеры моих сценариев.</p>
+              </div>
+              <figure><div class="placeholder preview phone-preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота</figcaption></figure>
             </div>
           </details>
         </div>

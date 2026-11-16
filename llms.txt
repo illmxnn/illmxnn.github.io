@@ -5,3 +5,5 @@
 - [Обо мне](https://illmxnn.github.io/#about)
 - [Автоматизации](https://illmxnn.github.io/#automations)
 - [Контакты](https://illmxnn.github.io/#contact)
+- [Українська версія](https://illmxnn.github.io/uk/)
+- [English version](https://illmxnn.github.io/en/)

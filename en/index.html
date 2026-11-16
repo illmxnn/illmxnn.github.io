@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="The personal site of Illia Druzenko from Kyiv. A little about me and the things I automate, from catalogs, documents, and video to iPhone shortcuts.">
+  <meta property="og:title" content="Illia Druzenko — personal site">
+  <meta property="og:description" content="The personal site of Illia Druzenko from Kyiv. A little about me and the things I automate, from catalogs, documents, and video to iPhone shortcuts.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://illmxnn.github.io/en/">
+  <link rel="canonical" href="https://illmxnn.github.io/en/">
+  <link rel="alternate" hreflang="ru" href="https://illmxnn.github.io/">
+  <link rel="alternate" hreflang="uk" href="https://illmxnn.github.io/uk/">
+  <link rel="alternate" hreflang="en" href="https://illmxnn.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://illmxnn.github.io/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=languages-1">
+  <script>
+    try {
+      const theme = localStorage.getItem('illmxnn-theme');
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+  <script src="/site.js?v=languages-1" defer></script>
+  <title>Illia Druzenko — personal site</title>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <div class="boot" hidden aria-hidden="true">
+    <div class="boot-inner">
+      <span class="boot-label">LOADING</span>
+      <div class="boot-status"><span class="boot-track"><span></span></span><span class="boot-count">0%</span></div>
+    </div>
+  </div>
+
+  <header class="header">
+    <nav class="shell nav" aria-label="Navigation">
+      <a class="signature glitch" data-glitch="ID." href="#top" aria-label="Illia Druzenko, top of page">ID.</a>
+      <div class="nav-links">
+        <a href="#about">About me</a>
+        <a href="#automations">Automations</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="languages" role="group" aria-label="Page language">
+        <a href="/" hreflang="ru" lang="ru" aria-label="Русский">RU</a>
+        <a href="/uk/" hreflang="uk" lang="uk" aria-label="Українська">UA</a>
+        <a href="/en/" hreflang="en" lang="en" aria-label="English" aria-current="page">EN</a>
+      </div>
+      <button hidden class="theme" type="button" aria-label="Switch to light theme" data-light="Switch to light theme" data-dark="Switch to dark theme">
+        <span class="theme-icon" aria-hidden="true"><span class="moon"></span><span class="sun">☼</span></span>
+      </button>
+      <button hidden class="menu-trigger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true"></span></button>
+    </nav>
+  </header>
+
+  <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation">
+    <button class="menu-close" type="button" aria-label="Close menu" autofocus>×</button>
+    <nav aria-label="Page sections">
+        <a href="#about">About me</a>
+        <a href="#automations">Automations</a>
+        <a href="#contact">Contact</a>
+    </nav>
+  </dialog>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="name">
+      <span class="hero-line" aria-hidden="true"></span>
+      <div class="shell hero-inner">
+        <p class="eyebrow hero-label">Personal site <span>/</span> Kyiv</p>
+        <div class="hero-lockup">
+          <h1 id="name" aria-label="Illia Druzenko">
+            <span class="title-line" aria-hidden="true"><span class="title-first">Illia</span></span>
+            <span class="title-line" aria-hidden="true"><span class="glitch outline" data-glitch="Druzenko">Druzenko</span></span>
+          </h1>
+          <figure class="portrait">
+            <div class="placeholder portrait-screen" aria-hidden="true">
+              <canvas width="512" height="512"></canvas>
+              <span class="portrait-scan"></span>
+              <span class="screen-axis"></span>
+            </div>
+            <figcaption>Portrait placeholder</figcaption>
+          </figure>
+        </div>
+        <p class="intro">I’m Illia, based in Kyiv. This is where I collect stories about making everyday tasks simpler, from sorting a large catalog to running a shortcut on my phone.</p>
+        <div class="hero-actions">
+          <a class="magnet" href="#automations"><span>Automations <b aria-hidden="true">↘</b></span></a>
+          <a class="magnet" href="#contact"><span>Get in touch <b aria-hidden="true">↗</b></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter about" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="about-grid">
+          <div>
+            <h2 class="eyebrow" id="about-title" data-reveal>About me</h2>
+            <p class="about-lead" data-words data-reveal>When I catch myself doing the same thing for the third time, I want to <strong class="outline">simplify</strong> the process. That’s how I started putting together my own automations.</p>
+          </div>
+          <div class="about-aside">
+            <p class="eyebrow" data-reveal>From desktop to iPhone</p>
+            <p data-reveal>I got into automation before I had an iPhone. On my computer I was building catalogs, searching archives, and preparing videos. My phone got me thinking about how to fit a few everyday steps into one tap.</p>
+            <ul class="about-links">
+              <li data-reveal><a href="#case-justcars"><span class="roll"><span data-copy="Catalogs">Catalogs</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#case-docs"><span class="roll"><span data-copy="Documents and scans">Documents and scans</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#case-contenq"><span class="roll"><span data-copy="Video and captions">Video and captions</span></span><span aria-hidden="true">↘</span></a></li>
+              <li data-reveal><a href="#iphone"><span class="roll"><span data-copy="iPhone shortcuts">iPhone shortcuts</span></span><span aria-hidden="true">↘</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-notes">
+          <div data-reveal>
+            <h3>How I check the result</h3>
+            <p>I look at what happens on the next run. When moving a catalog, I checked the columns, prices, and image names, then compared the output files. With the same source data, the export should match byte for byte.</p>
+          </div>
+          <div data-reveal>
+            <h3>What I’m exploring now</h3>
+            <p>On iPhone, I’m interested in shortening little chains of actions. A good target is a shortcut I can launch from the Home Screen and immediately see what it did.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter work" id="automations" aria-labelledby="work-title">
+      <div class="shell">
+        <h2 class="eyebrow" id="work-title" data-reveal>Automations</h2>
+        <p class="work-intro" data-reveal>Open any row to see what started the project and how it turned out.</p>
+        <div class="work-list">
+          <details class="work-item" data-reveal>
+            <summary id="case-justcars">
+              <span class="work-index" aria-hidden="true">01</span>
+              <span class="work-title glitch" data-glitch="Moving a catalog to a CRM">Moving a catalog to a CRM</span>
+              <span class="work-note">A repeatable export from a website</span>
+              <span class="work-category">JustCars</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>Moving a catalog by hand meant standardizing prices, keeping track of photos, and shaping the table for the importer. I combined those steps into one export that checks the columns before writing the file.</p>
+                <p>One run prepared 170 entries and 4,844 photos. Running the same data again produced the same file.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-docs">
+              <span class="work-index" aria-hidden="true">02</span>
+              <span class="work-title glitch" data-glitch="Searching documents offline">Searching documents offline</span>
+              <span class="work-note">PDFs, contracts, and scans</span>
+              <span class="work-category">Archive</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>I built a local app that searches text across an archive. It reads text from scans, highlights the match in the original document, and lets me export the excerpt.</p>
+                <p>I tested recognition on a batch of 160 files. On the next run, the app indexes only new or changed documents.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-ledstil">
+              <span class="work-index" aria-hidden="true">03</span>
+              <span class="work-title glitch" data-glitch="Organizing a large store">Organizing a large store</span>
+              <span class="work-note">Drag-and-drop sorting and autosave</span>
+              <span class="work-category">LedStil</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>I organized more than 2,500 products across over 500 categories. Each category has its own product attributes, and products can be reordered by dragging them into place.</p>
+                <p>Changes save automatically. The Ukrainian and Russian storefronts share one catalog.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-contenq">
+              <span class="work-index" aria-hidden="true">04</span>
+              <span class="work-title glitch" data-glitch="One video, several clips">One video, several clips</span>
+              <span class="work-note">Cropping, captions, and dubbing</span>
+              <span class="work-category">ContenQ</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>A source video goes through transcription, cutting, cropping, captioning, and dubbing. The short versions can be exported in 9:16, 4:5, and 1:1 formats.</p>
+                <p>The finished clips can go straight into the publishing calendar with one click.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-publane">
+              <span class="work-index" aria-hidden="true">05</span>
+              <span class="work-title glitch" data-glitch="A publishing calendar">A publishing calendar</span>
+              <span class="work-note">Scheduling, approval, and posting</span>
+              <span class="work-category">PubLane</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>I built a calendar for scheduling posts in the right time zone, choosing brand accounts, and sending clips for approval ahead of time.</p>
+                <p>The schedule and approval status are visible in one place. Posts go out through official platform integrations.</p>
+              </div>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="iphone">
+              <span class="work-index" aria-hidden="true">06</span>
+              <span class="work-title glitch" data-glitch="Automations on iPhone">Automations on iPhone</span>
+              <span class="work-note">Several steps in one tap</span>
+              <span class="work-category">Everyday</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <div class="work-copy">
+                <p>On my phone, I’m interested in shortcuts for small tasks. The Shortcuts app can chain a few actions and launch them from the Home Screen. This is where examples of my own shortcuts will go.</p>
+              </div>
+              <figure><div class="placeholder preview phone-preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Screenshot placeholder</figcaption></figure>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <p class="eyebrow" data-reveal>Contact</p>
+        <h2 id="contact-title" data-reveal>
+          <span class="contact-line">Glad to</span>
+          <span class="contact-line"><span class="glitch outline" data-glitch="meet you.">meet you.</span></span>
+        </h2>
+        <div class="contact-action" data-reveal><a class="magnet" href="https://t.me/illia_dev"><span>Message me on Telegram <b aria-hidden="true">↗</b></span></a></div>
+        <div class="contact-links" data-reveal>
+          <a class="text-link" href="mailto:druzya771907@gmail.com">Email</a>
+          <a class="text-link" href="https://github.com/illmxnn">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>Illia Druzenko</span>
+    <a class="text-link" href="#top">Back to top ↑</a>
+  </footer>
+</body>
+</html>

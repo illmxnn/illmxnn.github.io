@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="{{description}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ogLocale}}">
+  <meta property="og:url" content="{{url}}">
+  <link rel="canonical" href="{{url}}">
+{{alternates}}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=languages-1">
+  <script>
+    try {
+      const theme = localStorage.getItem('illmxnn-theme');
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+  <script src="/site.js?v=languages-1" defer></script>
+  <title>{{title}}</title>
+</head>
+<body id="top">
+  <a class="skip" href="#main">{{skip}}</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <div class="boot" hidden aria-hidden="true">
+    <div class="boot-inner">
+      <span class="boot-label">{{loading}}</span>
+      <div class="boot-status"><span class="boot-track"><span></span></span><span class="boot-count">0%</span></div>
+    </div>
+  </div>
+
+  <header class="header">
+    <nav class="shell nav" aria-label="{{navigation}}">
+      <a class="signature glitch" data-glitch="ID." href="#top" aria-label="{{home}}">ID.</a>
+      <div class="nav-links">
+{{navLinks}}
+      </div>
+      <div class="languages" role="group" aria-label="{{language}}">
+{{languageLinks}}
+      </div>
+      <button hidden class="theme" type="button" aria-label="{{light}}" data-light="{{light}}" data-dark="{{dark}}">
+        <span class="theme-icon" aria-hidden="true"><span class="moon"></span><span class="sun">☼</span></span>
+      </button>
+      <button hidden class="menu-trigger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="{{menuOpen}}"><span aria-hidden="true"></span></button>
+    </nav>
+  </header>
+
+  <dialog id="mobile-menu" class="mobile-menu" aria-label="{{navigation}}">
+    <button class="menu-close" type="button" aria-label="{{menuClose}}" autofocus>×</button>
+    <nav aria-label="{{sections}}">
+{{navLinks}}
+    </nav>
+  </dialog>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="name">
+      <span class="hero-line" aria-hidden="true"></span>
+      <div class="shell hero-inner">
+        <p class="eyebrow hero-label">{{personal}} <span>/</span> {{city}}</p>
+        <div class="hero-lockup">
+          <h1 id="name" aria-label="Illia Druzenko">
+            <span class="title-line" aria-hidden="true"><span class="title-first">Illia</span></span>
+            <span class="title-line" aria-hidden="true"><span class="glitch outline" data-glitch="Druzenko">Druzenko</span></span>
+          </h1>
+          <figure class="portrait">
+            <div class="placeholder portrait-screen" aria-hidden="true">
+              <canvas width="512" height="512"></canvas>
+              <span class="portrait-scan"></span>
+              <span class="screen-axis"></span>
+            </div>
+            <figcaption>{{portrait}}</figcaption>
+          </figure>
+        </div>
+        <p class="intro">{{intro}}</p>
+        <div class="hero-actions">
+          <a class="magnet" href="#automations"><span>{{automations}} <b aria-hidden="true">↘</b></span></a>
+          <a class="magnet" href="#contact"><span>{{contactAction}} <b aria-hidden="true">↗</b></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter about" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="about-grid">
+          <div>
+            <h2 class="eyebrow" id="about-title" data-reveal>{{about}}</h2>
+            <p class="about-lead" data-words data-reveal>{{aboutLead}} <strong class="outline">{{aboutAccent}}</strong>{{aboutEnd}}</p>
+          </div>
+          <div class="about-aside">
+            <p class="eyebrow" data-reveal>{{journey}}</p>
+            <p data-reveal>{{journeyText}}</p>
+            <ul class="about-links">
+{{topicLinks}}
+            </ul>
+          </div>
+        </div>
+        <div class="about-notes">
+          <div data-reveal>
+            <h3>{{practiceTitle}}</h3>
+            <p>{{practiceText}}</p>
+          </div>
+          <div data-reveal>
+            <h3>{{nowTitle}}</h3>
+            <p>{{nowText}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter work" id="automations" aria-labelledby="work-title">
+      <div class="shell">
+        <h2 class="eyebrow" id="work-title" data-reveal>{{automations}}</h2>
+        <p class="work-intro" data-reveal>{{workIntro}}</p>
+        <div class="work-list">
+{{cases}}
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <p class="eyebrow" data-reveal>{{contact}}</p>
+        <h2 id="contact-title" data-reveal>
+          <span class="contact-line">{{contactLead}}</span>
+          <span class="contact-line"><span class="glitch outline" data-glitch="{{contactAccent}}">{{contactAccent}}</span></span>
+        </h2>
+        <div class="contact-action" data-reveal><a class="magnet" href="https://t.me/illia_dev"><span>{{telegram}} <b aria-hidden="true">↗</b></span></a></div>
+        <div class="contact-links" data-reveal>
+          <a class="text-link" href="mailto:druzya771907@gmail.com">{{email}}</a>
+          <a class="text-link" href="https://github.com/illmxnn">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>Illia Druzenko</span>
+    <a class="text-link" href="#top">{{top}} ↑</a>
+  </footer>
+</body>
+</html>
