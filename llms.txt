@@ -1,6 +1,6 @@
-# Illia Druzhenko
+# Illia Druzenko
 
-> Личная страница Ильи Друженко из Киева. Заметки о повседневности и коллекция автоматизаций — от компьютера до iPhone.
+> Личная страница Illia Druzenko из Киева. Заметки о повседневности и коллекция автоматизаций — от компьютера до iPhone.
 
 - [Обо мне](https://illmxnn.github.io/#about)
 - [Автоматизации](https://illmxnn.github.io/#automations)

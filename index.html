@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="Илья Друженко, Киев. Личная страница и небольшая коллекция моих автоматизаций — от компьютера до iPhone.">
-  <meta property="og:title" content="Illia Druzhenko — личная страница">
-  <meta property="og:description" content="Илья Друженко, Киев. Обо мне и о том, что я автоматизирую.">
+  <meta name="description" content="Illia Druzenko, Киев. Личная страница и коллекция автоматизаций — от компьютера до iPhone.">
+  <meta property="og:title" content="Illia Druzenko — личная страница">
+  <meta property="og:description" content="Киев. Обо мне и о том, что я автоматизирую.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://illmxnn.github.io/">
   <link rel="canonical" href="https://illmxnn.github.io/">
@@ -14,112 +14,178 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=personal-1">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=glitch-1">
   <script>
     try {
       const theme = localStorage.getItem('illmxnn-theme');
       if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
     } catch {}
   </script>
-  <script src="site.js" defer></script>
-  <title>Illia Druzhenko — личная страница</title>
+  <script src="site.js?v=glitch-1" defer></script>
+  <title>Illia Druzenko — личная страница</title>
 </head>
 <body id="top">
   <a class="skip" href="#main">К содержимому</a>
-  <div class="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <div class="boot" hidden aria-hidden="true">
+    <div class="boot-inner">
+      <span class="boot-label">ЗАГРУЗКА</span>
+      <div class="boot-status"><span class="boot-track"><span></span></span><span class="boot-count">0%</span></div>
+    </div>
+  </div>
+
   <header class="header">
     <nav class="shell nav" aria-label="Навигация">
-      <a class="signature" href="#top" aria-label="Illia Druzhenko, начало страницы">ID<span>.</span></a>
+      <a class="signature glitch" data-glitch="ID." href="#top" aria-label="Illia Druzenko, начало страницы">ID.</a>
       <div class="nav-links">
         <a href="#about">Обо мне</a>
         <a href="#automations">Автоматизации</a>
         <a href="#contact">Контакты</a>
       </div>
-      <button hidden class="theme" type="button" aria-label="Сменить тему" title="Сменить тему">
-        <span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span>
+      <button hidden class="theme" type="button" aria-label="Сменить тему">
+        <span class="theme-icon" aria-hidden="true"><span class="moon"></span><span class="sun">☼</span></span>
       </button>
+      <button hidden class="menu-trigger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button>
     </nav>
   </header>
 
+  <dialog id="mobile-menu" class="mobile-menu" aria-label="Навигация по разделам">
+    <button class="menu-close" type="button" aria-label="Закрыть меню" autofocus>×</button>
+    <nav aria-label="Разделы страницы">
+      <a href="#about">Обо мне</a>
+      <a href="#automations">Автоматизации</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </dialog>
+
   <main id="main">
     <section class="hero" aria-labelledby="name">
+      <span class="hero-line" aria-hidden="true"></span>
       <div class="shell hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow"><span class="marker"></span> Личная страница <span class="divider">/</span> Киев</p>
-          <h1 id="name">Illia <span>Druzhenko</span></h1>
-          <p class="intro">Я Илья. Мне нравится замечать, что в повседневных делах можно упростить, и пробовать, как это будет работать.</p>
+        <p class="eyebrow hero-label">Личная страница <span>/</span> Киев</p>
+        <div class="hero-lockup">
+          <h1 id="name" aria-label="Illia Druzenko">
+            <span class="title-line" aria-hidden="true"><span class="title-first">Illia</span></span>
+            <span class="title-line" aria-hidden="true"><span class="glitch outline" data-glitch="Druzenko">Druzenko</span></span>
+          </h1>
+          <figure class="portrait">
+            <div class="placeholder portrait-screen" aria-hidden="true">
+              <canvas width="512" height="512"></canvas>
+              <span class="portrait-scan"></span>
+              <span class="screen-axis"></span>
+            </div>
+            <figcaption>Место для портрета</figcaption>
+          </figure>
         </div>
-        <figure class="portrait" aria-label="Место для портрета">
-          <div class="placeholder portrait-image" aria-hidden="true"><span class="crosshair"></span></div>
-          <figcaption><span>Портрет</span><span>illmxnn</span></figcaption>
-        </figure>
-        <a class="scroll-link" href="#about"><span aria-hidden="true">↓</span> Обо мне</a>
-      </div>
-    </section>
-
-    <section class="shell section about" id="about" aria-labelledby="about-title">
-      <p class="eyebrow">Обо мне</p>
-      <div class="about-grid">
-        <h2 id="about-title">Меньше рутины.<br>Больше времени.</h2>
-        <div class="section-copy">
-          <p>Я живу в Киеве. Мне нравится разбирать привычные процессы и замечать, где одно и то же приходится делать снова и снова. Обычно с этого и начинается идея для следующей автоматизации.</p>
-          <p>Этим я увлёкся ещё до iPhone. За компьютером это были каталоги, документы и видео. С iPhone тот же интерес перешёл в повседневность: какие мелочи можно собрать в одно действие и запускать прямо с телефона?</p>
+        <p class="intro">Я Илья. Мне нравится замечать, что в повседневных делах можно упростить, и пробовать, как это будет работать.</p>
+        <div class="hero-actions">
+          <a class="magnet" href="#automations"><span>Автоматизации <b aria-hidden="true">↘</b></span></a>
+          <a class="magnet" href="#contact"><span>Связаться <b aria-hidden="true">↗</b></span></a>
         </div>
       </div>
     </section>
 
-    <section class="shell section work" id="automations" aria-labelledby="work-title">
-      <div class="section-heading">
-        <h2 id="work-title">Автоматизации</h2>
-        <p class="section-copy">От больших задач за компьютером до коротких сценариев на телефоне.</p>
-      </div>
-      <div class="work-list">
-        <details class="work-item">
-          <summary id="case-justcars"><span class="work-label">Каталоги</span><span class="work-title">Каталог без ручного переноса</span><span class="work-note">Сайт → CRM</span><span class="expand" aria-hidden="true"></span></summary>
-          <div class="work-body">
-            <p>Собрал данные с сайта и подготовил их к импорту в CRM. За один запуск перенеслись 170 позиций и 4 844 изображения.</p>
-            <figure class="work-figure"><div class="placeholder preview" aria-hidden="true"><span class="crosshair"></span></div><figcaption>Место для скриншота каталога</figcaption></figure>
-          </div>
-        </details>
-        <details class="work-item">
-          <summary id="case-docs"><span class="work-label">Документы</span><span class="work-title">Поиск по документам</span><span class="work-note">PDF и сканы</span><span class="expand" aria-hidden="true"></span></summary>
-          <div class="work-body">
-            <p>Собрал локальный поиск по документам и сканам. Он помогает найти нужный фрагмент и сразу показывает, из какого файла взят ответ.</p>
-            <figure class="work-figure"><div class="placeholder preview" aria-hidden="true"><span class="crosshair"></span></div><figcaption>Место для скриншота поиска</figcaption></figure>
-          </div>
-        </details>
-        <details class="work-item">
-          <summary id="case-contenq"><span class="work-label">Видео</span><span class="work-title">Из одного видео — несколько клипов</span><span class="work-note">Кадрирование и субтитры</span><span class="expand" aria-hidden="true"></span></summary>
-          <div class="work-body">
-            <p>Объединил кадрирование, субтитры и озвучку в один процесс. Из исходного видео получается несколько коротких клипов.</p>
-            <figure class="work-figure"><div class="placeholder preview" aria-hidden="true"><span class="crosshair"></span></div><figcaption>Место для скриншота обработки видео</figcaption></figure>
-          </div>
-        </details>
-        <details class="work-item">
-          <summary id="iphone"><span class="work-label">Повседневность</span><span class="work-title">Автоматизации на iPhone</span><span class="work-note">Быстрые команды</span><span class="expand" aria-hidden="true"></span></summary>
-          <div class="work-body">
-            <p>На телефоне мне интересен другой масштаб: собрать несколько повторяющихся шагов в одну команду, которую можно запустить касанием. Здесь будут примеры моих сценариев для iPhone.</p>
-            <figure class="work-figure"><div class="placeholder preview phone-preview" aria-hidden="true"><span class="crosshair"></span></div><figcaption>Место для скриншота команды</figcaption></figure>
-          </div>
-        </details>
+    <section class="chapter about" id="about" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <div>
+          <h2 class="eyebrow" id="about-title" data-reveal>Обо мне</h2>
+          <p class="about-lead" data-words data-reveal>Я живу в Киеве. Если в привычном деле одни и те же шаги повторяются изо дня в день, мне хочется <strong class="outline">упростить</strong> их и посмотреть, что получится.</p>
+        </div>
+        <div class="about-aside">
+          <p class="eyebrow" data-reveal>От компьютера до iPhone</p>
+          <p data-reveal>Автоматизациями я увлёкся ещё до iPhone. На телефоне мне интересен другой масштаб — собрать несколько бытовых действий в одну быструю команду.</p>
+          <ul class="about-links">
+            <li data-reveal><a href="#case-justcars"><span class="roll"><span data-copy="Каталоги">Каталоги</span></span><span aria-hidden="true">↘</span></a></li>
+            <li data-reveal><a href="#case-docs"><span class="roll"><span data-copy="Документы и сканы">Документы и сканы</span></span><span aria-hidden="true">↘</span></a></li>
+            <li data-reveal><a href="#case-contenq"><span class="roll"><span data-copy="Клипы и субтитры">Клипы и субтитры</span></span><span aria-hidden="true">↘</span></a></li>
+            <li data-reveal><a href="#iphone"><span class="roll"><span data-copy="Команды на iPhone">Команды на iPhone</span></span><span aria-hidden="true">↘</span></a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="shell section contact" id="contact" aria-labelledby="contact-title">
-      <p class="eyebrow">Контакты</p>
-      <h2 id="contact-title">Буду рад знакомству.</h2>
-      <div class="contact-links">
-        <a href="https://t.me/illia_dev">Telegram <span aria-hidden="true">↗</span></a>
-        <a href="mailto:druzya771907@gmail.com">Почта <span aria-hidden="true">↗</span></a>
-        <a href="https://github.com/illmxnn">GitHub <span aria-hidden="true">↗</span></a>
+    <section class="chapter work" id="automations" aria-labelledby="work-title">
+      <div class="shell">
+        <h2 class="eyebrow" id="work-title" data-reveal>Автоматизации</h2>
+        <div class="work-list">
+          <details class="work-item" data-reveal>
+            <summary id="case-justcars">
+              <span class="work-index" aria-hidden="true">01</span>
+              <span class="work-title glitch" data-glitch="Каталог без ручного переноса">Каталог без ручного переноса</span>
+              <span class="work-note">Из каталога сайта — в CRM</span>
+              <span class="work-category">Каталоги</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <p>Собрал данные с сайта и подготовил их к импорту в CRM. За один запуск перенеслись 170 позиций и 4 844 изображения.</p>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота каталога</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-docs">
+              <span class="work-index" aria-hidden="true">02</span>
+              <span class="work-title glitch" data-glitch="Поиск по документам">Поиск по документам</span>
+              <span class="work-note">Нужный фрагмент и ссылка на источник</span>
+              <span class="work-category">PDF и сканы</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <p>Собрал локальный поиск по документам и сканам. Он помогает найти нужный фрагмент и сразу показывает, из какого файла взят ответ.</p>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота поиска</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="case-contenq">
+              <span class="work-index" aria-hidden="true">03</span>
+              <span class="work-title glitch" data-glitch="Одно видео, несколько клипов">Одно видео, несколько клипов</span>
+              <span class="work-note">Кадрирование, субтитры и озвучка</span>
+              <span class="work-category">Видео</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <p>Объединил кадрирование, субтитры и озвучку в один процесс. Из исходного видео получается несколько коротких клипов.</p>
+              <figure><div class="placeholder preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота обработки видео</figcaption></figure>
+            </div>
+          </details>
+          <details class="work-item" data-reveal>
+            <summary id="iphone">
+              <span class="work-index" aria-hidden="true">04</span>
+              <span class="work-title glitch" data-glitch="Автоматизации на iPhone">Автоматизации на iPhone</span>
+              <span class="work-note">Несколько шагов за одно касание</span>
+              <span class="work-category">Повседневность</span>
+              <span class="expand" aria-hidden="true"></span>
+            </summary>
+            <div class="work-body">
+              <p>Мне нравится идея собрать повторяющиеся действия в одну команду, которую можно запустить прямо с телефона. Здесь появятся примеры моих сценариев для iPhone.</p>
+              <figure><div class="placeholder preview phone-preview" aria-hidden="true"><span class="screen-axis"></span></div><figcaption>Место для скриншота команды</figcaption></figure>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <p class="eyebrow" data-reveal>Контакты</p>
+        <h2 id="contact-title" data-reveal>
+          <span class="contact-line">Буду рад</span>
+          <span class="contact-line"><span class="glitch outline" data-glitch="знакомству.">знакомству.</span></span>
+        </h2>
+        <div class="contact-action" data-reveal><a class="magnet" href="https://t.me/illia_dev"><span>Написать в Telegram <b aria-hidden="true">↗</b></span></a></div>
+        <div class="contact-links" data-reveal>
+          <a class="text-link" href="mailto:druzya771907@gmail.com">Почта</a>
+          <a class="text-link" href="https://github.com/illmxnn">GitHub</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="shell footer">
-    <span>Illia Druzhenko</span>
-    <a href="#top">Наверх ↑</a>
+    <span>Illia Druzenko</span>
+    <a class="text-link" href="#top">Наверх ↑</a>
   </footer>
 </body>
 </html>
